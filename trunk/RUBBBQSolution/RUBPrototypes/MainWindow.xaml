@@ -1,0 +1,84 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="RUBPrototypes.MainWindow"
+	x:Name="Window"
+	Title="RUB BBQ RMS"
+	Width="800" Height="500">
+	<Window.Resources>
+		<DataTemplate x:Key="ButtonColumnTemplate">
+			<Grid>
+				<Button Content="X" HorizontalAlignment="Left" Width="Auto" d:LayoutOverrides="Height"/>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.135*"/>
+			<ColumnDefinition Width="0.49*"/>
+			<ColumnDefinition Width="0.375*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.25*"/>
+			<RowDefinition Height="0.25*"/>
+			<RowDefinition Height="0.25*"/>
+			<RowDefinition Height="0.25*"/>
+		</Grid.RowDefinitions>
+		<Border Margin="0" Background="#FF314183">
+			<Button Content="Sides" Margin="8"/>
+		</Border>
+		<Border Margin="0" Grid.Row="1" Background="#FF833131" >
+			<Button Content="Drinks" Margin="8"/>
+		</Border>
+		<Border Margin="0" Grid.Row="2" Background="#FF438331" >
+			<ToggleButton Content="Meats" Margin="8" IsChecked="True"/>
+		</Border>
+		<Border Margin="0" Grid.Row="3" Background="#FFA6AD38" >
+			<Button Content="Desserts" Margin="8"/>
+		</Border>
+		<Border Grid.Column="1" Grid.RowSpan="4" Background="#FF438331" >
+			<WrapPanel>
+				<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Pork" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Chicken" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Brisket" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Panini" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+			</WrapPanel>
+		</Border>
+		<DockPanel Grid.Column="2" LastChildFill="True" Grid.RowSpan="4">
+			<Grid DockPanel.Dock="Bottom" >
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25"/>
+					<RowDefinition Height="25"/>
+					<RowDefinition Height="34"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.48*"/>
+					<ColumnDefinition Width="0.52*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0">Subtotal $45.50</TextBlock>
+				<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0">Tax $3.50</TextBlock>
+				<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0">Total $49.00</TextBlock>
+				<Button Content="Cancel" Margin="4,9.5,4,11.5" Height="30" Grid.Row="3"/>
+				<Button Content="OK" Grid.Column="1" Margin="4,2,4,4" Height="45" FontWeight="Bold" Grid.Row="3"/>
+			</Grid>
+			<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" >
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
+					<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True"/>
+					<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
+					<DataGridTemplateColumn CellTemplate="{DynamicResource ButtonColumnTemplate}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</DockPanel>
+	</Grid>
+</Window>
