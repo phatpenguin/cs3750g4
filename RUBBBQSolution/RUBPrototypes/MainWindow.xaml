@@ -6,54 +6,44 @@
 	x:Name="Window"
 	Title="RUB BBQ RMS"
 	Width="800" Height="500">
-	<Window.Resources>
-		<DataTemplate x:Key="ButtonColumnTemplate">
-			<Grid>
-				<Button Content="X" HorizontalAlignment="Left" Width="Auto" d:LayoutOverrides="Height"/>
-			</Grid>
-		</DataTemplate>
-	</Window.Resources>
 
 	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="0.135*"/>
-			<ColumnDefinition Width="0.49*"/>
-			<ColumnDefinition Width="0.375*"/>
+			<ColumnDefinition Width="105.84"/>
+			<ColumnDefinition Width="0.566*"/>
+			<ColumnDefinition Width="0.434*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="0.25*"/>
-			<RowDefinition Height="0.25*"/>
-			<RowDefinition Height="0.25*"/>
-			<RowDefinition Height="0.25*"/>
+			<RowDefinition/>
 		</Grid.RowDefinitions>
-		<Border Margin="0" Background="#FF314183">
+		<Border Margin="0" Background="#FF314183" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top">
 			<Button Content="Sides" Margin="8"/>
 		</Border>
-		<Border Margin="0" Grid.Row="1" Background="#FF833131" >
+		<Border Margin="0,115.5,0,0" Background="#FF833131" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
 			<Button Content="Drinks" Margin="8"/>
 		</Border>
-		<Border Margin="0" Grid.Row="2" Background="#FF438331" >
+		<Border Margin="0,231,0,0" Background="#FF438331" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
 			<ToggleButton Content="Meats" Margin="8" IsChecked="True"/>
 		</Border>
-		<Border Margin="0" Grid.Row="3" Background="#FFA6AD38" >
+		<Border Margin="0,346.5,0,0" Background="#FFA6AD38" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
 			<Button Content="Desserts" Margin="8"/>
 		</Border>
-		<Border Grid.Column="1" Grid.RowSpan="4" Background="#FF438331" >
+		<Border Grid.Column="1" Background="#FF438331" SnapsToDevicePixels="True" >
 			<WrapPanel>
-				<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Pork" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Chicken" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Brisket" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="Panini" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
-				<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" Style="{DynamicResource MenuItemButton}"/>
+				<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" />
+				<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" />
+				<Button Content="Pork" Width="115" Height="90" Margin="5" />
+				<Button Content="Chicken" Width="115" Height="90" Margin="5" />
+				<Button Content="Brisket" Width="115" Height="90" Margin="5" />
+				<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" />
+				<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" />
+				<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" />
+				<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" />
+				<Button Content="Panini" Width="115" Height="90" Margin="5" />
+				<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" />
 			</WrapPanel>
 		</Border>
-		<DockPanel Grid.Column="2" LastChildFill="True" Grid.RowSpan="4">
+		<DockPanel Grid.Column="2" LastChildFill="True">
 			<Grid DockPanel.Dock="Bottom" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="25"/>
@@ -71,12 +61,18 @@
 				<Button Content="Cancel" Margin="4,9.5,4,11.5" Height="30" Grid.Row="3"/>
 				<Button Content="OK" Grid.Column="1" Margin="4,2,4,4" Height="45" FontWeight="Bold" Grid.Row="3"/>
 			</Grid>
-			<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" >
+			<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
 				<DataGrid.Columns>
 					<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
 					<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True"/>
 					<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
-					<DataGridTemplateColumn CellTemplate="{DynamicResource ButtonColumnTemplate}"/>
+					<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
 				</DataGrid.Columns>
 			</DataGrid>
 		</DockPanel>
