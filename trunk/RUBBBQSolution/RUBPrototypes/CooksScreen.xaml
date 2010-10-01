@@ -34,11 +34,14 @@
 		</DataTemplate>
 	</Window.Resources>
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}">
-		<ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-			<StackPanel Orientation="Horizontal">
-				<ItemsControl ItemsPanel="{DynamicResource HorizontalItemsPanelTemplate}" ItemsSource="{Binding PendingOrders}" ItemTemplate="{DynamicResource OrderTemplate}"/>
-			</StackPanel>
-		</ScrollViewer>
-	</Grid>
+	<Viewbox HorizontalAlignment="Left" VerticalAlignment="Top">
+
+		<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}" Height="462" Width="784">
+			<ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+				<StackPanel Orientation="Horizontal">
+					<ItemsControl ItemsPanel="{DynamicResource HorizontalItemsPanelTemplate}" ItemsSource="{Binding PendingOrders}" ItemTemplate="{DynamicResource OrderTemplate}"/>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+	</Viewbox>
 </Window>
