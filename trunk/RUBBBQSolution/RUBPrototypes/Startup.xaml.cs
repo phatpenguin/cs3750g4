@@ -38,5 +38,10 @@ namespace RUBPrototypes
 		{
 			new Login().Show();
 		}
+
+		private void Inventory_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			new Inventory().Show();
+		}
 	}
 }
