@@ -7,74 +7,77 @@
 	Title="RUB BBQ RMS"
 	Width="800" Height="500">
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="105.84"/>
-			<ColumnDefinition Width="0.566*"/>
-			<ColumnDefinition Width="0.434*"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Border Margin="0" Background="#FF314183" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top">
-			<Button Content="Sides" Margin="8"/>
-		</Border>
-		<Border Margin="0,115.5,0,0" Background="#FF833131" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
-			<Button Content="Drinks" Margin="8"/>
-		</Border>
-		<Border Margin="0,231,0,0" Background="#FF438331" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
-			<ToggleButton Content="Meats" Margin="8" IsChecked="True"/>
-		</Border>
-		<Border Margin="0,346.5,0,0" Background="#FFA6AD38" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
-			<Button Content="Desserts" Margin="8"/>
-		</Border>
-		<Border Grid.Column="1" Background="#FF438331" SnapsToDevicePixels="True" >
-			<WrapPanel>
-				<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" />
-				<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" />
-				<Button Content="Pork" Width="115" Height="90" Margin="5" />
-				<Button Content="Chicken" Width="115" Height="90" Margin="5" />
-				<Button Content="Brisket" Width="115" Height="90" Margin="5" />
-				<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" />
-				<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" />
-				<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" />
-				<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" />
-				<Button Content="Panini" Width="115" Height="90" Margin="5" />
-				<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" />
-			</WrapPanel>
-		</Border>
-		<DockPanel Grid.Column="2" LastChildFill="True">
-			<Grid DockPanel.Dock="Bottom" >
-				<Grid.RowDefinitions>
-					<RowDefinition Height="25"/>
-					<RowDefinition Height="25"/>
-					<RowDefinition Height="34"/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="0.48*"/>
-					<ColumnDefinition Width="0.52*"/>
-				</Grid.ColumnDefinitions>
-				<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0">Subtotal $45.50</TextBlock>
-				<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0">Tax $3.50</TextBlock>
-				<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0">Total $49.00</TextBlock>
-				<Button Content="Cancel" Margin="4,9.5,4,11.5" Height="30" Grid.Row="3"/>
-				<Button Content="OK" Grid.Column="1" Margin="4,2,4,4" Height="45" FontWeight="Bold" Grid.Row="3"/>
-			</Grid>
-			<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
-				<DataGrid.Columns>
-					<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
-					<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True"/>
-					<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
-					<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
-						<DataGridTemplateColumn.CellTemplate>
-							<DataTemplate>
-								<Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
-							</DataTemplate>
-						</DataGridTemplateColumn.CellTemplate>
-					</DataGridTemplateColumn>
-				</DataGrid.Columns>
-			</DataGrid>
-		</DockPanel>
-	</Grid>
+	<Viewbox VerticalAlignment="Top" HorizontalAlignment="Left">
+
+		<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource OrderItems}}" Height="462" Width="784">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="105.84"/>
+				<ColumnDefinition Width="0.566*"/>
+				<ColumnDefinition Width="0.434*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Border Margin="0" Background="#FF314183" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top">
+				<Button Content="Sides" Margin="8"/>
+			</Border>
+			<Border Margin="0,115.5,0,0" Background="#FF833131" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
+				<Button Content="Drinks" Margin="8"/>
+			</Border>
+			<Border Margin="0,231,0,0" Background="#FF438331" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
+				<ToggleButton Content="Meats" Margin="8" IsChecked="True"/>
+			</Border>
+			<Border Margin="0,346.5,0,0" Background="#FFA6AD38" CornerRadius="8,0,0,8" SnapsToDevicePixels="True" Height="115.5" VerticalAlignment="Top" >
+				<Button Content="Desserts" Margin="8"/>
+			</Border>
+			<Border Grid.Column="1" Background="#FF438331" SnapsToDevicePixels="True" >
+				<WrapPanel>
+					<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" />
+					<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" />
+					<Button Content="Pork" Width="115" Height="90" Margin="5" />
+					<Button Content="Chicken" Width="115" Height="90" Margin="5" />
+					<Button Content="Brisket" Width="115" Height="90" Margin="5" />
+					<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" />
+					<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" />
+					<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" />
+					<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" />
+					<Button Content="Panini" Width="115" Height="90" Margin="5" />
+					<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" />
+				</WrapPanel>
+			</Border>
+			<DockPanel Grid.Column="2" LastChildFill="True">
+				<Grid DockPanel.Dock="Bottom" >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="25"/>
+						<RowDefinition Height="25"/>
+						<RowDefinition Height="34"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.48*"/>
+						<ColumnDefinition Width="0.52*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal $45.50"/></TextBlock>
+					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax $3.50"/></TextBlock>
+					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total $49.00"/></TextBlock>
+					<Button Content="Cancel" Margin="4,9.5,4,11.5" Height="30" Grid.Row="3"/>
+					<Button Content="OK" Grid.Column="1" Margin="4,2,4,4" Height="45" FontWeight="Bold" Grid.Row="3"/>
+				</Grid>
+				<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
+					<DataGrid.Columns>
+						<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
+						<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True"/>
+						<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
+						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+					</DataGrid.Columns>
+				</DataGrid>
+			</DockPanel>
+		</Grid>
+	</Viewbox>
 </Window>
