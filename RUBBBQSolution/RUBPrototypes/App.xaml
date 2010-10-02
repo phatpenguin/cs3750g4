@@ -6,6 +6,6 @@
 	StartupUri="Startup.xaml">
 	<Application.Resources>
 		<!-- Resources scoped at the Application level should be defined here. -->
-		<SampleData:OrderItems x:Key="OrderItems" d:IsDataSource="True"/>
+		<!--<SampleData:OrderItems x:Key="OrderItems" d:IsDataSource="True"/>-->
 	</Application.Resources>
 </Application>

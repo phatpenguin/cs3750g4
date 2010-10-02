@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1a393f36-f96b-49a5-9a3a-5d7b2229e3a4}</ProjectGuid>
+    <ProjectGuid>{1A393F36-F96B-49A5-9A3A-5D7B2229E3A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <DefaultClrNameSpace>RUBPrototypes</DefaultClrNameSpace>
@@ -60,6 +60,12 @@
     <Compile Include="CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InventoryManagement.xaml.cs">
+      <DependentUpon>InventoryManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuManagment.xaml.cs">
+      <DependentUpon>MenuManagment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>
@@ -73,6 +79,14 @@
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
     <Page Include="CooksScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventoryManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuManagment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

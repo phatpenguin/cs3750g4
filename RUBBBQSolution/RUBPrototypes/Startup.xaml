@@ -10,6 +10,8 @@
 		<Button Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,43,0,0" Click="Login_Click"/>
 		<Button Content="Ordering" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,121,0,0" Click="Button_Click"/>
 		<Button Content="Cooks Screen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0" Click="Cooks_Click"/>
-		<Button Content="Inventory screen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,155.04" Click="Inventory_Click"/>
-	</Grid>
+    <Button Content="Inventory screen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,155.04" Click="Inventory_Click"/>
+    <Button Content="Inventory Managment screen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,175.04" Click="InventoryMan_Click"/>
+    <Button Content="Menu Managment screen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,165.04" Click="MenuMan_Click"/>
+  </Grid>
 </Window>

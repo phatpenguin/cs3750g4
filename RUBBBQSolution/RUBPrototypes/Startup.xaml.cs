@@ -39,9 +39,18 @@ namespace RUBPrototypes
 			new Login().Show();
 		}
 
-		private void Inventory_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			new Inventory().Show();
-		}
-	}
+        private void Inventory_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            new Inventory().Show();
+        }
+        private void InventoryMan_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            new InventoryManagement().Show();
+        }
+
+        private void MenuMan_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            new MenuManagement().Show();
+        }
+    }
 }
