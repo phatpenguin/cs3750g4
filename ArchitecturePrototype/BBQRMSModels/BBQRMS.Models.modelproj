@@ -17,9 +17,26 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
+    <Content Include="PrototypeClassDia.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PrototypeClassDia.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>PrototypeClassDia.classdiagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\BBQRMSModels.uml">
       <SubType>Content</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BBQRMS.Client\BBQRMS.Client.csproj">
+      <Name>BBQRMS.Client</Name>
+      <Project>{5a24f37a-0b16-486c-b228-f010372df362}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\BBQRMS.Server\BBQRMS.Server.csproj">
+      <Name>BBQRMS.Server</Name>
+      <Project>{2a55183d-d6e4-473b-8554-2b9d3959e176}</Project>
+    </ProjectReference>
   </ItemGroup>
 </Project>
