@@ -1,1 +1,1 @@
-﻿<ArchitecturePrototype:MainViewModel xmlns:ArchitecturePrototype="clr-namespace:ArchitecturePrototype" ViewModelProperty="Sample Text Property Value"/>
+﻿<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:BBQRMS.Client.ViewModels" ViewModelProperty="Sample Text Property Value"/>

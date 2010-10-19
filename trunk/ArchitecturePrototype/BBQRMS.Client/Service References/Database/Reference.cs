@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 10/6/2010 6:41:20 PM
-namespace ArchitecturePrototype.Database
+// Generation date: 10/19/2010 12:54:01 PM
+namespace BBQRMS.Client.Database
 {
     
     /// <summary>
@@ -40,7 +40,7 @@ namespace ArchitecturePrototype.Database
         {
             if (typeName.StartsWith("Database", global::System.StringComparison.Ordinal))
             {
-                return this.GetType().Assembly.GetType(string.Concat("ArchitecturePrototype.Database", typeName.Substring(8)), false);
+                return this.GetType().Assembly.GetType(string.Concat("BBQRMS.Client.Database", typeName.Substring(8)), false);
             }
             return null;
         }
@@ -52,7 +52,7 @@ namespace ArchitecturePrototype.Database
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("ArchitecturePrototype.Database", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("BBQRMS.Client.Database", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Database.", clientType.Name);
             }

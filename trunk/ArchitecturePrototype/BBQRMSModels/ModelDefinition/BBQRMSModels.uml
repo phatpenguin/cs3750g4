@@ -1,8 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
   dslVersion="1.0.0.0"
   Id="de4ae67b-fd4f-482f-8842-fecabd268dd9"
-  name="BBQRMSModels" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  name="BBQRMS.Models" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="6ed586c1-4e48-4f87-b055-a7998f8bd6c1"
+      name="framework"
+      profile="StandardProfileL2" />
+    <stereotypeInstance
+      Id="6d7f48e4-00d0-4bae-9419-66f3278ab143"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="1a1142c7-c24f-44e0-ba31-8bb55ad9eb2a">
+          <propertyInstance
+            Id="dfd27822-2f94-4f73-948f-abd0a7361c7f"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="4b807591-3b1a-4d8e-a31f-7a326b1d45fd">
+          <propertyInstance
+            Id="712d692e-20cd-42d6-a283-d8f6f45b7a36"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="c329ac25-016b-4b7b-8c34-2fab6a37e97a">
+          <propertyInstance
+            Id="cb5434b7-064d-406a-9bae-62e426194ccd"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -16,29 +47,63 @@
         Id="532ea607-fb19-44b8-8502-3351b05452be"
         name="StandardProfileL3" />
     </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="8b85e01d-9879-4cea-afb0-0a16255b82b0">
+      <profileInstance
+        Id="80d36d35-4a88-47f2-9b97-78ca1f1a1d2e"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
   </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="92fe18e7-cd76-410f-92aa-8f72c33b7598"
+        LastKnownName="BBQRMS.Client"
+        LastKnownLocation="Package_1251.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ca7da43d-e3b8-44be-b9a7-d519e5281c38"
+        LastKnownName="BBQRMS.Server"
+        LastKnownLocation="Package1_1251.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="09e80d7a-6db8-4c61-b8e9-e16e9a6930e2"
+        LastKnownName="Database"
+        LastKnownLocation="Package_1309.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="1961cf09-a4a5-42fa-851b-4d1fc1cc07fe"
+        LastKnownName="BBQRMS.Reporting"
+        LastKnownLocation="Package_1310.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="775822c7-697d-4021-bf2b-6be19086cd35"
+        LastKnownName="BBQRMS.Entities"
+        LastKnownLocation="Package_1311.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
     name="Integer"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
     name="Boolean"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
     name="String"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
   <primitiveType
     Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
     name="UnlimitedNatural"
     isAbstract="false"
-    isTemplate="false"
     isLeaf="false" />
 </modelStoreModel>

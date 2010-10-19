@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="f6b43e4d-d506-438f-acd3-d7207f1cffe7" name="PackageDiagram" linkedPackageId="2abe26fc-c63d-4203-93ca-5e818906d0ea" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="af956d44-9b0a-42be-a612-62cc32189893" name="framework" profile="StandardProfileL2">
+      <elementDefinition Id="6ed586c1-4e48-4f87-b055-a7998f8bd6c1" />
+    </stereotypeInstance>
+    <stereotypeInstance Id="b14fdd2b-63b9-4f95-af1d-2063c573367a" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="6d7f48e4-00d0-4bae-9419-66f3278ab143" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3af52d85-ebac-41a2-8fc0-51109cc4f9f5">
+          <propertyInstance Id="9d31fef1-960e-4be1-af1b-6241015eae65" name="BaseName">
+            <elementDefinition Id="dfd27822-2f94-4f73-948f-abd0a7361c7f" />
+          </propertyInstance>
+          <elementDefinition Id="1a1142c7-c24f-44e0-ba31-8bb55ad9eb2a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="32ee9c75-f544-4e7e-8497-e79f352080fb">
+          <propertyInstance Id="bf2b7349-620c-42c1-b8d5-9a9a2eead509" name="ClrAttributes">
+            <elementDefinition Id="712d692e-20cd-42d6-a283-d8f6f45b7a36" />
+          </propertyInstance>
+          <elementDefinition Id="4b807591-3b1a-4d8e-a31f-7a326b1d45fd" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7a0ef2dd-f5eb-4d3e-b0b4-8a88d43283bd">
+          <propertyInstance Id="642fde7f-c6ea-4c95-be10-458131c153f3" name="Usings">
+            <elementDefinition Id="cb5434b7-064d-406a-9bae-62e426194ccd" />
+          </propertyInstance>
+          <elementDefinition Id="c329ac25-016b-4b7b-8c34-2fab6a37e97a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="48f05ef7-c97b-4567-aa83-b2410b55f717">
+      <profileInstance Id="fe5560c1-2410-46b0-a80c-8d9e4065588e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="fcdbf25e-6c29-418d-854f-008e1be5f06e">
+      <profileInstance Id="3bf36bda-b918-4b79-91b6-f78c8e440fca" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="8a515dfc-5bd3-45e8-a6d0-f3e5176e637d">
+      <profileInstance Id="8c1434cc-cc50-4ad1-af4e-09f2f23e882e" name="CSharpProfile">
+        <elementDefinition Id="80d36d35-4a88-47f2-9b97-78ca1f1a1d2e" />
+      </profileInstance>
+      <elementDefinition Id="8b85e01d-9879-4cea-afb0-0a16255b82b0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="688352d7-ce2a-48ee-993b-7083d87500fd" name="BBQRMS.Client">
+        <elementDefinition Id="92fe18e7-cd76-410f-92aa-8f72c33b7598" />
+        <suppliersInternal>
+          <dependency Id="97cd52d4-d950-42ed-8a6b-506a489f6d9c">
+            <packageMoniker Id="e42ef38f-a410-4735-8bf0-544a9e30574c" LastKnownName="BBQRMS.Server" />
+            <elementDefinition Id="bc1f3e24-5f41-439b-9d01-1eaca942b757" />
+          </dependency>
+          <dependency Id="0fdc5d51-2628-4a2f-ba9e-7f29f2274037">
+            <packageMoniker Id="8533a687-effd-4dfe-b8e6-35108909a512" LastKnownName="BBQRMS.Entities" />
+            <elementDefinition Id="9d7ed62e-aae1-4308-922a-d14b1a847e8c" />
+          </dependency>
+        </suppliersInternal>
+        <packagedElements>
+          <packageHasNamedElement>
+            <package Id="525fc3df-51bc-4241-9790-ea07b9cbf7bf" name="ViewModels">
+              <elementDefinition Id="58d82ef9-2057-4029-a9d8-6b8013a2bcd6" />
+            </package>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <package Id="209e703e-52a0-4586-9d96-02ea3902f806" name="Views">
+              <elementDefinition Id="a5f6a166-4682-42eb-921d-a4631e311cf2" />
+            </package>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="e42ef38f-a410-4735-8bf0-544a9e30574c" name="BBQRMS.Server">
+        <elementDefinition Id="ca7da43d-e3b8-44be-b9a7-d519e5281c38" />
+        <suppliersInternal>
+          <dependency Id="2104253a-7561-49a1-8945-397e8c6a0ddc">
+            <packageMoniker Id="474b01c3-b9b1-418b-ab67-5457acd83d07" LastKnownName="Database" />
+            <elementDefinition Id="db45595a-32c5-4f3d-a528-ca8bbb9c7370" />
+          </dependency>
+          <dependency Id="03229d93-c715-413f-924e-8ab8144642b2">
+            <packageMoniker Id="8533a687-effd-4dfe-b8e6-35108909a512" LastKnownName="BBQRMS.Entities" />
+            <elementDefinition Id="79b0ee85-e375-4abf-81a8-69d1bd759a42" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="474b01c3-b9b1-418b-ab67-5457acd83d07" name="Database">
+        <elementDefinition Id="09e80d7a-6db8-4c61-b8e9-e16e9a6930e2" />
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="6559893b-c8ce-4c0d-8ef6-9f1de1a258dc" name="BBQRMS.Reporting">
+        <elementDefinition Id="1961cf09-a4a5-42fa-851b-4d1fc1cc07fe" />
+        <suppliersInternal>
+          <dependency Id="f0791a89-3494-4cdf-b544-18090150ec4d">
+            <packageMoniker Id="474b01c3-b9b1-418b-ab67-5457acd83d07" LastKnownName="Database" />
+            <elementDefinition Id="2aa2e870-62fd-4b70-a537-d70a12b6f5db" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="8533a687-effd-4dfe-b8e6-35108909a512" name="BBQRMS.Entities">
+        <elementDefinition Id="775822c7-697d-4021-bf2b-6be19086cd35" />
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="2abe26fc-c63d-4203-93ca-5e818906d0ea" name="BBQRMS.Models">
+    <elementDefinition Id="de4ae67b-fd4f-482f-8842-fecabd268dd9" />
+  </package>
+</logicalClassDesignerModel>

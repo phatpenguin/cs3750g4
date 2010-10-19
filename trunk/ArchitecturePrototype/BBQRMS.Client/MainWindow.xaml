@@ -1,13 +1,11 @@
 ﻿<Window
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="ArchitecturePrototype.MainWindow"
-	x:Name="Window"
-	xmlns:local="clr-namespace:ArchitecturePrototype" 
-	Title="MainWindow"
+	x:Class="BBQRMS.Client.MainWindow"
+	x:Name="Window" xmlns:Views="clr-namespace:BBQRMS.Client.Views" Title="MainWindow"
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-	<local:MainView />
+	<Views:MainView />
 	</Grid>
 </Window>

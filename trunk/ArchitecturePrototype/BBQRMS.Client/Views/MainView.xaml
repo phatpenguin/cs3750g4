@@ -4,13 +4,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-	xmlns:ic="http://schemas.microsoft.com/expression/2010/interactions"
-	xmlns:local="clr-namespace:ArchitecturePrototype"
-	mc:Ignorable="d"
-	x:Class="ArchitecturePrototype.MainView"
+	xmlns:ic="http://schemas.microsoft.com/expression/2010/interactions" xmlns:ViewModels="clr-namespace:BBQRMS.Client.ViewModels" mc:Ignorable="d"
+	x:Class="BBQRMS.Client.Views.MainView"
 	d:DesignWidth="602" d:DesignHeight="477">
 	<UserControl.Resources>
-		<local:MainViewModel x:Key="MainViewModelDataSource" />
+		<ViewModels:MainViewModel x:Key="MainViewModelDataSource" />
 	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource MainViewModelDataSource}}" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">

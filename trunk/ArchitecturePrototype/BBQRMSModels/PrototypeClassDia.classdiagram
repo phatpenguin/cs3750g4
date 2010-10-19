@@ -1,1 +1,54 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="5f0a23bc-249d-49e3-a74b-8f08ee802f05" name="PrototypeClassDia" linkedPackageId="e12ac29d-b301-45f0-ac9b-4636e2d65461" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="62670179-7237-4e91-866b-3800835e5425" name="framework" profile="StandardProfileL2">
+      <elementDefinition Id="6ed586c1-4e48-4f87-b055-a7998f8bd6c1" />
+    </stereotypeInstance>
+    <stereotypeInstance Id="3c130e78-fe1e-49ac-bb10-85080838281c" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="6d7f48e4-00d0-4bae-9419-66f3278ab143" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="02b9e057-5fa4-4a55-b3c5-22527c6499ca">
+          <propertyInstance Id="501e86a9-d172-4585-bfca-f7d82618280e" name="BaseName">
+            <elementDefinition Id="dfd27822-2f94-4f73-948f-abd0a7361c7f" />
+          </propertyInstance>
+          <elementDefinition Id="1a1142c7-c24f-44e0-ba31-8bb55ad9eb2a" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="62891bae-71d4-4baa-a396-dd13d6152662">
+          <propertyInstance Id="34118679-b27e-4ea3-b56a-966d0784e828" name="ClrAttributes">
+            <elementDefinition Id="712d692e-20cd-42d6-a283-d8f6f45b7a36" />
+          </propertyInstance>
+          <elementDefinition Id="4b807591-3b1a-4d8e-a31f-7a326b1d45fd" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d611c0a1-9da7-4093-90b4-c881c4517f90">
+          <propertyInstance Id="986acd0d-ee5a-495a-ad47-bc8915a0a8d1" name="Usings">
+            <elementDefinition Id="cb5434b7-064d-406a-9bae-62e426194ccd" />
+          </propertyInstance>
+          <elementDefinition Id="c329ac25-016b-4b7b-8c34-2fab6a37e97a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="7ad621da-8b6b-4aeb-a864-3ff83f403b0d">
+      <profileInstance Id="38fc9a05-d06a-4d83-9fc1-86f644b9863a" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="7a38e757-163a-4d26-9cb4-75203063f0e3">
+      <profileInstance Id="60e20e9f-f737-45a3-ac0b-f670a0142ec5" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="59f81680-d36d-4bfa-af89-379de1bdae1b">
+      <profileInstance Id="113cb03e-abb9-49e0-bf78-7ee3b26001c0" name="CSharpProfile">
+        <elementDefinition Id="80d36d35-4a88-47f2-9b97-78ca1f1a1d2e" />
+      </profileInstance>
+      <elementDefinition Id="8b85e01d-9879-4cea-afb0-0a16255b82b0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <package Id="e12ac29d-b301-45f0-ac9b-4636e2d65461" name="BBQRMS.Models">
+    <elementDefinition Id="de4ae67b-fd4f-482f-8842-fecabd268dd9" />
+  </package>
+</logicalClassDesignerModel>
