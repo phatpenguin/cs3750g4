@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="1961cf09-a4a5-42fa-851b-4d1fc1cc07fe"
+  name="BBQRMS.Reporting" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="2aa2e870-62fd-4b70-a537-d70a12b6f5db">
+      <packageMoniker
+        Id="09e80d7a-6db8-4c61-b8e9-e16e9a6930e2"
+        LastKnownName="Database"
+        LastKnownLocation="Package_1309.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <component
+        Id="a4e480aa-58dc-4ad3-8caa-03a9de1ab2ec"
+        name="Reporting"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+  dslVersion="1.0.0.0"
+  Id="92fe18e7-cd76-410f-92aa-8f72c33b7598"
+  name="BBQRMS.Client" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="bc1f3e24-5f41-439b-9d01-1eaca942b757">
+      <packageMoniker
+        Id="ca7da43d-e3b8-44be-b9a7-d519e5281c38"
+        LastKnownName="BBQRMS.Server"
+        LastKnownLocation="Package1_1251.uml" />
+    </dependency>
+    <dependency
+      Id="9d7ed62e-aae1-4308-922a-d14b1a847e8c">
+      <packageMoniker
+        Id="775822c7-697d-4021-bf2b-6be19086cd35"
+        LastKnownName="BBQRMS.Entities"
+        LastKnownLocation="Package_1311.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <component
+        Id="a5c88e99-fd32-4088-ac5c-c63a84158aa9"
+        name="Order Entry"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="f3413b9b-50bf-4de2-b995-cbf760cb319a">
+            <componentMoniker
+              Id="ca5c6808-1a5a-4e7c-856c-a2ca58303c55"
+              LastKnownName="Data Access service"
+              LastKnownLocation="Package1_1251.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="c23302b9-9d8d-43e7-abf9-4378abce6847"
+        name="Order Queue"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="230bd34f-5c27-4599-ad22-faeaa182a63e">
+            <componentMoniker
+              Id="ca5c6808-1a5a-4e7c-856c-a2ca58303c55"
+              LastKnownName="Data Access service"
+              LastKnownLocation="Package1_1251.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="81b00e60-fac4-4eec-92e4-53a786e6f5a6"
+        name="Menu Management"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="f10e0571-1b4d-4d13-aca4-5d92e37971ed">
+            <componentMoniker
+              Id="ca5c6808-1a5a-4e7c-856c-a2ca58303c55"
+              LastKnownName="Data Access service"
+              LastKnownLocation="Package1_1251.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="477884fa-6abc-490e-bb47-88ab732ed4e0"
+        name="Inventory Management"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="d1408abf-7904-49f5-98c2-e460caf83f3e">
+            <componentMoniker
+              Id="ca5c6808-1a5a-4e7c-856c-a2ca58303c55"
+              LastKnownName="Data Access service"
+              LastKnownLocation="Package1_1251.uml" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="58d82ef9-2057-4029-a9d8-6b8013a2bcd6"
+        LastKnownName="ViewModels"
+        LastKnownLocation="Package_1547.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="a5f6a166-4682-42eb-921d-a4631e311cf2"
+        LastKnownName="Views"
+        LastKnownLocation="Package1_1547.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

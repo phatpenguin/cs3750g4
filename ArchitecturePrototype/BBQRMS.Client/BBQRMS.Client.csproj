@@ -8,8 +8,8 @@
     <ProjectGuid>{5A24F37A-0B16-486C-B228-F010372DF362}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArchitecturePrototype</RootNamespace>
-    <AssemblyName>ArchitecturePrototype</AssemblyName>
+    <RootNamespace>BBQRMS.Client</RootNamespace>
+    <AssemblyName>BBQRMS.Client</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ApplicationIcon>Application.ico</ApplicationIcon>
@@ -96,6 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <None Include="Properties\DataSources\BBQRMS.Client.Database.DatabaseContainer.datasource" />
     <None Include="Service References\Database\service.edmx" />
     <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Services.Client;
-using ArchitecturePrototype.Database;
+using BBQRMS.Client.Database;
 
-namespace ArchitecturePrototype
+namespace BBQRMS.Client.ViewModels
 {
 	public class MainViewModel : INotifyPropertyChanged
 	{

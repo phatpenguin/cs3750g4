@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
-namespace ArchitecturePrototype
+namespace BBQRMS.Client
 {
 	/// <summary>
 	/// Interaction logic for App.xaml
