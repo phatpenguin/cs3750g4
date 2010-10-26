@@ -7,39 +7,66 @@
 	<SampleData:OrderItems.PendingOrders>
 		<SampleData:PendingOrdersItem CountdownTime="05:15">
 			<SampleData:PendingOrdersItem.Items>
-				<SampleData:ItemsItem ItemName="Cras aenean" Price="4.5" Qty="2"/>
-				<SampleData:ItemsItem ItemName="Maecenas duis class praesent" Price="5.75" Qty="5"/>
-				<SampleData:ItemsItem ItemName="Nam aliquam" Price="2.95" Qty="3"/>
-				<SampleData:ItemsItem ItemName="Integer quisque nunc" Price="1.5" Qty="6"/>
-				<SampleData:ItemsItem ItemName="Vivamus accumsan" Price="1.5" Qty="9"/>
+				<SampleData:ItemsItem ItemName="Chicken" Price="4.5" Qty="2" Number="04"/>
+				<SampleData:ItemsItem ItemName="Choc. cake" Price="5.75" Qty="5" Number="44"/>
+				<SampleData:ItemsItem ItemName="Panini" Price="2.95" Qty="3" Number="10"/>
+				<SampleData:ItemsItem ItemName="Soda - large" Price="1.5" Qty="6" Number="31"/>
+				<SampleData:ItemsItem ItemName="Side Beans" Price="1.5" Qty="9" Number="23"/>
 			</SampleData:PendingOrdersItem.Items>
 		</SampleData:PendingOrdersItem>
 		<SampleData:PendingOrdersItem CountdownTime="03:43">
 			<SampleData:PendingOrdersItem.Items>
-				<SampleData:ItemsItem ItemName="Sed aliquam" Price="21" Qty="9"/>
-				<SampleData:ItemsItem ItemName="Aliquet curae bibendum" Price="11" Qty="3"/>
-				<SampleData:ItemsItem ItemName="Mauris dictumst blandit" Price="52" Qty="6"/>
-				<SampleData:ItemsItem ItemName="Commodo eleifend facilisi" Price="94" Qty="4"/>
-				<SampleData:ItemsItem ItemName="Dis faucibus habitant" Price="71" Qty="1"/>
+				<SampleData:ItemsItem ItemName="Sed aliquam" Price="21" Qty="9" Number="Curae blandit donec"/>
+				<SampleData:ItemsItem ItemName="Aliquet curae bibendum" Price="11" Qty="3" Number="Commodo bibendum dictumst conubia"/>
+				<SampleData:ItemsItem ItemName="Mauris dictumst blandit" Price="52" Qty="6" Number="Nunc cubilia"/>
+				<SampleData:ItemsItem ItemName="Commodo eleifend facilisi" Price="94" Qty="4" Number="Sed aptent"/>
+				<SampleData:ItemsItem ItemName="Dis faucibus habitant" Price="71" Qty="1" Number="Auctor dapibus egestas"/>
 			</SampleData:PendingOrdersItem.Items>
 		</SampleData:PendingOrdersItem>
 		<SampleData:PendingOrdersItem CountdownTime="02:01">
 			<SampleData:PendingOrdersItem.Items>
-				<SampleData:ItemsItem ItemName="Amet conubia" Price="68" Qty="8"/>
-				<SampleData:ItemsItem ItemName="Ante cubilia" Price="84" Qty="8"/>
-				<SampleData:ItemsItem ItemName="Arcu dapibus est nullam" Price="75" Qty="8"/>
-				<SampleData:ItemsItem ItemName="Donec egestas" Price="91" Qty="6"/>
-				<SampleData:ItemsItem ItemName="Euismod hac inceptos aptent" Price="78" Qty="6"/>
+				<SampleData:ItemsItem ItemName="Amet conubia" Price="68" Qty="8" Number="Amet etiam"/>
+				<SampleData:ItemsItem ItemName="Ante cubilia" Price="84" Qty="8" Number="Congue dis"/>
+				<SampleData:ItemsItem ItemName="Arcu dapibus est nullam" Price="75" Qty="8" Number="Ante est"/>
+				<SampleData:ItemsItem ItemName="Donec egestas" Price="91" Qty="6" Number="Arcu hac euismod"/>
+				<SampleData:ItemsItem ItemName="Euismod hac inceptos aptent" Price="78" Qty="6" Number="Leo fusce diam feugiat"/>
 			</SampleData:PendingOrdersItem.Items>
 		</SampleData:PendingOrdersItem>
 		<SampleData:PendingOrdersItem CountdownTime="01:18">
 			<SampleData:PendingOrdersItem.Items>
-				<SampleData:ItemsItem ItemName="Leo mus auctor" Price="53" Qty="5"/>
-				<SampleData:ItemsItem ItemName="Congue etiam cursus" Price="96" Qty="3"/>
-				<SampleData:ItemsItem ItemName="Feugiat nec interdum diam" Price="70" Qty="9"/>
-				<SampleData:ItemsItem ItemName="Gravida non fusce" Price="36" Qty="6"/>
-				<SampleData:ItemsItem ItemName="Per lorem" Price="15" Qty="2"/>
+				<SampleData:ItemsItem ItemName="Leo mus auctor" Price="53" Qty="5" Number="Eget elit"/>
+				<SampleData:ItemsItem ItemName="Congue etiam cursus" Price="96" Qty="3" Number="Gravida lorem"/>
+				<SampleData:ItemsItem ItemName="Feugiat nec interdum diam" Price="70" Qty="9" Number="Iaculis mus nec"/>
+				<SampleData:ItemsItem ItemName="Gravida non fusce" Price="36" Qty="6" Number="Eleifend facilisi faucibus habitant"/>
+				<SampleData:ItemsItem ItemName="Per lorem" Price="15" Qty="2" Number="Inceptos lacinia enim"/>
 			</SampleData:PendingOrdersItem.Items>
 		</SampleData:PendingOrdersItem>
 	</SampleData:OrderItems.PendingOrders>
+	<SampleData:OrderItems.MenuItems>
+		<SampleData:MenuItemsItem Number="01" Name="Ribs - HALF"/>
+		<SampleData:MenuItemsItem Number="02" Name="Ribs - FULL"/>
+		<SampleData:MenuItemsItem Number="03" Name="Pork"/>
+		<SampleData:MenuItemsItem Number="04" Name="Chicken"/>
+		<SampleData:MenuItemsItem Number="05" Name="Brisket"/>
+		<SampleData:MenuItemsItem Number="06" Name="Pork SANDWICH"/>
+		<SampleData:MenuItemsItem Number="07" Name="Pork SLIDERS"/>
+		<SampleData:MenuItemsItem Number="08" Name="Brisket SANDWICH"/>
+		<SampleData:MenuItemsItem Number="09" Name="Chicken SANDWICH"/>
+		<SampleData:MenuItemsItem Number="10" Name="Pannini"/>
+		<SampleData:MenuItemsItem Number="11" Name="BBQ Burger"/>
+	</SampleData:OrderItems.MenuItems>
+	<SampleData:OrderItems.Reports>
+		<SampleData:ReportsItem Name="Most Popular Items" Group="Sales"/>
+		<SampleData:ReportsItem Name="Daily Sales graph" Group="Sales"/>
+		<SampleData:ReportsItem Name="Weekly Sales graph" Group="Sales"/>
+		<SampleData:ReportsItem Name="Sales by type pie chart" Group="Sales"/>
+		<SampleData:ReportsItem Name="Monthly Sales by type bar chart" Group="Sales"/>
+		<SampleData:ReportsItem Name="Daily Inventory Levels" Group="Inventory"/>
+		<SampleData:ReportsItem Name="Daily Inventory used" Group="Inventory"/>
+		<SampleData:ReportsItem Name="Weekly Cost of inventory" Group="Inventory"/>
+		<SampleData:ReportsItem Name="Monthly cost of inventory" Group="Inventory"/>
+		<SampleData:ReportsItem Name="Weekly Hours worked" Group="Employees"/>
+		<SampleData:ReportsItem Name="Individual employee schedule" Group="Employees"/>
+		<SampleData:ReportsItem Name="Staff schedule" Group="Employees"/>
+	</SampleData:OrderItems.Reports>
 </SampleData:OrderItems>

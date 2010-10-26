@@ -6,6 +6,21 @@
 	x:Name="Window"
 	Title="RUB BBQ RMS"
 	Width="800" Height="500">
+	<Window.Resources>
+		<ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
+			<WrapPanel IsItemsHost="True"/>
+		</ItemsPanelTemplate>
+		<DataTemplate x:Key="MenuItemTemplate">
+			<Grid>
+				<Button Margin="2" Width="115" Height="95">
+					<StackPanel>
+						<TextBlock TextWrapping="Wrap" Text="{Binding Number}" HorizontalAlignment="Center"/>
+						<TextBlock TextWrapping="Wrap" Text="{Binding Name}" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Button>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
 
 	<Viewbox VerticalAlignment="Top" HorizontalAlignment="Left">
 
@@ -31,19 +46,7 @@
 				<Button Content="Desserts" Margin="8"/>
 			</Border>
 			<Border Grid.Column="1" Background="#FF438331" SnapsToDevicePixels="True" >
-				<WrapPanel>
-					<Button Content="Ribs - HALF" Width="115" Height="90" Margin="5" />
-					<Button Content="Ribs - FULL" Width="115" Height="90" Margin="5" />
-					<Button Content="Pork" Width="115" Height="90" Margin="5" />
-					<Button Content="Chicken" Width="115" Height="90" Margin="5" />
-					<Button Content="Brisket" Width="115" Height="90" Margin="5" />
-					<Button Content="Pork SANDWICH" Width="115" Height="90" Margin="5" />
-					<Button Content="Pork SLIDERS" Width="115" Height="90" Margin="5" />
-					<Button Content="Brisket SANDWICH" Width="115" Height="90" Margin="5" />
-					<Button Content="Chicken SANDWICH" Width="115" Height="90" Margin="5" />
-					<Button Content="Panini" Width="115" Height="90" Margin="5" />
-					<Button Content="BBQ Burger" Width="115" Height="90" Margin="5" />
-				</WrapPanel>
+				<ItemsControl ItemsSource="{Binding MenuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
 			</Border>
 			<DockPanel Grid.Column="2" LastChildFill="True">
 				<Grid DockPanel.Dock="Bottom" >
@@ -57,16 +60,17 @@
 						<ColumnDefinition Width="0.48*"/>
 						<ColumnDefinition Width="0.52*"/>
 					</Grid.ColumnDefinitions>
-					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal $45.50"/></TextBlock>
-					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax $3.50"/></TextBlock>
-					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total $49.00"/></TextBlock>
+					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal 69.10"/></TextBlock>
+					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax $5.52"/></TextBlock>
+					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total $74.62"/></TextBlock>
 					<Button Content="Cancel" Margin="4,9.5,4,11.5" Height="30" Grid.Row="3"/>
 					<Button Content="OK" Grid.Column="1" Margin="4,2,4,4" Height="45" FontWeight="Bold" Grid.Row="3"/>
 				</Grid>
 				<DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
 					<DataGrid.Columns>
+						<DataGridTextColumn Binding="{Binding Number}" Header="#"/>
 						<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
-						<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True"/>
+						<DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True" Width="*"/>
 						<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
 						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
 							<DataGridTemplateColumn.CellTemplate>

@@ -38,16 +38,6 @@ namespace Expression.Blend.SampleData.OrderItems
 			}
 		}
 
-		private ItemCollection _Collection = new ItemCollection();
-
-		public ItemCollection Collection
-		{
-			get
-			{
-				return this._Collection;
-			}
-		}
-
 		private PendingOrders _PendingOrders = new PendingOrders();
 
 		public PendingOrders PendingOrders
@@ -57,61 +47,30 @@ namespace Expression.Blend.SampleData.OrderItems
 				return this._PendingOrders;
 			}
 		}
+
+		private MenuItems _MenuItems = new MenuItems();
+
+		public MenuItems MenuItems
+		{
+			get
+			{
+				return this._MenuItems;
+			}
+		}
+
+		private Reports _Reports = new Reports();
+
+		public Reports Reports
+		{
+			get
+			{
+				return this._Reports;
+			}
+		}
 	}
 
-	public class ItemCollection : System.Collections.ObjectModel.ObservableCollection<Item>
+	public class PendingOrders : System.Collections.ObjectModel.ObservableCollection<PendingOrdersItem>
 	{ 
-	}
-
-	public class Item : System.ComponentModel.INotifyPropertyChanged
-	{
-		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-		protected virtual void OnPropertyChanged(string propertyName)
-		{
-			if (this.PropertyChanged != null)
-			{
-				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-			}
-		}
-
-		private string _ItemName = string.Empty;
-
-		public string ItemName
-		{
-			get
-			{
-				return this._ItemName;
-			}
-
-			set
-			{
-				if (this._ItemName != value)
-				{
-					this._ItemName = value;
-					this.OnPropertyChanged("ItemName");
-				}
-			}
-		}
-
-		private double _Price = 0;
-
-		public double Price
-		{
-			get
-			{
-				return this._Price;
-			}
-
-			set
-			{
-				if (this._Price != value)
-				{
-					this._Price = value;
-					this.OnPropertyChanged("Price");
-				}
-			}
-		}
 	}
 
 	public class PendingOrdersItem : System.ComponentModel.INotifyPropertyChanged
@@ -123,6 +82,16 @@ namespace Expression.Blend.SampleData.OrderItems
 			if (this.PropertyChanged != null)
 			{
 				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		private Items _Items = new Items();
+
+		public Items Items
+		{
+			get
+			{
+				return this._Items;
 			}
 		}
 
@@ -144,19 +113,9 @@ namespace Expression.Blend.SampleData.OrderItems
 				}
 			}
 		}
-
-		private Items _Items = new Items();
-
-		public Items Items
-		{
-			get
-			{
-				return this._Items;
-			}
-		}
 	}
 
-	public class PendingOrders : System.Collections.ObjectModel.ObservableCollection<PendingOrdersItem>
+	public class Items : System.Collections.ObjectModel.ObservableCollection<ItemsItem>
 	{ 
 	}
 
@@ -228,9 +187,134 @@ namespace Expression.Blend.SampleData.OrderItems
 				}
 			}
 		}
+
+		private string _Number = string.Empty;
+
+		public string Number
+		{
+			get
+			{
+				return this._Number;
+			}
+
+			set
+			{
+				if (this._Number != value)
+				{
+					this._Number = value;
+					this.OnPropertyChanged("Number");
+				}
+			}
+		}
 	}
 
-	public class Items : System.Collections.ObjectModel.ObservableCollection<ItemsItem>
+	public class MenuItems : System.Collections.ObjectModel.ObservableCollection<MenuItemsItem>
+	{ 
+	}
+
+	public class MenuItemsItem : System.ComponentModel.INotifyPropertyChanged
+	{
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			if (this.PropertyChanged != null)
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		private string _Number = string.Empty;
+
+		public string Number
+		{
+			get
+			{
+				return this._Number;
+			}
+
+			set
+			{
+				if (this._Number != value)
+				{
+					this._Number = value;
+					this.OnPropertyChanged("Number");
+				}
+			}
+		}
+
+		private string _Name = string.Empty;
+
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+
+			set
+			{
+				if (this._Name != value)
+				{
+					this._Name = value;
+					this.OnPropertyChanged("Name");
+				}
+			}
+		}
+	}
+
+	public class ReportsItem : System.ComponentModel.INotifyPropertyChanged
+	{
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			if (this.PropertyChanged != null)
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		private string _Name = string.Empty;
+
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+
+			set
+			{
+				if (this._Name != value)
+				{
+					this._Name = value;
+					this.OnPropertyChanged("Name");
+				}
+			}
+		}
+
+		private string _Group = string.Empty;
+
+		public string Group
+		{
+			get
+			{
+				return this._Group;
+			}
+
+			set
+			{
+				if (this._Group != value)
+				{
+					this._Group = value;
+					this.OnPropertyChanged("Group");
+				}
+			}
+		}
+	}
+
+	public class Reports : System.Collections.ObjectModel.ObservableCollection<ReportsItem>
 	{ 
 	}
 #endif

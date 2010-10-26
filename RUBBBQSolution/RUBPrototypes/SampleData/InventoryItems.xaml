@@ -1,0 +1,33 @@
+﻿<SampleData:InventoryItems xmlns:SampleData="clr-namespace:RUBPrototypes.SampleData">
+	<SampleData:InventoryItemsItem Date="10/01/2010" InventoryItemName="Ribs" Quantity="18.69"/>
+	<SampleData:InventoryItemsItem Date="10/02/2010" InventoryItemName="Ribs" Quantity="14.71"/>
+	<SampleData:InventoryItemsItem Date="10/03/2010" InventoryItemName="Ribs" Quantity="25.72"/>
+	<SampleData:InventoryItemsItem Date="10/04/2010" InventoryItemName="Ribs" Quantity="5.44"/>
+	<SampleData:InventoryItemsItem Date="10/05/2010" InventoryItemName="Ribs" Quantity="17.11"/>
+	<SampleData:InventoryItemsItem Date="10/06/2010" InventoryItemName="Ribs" Quantity="6.31"/>
+	<SampleData:InventoryItemsItem Date="10/07/2010" InventoryItemName="Ribs" Quantity="5.56"/>
+	<SampleData:InventoryItemsItem Date="10/08/2010" InventoryItemName="Ribs" Quantity="13.47"/>
+	<SampleData:InventoryItemsItem Date="10/09/2010" InventoryItemName="Ribs" Quantity="21.12"/>
+	<SampleData:InventoryItemsItem Date="10/10/2010" InventoryItemName="Ribs" Quantity="27.09"/>
+	<SampleData:InventoryItemsItem Date="10/11/2010" InventoryItemName="Ribs" Quantity="18.22"/>
+	<SampleData:InventoryItemsItem Date="10/12/2010" InventoryItemName="Ribs" Quantity="18.01"/>
+	<SampleData:InventoryItemsItem Date="10/13/2010" InventoryItemName="Ribs" Quantity="15.39"/>
+	<SampleData:InventoryItemsItem Date="10/14/2010" InventoryItemName="Ribs" Quantity="4.65"/>
+	<SampleData:InventoryItemsItem Date="10/15/2010" InventoryItemName="Ribs" Quantity="6.63"/>
+	<SampleData:InventoryItemsItem Date="10/16/2010" InventoryItemName="Ribs" Quantity="11.43"/>
+	<SampleData:InventoryItemsItem Date="10/17/2010" InventoryItemName="Ribs" Quantity="26.20"/>
+	<SampleData:InventoryItemsItem Date="10/18/2010" InventoryItemName="Ribs" Quantity="17.97"/>
+	<SampleData:InventoryItemsItem Date="10/19/2010" InventoryItemName="Ribs" Quantity="12.64"/>
+	<SampleData:InventoryItemsItem Date="10/20/2010" InventoryItemName="Ribs" Quantity="24.83"/>
+	<SampleData:InventoryItemsItem Date="10/21/2010" InventoryItemName="Ribs" Quantity="2.08"/>
+	<SampleData:InventoryItemsItem Date="10/22/2010" InventoryItemName="Ribs" Quantity="5.30"/>
+	<SampleData:InventoryItemsItem Date="10/23/2010" InventoryItemName="Ribs" Quantity="8.37"/>
+	<SampleData:InventoryItemsItem Date="10/24/2010" InventoryItemName="Ribs" Quantity="13.16"/>
+	<SampleData:InventoryItemsItem Date="10/25/2010" InventoryItemName="Ribs" Quantity="5.70"/>
+	<SampleData:InventoryItemsItem Date="10/26/2010" InventoryItemName="Ribs" Quantity="2.39"/>
+	<SampleData:InventoryItemsItem Date="10/27/2010" InventoryItemName="Ribs" Quantity="22.14"/>
+	<SampleData:InventoryItemsItem Date="10/28/2010" InventoryItemName="Ribs" Quantity="2.95"/>
+	<SampleData:InventoryItemsItem Date="10/29/2010" InventoryItemName="Ribs" Quantity="21.05"/>
+	<SampleData:InventoryItemsItem Date="10/30/2010" InventoryItemName="Ribs" Quantity="2.74"/>
+	<SampleData:InventoryItemsItem Date="10/31/2010" InventoryItemName="Ribs" Quantity="8.63"/>
+</SampleData:InventoryItems>
