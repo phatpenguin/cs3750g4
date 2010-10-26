@@ -4884,7 +4884,7 @@ Also, need a user-management screen
 <XPD:REF name="DiagramOwner">7bNGWIuh5U+NlsGDeRWW1wAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="LhOpNJEdoUShCcb9XoCEtQAA">
 <XPD:REF name="Diagram">1ieXS0QepE+nq2kjGCzXbwAA</XPD:REF>
-<XPD:ATTR name="#OwnedViews" type="integer">18</XPD:ATTR>
+<XPD:ATTR name="#OwnedViews" type="integer">15</XPD:ATTR>
 <XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="4th/YjTtJ0WB/4P878dDRwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
@@ -5000,7 +5000,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">356</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">352</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">224</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">186</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">207</XPD:ATTR>
@@ -5038,7 +5038,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">536</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">532</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">496</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">105</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">77</XPD:ATTR>
@@ -5150,7 +5150,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">308,143;370,224</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">307,143;367,224</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">UHbdKLeKIEipmoMFv+0zEAAA</XPD:REF>
@@ -5368,7 +5368,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">541,382;652,447</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">537,381;652,448</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">T57wCB2I10qpDd55WuosjgAA</XPD:REF>
@@ -5456,7 +5456,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">518,430;562,496</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">514,430;558,496</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">lfDe1Qj7lUGd5xIM8gHfmAAA</XPD:REF>
@@ -5544,7 +5544,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">452,430;454,492</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">450,430;453,492</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">O0J+UopS30CcBM8ezAbNtwAA</XPD:REF>
@@ -5632,7 +5632,7 @@ Also, need a user-management screen
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">376,430;327,500</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">374,430;326,500</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">0Lor9D+cq02yWvOx/SB4+AAA</XPD:REF>
@@ -5802,168 +5802,6 @@ Also, need a user-management screen
 <XPD:ATTR name="Width" type="integer">50</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">8</XPD:ATTR>
 <XPD:REF name="Model">dAUOmK6Mw0Wl2OivzB0BoAAA</XPD:REF>
-</XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="OwnedViews[15]" type="UMLClassView" guid="J2jAxZZtKkqQaebBxxB5sQAA">
-<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">528</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">100</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">220</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">84</XPD:ATTR>
-<XPD:ATTR name="StereotypeDisplay" type="UMLStereotypeDisplayKind">sdkNone</XPD:ATTR>
-<XPD:ATTR name="ShowOperationSignature" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
-<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="l/ScBhSy1UmB9eJtY52DFQAA">
-<XPD:OBJ name="NameLabel" type="LabelView" guid="UcutallGYUG1rh3ujWwNcAAA">
-<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">inventory_item</XPD:ATTR>
-</XPD:OBJ>
-<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="oNCjrQEDskmxT25bMEi67AAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-</XPD:OBJ>
-<XPD:OBJ name="PropertyLabel" type="LabelView" guid="wVBg+lov6kiTH/wKGzTWUAAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-</XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="ltU4jeVRskuiEk8H7kSTwgAA">
-<XPD:REF name="Model">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="TlR7c0jUXkSJm5O1DWKqawAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="J3qbI8udo0e3877QIP32swAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
-</XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="OwnedViews[16]" type="UMLClassView" guid="piq/WgFcQECWFTZ3vidVuQAA">
-<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">640</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">264</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">229</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">77</XPD:ATTR>
-<XPD:ATTR name="StereotypeDisplay" type="UMLStereotypeDisplayKind">sdkNone</XPD:ATTR>
-<XPD:ATTR name="ShowOperationSignature" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sNXLqN9VWUaBDG2qiwNRGAAA</XPD:REF>
-<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="SPrV11k0Ik2gS6aFQzMUUAAA">
-<XPD:OBJ name="NameLabel" type="LabelView" guid="W/TxEvQTCEuOObrboZ81XQAA">
-<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">inventory_item_log</XPD:ATTR>
-</XPD:OBJ>
-<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="kD0f+Chdgk2KiVr/CBlMjAAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-</XPD:OBJ>
-<XPD:OBJ name="PropertyLabel" type="LabelView" guid="FcGsqIY0n0+k0ANSTWH9zQAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-</XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="ngjbC0lwxUyTfZW9b4HtSQAA">
-<XPD:REF name="Model">sNXLqN9VWUaBDG2qiwNRGAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="edaVEWQhPk+R7DtMFtVdNQAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sNXLqN9VWUaBDG2qiwNRGAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="E8yPmLjH00CdhcZmzCzG5gAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">sNXLqN9VWUaBDG2qiwNRGAAA</XPD:REF>
-</XPD:OBJ>
-</XPD:OBJ>
-<XPD:OBJ name="OwnedViews[17]" type="UMLAssociationView" guid="YQANXnf+v0SLCv+BgBxWkAAA">
-<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="ShowExtendedNotation" type="boolean">True</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">668,183;727,264</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentStereotype" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
-<XPD:REF name="Model">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
-<XPD:REF name="Head">piq/WgFcQECWFTZ3vidVuQAA</XPD:REF>
-<XPD:REF name="Tail">J2jAxZZtKkqQaebBxxB5sQAA</XPD:REF>
-<XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="fzkOJDmTDkimtgu+wdyTswAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">15</XPD:ATTR>
-<XPD:REF name="Model">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="StereotypeLabel" type="EdgeLabelView" guid="LOOg4A0tmkeavzkYdLMrJQAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">30</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">&lt;&lt;identifying&gt;&gt;</XPD:ATTR>
-<XPD:REF name="Model">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="PropertyLabel" type="EdgeLabelView" guid="7dFUgjXtYU+jNIZtw2veYQAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">-1.5707963267949</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">15</XPD:ATTR>
-<XPD:REF name="Model">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="HeadRoleNameLabel" type="EdgeLabelView" guid="FSpRf/ab2kGBIJwiXlW8OgAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">-0.523598775598299</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">30</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epHead</XPD:ATTR>
-<XPD:REF name="Model">kPgGHZ0h9E6ynH/+FnNengAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TailRoleNameLabel" type="EdgeLabelView" guid="+GeOdJSsqEe0Rkjwq5dG0AAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">0.523598775598299</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">30</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epTail</XPD:ATTR>
-<XPD:REF name="Model">XfsP/WmG90GfnJn4PphTdAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="HeadMultiplicityLabel" type="EdgeLabelView" guid="4f/Iu+XDakSkEu4yYXKH6gAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">0.523598775598299</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">25</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epHead</XPD:ATTR>
-<XPD:REF name="Model">kPgGHZ0h9E6ynH/+FnNengAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TailMultiplicityLabel" type="EdgeLabelView" guid="GVx/V3pDm0C41uLf+FbmWwAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">-0.523598775598299</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">25</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epTail</XPD:ATTR>
-<XPD:REF name="Model">XfsP/WmG90GfnJn4PphTdAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="HeadPropertyLabel" type="EdgeLabelView" guid="TfO228aAB0KGMT4/EqNG8QAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">-0.785398163397448</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">40</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epHead</XPD:ATTR>
-<XPD:REF name="Model">kPgGHZ0h9E6ynH/+FnNengAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TailPropertyLabel" type="EdgeLabelView" guid="vYA+vFV6b0y7eKo9Gw+adgAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">0.785398163397448</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">40</XPD:ATTR>
-<XPD:ATTR name="EdgePosition" type="EdgePositionKind">epTail</XPD:ATTR>
-<XPD:REF name="Model">XfsP/WmG90GfnJn4PphTdAAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="HeadQualifierCompartment" type="UMLQualifierCompartmentView" guid="/BJhv/ue7EW3aAuf/dMOmgAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">-1000</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">-1000</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">50</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">8</XPD:ATTR>
-<XPD:REF name="Model">kPgGHZ0h9E6ynH/+FnNengAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="TailQualifierCompartment" type="UMLQualifierCompartmentView" guid="BUsIkl5yd0G/CT47wvwf3QAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">-1000</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">-1000</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">50</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">8</XPD:ATTR>
-<XPD:REF name="Model">XfsP/WmG90GfnJn4PphTdAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6342,11 +6180,7 @@ Also, need a user-management screen
 <XPD:REF name="TaggedModel">PBmrOWVZGkSIlInetcmVewAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="e+XSDTkndE2cKy9lbaQP7QAA">
-<XPD:ATTR name="Name" type="string">name</XPD:ATTR>
-<XPD:REF name="Owner">hA6gcnholUyWE2ZAi5bxiwAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="fG6OH/GWSkypyHf0CZWp9QAA">
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="fG6OH/GWSkypyHf0CZWp9QAA">
 <XPD:ATTR name="Name" type="string">menu_id</XPD:ATTR>
 <XPD:REF name="Owner">hA6gcnholUyWE2ZAi5bxiwAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
@@ -6357,6 +6191,10 @@ Also, need a user-management screen
 <XPD:ATTR name="DataValue" type="string">True</XPD:ATTR>
 <XPD:REF name="TaggedModel">fG6OH/GWSkypyHf0CZWp9QAA</XPD:REF>
 </XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="e+XSDTkndE2cKy9lbaQP7QAA">
+<XPD:ATTR name="Name" type="string">name</XPD:ATTR>
+<XPD:REF name="Owner">hA6gcnholUyWE2ZAi5bxiwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[11]" type="UMLAssociation" guid="qOz1wdEN8U+NSVvF46pzwAAA">
@@ -6447,59 +6285,104 @@ Also, need a user-management screen
 <XPD:ATTR name="#Attributes" type="integer">12</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="UJVSHlbi6Eq+J548q/iUBAAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
+<XPD:ATTR name="#TaggedValues" type="integer">2</XPD:ATTR>
+<XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="IqBfx9Jq6EuhmOC2A8Wv1gAA">
+<XPD:ATTR name="ProfileName" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="TagDefinitionSetName" type="string">column</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">PK</XPD:ATTR>
+<XPD:ATTR name="DataValue" type="string">True</XPD:ATTR>
+<XPD:REF name="TaggedModel">UJVSHlbi6Eq+J548q/iUBAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TaggedValues[1]" type="TaggedValue" guid="KGmi8g8kfEiqEEiqZ/bw/AAA">
+<XPD:ATTR name="ProfileName" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="TagDefinitionSetName" type="string">column</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FK</XPD:ATTR>
+<XPD:ATTR name="DataValue" type="string">True</XPD:ATTR>
+<XPD:REF name="TaggedModel">UJVSHlbi6Eq+J548q/iUBAAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="RSwBBKVwaEqu4CpwUDETWwAA">
 <XPD:ATTR name="Name" type="string">order_item_id</XPD:ATTR>
 <XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
 <XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
+<XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="DYesZVKYYkOVInuWYq0ElgAA">
+<XPD:ATTR name="ProfileName" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="TagDefinitionSetName" type="string">column</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FK</XPD:ATTR>
+<XPD:ATTR name="DataValue" type="string">True</XPD:ATTR>
+<XPD:REF name="TaggedModel">RSwBBKVwaEqu4CpwUDETWwAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="B1ZnvNYnSkqY/Om81ejSxgAA">
 <XPD:ATTR name="Name" type="string">payment_type_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="peAnW83xg0SQcZ67JLNswgAA">
 <XPD:ATTR name="Name" type="string">location_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="03ixrI2mZU6RnDbMV8hk2gAA">
 <XPD:ATTR name="Name" type="string">order_type_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="33HmkCmkPEeSsEqTMmL3twAA">
 <XPD:ATTR name="Name" type="string">table_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="DbUB6OHQCUuI2PFC03tdDwAA">
 <XPD:ATTR name="Name" type="string">total</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="CXgybiWm8EaYACLIu/2nAwAA">
 <XPD:ATTR name="Name" type="string">tax</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="oAMj+OMR40SMwfnC8x7U4QAA">
 <XPD:ATTR name="Name" type="string">order_redieved</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="hrynZU8P60y5ETfH6FSRXAAA">
 <XPD:ATTR name="Name" type="string">entered_time</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[10]" type="UMLAttribute" guid="1y2Cm7z4/0ivMp+7UYeoJgAA">
 <XPD:ATTR name="Name" type="string">completed_time</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[11]" type="UMLAttribute" guid="grhNLybbbEyW9ud5iulOWgAA">
 <XPD:ATTR name="Name" type="string">table_section_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="IavDQm0R1kmOVmody6skcwAA">
 <XPD:ATTR name="ProfileName" type="string">ERD</XPD:ATTR>
 <XPD:ATTR name="TagDefinitionSetName" type="string">column</XPD:ATTR>
 <XPD:ATTR name="Name" type="string">FK</XPD:ATTR>
-<XPD:ATTR name="DataValue" type="string">True</XPD:ATTR>
+<XPD:ATTR name="DataValue" type="string">False</XPD:ATTR>
 <XPD:REF name="TaggedModel">grhNLybbbEyW9ud5iulOWgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6520,6 +6403,8 @@ Also, need a user-management screen
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="QMIdOCL5E0SVeFnotsQdGwAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:ATTR name="OwnerScope" type="UMLScopeKind">skClassifier</XPD:ATTR>
 <XPD:REF name="Owner">9wMh+87MBEiYo3PO40G/OAAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
@@ -6533,6 +6418,8 @@ Also, need a user-management screen
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="l9WvquS3gk+cuD3XYfG22AAA">
 <XPD:ATTR name="Name" type="string">name</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">9wMh+87MBEiYo3PO40G/OAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6552,6 +6439,8 @@ Also, need a user-management screen
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="tkO382vMK0O5Ld+BfF/ymQAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">Eayo72xpEUGKPiBzObNMKwAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="l1SDfqlzmUiPqWJFA3JK1QAA">
@@ -6564,6 +6453,8 @@ Also, need a user-management screen
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="46jRv/xBh02s+OpjhHr1zAAA">
 <XPD:ATTR name="Name" type="string">value</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">Eayo72xpEUGKPiBzObNMKwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6591,6 +6482,8 @@ Also, need a user-management screen
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="07UizPUDTUu8Xd5rlkbXnwAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">adVGZ6E8RkekEnw/XxsSbgAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="WBmWfDg3ekS4ZEYEnu2VkwAA">
@@ -6603,6 +6496,8 @@ Also, need a user-management screen
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="L3nvKHMcaU65p6+QrcFEagAA">
 <XPD:ATTR name="Name" type="string">value</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">adVGZ6E8RkekEnw/XxsSbgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6741,6 +6636,8 @@ Also, need a user-management screen
 <XPD:ATTR name="#Attributes" type="integer">3</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="p3Q2aoECWUq3PhYd6b+h7wAA">
 <XPD:ATTR name="Name" type="string">section_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">2DgDDiOxcEC9n7AtutIROwAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="sznIEFrjxkmkTQtW5RiNKgAA">
@@ -6753,10 +6650,14 @@ Also, need a user-management screen
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="MIworimLpEK9cQfYGaPtgwAA">
 <XPD:ATTR name="Name" type="string">name</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">2DgDDiOxcEC9n7AtutIROwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="dDIVEsktBEmgxLEBCfRwGgAA">
 <XPD:ATTR name="Name" type="string">table_id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">2DgDDiOxcEC9n7AtutIROwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6775,8 +6676,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Bxbxm35Eckq11Rc7e5KVSgAA</XPD:REF>
-<XPD:REF name="Views[1]">DyTLc1OPSESZvs4xCzoX0wAA</XPD:REF>
-<XPD:REF name="Views[2]">SuMUGD9rL0mHRVrwh2vd4gAA</XPD:REF>
+<XPD:REF name="Views[1]">SuMUGD9rL0mHRVrwh2vd4gAA</XPD:REF>
+<XPD:REF name="Views[2]">DyTLc1OPSESZvs4xCzoX0wAA</XPD:REF>
 <XPD:REF name="Views[3]">+vBhMpbcykO3r5kgtRPbbQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="S8+bYo7SaU2EP8jNSI+9RgAA">
@@ -6784,8 +6685,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">2DgDDiOxcEC9n7AtutIROwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">r6gc7ZrsN0KcRQBog/kTcQAA</XPD:REF>
-<XPD:REF name="Views[1]">1Q/mqsT+VEGj/lorIaxi6QAA</XPD:REF>
-<XPD:REF name="Views[2]">Q9QJewbZuUWB6bDvswZhTAAA</XPD:REF>
+<XPD:REF name="Views[1]">Q9QJewbZuUWB6bDvswZhTAAA</XPD:REF>
+<XPD:REF name="Views[2]">1Q/mqsT+VEGj/lorIaxi6QAA</XPD:REF>
 <XPD:REF name="Views[3]">VOgvoFAmckKYMCKuSeaX5QAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6804,8 +6705,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">LVwCfyZuTkaDTts7n0wllgAA</XPD:REF>
-<XPD:REF name="Views[1]">xKuzu5jrc0a5ILwG6l4SfAAA</XPD:REF>
-<XPD:REF name="Views[2]">txUCtg+R9Ei3Da9j75t79wAA</XPD:REF>
+<XPD:REF name="Views[1]">txUCtg+R9Ei3Da9j75t79wAA</XPD:REF>
+<XPD:REF name="Views[2]">xKuzu5jrc0a5ILwG6l4SfAAA</XPD:REF>
 <XPD:REF name="Views[3]">SCrBYz2Cr0mOpp6it5OAHwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="lKugNeVVwUySlk+dwi9YQgAA">
@@ -6813,8 +6714,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">9wMh+87MBEiYo3PO40G/OAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">HO1kWz3o2kSAYAC3/EZvXgAA</XPD:REF>
-<XPD:REF name="Views[1]">KjE/sHZY2U+9dJj/0YIyWAAA</XPD:REF>
-<XPD:REF name="Views[2]">ICeIJ8dne0qU9+6JAdmW/QAA</XPD:REF>
+<XPD:REF name="Views[1]">ICeIJ8dne0qU9+6JAdmW/QAA</XPD:REF>
+<XPD:REF name="Views[2]">KjE/sHZY2U+9dJj/0YIyWAAA</XPD:REF>
 <XPD:REF name="Views[3]">SPiZBeglDkqTnwmOnAa/QAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6833,8 +6734,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">wh5Z88U8OEOOwNdkLuhCkQAA</XPD:REF>
-<XPD:REF name="Views[1]">0rURp69wRki5Svp9KbYoeQAA</XPD:REF>
-<XPD:REF name="Views[2]">b6aPXkgx9k6aflPvJPoS0AAA</XPD:REF>
+<XPD:REF name="Views[1]">b6aPXkgx9k6aflPvJPoS0AAA</XPD:REF>
+<XPD:REF name="Views[2]">0rURp69wRki5Svp9KbYoeQAA</XPD:REF>
 <XPD:REF name="Views[3]">7chzQKbrt0mP+3KZWt9etwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="NKMa7G7tSky7E7laEiS9iwAA">
@@ -6842,8 +6743,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">adVGZ6E8RkekEnw/XxsSbgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">FsT4Ihi10U6/99V2LbhT3AAA</XPD:REF>
-<XPD:REF name="Views[1]">FP6k1afim0y43DxxylLN3AAA</XPD:REF>
-<XPD:REF name="Views[2]">4zs/ROXuM0GpxeTOd1J44QAA</XPD:REF>
+<XPD:REF name="Views[1]">4zs/ROXuM0GpxeTOd1J44QAA</XPD:REF>
+<XPD:REF name="Views[2]">FP6k1afim0y43DxxylLN3AAA</XPD:REF>
 <XPD:REF name="Views[3]">kZ29/rHzfkOD9KYiVwKvogAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6862,8 +6763,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">x7bmlZfWjUO3OeH0xOE5rwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">NC0cd8JZT0SxXYZRjRNkXQAA</XPD:REF>
-<XPD:REF name="Views[1]">vFGTK0TJwEOxUyZHsEcBngAA</XPD:REF>
-<XPD:REF name="Views[2]">V5+JDM+k9kq/RQshA9o+vgAA</XPD:REF>
+<XPD:REF name="Views[1]">V5+JDM+k9kq/RQshA9o+vgAA</XPD:REF>
+<XPD:REF name="Views[2]">vFGTK0TJwEOxUyZHsEcBngAA</XPD:REF>
 <XPD:REF name="Views[3]">zndaukTmgU25amFIGomMswAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="eas3VYeeNUieFnaSDeMcnAAA">
@@ -6871,8 +6772,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">Eayo72xpEUGKPiBzObNMKwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Pg6tIPBcP0ycOS75YxrXAQAA</XPD:REF>
-<XPD:REF name="Views[1]">j0cP+5VhxkGrxt5rwWWGvwAA</XPD:REF>
-<XPD:REF name="Views[2]">9p02sn/28EC+BGjgz51SgwAA</XPD:REF>
+<XPD:REF name="Views[1]">9p02sn/28EC+BGjgz51SgwAA</XPD:REF>
+<XPD:REF name="Views[2]">j0cP+5VhxkGrxt5rwWWGvwAA</XPD:REF>
 <XPD:REF name="Views[3]">0epAaav4PEq+Voy2LYMsuwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6891,8 +6792,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">hA6gcnholUyWE2ZAi5bxiwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">SskudwpHpUyhK1HxRklnkAAA</XPD:REF>
-<XPD:REF name="Views[1]">ThwM+1GpjUui2dMU0qvAfgAA</XPD:REF>
-<XPD:REF name="Views[2]">VM3V4nSsJkOC3aUtG8MF4wAA</XPD:REF>
+<XPD:REF name="Views[1]">VM3V4nSsJkOC3aUtG8MF4wAA</XPD:REF>
+<XPD:REF name="Views[2]">ThwM+1GpjUui2dMU0qvAfgAA</XPD:REF>
 <XPD:REF name="Views[3]">+z00YTEJNkWbe7PJqoUQRQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="eWpvGt6tp0aDdxqpvkJlCQAA">
@@ -6900,8 +6801,8 @@ Also, need a user-management screen
 <XPD:REF name="Participant">cu/lvx0s6k+weXCXWP7e5QAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Q6dL1qXhtUGZY0ezn9xPlAAA</XPD:REF>
-<XPD:REF name="Views[1]">kqCueOOfUUWpDhKtdTWaAgAA</XPD:REF>
-<XPD:REF name="Views[2]">WIWy8usuIUeyR/N3ukDajQAA</XPD:REF>
+<XPD:REF name="Views[1]">WIWy8usuIUeyR/N3ukDajQAA</XPD:REF>
+<XPD:REF name="Views[2]">kqCueOOfUUWpDhKtdTWaAgAA</XPD:REF>
 <XPD:REF name="Views[3]">fPhqBCYa0U6N8QV1GcCs/QAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -6910,16 +6811,13 @@ Also, need a user-management screen
 <XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
 <XPD:ATTR name="StereotypeName" type="string">table</XPD:ATTR>
 <XPD:REF name="Namespace">7bNGWIuh5U+NlsGDeRWW1wAA</XPD:REF>
-<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
-<XPD:REF name="Views[0]">J2jAxZZtKkqQaebBxxB5sQAA</XPD:REF>
-<XPD:REF name="Views[1]">ltU4jeVRskuiEk8H7kSTwgAA</XPD:REF>
-<XPD:REF name="Views[2]">TlR7c0jUXkSJm5O1DWKqawAA</XPD:REF>
-<XPD:REF name="Views[3]">J3qbI8udo0e3877QIP32swAA</XPD:REF>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">XfsP/WmG90GfnJn4PphTdAAA</XPD:REF>
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="EtBzHLWQ0Uewwjo3PklVawAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
+<XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">column</XPD:ATTR>
 <XPD:REF name="Owner">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
 <XPD:ATTR name="#TaggedValues" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="TaggedValues[0]" type="TaggedValue" guid="Ms5EDBWqFE6jYNxobWhq4QAA">
@@ -6936,11 +6834,6 @@ Also, need a user-management screen
 <XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
 <XPD:ATTR name="StereotypeName" type="string">table</XPD:ATTR>
 <XPD:REF name="Namespace">7bNGWIuh5U+NlsGDeRWW1wAA</XPD:REF>
-<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
-<XPD:REF name="Views[0]">piq/WgFcQECWFTZ3vidVuQAA</XPD:REF>
-<XPD:REF name="Views[1]">ngjbC0lwxUyTfZW9b4HtSQAA</XPD:REF>
-<XPD:REF name="Views[2]">edaVEWQhPk+R7DtMFtVdNQAA</XPD:REF>
-<XPD:REF name="Views[3]">E8yPmLjH00CdhcZmzCzG5gAA</XPD:REF>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">kPgGHZ0h9E6ynH/+FnNengAA</XPD:REF>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
@@ -6974,29 +6867,14 @@ Also, need a user-management screen
 <XPD:ATTR name="StereotypeProfile" type="string">ERD</XPD:ATTR>
 <XPD:ATTR name="StereotypeName" type="string">identifying</XPD:ATTR>
 <XPD:REF name="Namespace">7bNGWIuh5U+NlsGDeRWW1wAA</XPD:REF>
-<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
-<XPD:REF name="Views[0]">YQANXnf+v0SLCv+BgBxWkAAA</XPD:REF>
-<XPD:REF name="Views[1]">fzkOJDmTDkimtgu+wdyTswAA</XPD:REF>
-<XPD:REF name="Views[2]">LOOg4A0tmkeavzkYdLMrJQAA</XPD:REF>
-<XPD:REF name="Views[3]">7dFUgjXtYU+jNIZtw2veYQAA</XPD:REF>
 <XPD:ATTR name="#Connections" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Connections[0]" type="UMLAssociationEnd" guid="XfsP/WmG90GfnJn4PphTdAAA">
 <XPD:REF name="Association">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
 <XPD:REF name="Participant">sA93sP2EXkmgElxuUjXIjwAA</XPD:REF>
-<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
-<XPD:REF name="Views[0]">+GeOdJSsqEe0Rkjwq5dG0AAA</XPD:REF>
-<XPD:REF name="Views[1]">vYA+vFV6b0y7eKo9Gw+adgAA</XPD:REF>
-<XPD:REF name="Views[2]">GVx/V3pDm0C41uLf+FbmWwAA</XPD:REF>
-<XPD:REF name="Views[3]">BUsIkl5yd0G/CT47wvwf3QAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="kPgGHZ0h9E6ynH/+FnNengAA">
 <XPD:REF name="Association">AyLoV36kO0alDTyGljIduAAA</XPD:REF>
 <XPD:REF name="Participant">sNXLqN9VWUaBDG2qiwNRGAAA</XPD:REF>
-<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
-<XPD:REF name="Views[0]">FSpRf/ab2kGBIJwiXlW8OgAA</XPD:REF>
-<XPD:REF name="Views[1]">TfO228aAB0KGMT4/EqNG8QAA</XPD:REF>
-<XPD:REF name="Views[2]">4f/Iu+XDakSkEu4yYXKH6gAA</XPD:REF>
-<XPD:REF name="Views[3]">/BJhv/ue7EW3aAuf/dMOmgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 </XPD:OBJ>
