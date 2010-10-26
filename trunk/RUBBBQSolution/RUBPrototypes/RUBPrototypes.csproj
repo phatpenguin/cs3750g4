@@ -37,9 +37,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,9 +52,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -59,6 +65,17 @@
     </ApplicationDefinition>
     <Compile Include="CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting2.xaml.cs">
+      <DependentUpon>Reporting2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting1.xaml.cs">
+      <DependentUpon>Reporting1.xaml</DependentUpon>
     </Compile>
     <Compile Include="InventoryManagement.xaml.cs">
       <DependentUpon>InventoryManagement.xaml</DependentUpon>
@@ -72,6 +89,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleData\InventoryItems.cs" />
     <Compile Include="SampleData\OrderItems\OrderItems.xaml.cs">
       <DependentUpon>OrderItems.xaml</DependentUpon>
     </Compile>
@@ -79,6 +97,14 @@
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
     <Page Include="CooksScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reporting2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reporting1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -110,6 +136,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SampleData\InventoryItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SampleData\OrderItems\OrderItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,10 +154,23 @@
       <SubType>Code</SubType>
     </Compile>
     <AppDesigner Include="Properties\" />
+    <None Include="app.config" />
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
     <DesignTimeOnly Include="SampleData\OrderItems\OrderItems.xsd" />
+    <None Include="Properties\DataSources\Expression.Blend.SampleData.OrderItems.PendingOrders.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="InventoryLevelsGraph.rdlc" />
+    <EmbeddedResource Include="Report1.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Report.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

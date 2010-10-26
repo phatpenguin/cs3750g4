@@ -1,0 +1,29 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:WinForms="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+	mc:Ignorable="d"
+	x:Class="RUBPrototypes.Reporting2"
+	x:Name="Window"
+	Title="Inventory Levels Report"
+	Width="800" Height="500">
+
+	<DockPanel x:Name="LayoutRoot">
+		<WrapPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
+			<Label Content="Inventory Item:"/>
+			<ComboBox SelectedIndex="0" Margin="0,0,5,0" VerticalAlignment="Center">
+				<ComboBoxItem>Ribs</ComboBoxItem>
+			</ComboBox>
+			<Label Content="Start Date"/>
+			<DatePicker VerticalAlignment="Center" SelectedDate="10/1/2010" Margin="0,0,5,0"/>
+			<Label Content="End Date"/>
+			<DatePicker VerticalAlignment="Center" SelectedDate="10/31/2010" Margin="0,0,5,0"/>
+			<Button VerticalAlignment="Center">Run</Button>
+		</WrapPanel>
+		<WindowsFormsHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<WinForms:ReportViewer x:Name="reportViewer" Dock="Fill" />
+		</WindowsFormsHost>
+	</DockPanel>
+</Window>
