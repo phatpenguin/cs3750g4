@@ -1,0 +1,26 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="BBQRMSSolution.MainWindow"
+	x:Name="Window"
+	xmlns:local="clr-namespace:BBQRMSSolution" xmlns:Views="clr-namespace:BBQRMSSolution.Views" Title="BBQ RMS"
+	Width="800" Height="480">
+	<Window.Resources>
+		<Views:BlankScreen x:Key="blankScreen" />
+		<Views:ChooseReport x:Key="chooseReport"/>
+		<Views:ReportViewer x:Key="reportViewer"/>
+	</Window.Resources>
+	<Grid x:Name="LayoutRoot" Background="{DynamicResource ApplicationBackgroundBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal" Grid.Row="0">
+			<Button Click="Button_Click" CommandParameter="{StaticResource blankScreen}">Blank screen</Button>
+			<Button Click="Button_Click" CommandParameter="{StaticResource chooseReport}">Reporting</Button>
+			<Button Click="Button_Click" CommandParameter="{StaticResource reportViewer}">View Report</Button>
+		</StackPanel>
+		<ContentPresenter Grid.Row="1" Name="mainContent" />
+		<!--<Views:LoginView Grid.RowSpan="2" />-->
+	</Grid>
+</Window>
