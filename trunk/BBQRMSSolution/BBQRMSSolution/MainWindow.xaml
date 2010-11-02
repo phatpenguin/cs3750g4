@@ -9,6 +9,7 @@
 		<Views:BlankScreen x:Key="blankScreen" />
 		<Views:ChooseReport x:Key="chooseReport"/>
 		<Views:ReportViewer x:Key="reportViewer"/>
+    <Views:EmployeeManangment x:Key="employeeManagement"/>
 	</Window.Resources>
 	<Grid x:Name="LayoutRoot" Background="{DynamicResource ApplicationBackgroundBrush}">
 		<Grid.RowDefinitions>
@@ -19,6 +20,7 @@
 			<Button Click="Button_Click" CommandParameter="{StaticResource blankScreen}">Blank screen</Button>
 			<Button Click="Button_Click" CommandParameter="{StaticResource chooseReport}">Reporting</Button>
 			<Button Click="Button_Click" CommandParameter="{StaticResource reportViewer}">View Report</Button>
+      <Button Click="Button_Click" CommandParameter="{StaticResource employeeManagement}">Manage Employees</Button>
 		</StackPanel>
 		<ContentPresenter Grid.Row="1" Name="mainContent" />
 		<!--<Views:LoginView Grid.RowSpan="2" />-->
