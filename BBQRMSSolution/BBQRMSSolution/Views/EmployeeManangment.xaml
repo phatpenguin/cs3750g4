@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="BBQRMSSolution.Views.EmployeeManangment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Left">
+      <StackPanel DockPanel.Dock="Bottom" >
+        <TextBlock Text="Roles" Margin="5,0" FontWeight="Bold"/>
+        <ListBox Name="RoleList" Margin="5">
+          <ListBoxItem>Admin</ListBoxItem>
+          <ListBoxItem>Cashier</ListBoxItem>
+          <ListBoxItem>Cook</ListBoxItem>
+          <ListBoxItem>Server</ListBoxItem>
+        </ListBox>
+      </StackPanel>
+      <DockPanel DockPanel.Dock="Top" >
+        <TextBlock Text="Employees" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top"/>
+        <ListBox Name="EmployeeList" Width="119" Margin="5">
+          <ListBoxItem>John Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+          <ListBoxItem>Jane Doe</ListBoxItem>
+        </ListBox>
+      </DockPanel>
+    </DockPanel>
+    <ContentPresenter Grid.Row="1" Name="employeeManagmentContent" />
+  </DockPanel>
+</UserControl>

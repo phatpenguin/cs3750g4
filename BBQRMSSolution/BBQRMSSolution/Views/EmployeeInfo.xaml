@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="BBQRMSSolution.Views.EmployeeInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+  <StackPanel Margin="5">
+    <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Width="783" Text="John Doe"/>
+    <StackPanel DockPanel.Dock="Left">
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="First Name:" Width="120"/>
+        <TextBox Text="8" Width="300"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Last Name:" Width="120"/>
+        <TextBox Text="8" Width="300"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Home Phone:" Width="120"/>
+        <TextBox Text="(801) 548-8467" Width="150"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Cell Phone:" Width="120"/>
+        <TextBox Text="(801) 654-8945" Width="150"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Other Phone:" Width="120"/>
+        <TextBox Text="(801) 894-2654" Width="150"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Email 1:" Width="120"/>
+        <TextBox Text="crazyjoe23@hotmail.com" Width="150"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Email 2:" Width="120"/>
+        <TextBox Text="" Width="150"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Address:" Width="120"/>
+        <TextBox Text="12345 Sumrandom Street" Width="300"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Address Line 2:" Width="120"/>
+        <TextBox Text="Appt. #567" Width="300"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="City, State Zip:" Width="120"/>
+        <TextBox Text="West Valley City, UT 84095" Width="250"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Role:" Width="120"/>
+        <ComboBox Width="150" SelectedIndex="2">
+          <ComboBoxItem >Cashier</ComboBoxItem>
+          <ComboBoxItem >Admin</ComboBoxItem>
+          <ComboBoxItem>Cook</ComboBoxItem>
+          <ComboBoxItem>Server</ComboBoxItem>
+        </ComboBox>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="User Privleges:" Width="120"/>
+        <ListBox Width="150" SelectedIndex="2">
+          <ListBoxItem >Edit Inventory</ListBoxItem>
+          <ListBoxItem >Manage Menu</ListBoxItem>
+        </ListBox>
+        <Button Height="25" Margin="5" Content="Add Privleges"/>
+      </StackPanel>
+    </StackPanel>
+    <StackPanel Margin="2" Orientation="Horizontal">
+      <Label FontWeight="Bold" Content="Comp. Type:" Width="120"/>
+      <ComboBox Width="150" SelectedIndex="1">
+        <ComboBoxItem >Salary</ComboBoxItem>
+        <ComboBoxItem >Hourly</ComboBoxItem>
+        <ComboBoxItem>Contract</ComboBoxItem>
+      </ComboBox>
+    </StackPanel>
+    <StackPanel Margin="2" Orientation="Horizontal">
+      <Label FontWeight="Bold" Content="Comp. Rate:" Width="120"/>
+      <TextBox Text="$4.25" Width="250"/>
+    </StackPanel>
+    <StackPanel Margin="2" Orientation="Horizontal">
+      <Label FontWeight="Bold" Content="Hire Date:" Width="120"/>
+      <TextBox Text="04/01/2009" Width="250"/>
+    </StackPanel>
+    <StackPanel Margin="0" Orientation="Horizontal">
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Last Clocked In:" Width="120"/>
+        <TextBlock Text="8:05am Oct. 25th 2010" Width="150" VerticalAlignment="Center"/>
+      </StackPanel>
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="Clock on for:" Width="120"/>
+        <TextBlock Text="3:45:23" Width="150" VerticalAlignment="Center"/>
+      </StackPanel>
+    </StackPanel>
+  </StackPanel>
+</UserControl>
