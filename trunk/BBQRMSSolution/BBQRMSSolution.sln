@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBQRMSSolution", "BBQRMSSolution\BBQRMSSolution.csproj", "{e1a1788c-2348-4df9-98ea-4d21d154ff1c}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBQRMSSolution", "BBQRMSSolution\BBQRMSSolution.csproj", "{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{DE2221A4-3807-4338-8187-4884BCFF6436}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +15,12 @@ Global
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

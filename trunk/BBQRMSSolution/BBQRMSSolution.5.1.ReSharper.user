@@ -1,0 +1,89 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:Styles.xaml" caret="0" fromTop="0" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:MainWindow.xaml" caret="904" fromTop="19" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="836" fromTop="16" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:MainWindow.xaml.cs" caret="735" fromTop="29" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1229" fromTop="29" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:SampleData/f:MainViewModelSampleData.xaml" caret="0" fromTop="0" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="988" fromTop="17" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropHelper.cs" caret="20663" fromTop="481" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropUtilities.cs" caret="5161" fromTop="150" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DraggedAdorner.cs" caret="1876" fromTop="75" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="3016" fromTop="113" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1290" fromTop="27" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:Themes/f:Generic.xaml" caret="195" fromTop="4" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="405" fromTop="5" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="29" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="29" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="25" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="19" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="398" fromTop="5" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="4637" fromTop="19" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1484" fromTop="18" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="28" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="34" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="31" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1005" fromTop="7" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="604" fromTop="10" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="856" fromTop="16" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="976" fromTop="9" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="16" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="2223" fromTop="19" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="2037" fromTop="12" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1551" fromTop="20" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1160" fromTop="11" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropHelper.cs" caret="20663" fromTop="481" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropUtilities.cs" caret="5161" fromTop="150" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DraggedAdorner.cs" caret="1876" fromTop="75" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="2992" fromTop="8" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="3016" fromTop="113" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="666" fromTop="13" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="388" fromTop="4" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1951" fromTop="28" />
+      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1290" fromTop="16" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:Themes/f:Generic.xaml" caret="195" fromTop="4" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="employeeManagmentContent" priority="1" />
+      <Item value="EmployeeList" priority="0" />
+      <Item value="EmployeeInfo`0" priority="0" />
+      <Item value="RoleList" priority="0" />
+      <Item value="SelectionChangedEventHandler" priority="0" />
+      <Item value="new" priority="0" />
+      <Item value="RoleManagement`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.ListBox">
+      <Item value="SelectionChanged" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.ContentPresenter">
+      <Item value="Content" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.UserControl">
+      <Item value="Resources" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
