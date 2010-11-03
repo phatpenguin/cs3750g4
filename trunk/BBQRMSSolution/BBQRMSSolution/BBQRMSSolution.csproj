@@ -36,8 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -46,17 +50,30 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SampleData\InventoryItems.cs" />
+    <Compile Include="ViewModels\ApplicationMenuOptionViewModel.cs" />
+    <Compile Include="ViewModels\ChooseReportViewModel.cs" />
+    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\EmployeeManagementViewModel.cs" />
+    <Compile Include="ViewModels\INavigationService.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PostLoginViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\EmployeeInfo.xaml.cs">
       <DependentUpon>EmployeeInfo.xaml</DependentUpon>
     </Compile>
@@ -65,6 +82,9 @@
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostLoginView.xaml.cs">
+      <DependentUpon>PostLoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportViewer.xaml.cs">
       <DependentUpon>ReportViewer.xaml</DependentUpon>
@@ -84,16 +104,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\BlankScreen.xaml.cs">
-      <DependentUpon>BlankScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ChooseReport.xaml.cs">
       <DependentUpon>ChooseReport.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles.xaml">
+    <Page Include="SampleData\InventoryItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScreenDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
@@ -104,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PostLoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,27 +149,44 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
-    <DesignData Include="SampleData\MainViewModelSampleData.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-    <Page Include="Views\BlankScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ChooseReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Resource Include="Graphics\x-office-spreadsheet.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\InventoryLevelsGraph.rdlc" />
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{DE2221A4-3807-4338-8187-4884BCFF6436}</Project>
       <Name>Controls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\x-office-spreadsheet-nochart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\system-users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\system-log-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\accessories-text-editor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\file_manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\to_do_list_cheked_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Anonymous_Chef.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

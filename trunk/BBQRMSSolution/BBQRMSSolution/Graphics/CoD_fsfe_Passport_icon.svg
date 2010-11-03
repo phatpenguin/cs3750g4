@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="180"
+   height="180"
+   id="svg2845"
+   sodipodi:version="0.32"
+   inkscape:version="0.47 r22583"
+   version="1.0"
+   sodipodi:docname="CoD_fsfe_Passport_icon.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs2847">
+    <linearGradient
+       id="linearGradient7162">
+      <stop
+         style="stop-color: rgb(136, 136, 196); stop-opacity: 1;"
+         offset="0"
+         id="stop7164" />
+      <stop
+         style="stop-color: rgb(51, 51, 102); stop-opacity: 1;"
+         offset="1"
+         id="stop7166" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7162"
+       id="linearGradient7168"
+       x1="-2.4459105"
+       y1="44.142014"
+       x2="38.487259"
+       y2="63.728889"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1, 0, -1.63262, 1, 132.732, 0)" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective2853" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7162"
+       id="linearGradient4163"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1, 0, -1.63262, 1, 132.732, 0)"
+       x1="-2.4459105"
+       y1="44.142014"
+       x2="38.487259"
+       y2="63.728889" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.64"
+     inkscape:cx="-52.610846"
+     inkscape:cy="76.330905"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1002"
+     inkscape:window-x="1592"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2850">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Passport icon</dc:title>
+        <dc:date>23/7/2008</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Claudio Canavese (CoD)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Claudio Canavese (CoD)</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>passport</rdf:li>
+            <rdf:li>document</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:description>Passport icon</dc:description>
+        <dc:coverage>Originally developed for www.studenti.unige.it</dc:coverage>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="icon">
+    <rect
+       style="fill:#2e5ea6;fill-opacity:1;stroke:#000000;stroke-width:2.41774773999999980;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5042"
+       width="103.6414"
+       height="113.90796"
+       x="38.182018"
+       y="21.712055"
+       rx="12.08871"
+       ry="12.08871"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <rect
+       ry="12.08871"
+       rx="12.032547"
+       y="19.076935"
+       x="38.276566"
+       height="113.90796"
+       width="101.26698"
+       id="rect5105"
+       style="fill:#ffdd55;fill-opacity:1;stroke:#000000;stroke-width:2.42073488;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:transform-center-x="-33.28932"
+       transform="matrix(0.9975312,0.07022462,0,1,0,0)"
+       inkscape:transform-center-y="2.3435159"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <rect
+       inkscape:transform-center-y="5.1121886"
+       transform="matrix(0.98730433,0.15884005,0,1,0,0)"
+       inkscape:transform-center-x="-31.775841"
+       style="fill:#ffdd55;fill-opacity:1;stroke:#000000;stroke-width:2.43323779;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5107"
+       width="97.664192"
+       height="113.90796"
+       x="38.673077"
+       y="15.684542"
+       rx="11.952222"
+       ry="12.08871"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <rect
+       ry="12.08871"
+       rx="11.420127"
+       y="11.78708"
+       x="39.454121"
+       height="114.04023"
+       width="96.507607"
+       id="rect5044"
+       style="fill:#2e5ea6;fill-opacity:1;stroke:#000000;stroke-width:2.33439779000000010;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:transform-center-x="-31.076078"
+       transform="matrix(0.96608049,0.25824113,0,1,0,0)"
+       inkscape:transform-center-y="8.3068924"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.41774774px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 58.822477,104.68388 49.185753,13.14774"
+       id="path5048"
+       inkscape:transform-center-x="-30.220477"
+       inkscape:transform-center-y="21.1662"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <path
+       id="path5050"
+       d="m 58.822477,115.05992 49.185753,13.14774"
+       style="fill:none;stroke:#000000;stroke-width:2.41774774px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:transform-center-x="-30.220477"
+       inkscape:transform-center-y="27.904766"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.41774774px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 58.822477,125.43596 33.584347,8.97737"
+       id="path5052"
+       sodipodi:nodetypes="cc"
+       inkscape:transform-center-x="-25.154427"
+       inkscape:transform-center-y="33.289135"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124" />
+    <text
+       xml:space="preserve"
+       style="font-size:29.69116211px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
+       x="41.734562"
+       y="58.07122"
+       id="text2840"
+       sodipodi:linespacing="125%"
+       transform="matrix(1.0603987,0.25504498,0,0.94304152,0,0)"
+       inkscape:export-filename="C:\Personal\Homework\CS3750\Project\SVNRoot\BBQRMSSolution\BBQRMSSolution\Graphics\menu.png"
+       inkscape:export-xdpi="20.365124"
+       inkscape:export-ydpi="20.365124"><tspan
+         sodipodi:role="line"
+         id="tspan2842"
+         x="41.734562"
+         y="58.07122">Menu</tspan></text>
+  </g>
+</svg>

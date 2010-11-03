@@ -59,6 +59,7 @@
     <Compile Include="DragDropControl\DragDropUtilities.cs" />
     <Compile Include="DragDropControl\DraggedAdorner.cs" />
     <Compile Include="DragDropControl\InsertionAdorner.cs" />
+    <Compile Include="InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

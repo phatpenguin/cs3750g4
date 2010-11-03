@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BBQRMSSolution.Views
 {
 	/// <summary>
-	/// Interaction logic for BlankScreen.xaml
+	/// Interaction logic for PostLoginView.xaml
 	/// </summary>
-	public partial class BlankScreen : UserControl
+	public partial class PostLoginView : UserControl
 	{
-		public BlankScreen()
+		public PostLoginView()
 		{
 			InitializeComponent();
 		}
