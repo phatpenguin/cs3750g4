@@ -23,10 +23,5 @@ namespace BBQRMSSolution
 
 			// Insert code required on object creation below this point.
 		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			mainContent.Content = ((Button) e.Source).CommandParameter;
-		}
 	}
 }

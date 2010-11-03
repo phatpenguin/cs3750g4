@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Reporting.WinForms;
+using RUBPrototypes.SampleData;
 
 namespace BBQRMSSolution.Views
 {
@@ -22,6 +25,16 @@ namespace BBQRMSSolution.Views
 		public ReportViewer()
 		{
 			InitializeComponent();
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			reportViewer.LocalReport.LoadReportDefinition(Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.InventoryLevelsGraph.rdlc"));
+
+			//var inventoryItemsObj = FindResource("InventoryItems");
+			var inventoryItems = new InventoryItems();
+			reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", inventoryItems));
+			reportViewer.RefreshReport();
 		}
 	}
 }

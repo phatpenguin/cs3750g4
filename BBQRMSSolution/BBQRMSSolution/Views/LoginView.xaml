@@ -4,8 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource ApplicationBackgroundBrush}" >
-    <Grid>
-		<Button Content="Login" Height="23" HorizontalAlignment="Left" Margin="116,179,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+             d:DesignHeight="480" d:DesignWidth="800" Background="{DynamicResource ApplicationBackgroundBrush}">
+	<Grid x:Name="LayoutRoot" >
+		<UniformGrid HorizontalAlignment="Left" Height="440" VerticalAlignment="Center" Width="330" Columns="3" Rows="4" Margin="8,0,0,0">
+			<Button Content="7" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="7" />
+			<Button Content="8" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="8" />
+			<Button Content="9" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="9"/>
+			<Button Content="4" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="4"/>
+			<Button Content="5" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="5"/>
+			<Button Content="6" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="6"/>
+			<Button Content="1" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="1"/>
+			<Button Content="2" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="2"/>
+			<Button Content="3" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="3"/>
+			<Button Content="0" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="0"/>
+			<Button Content="Cancel" Margin="3" FontSize="32" IsCancel="True" Click="Button_Click_1" />
+			<Button Content="Enter" Margin="3" FontSize="32" Command="{Binding LoginCommand}" IsDefault="True"/>
+		</UniformGrid>
+		<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Enter your PIN to log in" VerticalAlignment="Top" Margin="0,8,8,0" Width="434" TextAlignment="Center" FontSize="29.333"/>
+		<PasswordBox VerticalAlignment="Top" Margin="342,133,8,0" FontSize="32" Name="passwordBox"/>
+		<Button Content="Exit" Height="Auto" HorizontalAlignment="Right" Name="button1" VerticalAlignment="Bottom" Width="75" Click="button1_Click_1" />
 	</Grid>
 </UserControl>

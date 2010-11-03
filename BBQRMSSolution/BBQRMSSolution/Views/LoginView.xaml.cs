@@ -22,11 +22,29 @@ namespace BBQRMSSolution.Views
 		public LoginView()
 		{
 			InitializeComponent();
+			Loaded += new RoutedEventHandler(LoginView_Loaded);
 		}
 
-		private void button1_Click(object sender, RoutedEventArgs e)
+		void LoginView_Loaded(object sender, RoutedEventArgs e)
 		{
-			this.Visibility = Visibility.Collapsed;
+			passwordBox.Focus();
 		}
+
+		private void button1_Click_1(object sender, RoutedEventArgs e)
+		{
+			App.Current.Shutdown();
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			Button pressed = (Button) sender;
+			passwordBox.Password += pressed.CommandParameter;
+		}
+
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			passwordBox.Password = "";
+		}
+
 	}
 }
