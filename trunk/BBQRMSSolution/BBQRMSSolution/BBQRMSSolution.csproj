@@ -63,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
+    <Compile Include="ViewModels\Menu.cs" />
+    <Compile Include="ViewModels\MenuItem.cs" />
+    <Compile Include="Views\CustomerOrderScreen.xaml.cs">
+      <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SampleData\InventoryItems.cs" />
     <Compile Include="ViewModels\ApplicationMenuOptionViewModel.cs" />
     <Compile Include="ViewModels\ChooseReportViewModel.cs" />
@@ -121,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EmployeeManangment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomerOrderScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
