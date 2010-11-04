@@ -7,8 +7,12 @@
 	<DataTemplate DataType="{x:Type ViewModels:ReportViewModel}">
 		<Views:ReportViewer />
 	</DataTemplate>
-	
-	<DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
+
+    <DataTemplate DataType="{x:Type ViewModels:CustomerOrderScreenViewModel}">
+        <Views:CustomerOrderScreen />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
 		<Views:LoginView />
 	</DataTemplate>
 	
