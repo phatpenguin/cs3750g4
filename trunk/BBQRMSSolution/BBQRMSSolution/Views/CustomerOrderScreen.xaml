@@ -2,90 +2,90 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	x:Class="BBQRMSSolution.Views.CustomerOrderScreen"
 	x:Name="Window">
-    <UserControl.Resources>
-        <viewmodels:CustomerOrderScreenViewModel x:Key="vm"></viewmodels:CustomerOrderScreenViewModel>
-        <ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
-            <WrapPanel IsItemsHost="True"/>
-        </ItemsPanelTemplate>
-        <DataTemplate x:Key="MenuItemTemplate">
-            <Grid >
-                <Button Margin="2" Width="115" Height="95">
-                    <StackPanel>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding id}" HorizontalAlignment="Center"/>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding name}" HorizontalAlignment="Center"/>
-                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
-                            <Run Text="$"/><Run Text="{Binding price}" />
-                        </TextBlock>
-                    </StackPanel>
-                </Button>
-            </Grid>
-        </DataTemplate>
-    </UserControl.Resources>
-    <Grid x:Name="LayoutRoot" DataContext="{StaticResource ResourceKey=vm}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500*"/>
-                <ColumnDefinition Width="300*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-        <DockPanel>
-        <TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource
+	<UserControl.Resources>
+		<viewmodels:CustomerOrderScreenViewModel x:Key="vm"></viewmodels:CustomerOrderScreenViewModel>
+		<ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
+			<WrapPanel IsItemsHost="True"/>
+		</ItemsPanelTemplate>
+		<DataTemplate x:Key="MenuItemTemplate">
+			<Grid >
+				<Button Margin="2" Width="115" Height="95" Command="{Binding AddItemToOrder}" CommandParameter="{Binding}">
+					<StackPanel>
+						<TextBlock TextWrapping="Wrap" Text="{Binding id}" HorizontalAlignment="Center"/>
+						<TextBlock TextWrapping="Wrap" Text="{Binding name}" HorizontalAlignment="Center"/>
+						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
+							<Run Text="$"/><Run Text="{Binding price}" />
+						</TextBlock>
+					</StackPanel>
+				</Button>
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
+	<Grid x:Name="LayoutRoot" DataContext="{StaticResource ResourceKey=vm}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="500*"/>
+				<ColumnDefinition Width="300*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+		<DockPanel>
+		<TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
+			<TabControl.ItemContainerStyle>
+				<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource
 {x:Type TabItem}}">
-                    <Setter Property="Header" />
-                </Style>
-            </TabControl.ItemContainerStyle>
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock><Run Text="{Binding name}"/></TextBlock>
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-            <TabControl.ContentTemplate>
-                <DataTemplate>
-                    <ItemsControl Name="MenuPanel" ItemsSource="{Binding menuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-            </TabControl>
-        </DockPanel>
-        <DockPanel Grid.Column="5" LastChildFill="True">
-                <Grid DockPanel.Dock="Bottom" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="34"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.48*"/>
-                        <ColumnDefinition Width="0.52*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding SubTotal}" /></TextBlock>
-                    <TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding TaxAmount}" /></TextBlock>
-                    <TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding Total}" /></TextBlock>
-                    <Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" />
-                    <Button Content="Cashier" Grid.Column="1" Margin="16,6,0,0" Height="45" FontWeight="Bold" Grid.Row="3" HorizontalContentAlignment="Center" />
-                </Grid>
-                <DataGrid ItemsSource="{Binding PendingOrders[0].Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Number}" Header="#"/>
-                        <DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
-                        <DataGridTextColumn Binding="{Binding ItemName}" Header="Item" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
-                        <DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </DockPanel>
-    </Grid>
+					<Setter Property="Header" />
+				</Style>
+			</TabControl.ItemContainerStyle>
+			<TabControl.ItemTemplate>
+				<DataTemplate>
+					<TextBlock><Run Text="{Binding name}"/></TextBlock>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
+			<TabControl.ContentTemplate>
+				<DataTemplate>
+					<ItemsControl Name="MenuPanel" ItemsSource="{Binding menuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
+				</DataTemplate>
+			</TabControl.ContentTemplate>
+			</TabControl>
+		</DockPanel>
+		<DockPanel Grid.Column="5" LastChildFill="True">
+				<Grid DockPanel.Dock="Bottom" >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="25"/>
+						<RowDefinition Height="25"/>
+						<RowDefinition Height="34"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.48*"/>
+						<ColumnDefinition Width="0.52*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding SubTotal}" /></TextBlock>
+					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding TaxAmount}" /></TextBlock>
+					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding Total}" /></TextBlock>
+					<Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" />
+					<Button Content="Cashier" Grid.Column="1" Margin="16,6,0,0" Height="45" FontWeight="Bold" Grid.Row="3" HorizontalContentAlignment="Center" />
+				</Grid>
+				<DataGrid ItemsSource="{Binding order}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
+					<DataGrid.Columns>
+						<DataGridTextColumn Binding="{Binding number}" Header="#"/>
+						<DataGridTextColumn Binding="{Binding Qty}" Header="Qty"/>
+						<DataGridTextColumn Binding="{Binding name}" Header="Item" IsReadOnly="True" Width="*"/>
+						<DataGridTextColumn Binding="{Binding price}" Header="Price" IsReadOnly="True"/>
+						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+					</DataGrid.Columns>
+				</DataGrid>
+			</DockPanel>
+	</Grid>
 </UserControl>

@@ -43,6 +43,8 @@
   <xs:complexType name="MenuItemsItem">
     <xs:attribute name="Number" type="xs:string" />
     <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="Price" type="xs:double" />
+    <xs:attribute name="Image" type="xs:string" />
   </xs:complexType>
   <xs:complexType name="Reports">
     <xs:sequence>

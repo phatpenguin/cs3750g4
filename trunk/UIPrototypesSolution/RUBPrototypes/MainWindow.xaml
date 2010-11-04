@@ -12,10 +12,11 @@
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid>
-				<Button Margin="2" Width="115" Height="95">
+				<Button Margin="2" Width="115" Height="95" Click="Button_Click">
 					<StackPanel>
 						<TextBlock TextWrapping="Wrap" Text="{Binding Number}" HorizontalAlignment="Center"/>
 						<TextBlock TextWrapping="Wrap" Text="{Binding Name}" HorizontalAlignment="Center"/>
+						<TextBlock TextWrapping="Wrap" Text="{Binding Price}" HorizontalAlignment="Center" />
 					</StackPanel>
 				</Button>
 			</Grid>
