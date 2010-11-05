@@ -63,10 +63,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
-    <Compile Include="ViewModels\Menu.cs" />
-    <Compile Include="ViewModels\MenuItem.cs" />
-    <Compile Include="ViewModels\Order.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
     </Compile>
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderCashierScreen.xaml.cs">
+      <DependentUpon>OrderCashierScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostLoginView.xaml.cs">
       <DependentUpon>PostLoginView.xaml</DependentUpon>
@@ -136,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrderCashierScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace BBQRMSSolution.ViewModels
+namespace BBQRMSSolution.Models
 {
 	public class Menu
 	{
