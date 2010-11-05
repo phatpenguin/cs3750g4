@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BBQRMSSolution.ViewModels;
 
-namespace BBQRMSSolution.ViewModels
+namespace BBQRMSSolution.Models
 {
 	public class MenuItem
 	{
