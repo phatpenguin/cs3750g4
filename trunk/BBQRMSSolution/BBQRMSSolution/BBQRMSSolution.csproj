@@ -66,8 +66,12 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
+    <Compile Include="ViewModels\InventoryItem.cs" />
+    <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
+
+
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
     </Compile>
@@ -87,6 +91,12 @@
     </Compile>
     <Compile Include="Views\EmployeeManangment.xaml.cs">
       <DependentUpon>EmployeeManangment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryItemDetail.xaml.cs">
+      <DependentUpon>InventoryItemDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryManagement.xaml.cs">
+      <DependentUpon>InventoryManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -138,6 +148,14 @@
     <Page Include="Views\CustomerOrderScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryItemDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InventoryManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
