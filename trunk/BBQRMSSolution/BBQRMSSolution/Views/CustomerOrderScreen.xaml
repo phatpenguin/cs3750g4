@@ -13,7 +13,7 @@
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid >
-				<Button Margin="2" Width="115" Height="95" Command="{Binding AddItemToOrder}" CommandParameter="{Binding}">
+				<Button Margin="2" Width="115" Height="95" Command="{Binding DoAction}" CommandParameter="{Binding}">
 					<StackPanel>
 						<TextBlock TextWrapping="Wrap" Text="{Binding id}" HorizontalAlignment="Center"/>
 						<TextBlock TextWrapping="Wrap" Text="{Binding name}" HorizontalAlignment="Center"/>
@@ -67,8 +67,8 @@
 					</Grid.ColumnDefinitions>
 					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding subTotal, StringFormat=F2}" /></TextBlock>
 					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding taxAmount, StringFormat=F2}" /></TextBlock>
-					<TextBlock Height="17" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding totalPrice, StringFormat=F2}" /></TextBlock>
-					<Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" />
+					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding totalPrice, StringFormat=F2}" /></TextBlock>
+					<Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding Cancel}"/>
 					<Button Content="Cashier" Grid.Column="1" Margin="16,6,0,0" Height="45" FontWeight="Bold" Grid.Row="3" HorizontalContentAlignment="Center" />
 				</Grid>
 				<DataGrid ItemsSource="{Binding order}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
@@ -80,7 +80,7 @@
 						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
-									<Button Content="X" HorizontalAlignment="Stretch" Width="Auto"/>
+									<Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding DoAction}" CommandParameter="{Binding}"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
