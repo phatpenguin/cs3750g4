@@ -22,9 +22,12 @@ namespace BBQRMSSolution.Views
 	/// </summary>
 	public partial class ReportViewer : UserControl
 	{
+		private readonly InventoryItems mItemsData;
+
 		public ReportViewer()
 		{
 			InitializeComponent();
+			mItemsData = new InventoryItems();
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -32,8 +35,7 @@ namespace BBQRMSSolution.Views
 			reportViewer.LocalReport.LoadReportDefinition(Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.InventoryLevelsGraph.rdlc"));
 
 			//var inventoryItemsObj = FindResource("InventoryItems");
-			var inventoryItems = new InventoryItems();
-			reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", inventoryItems));
+			reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", mItemsData));
 			reportViewer.RefreshReport();
 		}
 	}

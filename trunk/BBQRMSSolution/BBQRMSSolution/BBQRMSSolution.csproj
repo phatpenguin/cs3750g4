@@ -65,11 +65,18 @@
     </ApplicationDefinition>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="SampleData\SampleOrders.cs" />
+    <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
+    <Compile Include="Views\CooksScreen.xaml.cs">
+      <DependentUpon>CooksScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\OrderCashierScreenViewModel.cs" />
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
@@ -106,6 +113,9 @@
     <Compile Include="Views\PostLoginView.xaml.cs">
       <DependentUpon>PostLoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\QuickInventoryScreen.xaml.cs">
+      <DependentUpon>QuickInventoryScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReportViewer.xaml.cs">
       <DependentUpon>ReportViewer.xaml</DependentUpon>
     </Compile>
@@ -133,6 +143,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ScreenDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CooksScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PostLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuickInventoryScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +241,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Logo-Small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
