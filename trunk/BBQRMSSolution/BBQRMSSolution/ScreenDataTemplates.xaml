@@ -27,4 +27,12 @@
 	<DataTemplate DataType="{x:Type ViewModels:EmployeeManagementViewModel}">
 		<Views:EmployeeManangment />
 	</DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModels:InventoryManagementViewModel}">
+        <Views:InventoryManagement />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModels:InventoryItem}">
+        <Views:InventoryItemDetail />
+    </DataTemplate>
 </ResourceDictionary>
