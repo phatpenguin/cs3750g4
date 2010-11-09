@@ -70,8 +70,7 @@
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
-
-
+    <Compile Include="ViewModels\OrderCashierScreenViewModel.cs" />
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
     </Compile>
