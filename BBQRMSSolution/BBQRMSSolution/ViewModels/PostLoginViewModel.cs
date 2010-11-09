@@ -1,15 +1,18 @@
 using System;
 using System.Collections.ObjectModel;
+using BBQRMSSolution.SampleData;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class PostLoginViewModel : ViewModelBase, INavigationService
 	{
 		private readonly MainWindowViewModel mMainWindow;
+		private readonly ObservableCollection<OrderViewModel> mPendingOrders = SampleOrders.Sample;
 
 		[Obsolete("To be used only at design time")]
 		public PostLoginViewModel()
 		{
+					
 			ApplicationMenuItems =
 				new ObservableCollection<ApplicationMenuOptionViewModel>
 					{
@@ -22,13 +25,13 @@ namespace BBQRMSSolution.ViewModels
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Cooks Screen",
-								//ViewModelFactory = () => new ...
+								ViewModelFactory = () => new CooksScreenViewModel(mPendingOrders),
 								ImageSource = "/Graphics/Anonymous_Chef.png"
 							},
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Quick Inventory Screen",
-								//ViewModelFactory = () => new ...
+								ViewModelFactory = () => new QuickInventoryViewModel(),
 								ImageSource = "/Graphics/to_do_list_cheked_1.png"
 							},
 						new ApplicationMenuOptionViewModel(this)

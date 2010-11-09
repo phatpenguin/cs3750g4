@@ -35,4 +35,12 @@
     <DataTemplate DataType="{x:Type ViewModels:InventoryItem}">
         <Views:InventoryItemDetail />
     </DataTemplate>
+	
+	<DataTemplate DataType="{x:Type ViewModels:CooksScreenViewModel}">
+		<Views:CooksScreen />
+	</DataTemplate>
+	
+	<DataTemplate DataType="{x:Type ViewModels:QuickInventoryViewModel}">
+		<Views:QuickInventoryScreen />
+	</DataTemplate>
 </ResourceDictionary>

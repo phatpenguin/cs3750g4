@@ -18,6 +18,11 @@
 				<Setter Property="FontSize" Value="26.667"/>
 			</Style>
 
+			<Style x:Key="BigTabStyle" TargetType="{x:Type TabItem}">
+				<Setter Property="MinHeight" Value="75"/>
+				<Setter Property="TextElement.FontSize" Value="24"/>
+			</Style>
+			
 			<Color x:Key="ApplicationBackgroundColor">White</Color>
 			<SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{DynamicResource ResourceKey=ApplicationBackgroundColor}" />
 
