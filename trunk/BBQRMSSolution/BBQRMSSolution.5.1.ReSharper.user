@@ -3,57 +3,182 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="Views" priority="0" />
+      <Item value="mainContent" priority="0" />
+      <Item value="button1" priority="0" />
+      <Item value="this" priority="7" />
+      <Item value="Collapsed" priority="0" />
+      <Item value="ReportViewer`0" priority="0" />
+      <Item value="ColumnDefinition`0" priority="0" />
+      <Item value="ApplicationBackgroundColor" priority="0" />
+      <Item value="reportViewer" priority="0" />
+      <Item value="ReportParameter" priority="0" />
+      <Item value="protected" priority="0" />
+      <Item value="INotifyPropertyChanged`0" priority="0" />
+      <Item value="PropertyChangedEventHandler`0" priority="0" />
+      <Item value="PropertyChanged" priority="0" />
+      <Item value="if" priority="6" />
+      <Item value="handler" priority="3" />
+      <Item value="new" priority="28" />
+      <Item value="PropertyChangedEventArgs" priority="0" />
+      <Item value="string" priority="6" />
+      <Item value="ViewModelBase`0" priority="10" />
+      <Item value="vmprop" priority="10" />
+      <Item value="ChooseReportViewModel`0" priority="0" />
+      <Item value="Reports" priority="0" />
+      <Item value="ObservableCollection&lt;ReportViewModel&gt;" priority="0" />
+      <Item value="ReportViewModel" priority="1" />
+      <Item value="ReportName" priority="0" />
+      <Item value="Group" priority="0" />
+      <Item value="ObservableCollection" priority="1" />
+      <Item value="mParameters" priority="1" />
+      <Item value="ObservableCollection&lt;ReportParameterViewModel&gt;" priority="2" />
+      <Item value="public" priority="13" />
+      <Item value="void" priority="5" />
+      <Item value="EventHandler`0" priority="0" />
+      <Item value="CanExecuteChanged" priority="0" />
+      <Item value="Action`0" priority="1" />
+      <Item value="private" priority="4" />
+      <Item value="Func" priority="1" />
+      <Item value="object" priority="2" />
+      <Item value="executeCallback" priority="2" />
+      <Item value="canExecuteCallback" priority="0" />
+      <Item value="DelegateCommand`0" priority="5" />
+      <Item value="mExecuteCallback" priority="0" />
+      <Item value="parameter" priority="2" />
+      <Item value="mCanExecuteCallback" priority="0" />
+      <Item value="RunReportCommand" priority="0" />
+      <Item value="DelegateCommand" priority="1" />
+      <Item value="return" priority="5" />
+      <Item value="null" priority="1" />
+      <Item value="ReportViewModel`0" priority="1" />
+      <Item value="value" priority="2" />
+      <Item value="is" priority="1" />
+      <Item value="else" priority="0" />
+      <Item value="InvertedBoolToVisibilityConverter`0" priority="0" />
+      <Item value="Visibility`0" priority="2" />
+      <Item value="bool" priority="2" />
+      <Item value="boolValue" priority="0" />
+      <Item value="FullScreenContent" priority="2" />
+      <Item value="loginViewModel" priority="0" />
+      <Item value="LoginCommand" priority="0" />
+      <Item value="mMainWindowViewModel" priority="1" />
+      <Item value="PostLoginViewModel`0" priority="1" />
+      <Item value="SelectedReport" priority="0" />
+      <Item value="INavigationService`0" priority="2" />
+      <Item value="navigationService" priority="0" />
+      <Item value="mContent" priority="0" />
+      <Item value="NotifyPropertyChanged`0" priority="0" />
+      <Item value="Content" priority="1" />
+      <Item value="as" priority="0" />
+      <Item value="MenuItems" priority="0" />
+      <Item value="ObservableCollection&lt;MenuOptionViewModel&gt;" priority="0" />
+      <Item value="BadImageFormatException`0" priority="0" />
+      <Item value="MenuOptionViewModel" priority="0" />
+      <Item value="Name" priority="4" />
+      <Item value="ViewModelFactory" priority="3" />
+      <Item value="Image" priority="1" />
+      <Item value="Source" priority="0" />
+      <Item value="mNavigationService" priority="0" />
+      <Item value="EmployeeManagementViewModel`0" priority="0" />
+      <Item value="ImageSource" priority="3" />
+      <Item value="MainWindowViewModel`0" priority="0" />
+      <Item value="Obsolete" priority="1" />
+      <Item value="mMainWindow" priority="1" />
+      <Item value="ShowLoginScreen`0" priority="0" />
+      <Item value="ApplicationMenuOptionViewModel" priority="4" />
+      <Item value="class" priority="2" />
+      <Item value="ReportParameterViewModel`0" priority="2" />
+      <Item value="DateTime`0" priority="0" />
+      <Item value="Options" priority="3" />
+      <Item value="ObservableCollection&lt;string&gt;" priority="0" />
+      <Item value="Parameters" priority="2" />
+      <Item value="toReturn" priority="0" />
+      <Item value="ReportDateParameterViewModel`0" priority="0" />
+      <Item value="Prompt" priority="2" />
+      <Item value="ReportOptionParameterViewModel`0" priority="2" />
+      <Item value="SelectedOption" priority="1" />
+      <Item value="Value" priority="1" />
+      <Item value="DateTime" priority="1" />
+      <Item value="App`0" priority="0" />
+      <Item value="passwordBox" priority="3" />
+      <Item value="sender" priority="1" />
+      <Item value="Button`0" priority="1" />
+      <Item value="pressed" priority="0" />
+      <Item value="Loaded" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.Frame">
+      <Item value="Content" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.RoutedEventArgs">
+      <Item value="Source" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.Button">
+      <Item value="CommandParameter" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.Views.LoginView">
+      <Item value="Visibility" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Reporting.WinForms.ReportViewer">
+      <Item value="LocalReport" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Reporting.WinForms.LocalReport">
+      <Item value="SetParameters`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Visibility">
+      <Item value="Visible" priority="3" />
+      <Item value="Collapsed" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.ViewModels.MainWindowViewModel">
+      <Item value="FullScreenContent" priority="2" />
+      <Item value="ShowPostLoginScreen`0" priority="0" />
+      <Item value="ShowLoginScreen`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.ViewModels.INavigationService">
+      <Item value="Content" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Func`1">
+      <Item value="Invoke`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.ViewModels.ReportOptionParameterViewModel">
+      <Item value="Options" priority="0" />
+      <Item value="SelectedOption" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.ViewModels.ReportDateParameterViewModel">
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BBQRMSSolution.ViewModels.ReportViewModel">
+      <Item value="mParameters" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ObjectModel.ObservableCollection`1">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BBQRMSSolution.App">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Application">
+      <Item value="Shutdown`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.PasswordBox">
+      <Item value="Password" priority="2" />
+      <Item value="Focus`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:Styles.xaml" caret="0" fromTop="0" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:MainWindow.xaml" caret="904" fromTop="19" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="836" fromTop="16" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/f:MainWindow.xaml.cs" caret="735" fromTop="29" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1229" fromTop="29" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:SampleData/f:MainViewModelSampleData.xaml" caret="0" fromTop="0" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="988" fromTop="17" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropHelper.cs" caret="20663" fromTop="481" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropUtilities.cs" caret="5161" fromTop="150" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DraggedAdorner.cs" caret="1876" fromTop="75" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="3016" fromTop="113" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1290" fromTop="27" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:Themes/f:Generic.xaml" caret="195" fromTop="4" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="0" fromTop="0" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DraggedAdorner.cs" caret="293" fromTop="7" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropUtilities.cs" caret="1571" fromTop="7" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropHelper.cs" caret="1360" fromTop="25" />
+      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/f:InvertedBoolToVisibilityConverter.cs" caret="167" fromTop="6" />
     </RecentFiles>
-    <RecentEdits>
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="405" fromTop="5" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="29" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="29" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="25" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1423" fromTop="19" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="398" fromTop="5" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeInfo.xaml" caret="4637" fromTop="19" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1484" fromTop="18" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="28" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="34" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="31" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="1005" fromTop="7" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml" caret="604" fromTop="10" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="856" fromTop="16" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="976" fromTop="9" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:EmployeeManangment.xaml.cs" caret="1245" fromTop="16" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="2223" fromTop="19" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="2037" fromTop="12" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1551" fromTop="20" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1160" fromTop="11" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropHelper.cs" caret="20663" fromTop="481" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DragDropUtilities.cs" caret="5161" fromTop="150" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:DraggedAdorner.cs" caret="1876" fromTop="75" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="2992" fromTop="8" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:DragDropControl/f:InsertionAdorner.cs" caret="3016" fromTop="113" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="666" fromTop="13" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="388" fromTop="4" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1951" fromTop="28" />
-      <File id="E1A1788C-2348-4DF9-98EA-4D21D154FF1C/d:Views/f:RoleManagement.xaml" caret="1290" fromTop="16" />
-      <File id="DE2221A4-3807-4338-8187-4884BCFF6436/d:Themes/f:Generic.xaml" caret="195" fromTop="4" />
-    </RecentEdits>
+    <RecentEdits />
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -66,24 +191,4 @@
     </NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
-  <CompletionStatisticsManager>
-    <ItemStatistics item="Default">
-      <Item value="employeeManagmentContent" priority="1" />
-      <Item value="EmployeeList" priority="0" />
-      <Item value="EmployeeInfo`0" priority="0" />
-      <Item value="RoleList" priority="0" />
-      <Item value="SelectionChangedEventHandler" priority="0" />
-      <Item value="new" priority="0" />
-      <Item value="RoleManagement`0" priority="0" />
-    </ItemStatistics>
-    <ItemStatistics item="Qualified:System.Windows.Controls.ListBox">
-      <Item value="SelectionChanged" priority="1" />
-    </ItemStatistics>
-    <ItemStatistics item="Qualified:System.Windows.Controls.ContentPresenter">
-      <Item value="Content" priority="0" />
-    </ItemStatistics>
-    <ItemStatistics item="Qualified:System.Windows.Controls.UserControl">
-      <Item value="Resources" priority="0" />
-    </ItemStatistics>
-  </CompletionStatisticsManager>
 </Configuration>
