@@ -46,7 +46,7 @@ namespace BBQRMSSolution.ViewModels
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Manage Inventory",
-								//ViewModelFactory = () => new ...
+								ViewModelFactory = () => new InventoryManagementViewModel(),
 								ImageSource = "/Graphics/file_manager.png"
 							},
 						new ApplicationMenuOptionViewModel(this)
