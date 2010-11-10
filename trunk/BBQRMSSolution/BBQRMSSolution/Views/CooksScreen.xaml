@@ -32,7 +32,7 @@
 					<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Width="300" Margin="0,0,7,0">
 						<StackPanel>
 							<TextBlock Text="{Binding OrderNumber}" HorizontalAlignment="Center" FontSize="30"/>
-							<TextBlock Text="{Binding OrderAge}" HorizontalAlignment="Center" FontFamily="Consolas" FontSize="30" Foreground="Gray" />
+							<TextBlock Text="{Binding OrderAge, StringFormat=\{0:mm\\:ss\}}" HorizontalAlignment="Center" FontFamily="Consolas" FontSize="30" Foreground="Gray" />
 							<ItemsControl Height="Auto" Width="Auto" ItemTemplate="{DynamicResource OrderItemTemplate}" ItemsSource="{Binding Items}"/>
 						</StackPanel>
 					</ScrollViewer>
