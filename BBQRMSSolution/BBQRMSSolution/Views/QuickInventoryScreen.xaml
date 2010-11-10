@@ -4,17 +4,30 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 mc:Ignorable="d" 
-			 d:DesignHeight="750" d:DesignWidth="1350">
+			 d:DesignHeight="750" d:DesignWidth="1350"
+			 d:DataContext="{d:DesignInstance Type=ViewModels:QuickInventoryViewModel, IsDesignTimeCreatable=True}" xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels">
 	<UserControl.Resources>
 		<DataTemplate x:Key="item">
-			<Border Margin="8" BorderThickness="1" CornerRadius="3" BorderBrush="#FF878787" Background="White" MaxWidth="210">
-				<StackPanel Margin="2">
-					<TextBlock TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center" FontSize="26" Margin="10"/>
-					<UniformGrid Rows="1" Columns="2">
-						<Button Content="+" FontSize="18.667" Margin="4"/>
-						<Button Content="-" FontSize="18.667" Margin="4"/>
-					</UniformGrid>
-				</StackPanel>
+			<Border Margin="8" BorderThickness="1" CornerRadius="3" BorderBrush="Black" Background="White" MaxWidth="210">
+				<Grid Margin="2" VerticalAlignment="Stretch">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.Row="0" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center" FontSize="20" Margin="10"/>
+					<Grid Grid.Row="1">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+						<RepeatButton Content="-" FontSize="18" Margin="4" Height="50" Width="50" Grid.Column="0" Command="{Binding DecrementCommand}" />
+						<TextBox FontSize="18" Text="{Binding Number, Mode=OneWay}" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" BorderThickness="0"/>
+						<RepeatButton Content="+" FontSize="18" Margin="4" Height="50" Width="50" Grid.Column="2" Command="{Binding IncrementCommand}" />
+					</Grid>
+					<Button Grid.Row="2" Margin="4" Height="40" FontSize="16" Content="Remove" CommandParameter="{Binding}" Command="{Binding Path=DataContext.RemoveInventoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+				</Grid>
 			</Border>
 
 		</DataTemplate>
@@ -27,15 +40,26 @@
 				</ItemsControl.ItemsPanel>
 			</ItemsControl>
 		</DataTemplate>
+		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
 	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
-		<TabControl TabStripPlacement="Left" ContentTemplate="{StaticResource ResourceKey=tabContent}">
+		<TabControl TabStripPlacement="Left" ContentTemplate="{StaticResource ResourceKey=tabContent}" ItemsSource="{Binding Locations}">
 			<TabControl.Resources>
 				<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
 			</TabControl.Resources>
-			<TabItem Header="Pantry"></TabItem>
-			<TabItem Header="Fridge"></TabItem>
-			<TabItem Header="Freezer"></TabItem>
+			<TabControl.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}"/>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
 		</TabControl>
+		<Border CornerRadius="5" Padding="3" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsWorking, Converter={StaticResource ResourceKey=boolToVisibilityConverter}}">
+			<Grid HorizontalAlignment="Center">
+				<StackPanel>
+					<TextBlock Text="Removing item from inventory..." FontSize="22" />
+					<ProgressBar IsIndeterminate="True" HorizontalAlignment="Stretch" Height="25"/>
+				</StackPanel>
+			</Grid>
+		</Border>
 	</Grid>
 </UserControl>

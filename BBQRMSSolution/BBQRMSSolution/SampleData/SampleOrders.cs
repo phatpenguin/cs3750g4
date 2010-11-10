@@ -18,7 +18,7 @@ namespace BBQRMSSolution.SampleData
 						new OrderViewModel
 							{
 								OrderNumber = 56,
-								OrderAge = startDate.AddMinutes(7).AddSeconds(15) - startDate,
+								OrderSubmittedDate = startDate.AddMinutes(-7).AddSeconds(-15),
 								Items =
 									{
 										new OrderItem {menuItem = new MenuItem {name = "Ribs"}, quantity = 3},
@@ -28,7 +28,7 @@ namespace BBQRMSSolution.SampleData
 						new OrderViewModel
 							{
 								OrderNumber = 57,
-								OrderAge = startDate.AddMinutes(6).AddSeconds(10) - startDate,
+								OrderSubmittedDate = startDate.AddMinutes(-6).AddSeconds(-10),
 								Items =
 									{
 										new OrderItem {menuItem = new MenuItem {name = "Chicken"}, quantity = 3},
@@ -38,13 +38,13 @@ namespace BBQRMSSolution.SampleData
 						new OrderViewModel
 							{
 								OrderNumber = 58,
-								OrderAge = startDate.AddMinutes(3).AddSeconds(9) - startDate,
+								OrderSubmittedDate = startDate.AddMinutes(-3).AddSeconds(-9),
 
 							},
 						new OrderViewModel
 							{
 								OrderNumber = 59,
-								OrderAge = startDate.AddMinutes(1).AddSeconds(52) - startDate,
+								OrderSubmittedDate = startDate.AddMinutes(-1).AddSeconds(-52),
 							},
 					};
 		}

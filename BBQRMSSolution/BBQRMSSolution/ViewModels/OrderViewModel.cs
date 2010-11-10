@@ -1,11 +1,25 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Threading;
 using BBQRMSSolution.Models;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class OrderViewModel : ViewModelBase
 	{
+		private Timer t;
+		public OrderViewModel()
+		{
+			t = new Timer(UpdateAge, null, 0, 1000 );
+		}
+
+		private void UpdateAge(object state)
+		{
+			OrderAge = DateTime.Now - OrderSubmittedDate;
+		}
+
+		public DateTime OrderSubmittedDate { get; set; }
+
 		private readonly ObservableCollection<OrderItem> mItems = new ObservableCollection<OrderItem>();
 		public ObservableCollection<OrderItem> Items
 		{
