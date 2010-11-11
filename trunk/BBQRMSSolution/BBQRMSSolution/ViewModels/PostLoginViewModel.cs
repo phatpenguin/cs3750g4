@@ -19,7 +19,7 @@ namespace BBQRMSSolution.ViewModels
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Take Orders",
-								ViewModelFactory = () => new CustomerOrderScreenViewModel(),
+								ViewModelFactory = () => new CustomerOrderScreenViewModel(mPendingOrders),
 								ImageSource = "/Graphics/accessories-text-editor.png"
 							},
 						new ApplicationMenuOptionViewModel(this)

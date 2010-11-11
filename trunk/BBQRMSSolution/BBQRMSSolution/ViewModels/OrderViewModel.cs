@@ -8,9 +8,19 @@ namespace BBQRMSSolution.ViewModels
 	public class OrderViewModel : ViewModelBase
 	{
 		private Timer t;
+
+		private decimal st, tp, ta;
+		public decimal subTotal { get { return st; } set { st = value; NotifyPropertyChanged("subTotal"); } }
+		public decimal totalPrice { get { return tp; } set { tp = value; NotifyPropertyChanged("totalPrice"); } }
+		public decimal taxAmount { get { return ta; } set { ta = value; NotifyPropertyChanged("taxAmount"); } }
+
 		public OrderViewModel()
 		{
 			t = new Timer(UpdateAge, null, 0, 1000 );
+
+			totalPrice = 0.00m;
+			subTotal = 0.00m;
+			taxAmount = 0.00m;
 		}
 
 		private void UpdateAge(object state)
