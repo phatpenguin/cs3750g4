@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Collections.ObjectModel;
+using BBQRMSSolution.Models;
 
 namespace BBQRMSSolution.ViewModels
 {
