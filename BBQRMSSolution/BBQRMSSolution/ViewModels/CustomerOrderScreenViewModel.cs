@@ -25,28 +25,52 @@ namespace BBQRMSSolution.ViewModels
 			mPendingOrders = new ObservableCollection<OrderViewModel>();
 			order = new OrderViewModel();
 
-			menus = new ObservableCollection<Menu> { 
-				new Menu { 
-					name = "Sides", 
-					menuItems= {
-						new MenuItem {name="Fries",id=1,price=3.50m,DoAction=new DelegateCommand(addMenuItem)},	
-						new MenuItem {name="Beans",id=2,price=4.00m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Potato Salad",id=3,price=5.00m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Coleslaw",id=4,price=1.25m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Corn on the Cob",id=5,price=2.25m,DoAction=new DelegateCommand(addMenuItem)}
-					}
+			menus = BuildSampleMenus();
+		}
 
-				},
-				new Menu {
-								name="Drinks",
-								menuItems={
-												new MenuItem {name="Soda",id=6,price=1.25m,DoAction=new DelegateCommand(addMenuItem)},
-												new MenuItem {name="Beer",id=7,price=2.25m,DoAction=new DelegateCommand(addMenuItem)},
-												new MenuItem {name="Bottled Water",id=8,price=1.00m,DoAction=new DelegateCommand(addMenuItem)},
-															new MenuItem {name="Sobe",id=9,price=1.99m,DoAction=new DelegateCommand(addMenuItem)}
-								}
-				}
-			};
+		private ObservableCollection<Menu> BuildSampleMenus()
+		{
+			return
+				new ObservableCollection<Menu>
+					{
+						new Menu
+							{
+								name = "Meats",
+								menuItems =
+									{
+										new MenuItem {name = "Brisket", id=10, price=6.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Ribs", id=11, price=7.50m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Pulled Pork", id=12, price=5.75m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Pulled Chicken", id=13, price=5.25m, DoAction = new DelegateCommand(addMenuItem)}
+									}
+							},
+						new Menu
+							{
+								name = "Sides",
+								menuItems =
+									{
+										new MenuItem {name = "Fries", id = 1, price = 3.50m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Beans", id = 2, price = 4.00m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Potato Salad", id = 3, price = 5.00m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Coleslaw", id = 4, price = 1.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem
+											{name = "Corn on the Cob", id = 5, price = 2.25m, DoAction = new DelegateCommand(addMenuItem)}
+									}
+
+							},
+						new Menu
+							{
+								name = "Drinks",
+								menuItems =
+									{
+										new MenuItem {name = "Soda", id = 6, price = 1.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Beer", id = 7, price = 2.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem
+											{name = "Bottled Water", id = 8, price = 1.00m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {name = "Sobe", id = 9, price = 1.99m, DoAction = new DelegateCommand(addMenuItem)}
+									}
+							}
+					};
 		}
 
 		public CustomerOrderScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders)
@@ -54,28 +78,7 @@ namespace BBQRMSSolution.ViewModels
 			mPendingOrders = pendingOrders;
 			order = new OrderViewModel();
 			
-			menus = new ObservableCollection<Menu> { 
-				new Menu { 
-					name = "Sides", 
-					menuItems= {
-						new MenuItem {name="Fries",id=1,price=3.50m,DoAction=new DelegateCommand(addMenuItem)},	
-						new MenuItem {name="Beans",id=2,price=4.00m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Potato Salad",id=3,price=5.00m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Coleslaw",id=4,price=1.25m,DoAction=new DelegateCommand(addMenuItem)},
-						new MenuItem {name="Corn on the Cob",id=5,price=2.25m,DoAction=new DelegateCommand(addMenuItem)}
-					}
-
-				},
-				new Menu {
-								name="Drinks",
-								menuItems={
-												new MenuItem {name="Soda",id=6,price=1.25m,DoAction=new DelegateCommand(addMenuItem)},
-												new MenuItem {name="Beer",id=7,price=2.25m,DoAction=new DelegateCommand(addMenuItem)},
-												new MenuItem {name="Bottled Water",id=8,price=1.00m,DoAction=new DelegateCommand(addMenuItem)},
-															new MenuItem {name="Sobe",id=9,price=1.99m,DoAction=new DelegateCommand(addMenuItem)}
-								}
-				}
-			};
+			menus = BuildSampleMenus();
 		}
 		
 		public void addMenuItem(Object mi)
