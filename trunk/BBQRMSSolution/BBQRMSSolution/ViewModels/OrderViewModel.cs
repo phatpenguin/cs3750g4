@@ -16,6 +16,9 @@ namespace BBQRMSSolution.ViewModels
 
 		public OrderViewModel()
 		{
+			DateTime now = DateTime.Now;
+			now = now.AddMilliseconds(-now.Millisecond);
+			OrderSubmittedDate = now;
 			t = new Timer(UpdateAge, null, 0, 1000 );
 
 			totalPrice = 0.00m;

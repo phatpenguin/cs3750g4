@@ -26,6 +26,7 @@ namespace BBQRMSSolution.ViewModels
 								Name = "Fridge",
 								Items =
 									{
+										new QuickInventoryItem {Name = "Beer (can)"},
 										new QuickInventoryItem {Name = "Cabbage (head)"},
 										new QuickInventoryItem {Name = "Carrots (5# bag)"},
 										new QuickInventoryItem {Name = "Cob Corn (dozen)"},
@@ -38,6 +39,8 @@ namespace BBQRMSSolution.ViewModels
 									{
 										new QuickInventoryItem {Name = "Ribs (pounds)"},
 										new QuickInventoryItem {Name = "Chicken (pounds)"},
+										new QuickInventoryItem {Name = "Brisket (pounds)"},
+										new QuickInventoryItem {Name = "Pork (pounds)"},
 									}
 							},
 					};
