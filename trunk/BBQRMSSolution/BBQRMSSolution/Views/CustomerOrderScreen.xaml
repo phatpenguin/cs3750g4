@@ -5,9 +5,9 @@
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	x:Class="BBQRMSSolution.Views.CustomerOrderScreen"
-	x:Name="Window">
+	x:Name="Window"
+	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}">
 	<UserControl.Resources>
-		<viewmodels:CustomerOrderScreenViewModel x:Key="vm"></viewmodels:CustomerOrderScreenViewModel>
 		<ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
 			<WrapPanel IsItemsHost="True"/>
 		</ItemsPanelTemplate>
@@ -25,7 +25,7 @@
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>
-	<Grid x:Name="LayoutRoot" DataContext="{StaticResource ResourceKey=vm}">
+	<Grid x:Name="LayoutRoot">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="500*"/>
 				<ColumnDefinition Width="300*"/>
@@ -35,12 +35,6 @@
 			</Grid.RowDefinitions>
 		<DockPanel>
 		<TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
-			<TabControl.ItemContainerStyle>
-				<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource
-{x:Type TabItem}}">
-					<Setter Property="Header" />
-				</Style>
-			</TabControl.ItemContainerStyle>
 			<TabControl.ItemTemplate>
 				<DataTemplate>
 					<TextBlock><Run Text="{Binding name}"/></TextBlock>

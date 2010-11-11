@@ -19,6 +19,7 @@ namespace BBQRMSSolution.ViewModels
 		public DelegateCommand Cancel { get { return new DelegateCommand(cancelOrder); } }
 		public DelegateCommand Cashier { get { return new DelegateCommand(placeOrder); } }
 
+		[Obsolete("Used only for design-time")]
 		public CustomerOrderScreenViewModel()
 		{
 			mPendingOrders = new ObservableCollection<OrderViewModel>();
