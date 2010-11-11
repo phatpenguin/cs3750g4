@@ -35,7 +35,10 @@
 			</Grid.RowDefinitions>
 		<DockPanel>
 		<TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
-			<TabControl.ItemTemplate>
+				<TabControl.Resources>
+					<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
+				</TabControl.Resources>
+				<TabControl.ItemTemplate>
 				<DataTemplate>
 					<TextBlock><Run Text="{Binding name}"/></TextBlock>
 				</DataTemplate>
