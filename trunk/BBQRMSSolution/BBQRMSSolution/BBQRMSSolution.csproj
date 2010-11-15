@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -71,8 +72,10 @@
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\MethodOfPayment.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="SampleData\SampleOrders.cs" />
+    <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
     <Compile Include="Views\CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
@@ -247,6 +250,46 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\Logo-Small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\ribs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\brisket.jpg" />
+    <Resource Include="Graphics\chicken.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\pork.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\fries.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\beans.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\potatosalad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\coleslaw.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\corn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\soda.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\beer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\water.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\sobe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\cash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

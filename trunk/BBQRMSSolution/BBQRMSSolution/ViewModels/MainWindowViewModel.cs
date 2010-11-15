@@ -17,16 +17,16 @@ namespace BBQRMSSolution.ViewModels
 			FullScreenContent = new PostLoginViewModel(this);
 		}
 
-		private ViewModelBase mFullScreenContent;
+		private ViewModelBase _mFullScreenContent;
 
 		public ViewModelBase FullScreenContent
 		{
-			get { return mFullScreenContent; }
+			get { return _mFullScreenContent; }
 			private set
 			{
-				if (value != mFullScreenContent)
+				if (value != _mFullScreenContent)
 				{
-					mFullScreenContent = value;
+					_mFullScreenContent = value;
 					NotifyPropertyChanged("FullScreenContent");
 				}
 			}

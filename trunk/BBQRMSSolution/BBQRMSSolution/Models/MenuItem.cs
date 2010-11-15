@@ -9,8 +9,9 @@ namespace BBQRMSSolution.Models
 	public class MenuItem
 	{
 		public DelegateCommand DoAction { get; set; }
-		public String name { get; set; }
-		public int id { get; set; }
-		public decimal price { get; set; }
+		public String Name { get; set; }
+		public int Id { get; set; }
+		public decimal Price { get; set; }
+		public String ImageSource { get; set; }
 	}
 }

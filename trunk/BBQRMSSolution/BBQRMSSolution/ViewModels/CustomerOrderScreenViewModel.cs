@@ -1,31 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using BBQRMSSolution.Models;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
-		private ObservableCollection<OrderViewModel> mPendingOrders;
+		private readonly ObservableCollection<OrderViewModel> _mPendingOrders;
 
-		public ObservableCollection<Menu> menus { get; set; }
-		public OrderViewModel order { get;set;}
+		public ObservableCollection<Menu> Menus { get; set; }
+		public OrderViewModel Order { get;set;}
 
 		private const decimal TAX_PERCENTAGE = 8.25m;
 
-		public DelegateCommand Cancel { get { return new DelegateCommand(cancelOrder); } }
-		public DelegateCommand Cashier { get { return new DelegateCommand(placeOrder); } }
+		public DelegateCommand Cancel { get { return new DelegateCommand(CancelOrder); } }
+		public DelegateCommand Cashier { get { return new DelegateCommand(PlaceOrder); } }
 
 		[Obsolete("Used only for design-time")]
 		public CustomerOrderScreenViewModel()
 		{
-			mPendingOrders = new ObservableCollection<OrderViewModel>();
-			order = new OrderViewModel();
+			_mPendingOrders = new ObservableCollection<OrderViewModel>();
+			var r = new Random();
+			Order = new OrderViewModel { OrderNumber = r.Next(1,100) };
 
-			menus = BuildSampleMenus();
+			Menus = BuildSampleMenus();
 		}
 
 		private ObservableCollection<Menu> BuildSampleMenus()
@@ -35,39 +34,45 @@ namespace BBQRMSSolution.ViewModels
 					{
 						new Menu
 							{
-								name = "Meats",
-								menuItems =
+								Name = "Meats",
+								BackColor = "#FF0000",
+								TextColor = "#FFFFFF",
+								MenuItems =
 									{
-										new MenuItem {name = "Brisket", id=10, price=6.25m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Ribs", id=11, price=7.50m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Pulled Pork", id=12, price=5.75m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Pulled Chicken", id=13, price=5.25m, DoAction = new DelegateCommand(addMenuItem)}
+										new MenuItem {Name = "Brisket",ImageSource="/Graphics/brisket.jpg", Id=10, Price=6.25m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Ribs",ImageSource="/Graphics/ribs.png", Id=11, Price=7.50m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Pulled Pork",ImageSource="/Graphics/pork.jpg", Id=12, Price=5.75m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Pulled Chicken",ImageSource="/Graphics/chicken.jpg", Id=13, Price=5.25m, DoAction = new DelegateCommand(AddMenuItem)}
 									}
 							},
 						new Menu
 							{
-								name = "Sides",
-								menuItems =
+								Name = "Sides",
+								BackColor = "#00FF00",
+								TextColor = "#FFFFFF",
+								MenuItems =
 									{
-										new MenuItem {name = "Fries", id = 1, price = 3.50m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Beans", id = 2, price = 4.00m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Potato Salad", id = 3, price = 5.00m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Coleslaw", id = 4, price = 1.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {Name = "Fries",ImageSource="/Graphics/fries.jpg", Id = 1, Price = 3.50m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Beans",ImageSource="/Graphics/beans.jpg", Id = 2, Price = 4.00m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Potato Salad",ImageSource="/Graphics/potatosalad.jpg", Id = 3, Price = 5.00m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Coleslaw",ImageSource="/Graphics/coleslaw.jpg", Id = 4, Price = 1.25m, DoAction = new DelegateCommand(AddMenuItem)},
 										new MenuItem
-											{name = "Corn on the Cob", id = 5, price = 2.25m, DoAction = new DelegateCommand(addMenuItem)}
+											{Name = "Corn on the Cob",ImageSource="/Graphics/corn.jpg", Id = 5, Price = 2.25m, DoAction = new DelegateCommand(AddMenuItem)}
 									}
 
 							},
 						new Menu
 							{
-								name = "Drinks",
-								menuItems =
+								Name = "Drinks",
+								BackColor = "#0000FF",
+								TextColor = "#FFFFFF",
+								MenuItems =
 									{
-										new MenuItem {name = "Soda", id = 6, price = 1.25m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Beer", id = 7, price = 2.25m, DoAction = new DelegateCommand(addMenuItem)},
+										new MenuItem {Name = "Soda",ImageSource="/Graphics/soda.jpg", Id = 6, Price = 1.25m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Beer",ImageSource="/Graphics/beer.jpg", Id = 7, Price = 2.25m, DoAction = new DelegateCommand(AddMenuItem)},
 										new MenuItem
-											{name = "Bottled Water", id = 8, price = 1.00m, DoAction = new DelegateCommand(addMenuItem)},
-										new MenuItem {name = "Sobe", id = 9, price = 1.99m, DoAction = new DelegateCommand(addMenuItem)}
+											{Name = "Bottled Water",ImageSource="/Graphics/water.jpg", Id = 8, Price = 1.00m, DoAction = new DelegateCommand(AddMenuItem)},
+										new MenuItem {Name = "Sobe",ImageSource="/Graphics/sobe.jpg", Id = 9, Price = 1.99m, DoAction = new DelegateCommand(AddMenuItem)}
 									}
 							}
 					};
@@ -75,62 +80,77 @@ namespace BBQRMSSolution.ViewModels
 
 		public CustomerOrderScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders)
 		{
-			mPendingOrders = pendingOrders;
-			order = new OrderViewModel();
-			
-			menus = BuildSampleMenus();
+			_mPendingOrders = pendingOrders;
+			Order = new OrderViewModel();
+
+			Menus = BuildSampleMenus();
+		}
+
+		private readonly INavigationService _mNavigationService;
+		public CustomerOrderScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders, INavigationService navigationService)
+		{
+			_mPendingOrders = pendingOrders;
+			_mNavigationService = navigationService;
+
+			Order = new OrderViewModel();
+
+			Menus = BuildSampleMenus();
 		}
 		
-		public void addMenuItem(Object mi)
+		public void AddMenuItem(Object mi)
 		{
-			MenuItem menuItem = (MenuItem)mi;
+			var menuItem = (MenuItem) mi;
 
-			bool isFound = true;
-			foreach (OrderItem oi in order.Items)
+			var isFound = true;
+			foreach (var oi in Order.Items)
 			{
 				isFound = true;
-				if (oi.menuItem.id == menuItem.id)
+				if (oi.MenuItem.Id == menuItem.Id)
 				{
-					oi.quantity++;
+					oi.Quantity++;
 					NotifyPropertyChanged("oi");
 					break;
 				}
-				else isFound = false;
+				isFound = false;
 			}
-			if (!isFound || order.Items.Count == 0)
+			if (!isFound || Order.Items.Count == 0)
 			{
-				OrderItem orderItem = new OrderItem { menuItem = menuItem, quantity = 1, DoAction=new DelegateCommand(removeMenuItem) };
-				order.Items.Add(orderItem);
+				var orderItem = new OrderItem { MenuItem = menuItem, Quantity = 1, DoAction=new DelegateCommand(RemoveMenuItem) };
+				Order.Items.Add(orderItem);
 			}
 
-			order.subTotal += menuItem.price;
-			order.taxAmount = order.subTotal * (TAX_PERCENTAGE / (decimal)100);
-			order.totalPrice = order.subTotal + order.taxAmount;
+			Order.SubTotal += menuItem.Price;
+			Order.TaxAmount = Order.SubTotal * (TAX_PERCENTAGE / 100);
+			Order.TotalPrice = Order.SubTotal + Order.TaxAmount;
 		}
 
-		public void removeMenuItem(Object oi)
+		public void RemoveMenuItem(Object oi)
 		{
-			OrderItem orderItem = (OrderItem)oi;
+			var orderItem = (OrderItem)oi;
 
-			if (orderItem.quantity > 1) orderItem.quantity--;
-			else order.Items.Remove(orderItem);
+			if (orderItem.Quantity > 1) orderItem.Quantity--;
+			else Order.Items.Remove(orderItem);
 
-			order.subTotal -= orderItem.menuItem.price;
-			order.taxAmount = order.subTotal * (TAX_PERCENTAGE / (decimal)100);
-			order.totalPrice = order.subTotal + order.taxAmount;
+			Order.SubTotal -= orderItem.MenuItem.Price;
+			Order.TaxAmount = Order.SubTotal * (TAX_PERCENTAGE / 100);
+			Order.TotalPrice = Order.SubTotal + Order.TaxAmount;
 		}
 
-		public void cancelOrder()
+		public void CancelOrder()
 		{
-			order = new OrderViewModel();
+			Order = new OrderViewModel();
 			NotifyPropertyChanged("order");
 		}
 
-		public void placeOrder()
+		public void PlaceOrder()
 		{
-			mPendingOrders.Add(order);
-			order = new OrderViewModel();
+			_mPendingOrders.Add(Order);
+			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order,_mNavigationService);
+
+			Order = new OrderViewModel();
 			NotifyPropertyChanged("order");
+
+			_mNavigationService.Content = orderCashierScreenViewModel;
 		}
 	}
 }
