@@ -4,11 +4,11 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class ApplicationMenuOptionViewModel : ViewModelBase
 	{
-		private readonly INavigationService mNavigationService;
+		private readonly INavigationService _mNavigationService;
 
 		public ApplicationMenuOptionViewModel(INavigationService navigationService)
 		{
-			mNavigationService = navigationService;
+			_mNavigationService = navigationService;
 			GoToContentCommand = new DelegateCommand(HandleGoToContent);
 		}
 
@@ -17,19 +17,19 @@ namespace BBQRMSSolution.ViewModels
 		private void HandleGoToContent()
 		{
 			if(ViewModelFactory != null)
-				mNavigationService.Content = ViewModelFactory.Invoke();
+				_mNavigationService.Content = ViewModelFactory.Invoke();
 		}
 
-		private string mName;
+		private string _mName;
 
 		public string Name
 		{
-			get { return mName; }
+			get { return _mName; }
 			set
 			{
-				if (value != mName)
+				if (value != _mName)
 				{
-					mName = value;
+					_mName = value;
 					NotifyPropertyChanged("Name");
 				}
 			}
@@ -37,16 +37,16 @@ namespace BBQRMSSolution.ViewModels
 
 		public Func<ViewModelBase> ViewModelFactory { get; set; }
 
-		private string mImageSource;
+		private string _mImageSource;
 
 		public string ImageSource
 		{
-			get { return mImageSource; }
+			get { return _mImageSource; }
 			set
 			{
-				if (value != mImageSource)
+				if (value != _mImageSource)
 				{
-					mImageSource = value;
+					_mImageSource = value;
 					NotifyPropertyChanged("ImageSource");
 				}
 			}

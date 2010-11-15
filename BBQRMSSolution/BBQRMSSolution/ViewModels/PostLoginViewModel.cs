@@ -6,8 +6,8 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class PostLoginViewModel : ViewModelBase, INavigationService
 	{
-		private readonly MainWindowViewModel mMainWindow;
-		private readonly ObservableCollection<OrderViewModel> mPendingOrders = SampleOrders.Sample;
+		private readonly MainWindowViewModel _mMainWindow;
+		private readonly ObservableCollection<OrderViewModel> _mPendingOrders = SampleOrders.Sample;
 
 		[Obsolete("To be used only at design time")]
 		public PostLoginViewModel()
@@ -19,13 +19,19 @@ namespace BBQRMSSolution.ViewModels
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Take Orders",
-								ViewModelFactory = () => new CustomerOrderScreenViewModel(mPendingOrders),
+								ViewModelFactory = () => new CustomerOrderScreenViewModel(_mPendingOrders,this),
 								ImageSource = "/Graphics/accessories-text-editor.png"
 							},
+							new ApplicationMenuOptionViewModel(this)
+								{
+									Name = "Cashier Order",
+									ViewModelFactory = () => new OrderCashierScreenViewModel(_mPendingOrders[_mPendingOrders.Count - 1],this),
+									ImageSource = "/Graphics/cash.png"
+								},
 						new ApplicationMenuOptionViewModel(this)
 							{
 								Name = "Cooks Screen",
-								ViewModelFactory = () => new CooksScreenViewModel(mPendingOrders),
+								ViewModelFactory = () => new CooksScreenViewModel(_mPendingOrders),
 								ImageSource = "/Graphics/Anonymous_Chef.png"
 							},
 						new ApplicationMenuOptionViewModel(this)
@@ -67,28 +73,28 @@ namespace BBQRMSSolution.ViewModels
 		public PostLoginViewModel(MainWindowViewModel mainWindow) : this()
 #pragma warning restore 612,618
 		{
-			mMainWindow = mainWindow;
+			_mMainWindow = mainWindow;
 		}
 
 		public DelegateCommand LogOutCommand { get; private set; }
 
 		private void HandleLogout()
 		{
-			mMainWindow.ShowLoginScreen();
+			_mMainWindow.ShowLoginScreen();
 		}
 
 		public ObservableCollection<ApplicationMenuOptionViewModel> ApplicationMenuItems { get; private set; }
 
 
-		private object mContent;
+		private object _mContent;
 		public object Content
 		{
-			get { return mContent; }
+			get { return _mContent; }
 			set
 			{
-				if (value != mContent)
+				if (value != _mContent)
 				{
-					mContent = value;
+					_mContent = value;
 					NotifyPropertyChanged("Content");
 				}
 			}

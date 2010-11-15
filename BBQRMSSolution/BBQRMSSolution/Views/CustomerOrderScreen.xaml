@@ -13,12 +13,16 @@
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid >
-				<Button Margin="2" Width="115" Height="95" Command="{Binding DoAction}" CommandParameter="{Binding}">
-					<StackPanel>
-						<TextBlock TextWrapping="Wrap" Text="{Binding id}" HorizontalAlignment="Center"/>
-						<TextBlock TextWrapping="Wrap" Text="{Binding name}" HorizontalAlignment="Center"/>
-						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
-							<Run Text="$"/><Run Text="{Binding price}" />
+				<Button Margin="2" Width="115" Height="95" Command="{Binding DoAction}" CommandParameter="{Binding}" VerticalContentAlignment="Bottom">
+					<Button.Background>
+						<ImageBrush ImageSource="{Binding ImageSource}"/>
+					</Button.Background>
+					<StackPanel Background="#FFBFC9D9">
+						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" FontSize="12" Foreground="Black">
+							<Run Text="{Binding Id}" /><Run Text=" - " /><Run Text="{Binding Name}" />
+						</TextBlock>
+						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" FontSize="12" Foreground="Black">
+							<Run Text="$"/><Run Text="{Binding Price}" />
 						</TextBlock>
 					</StackPanel>
 				</Button>
@@ -27,26 +31,28 @@
 	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="500*"/>
-				<ColumnDefinition Width="300*"/>
+				<ColumnDefinition Width="120*"/>
+				<ColumnDefinition Width="120*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 		<DockPanel>
-		<TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
+		<TabControl ItemsSource="{Binding Menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
 				<TabControl.Resources>
 					<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
 				</TabControl.Resources>
 				<TabControl.ItemTemplate>
 				<DataTemplate>
-					<TextBlock><Run Text="{Binding name}"/></TextBlock>
+					<TextBlock><Run Text="{Binding Name}"/></TextBlock>
 				</DataTemplate>
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
 				<DataTemplate>
-					<ItemsControl Name="MenuPanel" ItemsSource="{Binding menuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
-				</DataTemplate>
+                        <DockPanel Background="{Binding BackColor}">
+                            <ItemsControl Name="MenuPanel" ItemsSource="{Binding MenuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
+                        </DockPanel>
+                    </DataTemplate>
 			</TabControl.ContentTemplate>
 			</TabControl>
 		</DockPanel>
@@ -59,21 +65,21 @@
 						<RowDefinition/>
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="0.48*"/>
-						<ColumnDefinition Width="0.52*"/>
+						<ColumnDefinition Width="120*"/>
+						<ColumnDefinition Width="120*"/>
 					</Grid.ColumnDefinitions>
-					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding order.subTotal, StringFormat=F2}" /></TextBlock>
-					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding order.taxAmount, StringFormat=F2}" /></TextBlock>
-					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding order.totalPrice, StringFormat=F2}" /></TextBlock>
-					<Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding Cancel}"/>
-					<Button Content="Cashier" Grid.Column="1" Margin="16,6,0,0" Height="45" FontWeight="Bold" Grid.Row="3" HorizontalContentAlignment="Center" Command="{Binding Cashier}"/>
+					<TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
+					<TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
+					<TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+					<Button Content="Cancel" Height="45" Grid.Column="0" Grid.Row="3" Command="{Binding Cancel}"/>
+					<Button Content="Cashier" Height="45" Grid.Column="1" Grid.Row="3" Command="{Binding Cashier}"/>
 				</Grid>
-				<DataGrid ItemsSource="{Binding order.Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
+				<DataGrid ItemsSource="{Binding Order.Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
 					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding number}" Header="#"/>
-						<DataGridTextColumn Binding="{Binding quantity}" Header="Qty"/>
-						<DataGridTextColumn Binding="{Binding menuItem.name}" Header="Item" IsReadOnly="True" Width="*"/>
-						<DataGridTextColumn Binding="{Binding menuItem.price}" Header="Price" IsReadOnly="True"/>
+						<DataGridTextColumn Binding="{Binding Number}" Header="#"/>
+						<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty"/>
+						<DataGridTextColumn Binding="{Binding MenuItem.Name}" Header="Item" IsReadOnly="True" Width="*"/>
+						<DataGridTextColumn Binding="{Binding MenuItem.Price}" Header="Price" IsReadOnly="True"/>
 						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>

@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Drawing;
 
 namespace BBQRMSSolution.Models
 {
 	public class Menu
 	{
-		public String name { get; set; }
-		public ObservableCollection<MenuItem> menuItems { get; set; }
+		public String Name { get; set; }
+		public ObservableCollection<MenuItem> MenuItems { get; set; }
+		public String BackColor { get; set; }
+		public String TextColor { get; set; }
 
 		public Menu()
 		{
-			menuItems = new ObservableCollection<MenuItem>();
+			MenuItems = new ObservableCollection<MenuItem>();
 		}
 
 	}

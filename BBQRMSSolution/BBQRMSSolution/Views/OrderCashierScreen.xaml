@@ -5,50 +5,74 @@
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	x:Class="BBQRMSSolution.Views.OrderCashierScreen"
-	x:Name="Window" d:DesignHeight="425" d:DesignWidth="783">
+	x:Name="Window"
+	d:DataContext="{d:DesignInstance Type=viewmodels:OrderCashierScreenViewModel, IsDesignTimeCreatable=True}">
     <UserControl.Resources>
-        <viewmodels:OrderCashierScreenViewModel x:Key="vm"></viewmodels:OrderCashierScreenViewModel>
-        <ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
-            <WrapPanel IsItemsHost="True"/>
-        </ItemsPanelTemplate>
-        <DataTemplate x:Key="MenuItemTemplate">
-            <Grid >
-                <Button Margin="2" Width="115" Height="95" Command="{Binding DoAction}" CommandParameter="{Binding}">
-                    <StackPanel>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding id}" HorizontalAlignment="Center"/>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding name}" HorizontalAlignment="Center"/>
-                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center">
-							<Run Text="$"/><Run Text="{Binding price}" />
-                        </TextBlock>
-                    </StackPanel>
-                </Button>
-            </Grid>
-        </DataTemplate>
+        <TextBlock x:Key="cc"><Run Text="Please swipe your card" /></TextBlock>
     </UserControl.Resources>
-    <Grid x:Name="LayoutRoot" DataContext="{StaticResource ResourceKey=vm}">
+    <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500*"/>
-            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="120*"/>
+            <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel>
-            <TabControl ItemsSource="{Binding menus}" TabStripPlacement="Left" Grid.ColumnSpan="3">
-                <TabControl.ItemContainerStyle>
-                    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource
-{x:Type TabItem}}">
-                        <Setter Property="Header" />
-                    </Style>
-                </TabControl.ItemContainerStyle>
+            <TabControl ItemsSource="{Binding MopList}" TabStripPlacement="Left" Grid.ColumnSpan="3" Width="670" x:Name="CashierTabControl">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
+                </TabControl.Resources>
                 <TabControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock><Run Text="{Binding name}"/></TextBlock>
+                        <TextBlock><Run Text="{Binding Description}"/></TextBlock>
                     </DataTemplate>
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ItemsControl Name="MenuPanel" ItemsSource="{Binding menuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
+                            <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8">
+                            <DockPanel>
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="90"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="90" />
+                                    <RowDefinition Height="90" />
+                                </Grid.RowDefinitions>
+                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Padding="8" Grid.ColumnSpan="4" Grid.Row="0">
+                                    <DockPanel>
+                                    <TextBlock FontSize="32" HorizontalAlignment="Right" VerticalAlignment="Center">
+                         <Run Text="$" />
+                                    <Run Text="{Binding PaidAmount}" />
+                                    </TextBlock>
+                                        </DockPanel>
+                                    </Border>
+                                    <Button Grid.Column="0" Grid.Row="3" Content="7" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="7"/>
+                                    <Button Grid.Column="1" Grid.Row="3" Content="8" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="8"/>
+                                    <Button Grid.Column="2" Grid.Row="3" Content="9" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="9"/>
+                                    <Button Grid.Column="0" Grid.Row="2" Content="4" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="4"/>
+                                    <Button Grid.Column="1" Grid.Row="2" Content="5" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="5"/>
+                                    <Button Grid.Column="2" Grid.Row="2" Content="6" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="6"/>
+                                    <Button Grid.Column="0" Grid.Row="1" Content="1" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="1"/>
+                                    <Button Grid.Column="1" Grid.Row="1" Content="2" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="2"/>
+                                    <Button Grid.Column="2" Grid.Row="1" Content="3" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="3"/>
+                                    <Button Grid.Column="0" Grid.Row="4" Content="0" Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="0"/>
+                                    <Button Grid.Column="1" Grid.Row="4" Content="." Margin="3" FontSize="32" Command="{Binding NumberButtonClicked}" CommandParameter="."/>
+                                    <Button Grid.Column="3" Grid.Row="1" Content="C" Margin="3" FontSize="32" Command="{Binding CancelButtonClicked}" />
+                                    <Button Grid.Column="2" Grid.Row="4" Content="Enter" Margin="3" FontSize="32" Command="{Binding EnterButtonClicked}" IsDefault="True"/>
+                                    <Button Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Content="" Margin="3" FontSize="32" IsEnabled="False"/>
+                                    
+                                </Grid>
+                            </DockPanel>
+                        </Border>
+          
                     </DataTemplate>
                 </TabControl.ContentTemplate>
             </TabControl>
@@ -62,21 +86,21 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.48*"/>
-                    <ColumnDefinition Width="0.52*"/>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="120*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding subTotal, StringFormat=F2}" /></TextBlock>
-                <TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding taxAmount, StringFormat=F2}" /></TextBlock>
-                <TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding totalPrice, StringFormat=F2}" /></TextBlock>
-                <Button Content="Cancel" Margin="9,5,152,0" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding Cancel}"/>
-                <Button Content="Cashier" Grid.Column="1" Margin="16,6,0,0" Height="45" FontWeight="Bold" Grid.Row="3" HorizontalContentAlignment="Center" />
+                <TextBlock Height="17" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Subtotal: $"/><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
+                <TextBlock Height="17" Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Tax: $"/><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
+                <TextBlock Height="20" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,8,0"><Run Text="Total: $"/><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+                <Button Content="Cancel" Height="45" Grid.Column="0" Grid.Row="3" Command="{Binding Cancel}"/>
+                <Button Content="Cashier" Height="45" Grid.Column="1" Grid.Row="3" Command="{Binding Cashier}"/>
             </Grid>
-            <DataGrid ItemsSource="{Binding order}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
+            <DataGrid ItemsSource="{Binding Order.Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Margin="3,0,0,0" Background="{x:Null}" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding number}" Header="#"/>
-                    <DataGridTextColumn Binding="{Binding quantity}" Header="Qty"/>
-                    <DataGridTextColumn Binding="{Binding menuItem.name}" Header="Item" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding menuItem.price}" Header="Price" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Number}" Header="#"/>
+                    <DataGridTextColumn Binding="{Binding Quantity}" Header="Qty"/>
+                    <DataGridTextColumn Binding="{Binding MenuItem.Name}" Header="Item" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding MenuItem.Price}" Header="Price" IsReadOnly="True"/>
                     <DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

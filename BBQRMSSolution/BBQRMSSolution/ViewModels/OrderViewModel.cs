@@ -7,23 +7,23 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class OrderViewModel : ViewModelBase
 	{
-		private Timer t;
+		private Timer _t;
 
-		private decimal st, tp, ta;
-		public decimal subTotal { get { return st; } set { st = value; NotifyPropertyChanged("subTotal"); } }
-		public decimal totalPrice { get { return tp; } set { tp = value; NotifyPropertyChanged("totalPrice"); } }
-		public decimal taxAmount { get { return ta; } set { ta = value; NotifyPropertyChanged("taxAmount"); } }
+		private decimal _st, _tp, _ta;
+		public decimal SubTotal { get { return _st; } set { _st = value; NotifyPropertyChanged("subTotal"); } }
+		public decimal TotalPrice { get { return _tp; } set { _tp = value; NotifyPropertyChanged("totalPrice"); } }
+		public decimal TaxAmount { get { return _ta; } set { _ta = value; NotifyPropertyChanged("taxAmount"); } }
 
 		public OrderViewModel()
 		{
 			DateTime now = DateTime.Now;
 			now = now.AddMilliseconds(-now.Millisecond);
 			OrderSubmittedDate = now;
-			t = new Timer(UpdateAge, null, 0, 1000 );
+			_t = new Timer(UpdateAge, null, 0, 1000 );
 
-			totalPrice = 0.00m;
-			subTotal = 0.00m;
-			taxAmount = 0.00m;
+			TotalPrice = 0.00m;
+			SubTotal = 0.00m;
+			TaxAmount = 0.00m;
 		}
 
 		private void UpdateAge(object state)
@@ -33,39 +33,37 @@ namespace BBQRMSSolution.ViewModels
 
 		public DateTime OrderSubmittedDate { get; set; }
 
-		private readonly ObservableCollection<OrderItem> mItems = new ObservableCollection<OrderItem>();
+		private readonly ObservableCollection<OrderItem> _mItems = new ObservableCollection<OrderItem>();
 		public ObservableCollection<OrderItem> Items
 		{
-			get { return mItems; }
+			get { return _mItems; }
 		}
 
-		private int mOrderNumber;
+		private int _mOrderNumber;
 
 		public int OrderNumber
 		{
-			get { return mOrderNumber; }
+			get { return _mOrderNumber; }
 			set
 			{
-				if (value != mOrderNumber)
+				if (value != _mOrderNumber)
 				{
-					mOrderNumber = value;
+					_mOrderNumber = value;
 					NotifyPropertyChanged("OrderNumber");
 				}
 			}
 		}
 
-		private TimeSpan mOrderAge;
+		private TimeSpan _mOrderAge;
 
 		public TimeSpan OrderAge
 		{
-			get { return mOrderAge; }
+			get { return _mOrderAge; }
 			set
 			{
-				if (value != mOrderAge)
-				{
-					mOrderAge = value;
-					NotifyPropertyChanged("OrderAge");
-				}
+				if (value == _mOrderAge) return;
+				_mOrderAge = value;
+				NotifyPropertyChanged("OrderAge");
 			}
 		}
 	}

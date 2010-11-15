@@ -21,6 +21,8 @@
 			<Style x:Key="BigTabStyle" TargetType="{x:Type TabItem}">
 				<Setter Property="MinHeight" Value="75"/>
 				<Setter Property="TextElement.FontSize" Value="24"/>
+                <Setter Property="TextElement.Foreground" Value="{Binding TextColor}" />
+                <Setter Property="Background" Value="{Binding BackColor}" />
 			</Style>
 			
 			<Color x:Key="ApplicationBackgroundColor">White</Color>

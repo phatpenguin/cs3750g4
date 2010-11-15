@@ -8,15 +8,15 @@ namespace BBQRMSSolution.Models
 {
 	public class OrderItem : BaseModel
 	{
-		public MenuItem menuItem { get; set; }
+		public MenuItem MenuItem { get; set; }
 
 		private int q;
-		public int quantity { get { return q; } set { q = value; NotifyPropertyChanged("quantity"); } }
+		public int Quantity { get { return q; } set { q = value; NotifyPropertyChanged("quantity"); } }
 		public DelegateCommand DoAction { get; set; }
 
 		public OrderItem()
 		{
-			menuItem = new MenuItem();
+			MenuItem = new MenuItem();
 		}
 	}
 }

@@ -19,7 +19,7 @@
 				<DataTemplate>
 					<Button Command="{Binding GoToContentCommand}" Padding="4" Margin="1,2,1,2">
 						<StackPanel>
-							<Image Source="{Binding Path=ImageSource}" />
+							<Image Source="{Binding Path=ImageSource}" Width="32" Height="32"/>
 							<TextBlock Text="{Binding Path=Name}"/>
 						</StackPanel>
 					</Button>
