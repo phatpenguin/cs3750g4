@@ -35,7 +35,7 @@ namespace BBQRMSSolution.ViewModels
 						new Menu
 							{
 								Name = "Meats",
-								BackColor = "#FF0000",
+								BackColor = "#990000",
 								TextColor = "#FFFFFF",
 								MenuItems =
 									{
@@ -48,7 +48,7 @@ namespace BBQRMSSolution.ViewModels
 						new Menu
 							{
 								Name = "Sides",
-								BackColor = "#00FF00",
+								BackColor = "#009900",
 								TextColor = "#FFFFFF",
 								MenuItems =
 									{
@@ -64,7 +64,7 @@ namespace BBQRMSSolution.ViewModels
 						new Menu
 							{
 								Name = "Drinks",
-								BackColor = "#0000FF",
+								BackColor = "#000099",
 								TextColor = "#FFFFFF",
 								MenuItems =
 									{
