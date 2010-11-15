@@ -49,7 +49,7 @@
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
 				<DataTemplate>
-                        <DockPanel Background="{Binding BackColor}">
+                        <DockPanel>
                             <ItemsControl Name="MenuPanel" ItemsSource="{Binding MenuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
                         </DockPanel>
                     </DataTemplate>
