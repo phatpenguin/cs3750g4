@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BBQRMSSolution.App">
+    <Position X="43" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.MainWindow">
+    <Position X="48.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Models.BaseModel">
+    <Position X="1.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BaseModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BBQRMSSolution.Models.Menu">
+    <Position X="50" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAIAAAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Models\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Models.MenuItem">
+    <Position X="44.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAEAAAQAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Models.MethodOfPayment">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAOBAAAAAIAAAAAAIAgAAAAAAABAAA=</HashCode>
+      <FileName>Models\MethodOfPayment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Models.OrderItem">
+    <Position X="2.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABABAAAAAAAAAAAIAAAAAAAAoBAAAAg=</HashCode>
+      <FileName>Models\OrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RUBPrototypes.SampleData.InventoryItemsItem" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAIAAAAAAAgAAAAAEBBAAAgAAAAAE=</HashCode>
+      <FileName>SampleData\InventoryItems.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RUBPrototypes.SampleData.InventoryItems">
+    <Position X="48.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SampleData\InventoryItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.SampleData.SampleOrders">
+    <Position X="44.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SampleData\SampleOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ApplicationMenuOptionViewModel">
+    <Position X="18.5" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAIAAAAAACAkAAAQQAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ApplicationMenuOptionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ChooseReportViewModel">
+    <Position X="23.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAEAAAIAAAAAAACAAAQBAAAAAAggAAA=</HashCode>
+      <FileName>ViewModels\ChooseReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.CooksScreenViewModel">
+    <Position X="29" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAUAAAA=</HashCode>
+      <FileName>ViewModels\CooksScreenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.CustomerOrderScreenViewModel">
+    <Position X="38.25" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAASNAIAkAAAAAAAAAAAACAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>ViewModels\CustomerOrderScreenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.DelegateCommand" BaseTypeListCollapsed="true">
+    <Position X="50" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAQAICAAQAAEAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.EmployeeManagementViewModel">
+    <Position X="12.5" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\EmployeeManagementViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.InventoryItem">
+    <Position X="48.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAgAAAAAAAAEAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\InventoryItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.InventoryManagementViewModel">
+    <Position X="25.25" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\InventoryManagementViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.LoginViewModel">
+    <Position X="30.75" Y="3.25" Width="2.75" />
+    <InheritanceLine Type="BBQRMSSolution.ViewModels.ViewModelBase" FixedToPoint="true">
+      <Path>
+        <Point X="23.375" Y="2.363" />
+        <Point X="23.375" Y="2.738" />
+        <Point X="32.125" Y="2.738" />
+        <Point X="32.125" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.MainWindowViewModel">
+    <Position X="36.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>hABAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.OrderCashierScreenViewModel">
+    <Position X="6.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAIAAAACAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\OrderCashierScreenViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.OrderViewModel">
+    <Position X="9.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAYAAAQkCQAAAAAAAQBAAgEAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ViewModels\OrderViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.PaymentViewModel">
+    <Position X="20.25" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PaymentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.PostLoginViewModel">
+    <Position X="22" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAkAAAAgAAAQAAAAEgAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\PostLoginViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.QuickInventoryViewModel">
+    <Position X="27" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAAAAwAABA=</HashCode>
+      <FileName>ViewModels\QuickInventoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.InventoryLocation">
+    <Position X="32.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\QuickInventoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.QuickInventoryItem">
+    <Position X="34.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABgAAEEAAAAQAAAAAAQAAAAAgAYAAAAA=</HashCode>
+      <FileName>ViewModels\QuickInventoryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ReportViewModel">
+    <Position X="4.25" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAABEAAEAAAAAAAABAAAAAAAAABAAAAAIAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\ReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ReportParameterViewModel">
+    <Position X="15.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ReportDateParameterViewModel">
+    <Position X="15.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ViewModels\ReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ReportOptionParameterViewModel">
+    <Position X="12.5" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewModels\ReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.ViewModels.ViewModelBase">
+    <Position X="22" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BBQRMSSolution.Views.ChooseReport">
+    <Position X="44.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ChooseReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.CooksScreen">
+    <Position X="46.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CooksScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.CustomerOrderScreen">
+    <Position X="48.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CustomerOrderScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.EmployeeInfo">
+    <Position X="43" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmployeeInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.EmployeeManangment">
+    <Position X="44.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Views\EmployeeManangment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.InventoryItemDetail">
+    <Position X="48.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InventoryItemDetail.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.InventoryManagement">
+    <Position X="46.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Views\InventoryManagement.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.LoginView">
+    <Position X="46.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAgAAQAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.OrderCashierScreen">
+    <Position X="46.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OrderCashierScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.PostLoginView">
+    <Position X="44.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PostLoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.QuickInventoryScreen">
+    <Position X="46.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\QuickInventoryScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.ReportViewer">
+    <Position X="50" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ReportViewer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.RoleManagement">
+    <Position X="43" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\RoleManagement.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BBQRMSSolution.ViewModels.INavigationService">
+    <Position X="43" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\INavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
