@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BBQRMSSolution.Views.EmployeeInfo">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmployeeInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.ChooseReport">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ChooseReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.CooksScreen">
+    <Position X="8.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CooksScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.CustomerOrderScreen">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CustomerOrderScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.QuickInventoryScreen">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\QuickInventoryScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.PostLoginView">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PostLoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.EmployeeManangment">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Views\EmployeeManangment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.LoginView">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAgAAQAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.InventoryManagement">
+    <Position X="8.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Views\InventoryManagement.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.OrderCashierScreen">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OrderCashierScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.RoleManagement">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\RoleManagement.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.MainWindow">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.InventoryItemDetail">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InventoryItemDetail.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.Views.ReportViewer">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ReportViewer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BBQRMSSolution.App">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
