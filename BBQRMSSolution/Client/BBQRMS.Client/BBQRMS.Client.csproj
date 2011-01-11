@@ -41,7 +41,10 @@
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +69,11 @@
     </ApplicationDefinition>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Service References\ServerProxy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.datasvcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
@@ -206,6 +214,7 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
+    <None Include="Service References\ServerProxy\service.edmx" />
     <Page Include="Views\ChooseReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -290,6 +299,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\cash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\ServerProxy\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServerProxy\Reference.datasvcmap">
+      <Generator>DataServiceClientGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
