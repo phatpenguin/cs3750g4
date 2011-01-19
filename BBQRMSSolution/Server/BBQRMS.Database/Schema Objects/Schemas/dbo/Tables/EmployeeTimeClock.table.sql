@@ -2,6 +2,6 @@
 (
 	id			int identity,
 	employeeId	int	NOT NULL,
-	clockInTime	datetime NOT NULL,
-	clockOutTime datetime NULL
+	clockInTimeUTC	smalldatetime NOT NULL,
+	clockOutTimeUTC smalldatetime NULL
 )
