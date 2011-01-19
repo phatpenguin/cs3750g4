@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="d3be6e12-8fa7-4049-8fba-447f7abf57ef" ChangeDateTime="01/19/2011 08:35:59">
+    <Property Name="ElementName" Value="[dbo].[Suppliers]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[Supplier]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="82219767-cde1-401d-8c82-4d5812921c66" ChangeDateTime="01/19/2011 08:36:18">
+    <Property Name="ElementName" Value="[dbo].[Roles]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[Role]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f7d368c8-7930-4fe5-8b02-09c5ceff3ae7" ChangeDateTime="01/19/2011 08:36:42">
+    <Property Name="ElementName" Value="[dbo].[EmployeePayTypes]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[EmployeePayType]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9d55568f-1c33-430e-9297-e4282eec8d8f" ChangeDateTime="01/19/2011 08:42:07">
+    <Property Name="ElementName" Value="[dbo].[Locations]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[Location]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="586f249c-783f-4d8e-ac78-a4526a3b285d" ChangeDateTime="01/19/2011 08:42:29">
+    <Property Name="ElementName" Value="[dbo].[SupplierContacts]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[SupplierContact]" />
+  </Operation>
+</Operations>

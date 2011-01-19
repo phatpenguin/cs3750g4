@@ -1,3 +1,3 @@
 ﻿ALTER TABLE [dbo].[Menu]
 	ADD CONSTRAINT [PK_Menu]
-	PRIMARY KEY (ID)
+	PRIMARY KEY (id)

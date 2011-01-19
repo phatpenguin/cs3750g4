@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Suppliers]
+﻿CREATE TABLE [dbo].[Supplier]
 (
 	id				int identity,
 	name			nvarchar(MAX) NOT NULL,
