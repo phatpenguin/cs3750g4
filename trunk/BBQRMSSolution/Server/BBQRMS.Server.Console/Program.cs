@@ -10,8 +10,9 @@ namespace BBQRMS.ServerConsole
 	{
 		static void Main(string[] args)
 		{
-			Host.Open();
-			Console.WriteLine("Service listening.");
+			Uri address = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMS/");
+			Host.Open(address);
+			Console.WriteLine("Service listening at {0}", address);
 			Console.WriteLine("Press any key to terminate.");
 			Console.ReadKey();
 			Host.Close();

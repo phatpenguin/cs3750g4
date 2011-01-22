@@ -4,18 +4,42 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BBQRMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="BBQRMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BBQRMSModelStoreContainer">
           <EntitySet Name="ApplicationUser" EntityType="BBQRMSModel.Store.ApplicationUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="BBQRMSModel.Store.Employee" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Menu" EntityType="BBQRMSModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.Store.FK_Employee_ApplicationUser">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ApplicationUser">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="idPart" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PIN" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="idPart" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="personalPart" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="employeeId" Type="int" Nullable="false" />
+          <Property Name="displayName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hireDate" Type="datetime" Nullable="false" />
+          <Property Name="phone1" Type="nvarchar" MaxLength="1" />
+          <Property Name="phone2" Type="nvarchar" MaxLength="1" />
+          <Property Name="phone3" Type="nvarchar" MaxLength="1" />
+          <Property Name="address1" Type="nvarchar(max)" />
+          <Property Name="address2" Type="nvarchar(max)" />
+          <Property Name="email1" Type="nvarchar(max)" />
+          <Property Name="email2" Type="nvarchar(max)" />
+          <Property Name="payTypeId" Type="int" Nullable="false" />
+          <Property Name="payAmount" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -24,23 +48,33 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Employee_ApplicationUser">
+          <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUser" Type="BBQRMSModel.Store.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BBQRMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BBQRMSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
           <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
+          <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
+          <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
+          <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ApplicationUser">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PIN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="ID" />
@@ -48,21 +82,86 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="idPart" />
+          </Key>
+          <Property Type="String" Name="idPart" Nullable="false" />
+          <Property Type="String" Name="personalPart" Nullable="false" />
+          <Property Type="Int32" Name="employeeId" Nullable="false" />
+          <Property Type="String" Name="displayName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="firstName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="lastName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="hireDate" Nullable="false" />
+          <Property Type="String" Name="phone1" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="phone2" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="phone3" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="payTypeId" Nullable="false" />
+          <Property Type="Decimal" Name="payAmount" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
+        </EntityType>
+        <Association Name="FK_Employee_ApplicationUser">
+          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="BBQRMSModel.ApplicationUser" Role="ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BBQRMSModelStoreContainer" CdmEntityContainer="BBQRMSEntities">
-          <EntitySetMapping Name="ApplicationUsers"><EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser"><MappingFragment StoreEntitySet="ApplicationUser">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="PIN" ColumnName="PIN" />
-            <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Menus"><EntityTypeMapping TypeName="BBQRMSModel.Menu"><MappingFragment StoreEntitySet="Menu">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUsers">
+            <EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="personalPart" ColumnName="personalPart" />
+                <ScalarProperty Name="idPart" ColumnName="idPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BBQRMSModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="payAmount" ColumnName="payAmount" />
+                <ScalarProperty Name="payTypeId" ColumnName="payTypeId" />
+                <ScalarProperty Name="email2" ColumnName="email2" />
+                <ScalarProperty Name="email1" ColumnName="email1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="phone3" ColumnName="phone3" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -84,8 +183,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BBQRMS">
-        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
         <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="0.75" PointY="4" Height="3.7109993489583317" />
+        <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >
+          <ConnectorPoint PointX="2.25" PointY="5.8651432291666667" />
+          <ConnectorPoint PointX="3" PointY="5.8651432291666667" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

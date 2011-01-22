@@ -13,8 +13,9 @@ union select top 0 * from [dbo].[Employee]) a
 
 insert into #Employee
 values 
-(1, 'First', 'Name', '2011-01-19', null, null, null, null, null, null, null, 1, 7.25),
-(2, 'Second', 'Name', '2010-01-19', null, null, null, null, null, null, null, 1, 9.45)
+(1, 'First', 'User', '2011-01-19', null, null, null, null, null, null, null, 1, 7.25),
+(2, 'Second', 'User', '2010-01-19', null, null, null, null, null, null, null, 1, 9.45),
+(3, 'Third', 'User', '2010-01-19', null, null, null, null, null, null, null, 1, 9.45)
 
 set identity_insert [dbo].[Employee] on
 
@@ -22,7 +23,13 @@ update [dbo].[Employee]
 set firstName = Source.firstName,
 lastName = Source.lastName,
 hireDate = Source.hireDate,
--- other columns
+phone1 = Source.phone1, 
+phone2 = Source.phone2, 
+phone3 = Source.phone3,
+address1 = Source.address1,
+address2 = Source.address2,
+email1 = Source.email1,
+email2 = Source.email2,
 payTypeId = Source.payTypeId,
 payAmount = Source.payAmount
 from [dbo].[Employee] Target inner join #Employee Source on Target.id = Source.id
@@ -34,17 +41,21 @@ where Target.id is null
 
 set identity_insert [dbo].[Employee] off
 
+
+
 select top 0 *
 into #ApplicationUser
 from [dbo].[ApplicationUser]
 
 insert into #ApplicationUser (idPart, personalPart, employeeId, displayName)
 values
-(1,11,1,'First Name'),
-(2,22,2,'Second Name')
+('1','11',1,'First User'),
+('2','22',2,'Second User'),
+('3','33',3,'Third User')
 
 update [dbo].[ApplicationUser]
-set personalPart = Source.idPart,
+set idPart = Source.idPart,
+personalPart = Source.personalPart,
 employeeId = Source.employeeId,
 displayName = Source.displayName
 from [dbo].[ApplicationUser] Target inner join #ApplicationUser Source on Target.idPart = Source.idPart
