@@ -19,15 +19,11 @@
 			</ImageBrush>
 		</Grid.Background>
 		<Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="346"/>
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
-			<Border Grid.ColumnSpan="2" Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8">
-				<Grid>
-					<UniformGrid Height="440" VerticalAlignment="Center" Columns="3" Rows="4" Margin="0,0,319.847,0">
-						<Button Content="7" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="7" />
-						<Button Content="8" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="8" />
+			<Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8">
+				<DockPanel>
+					<UniformGrid Height="440" Width="350" VerticalAlignment="Center" Columns="3" Rows="4" >
+						<Button Content="7" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="7"/>
+						<Button Content="8" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="8"/>
 						<Button Content="9" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="9"/>
 						<Button Content="4" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="4"/>
 						<Button Content="5" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="5"/>
@@ -35,17 +31,22 @@
 						<Button Content="1" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="1"/>
 						<Button Content="2" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="2"/>
 						<Button Content="3" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="3"/>
+						<Rectangle/>
 						<Button Content="0" Margin="3" FontSize="32" Click="Button_Click" CommandParameter="0"/>
-						<Button Content="Cancel" Margin="3" FontSize="32" IsCancel="True" Click="Button_Click_1" />
-						<Button Content="Enter" Margin="3" FontSize="32" Command="{Binding LoginCommand}" IsDefault="True"/>
+						<Rectangle/>
 					</UniformGrid>
-					<StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
-						<TextBlock TextWrapping="Wrap" Text="Enter your PIN to log in" TextAlignment="Center" FontSize="29.333"/>
-						<PasswordBox FontSize="32" x:Name="passwordBox" HorizontalAlignment="Center" MinWidth="300" Width="300" Height="42.7966666666667"/>
+					<StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,0,0">
+						<TextBlock TextWrapping="Wrap" Text="Enter your PIN to log in." TextAlignment="Center" FontSize="29"/>
+						<PasswordBox FontSize="32" x:Name="passwordBox" HorizontalAlignment="Center" MinWidth="300" Width="300" Height="43" />
+						<TextBlock Name="errorText" Opacity="0" FontSize="20" Foreground="Red" FontWeight="Heavy" FontStyle="Italic" Text="Invalid Pin Entered" HorizontalAlignment="Center" />
+						<StackPanel Orientation="Horizontal" Height="110" HorizontalAlignment="Right" Margin="0,30,0,0">
+							<Button Content="Cancel" x:Name="cancelButton" Margin="3,3,30,3" Width="116" FontSize="32" IsCancel="True" Click="cancelButton_Click" />
+							<Button Content="Enter" x:Name="enterButton" Margin="3" Width="116" FontSize="32" IsDefault="True" Click="enterButton_Click"/>
+						</StackPanel>
 					</StackPanel>
-				</Grid>
+				</DockPanel>
 			</Border>
 		</Grid>
-		<Button Content="Exit" Height="35" HorizontalAlignment="Right" x:Name="button1" VerticalAlignment="Bottom" Width="75" Click="button1_Click_1" Margin="0,0,8,8" />
+		<Button Content="Exit" x:Name="exitButton" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Click="exitButton_Click" Margin="0,0,8,8" />
 	</Grid>
 </UserControl>

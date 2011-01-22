@@ -153,9 +153,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ApplicationUser.PK_ApplicationUser.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\ApplicationUser.AK_ApplicationUser_DisplayName.index.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Menu.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -228,6 +225,12 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Employee.PK_Employee.pkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ApplicationUser.UK_ApplicationUser_employeeId.ukey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ApplicationUser.UK_ApplicationUser_displayName.ukey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <DeploymentExtensionConfiguration Include="BBQRMS.Database.refactorlog">
@@ -239,8 +242,7 @@
       <SubType>NotInBuild</SubType>
     </NotInBuild>
   </ItemGroup>
-
-	<Target Name="AfterDeploy">
-		<Message Importance="high" Text="This is running after deploy"/>
-	</Target>
+  <Target Name="AfterDeploy">
+    <Message Importance="high" Text="This is running after deploy" />
+  </Target>
 </Project>

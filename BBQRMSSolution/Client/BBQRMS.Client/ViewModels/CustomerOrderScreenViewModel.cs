@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using BBQRMSSolution.Models;
+using BBQRMSSolution.ServerProxy;
+using Controls;
+using Menu = BBQRMSSolution.Models.Menu;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
+		private readonly BBQRMSEntities mDataService;
 		private readonly ObservableCollection<OrderViewModel> _mPendingOrders;
 
 		public ObservableCollection<Menu> Menus { get; set; }
@@ -78,19 +83,12 @@ namespace BBQRMSSolution.ViewModels
 					};
 		}
 
-		public CustomerOrderScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders)
+		private readonly IMessageBus mMessageBus;
+		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, ObservableCollection<OrderViewModel> pendingOrders, IMessageBus navigationService)
 		{
+			mDataService = dataService;
 			_mPendingOrders = pendingOrders;
-			Order = new OrderViewModel();
-
-			Menus = BuildSampleMenus();
-		}
-
-		private readonly INavigationService _mNavigationService;
-		public CustomerOrderScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders, INavigationService navigationService)
-		{
-			_mPendingOrders = pendingOrders;
-			_mNavigationService = navigationService;
+			mMessageBus = navigationService;
 
 			Order = new OrderViewModel();
 
@@ -145,12 +143,12 @@ namespace BBQRMSSolution.ViewModels
 		public void PlaceOrder()
 		{
 			_mPendingOrders.Add(Order);
-			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order,_mNavigationService);
+			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order,mMessageBus);
 
 			Order = new OrderViewModel();
 			NotifyPropertyChanged("order");
 
-			_mNavigationService.Content = orderCashierScreenViewModel;
+			mMessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
 		}
 	}
 }

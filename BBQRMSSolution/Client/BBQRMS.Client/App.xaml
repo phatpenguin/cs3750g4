@@ -28,6 +28,14 @@
 			<Color x:Key="ApplicationBackgroundColor">White</Color>
 			<SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{DynamicResource ResourceKey=ApplicationBackgroundColor}" />
 
+			<Storyboard x:Key="fadeIn">
+				<DoubleAnimationUsingKeyFrames BeginTime="0" AutoReverse="True" Storyboard.TargetProperty="Opacity">
+					<LinearDoubleKeyFrame Value="0" KeyTime="0"/>
+					<LinearDoubleKeyFrame Value="1" KeyTime="00:00:0.4"/>
+					<LinearDoubleKeyFrame Value="1" KeyTime="00:00:0.75"/>
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+
 		</ResourceDictionary>
 
 	</Application.Resources>

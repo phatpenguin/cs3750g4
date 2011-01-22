@@ -1,110 +1,125 @@
 using System;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.SampleData;
+using BBQRMSSolution.ServerProxy;
+using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
-	public class PostLoginViewModel : ViewModelBase, INavigationService
+	public class PostLoginViewModel : ViewModelBase, IHandle<ShowScreen>
 	{
-		private readonly MainWindowViewModel _mMainWindow;
-		private readonly ObservableCollection<OrderViewModel> _mPendingOrders = SampleOrders.Sample;
+		private readonly IMessageBus mMessageBus;
+		private readonly BBQRMSEntities mDataService;
+		private readonly SecurityContext mSecurityContext;
+
+		private ViewModelBase mContent;
+
+		private readonly ObservableCollection<OrderViewModel> mPendingOrders = SampleOrders.Sample;
 
 		[Obsolete("To be used only at design time")]
 		public PostLoginViewModel()
 		{
-					
-			ApplicationMenuItems =
-				new ObservableCollection<ApplicationMenuOptionViewModel>
-					{
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Take Orders",
-								ViewModelFactory = () => new CustomerOrderScreenViewModel(_mPendingOrders,this),
-								ImageSource = "/Graphics/accessories-text-editor.png"
-							},
-							new ApplicationMenuOptionViewModel(this)
-								{
-									Name = "Cashier Order",
-									ViewModelFactory = () => new OrderCashierScreenViewModel(_mPendingOrders[_mPendingOrders.Count - 1],this),
-									ImageSource = "/Graphics/cash.png"
-								},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Cooks Screen",
-								ViewModelFactory = () => new CooksScreenViewModel(_mPendingOrders),
-								ImageSource = "/Graphics/Anonymous_Chef.png"
-							},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Quick Inventory Screen",
-								ViewModelFactory = () => new QuickInventoryViewModel(),
-								ImageSource = "/Graphics/to_do_list_cheked_1.png"
-							},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Reporting",
-								ViewModelFactory = () => new ChooseReportViewModel(this),
-								ImageSource = "/Graphics/x-office-spreadsheet.png"
-							},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Manage Employees",
-								ViewModelFactory = () => new EmployeeManagementViewModel(),
-								ImageSource = "/Graphics/system-users.png"
-							},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Manage Inventory",
-								ViewModelFactory = () => new InventoryManagementViewModel(),
-								ImageSource = "/Graphics/file_manager.png"
-							},
-						new ApplicationMenuOptionViewModel(this)
-							{
-								Name = "Manage Menus",
-								//ViewModelFactory = () => new ...
-								ImageSource = "/Graphics/menu.png"
-							}
-					};
-
-			LogOutCommand = new DelegateCommand(HandleLogout);
+			var sc = new DesignTimeSecurityContext();
+			sc.CurrentUser = new Employee {firstName = "Fred", lastName = "Jones"};
+			mSecurityContext = sc;
 		}
 
-#pragma warning disable 612,618
-		public PostLoginViewModel(MainWindowViewModel mainWindow) : this()
-#pragma warning restore 612,618
+
+		public PostLoginViewModel(BBQRMSEntities dataService, IMessageBus messageBus, SecurityContext securityContext)
 		{
-			_mMainWindow = mainWindow;
+			mMessageBus = messageBus;
+			mDataService = dataService;
+			mSecurityContext = securityContext;
+			messageBus.Subscribe(this);
 		}
 
-		public DelegateCommand LogOutCommand { get; private set; }
-
-		private void HandleLogout()
+		public ViewModelBase Content
 		{
-			_mMainWindow.ShowLoginScreen();
-		}
-
-		public ObservableCollection<ApplicationMenuOptionViewModel> ApplicationMenuItems { get; private set; }
-
-
-		private object _mContent;
-		public object Content
-		{
-			get { return _mContent; }
+			get { return mContent; }
 			set
 			{
-				if (value != _mContent)
+				if (value != mContent)
 				{
-					_mContent = value;
+					mContent = value;
 					NotifyPropertyChanged("Content");
 				}
 			}
 		}
 
-
-		ViewModelBase INavigationService.Content
+		public SecurityContext SecurityContext
 		{
-			get { return Content as ViewModelBase; }
-			set { Content = value; }
+			get
+			{
+				return mSecurityContext;
+			}
 		}
+
+
+		public void HandleTakeOrders()
+		{
+			//TODO: Show a new or existing viewmodel for taking orders.
+			mMessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(mDataService, mPendingOrders, mMessageBus)));
+		}
+
+		public void HandleCashier()
+		{
+			//TODO: Show a new or existing viewmodel for cashiering.
+			mMessageBus.Publish(new ShowScreen(new OrderCashierScreenViewModel(mPendingOrders[mPendingOrders.Count - 1], mMessageBus)));
+		}
+
+		public void HandleCooksScreen()
+		{
+			//TODO: Show a new or existing viewmodel for the cooks screen.
+			mMessageBus.Publish(new ShowScreen(new CooksScreenViewModel(mPendingOrders)));
+		}
+
+		public void HandleQuickInventoryScreen()
+		{
+			//TODO: Show a new or existing viewmodel for quick inventory.
+			mMessageBus.Publish(new ShowScreen(new QuickInventoryViewModel()));
+		}
+
+		public void HandleReporting()
+		{
+			//TODO: Show a new or existing viewmodel for reporting.
+			mMessageBus.Publish(new ShowScreen(new ChooseReportViewModel(mMessageBus)));
+		}
+
+		public void HandleManageEmployees()
+		{
+			//TODO: Show a new or existing viewmodel for managing employees.
+			mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
+		}
+
+		public void HandleManageInventory()
+		{
+			//TODO: Show a new or existing viewmodel for managing inventory.
+			mMessageBus.Publish(new ShowScreen(new InventoryManagementViewModel()));
+		}
+
+		public void HandleManageMenus()
+		{
+			//TODO: Show a new or existing viewmodel for managing menus.
+		}
+
+		public void HandleLogout()
+		{
+			mMessageBus.Publish(new UserLoggingOut());
+		}
+
+
+		void IHandle<ShowScreen>.Handle(ShowScreen message)
+		{
+			Content = message.ViewModelToShow;
+		}
+	}
+
+	public class DesignTimeSecurityContext : SecurityContext
+	{
+		public new Employee CurrentUser { get; set; }
+	}
+
+	public class UserLoggingOut
+	{
 	}
 }

@@ -1,13 +1,14 @@
 using System;
 using System.Collections.ObjectModel;
+using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class ChooseReportViewModel : ViewModelBase
 	{
-		public ChooseReportViewModel(INavigationService navigationService)
+		public ChooseReportViewModel(IMessageBus messageBus)
 		{
-			mNavigationService = navigationService;
+			mMessageBus = messageBus;
 
 			Reports =
 				new ObservableCollection<ReportViewModel>
@@ -157,7 +158,7 @@ namespace BBQRMSSolution.ViewModels
 
 		public void HandleRunReport()
 		{
-			mNavigationService.Content = SelectedReport;
+			mMessageBus.Publish(new ShowScreen(SelectedReport));
 		}
 
 		private bool CanRunReport()
@@ -181,7 +182,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 		private ObservableCollection<ReportViewModel> mReports;
-		private readonly INavigationService mNavigationService;
+		private readonly IMessageBus mMessageBus;
 
 		public ObservableCollection<ReportViewModel> Reports
 		{
@@ -197,4 +198,13 @@ namespace BBQRMSSolution.ViewModels
 		}
 	}
 
+	public class ShowScreen
+	{
+		public ShowScreen(ViewModelBase viewModel)
+		{
+			ViewModelToShow = viewModel;
+		}
+
+		public ViewModelBase ViewModelToShow { get; private set; }
+	}
 }

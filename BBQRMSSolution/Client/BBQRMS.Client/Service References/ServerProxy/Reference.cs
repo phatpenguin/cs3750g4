@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 1/11/2011 12:45:00 PM
+// Generation date: 1/22/2011 12:05:30 AM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -59,23 +59,6 @@ namespace BBQRMSSolution.ServerProxy
             return null;
         }
         /// <summary>
-        /// There are no comments for ApplicationUsers in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<ApplicationUser> ApplicationUsers
-        {
-            get
-            {
-                if ((this._ApplicationUsers == null))
-                {
-                    this._ApplicationUsers = base.CreateQuery<ApplicationUser>("ApplicationUsers");
-                }
-                return this._ApplicationUsers;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<ApplicationUser> _ApplicationUsers;
-        /// <summary>
         /// There are no comments for Menus in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -96,10 +79,36 @@ namespace BBQRMSSolution.ServerProxy
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToApplicationUsers(ApplicationUser applicationUser)
+        public global::System.Data.Services.Client.DataServiceQuery<ApplicationUser> ApplicationUsers
         {
-            base.AddObject("ApplicationUsers", applicationUser);
+            get
+            {
+                if ((this._ApplicationUsers == null))
+                {
+                    this._ApplicationUsers = base.CreateQuery<ApplicationUser>("ApplicationUsers");
+                }
+                return this._ApplicationUsers;
+            }
         }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<ApplicationUser> _ApplicationUsers;
+        /// <summary>
+        /// There are no comments for Employees in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Employee> Employees
+        {
+            get
+            {
+                if ((this._Employees == null))
+                {
+                    this._Employees = base.CreateQuery<Employee>("Employees");
+                }
+                return this._Employees;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Employee> _Employees;
         /// <summary>
         /// There are no comments for Menus in the schema.
         /// </summary>
@@ -108,107 +117,21 @@ namespace BBQRMSSolution.ServerProxy
         {
             base.AddObject("Menus", menu);
         }
-    }
-    /// <summary>
-    /// There are no comments for BBQRMSModel.ApplicationUser in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// ID
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("ApplicationUsers")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
-    public partial class ApplicationUser : global::System.ComponentModel.INotifyPropertyChanged
-    {
         /// <summary>
-        /// Create a new ApplicationUser object.
-        /// </summary>
-        /// <param name="ID">Initial value of ID.</param>
-        /// <param name="pIN">Initial value of PIN.</param>
-        /// <param name="displayName">Initial value of DisplayName.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static ApplicationUser CreateApplicationUser(int ID, string pIN, string displayName)
-        {
-            ApplicationUser applicationUser = new ApplicationUser();
-            applicationUser.ID = ID;
-            applicationUser.PIN = pIN;
-            applicationUser.DisplayName = displayName;
-            return applicationUser;
-        }
-        /// <summary>
-        /// There are no comments for Property ID in the schema.
+        /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int ID
+        public void AddToApplicationUsers(ApplicationUser applicationUser)
         {
-            get
-            {
-                return this._ID;
-            }
-            set
-            {
-                this.OnIDChanging(value);
-                this._ID = value;
-                this.OnIDChanged();
-                this.OnPropertyChanged("ID");
-            }
+            base.AddObject("ApplicationUsers", applicationUser);
         }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _ID;
-        partial void OnIDChanging(int value);
-        partial void OnIDChanged();
         /// <summary>
-        /// There are no comments for Property PIN in the schema.
+        /// There are no comments for Employees in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string PIN
+        public void AddToEmployees(Employee employee)
         {
-            get
-            {
-                return this._PIN;
-            }
-            set
-            {
-                this.OnPINChanging(value);
-                this._PIN = value;
-                this.OnPINChanged();
-                this.OnPropertyChanged("PIN");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _PIN;
-        partial void OnPINChanging(string value);
-        partial void OnPINChanged();
-        /// <summary>
-        /// There are no comments for Property DisplayName in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string DisplayName
-        {
-            get
-            {
-                return this._DisplayName;
-            }
-            set
-            {
-                this.OnDisplayNameChanging(value);
-                this._DisplayName = value;
-                this.OnDisplayNameChanged();
-                this.OnPropertyChanged("DisplayName");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _DisplayName;
-        partial void OnDisplayNameChanging(string value);
-        partial void OnDisplayNameChanged();
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
+            base.AddObject("Employees", employee);
         }
     }
     /// <summary>
@@ -278,6 +201,496 @@ namespace BBQRMSSolution.ServerProxy
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.ApplicationUser in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// idPart
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("ApplicationUsers")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("idPart")]
+    public partial class ApplicationUser : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new ApplicationUser object.
+        /// </summary>
+        /// <param name="idPart">Initial value of idPart.</param>
+        /// <param name="personalPart">Initial value of personalPart.</param>
+        /// <param name="employeeId">Initial value of employeeId.</param>
+        /// <param name="displayName">Initial value of displayName.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static ApplicationUser CreateApplicationUser(string idPart, string personalPart, int employeeId, string displayName)
+        {
+            ApplicationUser applicationUser = new ApplicationUser();
+            applicationUser.idPart = idPart;
+            applicationUser.personalPart = personalPart;
+            applicationUser.employeeId = employeeId;
+            applicationUser.displayName = displayName;
+            return applicationUser;
+        }
+        /// <summary>
+        /// There are no comments for Property idPart in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string idPart
+        {
+            get
+            {
+                return this._idPart;
+            }
+            set
+            {
+                this.OnidPartChanging(value);
+                this._idPart = value;
+                this.OnidPartChanged();
+                this.OnPropertyChanged("idPart");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _idPart;
+        partial void OnidPartChanging(string value);
+        partial void OnidPartChanged();
+        /// <summary>
+        /// There are no comments for Property personalPart in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string personalPart
+        {
+            get
+            {
+                return this._personalPart;
+            }
+            set
+            {
+                this.OnpersonalPartChanging(value);
+                this._personalPart = value;
+                this.OnpersonalPartChanged();
+                this.OnPropertyChanged("personalPart");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _personalPart;
+        partial void OnpersonalPartChanging(string value);
+        partial void OnpersonalPartChanged();
+        /// <summary>
+        /// There are no comments for Property employeeId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int employeeId
+        {
+            get
+            {
+                return this._employeeId;
+            }
+            set
+            {
+                this.OnemployeeIdChanging(value);
+                this._employeeId = value;
+                this.OnemployeeIdChanged();
+                this.OnPropertyChanged("employeeId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _employeeId;
+        partial void OnemployeeIdChanging(int value);
+        partial void OnemployeeIdChanged();
+        /// <summary>
+        /// There are no comments for Property displayName in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string displayName
+        {
+            get
+            {
+                return this._displayName;
+            }
+            set
+            {
+                this.OndisplayNameChanging(value);
+                this._displayName = value;
+                this.OndisplayNameChanged();
+                this.OnPropertyChanged("displayName");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _displayName;
+        partial void OndisplayNameChanging(string value);
+        partial void OndisplayNameChanged();
+        /// <summary>
+        /// There are no comments for Employee in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Employee Employee
+        {
+            get
+            {
+                return this._Employee;
+            }
+            set
+            {
+                this._Employee = value;
+                this.OnPropertyChanged("Employee");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Employee _Employee;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.Employee in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Employees")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("id")]
+    public partial class Employee : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new Employee object.
+        /// </summary>
+        /// <param name="ID">Initial value of id.</param>
+        /// <param name="firstName">Initial value of firstName.</param>
+        /// <param name="lastName">Initial value of lastName.</param>
+        /// <param name="hireDate">Initial value of hireDate.</param>
+        /// <param name="payTypeId">Initial value of payTypeId.</param>
+        /// <param name="payAmount">Initial value of payAmount.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Employee CreateEmployee(int ID, string firstName, string lastName, global::System.DateTime hireDate, int payTypeId, decimal payAmount)
+        {
+            Employee employee = new Employee();
+            employee.id = ID;
+            employee.firstName = firstName;
+            employee.lastName = lastName;
+            employee.hireDate = hireDate;
+            employee.payTypeId = payTypeId;
+            employee.payAmount = payAmount;
+            return employee;
+        }
+        /// <summary>
+        /// There are no comments for Property id in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int id
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this.OnidChanging(value);
+                this._id = value;
+                this.OnidChanged();
+                this.OnPropertyChanged("id");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _id;
+        partial void OnidChanging(int value);
+        partial void OnidChanged();
+        /// <summary>
+        /// There are no comments for Property firstName in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string firstName
+        {
+            get
+            {
+                return this._firstName;
+            }
+            set
+            {
+                this.OnfirstNameChanging(value);
+                this._firstName = value;
+                this.OnfirstNameChanged();
+                this.OnPropertyChanged("firstName");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _firstName;
+        partial void OnfirstNameChanging(string value);
+        partial void OnfirstNameChanged();
+        /// <summary>
+        /// There are no comments for Property lastName in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string lastName
+        {
+            get
+            {
+                return this._lastName;
+            }
+            set
+            {
+                this.OnlastNameChanging(value);
+                this._lastName = value;
+                this.OnlastNameChanged();
+                this.OnPropertyChanged("lastName");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _lastName;
+        partial void OnlastNameChanging(string value);
+        partial void OnlastNameChanged();
+        /// <summary>
+        /// There are no comments for Property hireDate in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.DateTime hireDate
+        {
+            get
+            {
+                return this._hireDate;
+            }
+            set
+            {
+                this.OnhireDateChanging(value);
+                this._hireDate = value;
+                this.OnhireDateChanged();
+                this.OnPropertyChanged("hireDate");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.DateTime _hireDate;
+        partial void OnhireDateChanging(global::System.DateTime value);
+        partial void OnhireDateChanged();
+        /// <summary>
+        /// There are no comments for Property phone1 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string phone1
+        {
+            get
+            {
+                return this._phone1;
+            }
+            set
+            {
+                this.Onphone1Changing(value);
+                this._phone1 = value;
+                this.Onphone1Changed();
+                this.OnPropertyChanged("phone1");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _phone1;
+        partial void Onphone1Changing(string value);
+        partial void Onphone1Changed();
+        /// <summary>
+        /// There are no comments for Property phone2 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string phone2
+        {
+            get
+            {
+                return this._phone2;
+            }
+            set
+            {
+                this.Onphone2Changing(value);
+                this._phone2 = value;
+                this.Onphone2Changed();
+                this.OnPropertyChanged("phone2");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _phone2;
+        partial void Onphone2Changing(string value);
+        partial void Onphone2Changed();
+        /// <summary>
+        /// There are no comments for Property phone3 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string phone3
+        {
+            get
+            {
+                return this._phone3;
+            }
+            set
+            {
+                this.Onphone3Changing(value);
+                this._phone3 = value;
+                this.Onphone3Changed();
+                this.OnPropertyChanged("phone3");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _phone3;
+        partial void Onphone3Changing(string value);
+        partial void Onphone3Changed();
+        /// <summary>
+        /// There are no comments for Property address1 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string address1
+        {
+            get
+            {
+                return this._address1;
+            }
+            set
+            {
+                this.Onaddress1Changing(value);
+                this._address1 = value;
+                this.Onaddress1Changed();
+                this.OnPropertyChanged("address1");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _address1;
+        partial void Onaddress1Changing(string value);
+        partial void Onaddress1Changed();
+        /// <summary>
+        /// There are no comments for Property address2 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string address2
+        {
+            get
+            {
+                return this._address2;
+            }
+            set
+            {
+                this.Onaddress2Changing(value);
+                this._address2 = value;
+                this.Onaddress2Changed();
+                this.OnPropertyChanged("address2");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _address2;
+        partial void Onaddress2Changing(string value);
+        partial void Onaddress2Changed();
+        /// <summary>
+        /// There are no comments for Property email1 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string email1
+        {
+            get
+            {
+                return this._email1;
+            }
+            set
+            {
+                this.Onemail1Changing(value);
+                this._email1 = value;
+                this.Onemail1Changed();
+                this.OnPropertyChanged("email1");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _email1;
+        partial void Onemail1Changing(string value);
+        partial void Onemail1Changed();
+        /// <summary>
+        /// There are no comments for Property email2 in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string email2
+        {
+            get
+            {
+                return this._email2;
+            }
+            set
+            {
+                this.Onemail2Changing(value);
+                this._email2 = value;
+                this.Onemail2Changed();
+                this.OnPropertyChanged("email2");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _email2;
+        partial void Onemail2Changing(string value);
+        partial void Onemail2Changed();
+        /// <summary>
+        /// There are no comments for Property payTypeId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int payTypeId
+        {
+            get
+            {
+                return this._payTypeId;
+            }
+            set
+            {
+                this.OnpayTypeIdChanging(value);
+                this._payTypeId = value;
+                this.OnpayTypeIdChanged();
+                this.OnPropertyChanged("payTypeId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _payTypeId;
+        partial void OnpayTypeIdChanging(int value);
+        partial void OnpayTypeIdChanged();
+        /// <summary>
+        /// There are no comments for Property payAmount in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public decimal payAmount
+        {
+            get
+            {
+                return this._payAmount;
+            }
+            set
+            {
+                this.OnpayAmountChanging(value);
+                this._payAmount = value;
+                this.OnpayAmountChanged();
+                this.OnPropertyChanged("payAmount");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private decimal _payAmount;
+        partial void OnpayAmountChanging(decimal value);
+        partial void OnpayAmountChanged();
+        /// <summary>
+        /// There are no comments for ApplicationUsers in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<ApplicationUser> ApplicationUsers
+        {
+            get
+            {
+                return this._ApplicationUsers;
+            }
+            set
+            {
+                this._ApplicationUsers = value;
+                this.OnPropertyChanged("ApplicationUsers");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<ApplicationUser> _ApplicationUsers = new global::System.Data.Services.Client.DataServiceCollection<ApplicationUser>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

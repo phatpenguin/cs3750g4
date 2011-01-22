@@ -17,14 +17,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBQRMS.Services", "Server\B
 EndProject
 Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "BBQRMS.Database", "Server\BBQRMS.Database\BBQRMS.Database.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBQRMS.Tests", "BBQRMS.Client.Tests\BBQRMS.Tests.csproj", "{4CE97F51-5E93-4594-91A0-3BA3F18E8031}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89AFFF52-49A8-49E3-AA88-33A75FDE3765}"
+	ProjectSection(SolutionItems) = preProject
+		BBQRMSSolution.vsmdi = BBQRMSSolution.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BBQRMSSolution.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug DefaultSQLExpress|Any CPU = Debug DefaultSQLExpress|Any CPU
 		Debug DefaultSQLExpress|Mixed Platforms = Debug DefaultSQLExpress|Mixed Platforms
 		Debug DefaultSQLExpress|x86 = Debug DefaultSQLExpress|x86
-		Debug DefaultSQLServer|Any CPU = Debug DefaultSQLServer|Any CPU
-		Debug DefaultSQLServer|Mixed Platforms = Debug DefaultSQLServer|Mixed Platforms
-		Debug DefaultSQLServer|x86 = Debug DefaultSQLServer|x86
 		Release|Any CPU = Release|Any CPU
 		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
@@ -35,11 +44,6 @@ Global
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|Any CPU
-		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLServer|Any CPU.Build.0 = Debug|Any CPU
-		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Debug DefaultSQLServer|x86.ActiveCfg = Debug|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -50,42 +54,31 @@ Global
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|Any CPU
-		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLServer|Any CPU.Build.0 = Debug|Any CPU
-		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug|Any CPU
-		{DE2221A4-3807-4338-8187-4884BCFF6436}.Debug DefaultSQLServer|x86.ActiveCfg = Debug|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DE2221A4-3807-4338-8187-4884BCFF6436}.Release|x86.ActiveCfg = Release|Any CPU
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|Any CPU.ActiveCfg = Debug|x86
+		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|Any CPU.Build.0 = Debug|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLExpress|x86.Build.0 = Debug|x86
-		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug|x86
-		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug|x86
-		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug|x86
-		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLServer|x86.ActiveCfg = Debug|x86
-		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Debug DefaultSQLServer|x86.Build.0 = Debug|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|Any CPU.ActiveCfg = Release|x86
+		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|Any CPU.Build.0 = Release|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|x86.ActiveCfg = Release|x86
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2}.Release|x86.Build.0 = Release|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|Any CPU.ActiveCfg = Debug|x86
+		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|Any CPU.Build.0 = Debug|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLExpress|x86.Build.0 = Debug|x86
-		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug|x86
-		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug|x86
-		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug|x86
-		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLServer|x86.ActiveCfg = Debug|x86
-		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Debug DefaultSQLServer|x86.Build.0 = Debug|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Release|Any CPU.ActiveCfg = Release|x86
+		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Release|Any CPU.Build.0 = Release|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776}.Release|x86.ActiveCfg = Release|x86
@@ -95,11 +88,6 @@ Global
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|Any CPU
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|Any CPU
-		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLServer|Any CPU.Build.0 = Debug|Any CPU
-		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug|Any CPU
-		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Debug DefaultSQLServer|x86.ActiveCfg = Debug|Any CPU
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -112,19 +100,22 @@ Global
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug Default SQLExpress|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLExpress|Mixed Platforms.Deploy.0 = Debug Default SQLExpress|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Any CPU.ActiveCfg = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Any CPU.Build.0 = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Any CPU.Deploy.0 = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Mixed Platforms.ActiveCfg = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Mixed Platforms.Build.0 = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|Mixed Platforms.Deploy.0 = Debug Default SQLServer|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug DefaultSQLServer|x86.ActiveCfg = Debug Default SQLServer|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Debug DefaultSQLExpress|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Debug DefaultSQLExpress|Any CPU.Build.0 = Debug|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Debug DefaultSQLExpress|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Debug DefaultSQLExpress|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Debug DefaultSQLExpress|x86.ActiveCfg = Debug|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4CE97F51-5E93-4594-91A0-3BA3F18E8031}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +123,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DE2221A4-3807-4338-8187-4884BCFF6436} = {F58D23E2-43B5-49B7-A3E9-DBFECDC1ABE9}
 		{E1A1788C-2348-4DF9-98EA-4D21D154FF1C} = {F58D23E2-43B5-49B7-A3E9-DBFECDC1ABE9}
+		{89AFFF52-49A8-49E3-AA88-33A75FDE3765} = {F58D23E2-43B5-49B7-A3E9-DBFECDC1ABE9}
 		{8276D8BC-45BC-4B34-89FA-E8B6AFA144C2} = {E1B17D8F-F16E-4DED-87AA-233A470D410E}
 		{CE3C3A07-296B-4879-8C93-EE08E7C6A776} = {E1B17D8F-F16E-4DED-87AA-233A470D410E}
 		{0E1FAAD2-B111-4D24-B254-130D3EEE184E} = {E1B17D8F-F16E-4DED-87AA-233A470D410E}

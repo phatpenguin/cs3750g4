@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution
 {
@@ -22,6 +14,19 @@ namespace BBQRMSSolution
 			this.InitializeComponent();
 
 			// Insert code required on object creation below this point.
+			this.Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+		}
+
+		private void MainWindow_Closing(object sender, CancelEventArgs e)
+		{
+			//If this was the result of the user requesting the close, we'll publish the message and see if anyone cancelled it.
+			if (!GlobalApplicationState.ShuttingDown)
+			{
+				ShutdownRequested shutdownRequested = new ShutdownRequested();
+				GlobalApplicationState.MessageBus.Publish(shutdownRequested);
+				if (shutdownRequested.Cancelled)
+					e.Cancel = true;
+			}
 		}
 	}
 }

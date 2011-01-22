@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+using BBQRMSSolution.ViewModels;
+using Controls;
 
 namespace BBQRMSSolution.Views
 {
 	/// <summary>
 	/// Interaction logic for LoginView.xaml
 	/// </summary>
-	public partial class LoginView : UserControl
+	public partial class LoginView : UserControl, IHandle<InvalidPinEntered>
 	{
+		private Storyboard mErrorFadeInAnimation;
+
 		public LoginView()
 		{
 			InitializeComponent();
 			Loaded += new RoutedEventHandler(LoginView_Loaded);
+			GlobalApplicationState.MessageBus.Subscribe(this);
+			mErrorFadeInAnimation = (Storyboard)this.FindResource("fadeIn");
+
 		}
 
 		void LoginView_Loaded(object sender, RoutedEventArgs e)
@@ -30,9 +27,9 @@ namespace BBQRMSSolution.Views
 			passwordBox.Focus();
 		}
 
-		private void button1_Click_1(object sender, RoutedEventArgs e)
+		private void exitButton_Click(object sender, RoutedEventArgs e)
 		{
-			App.Current.Shutdown();
+			LoginViewModel.Exit();
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,10 +38,29 @@ namespace BBQRMSSolution.Views
 			passwordBox.Password += pressed.CommandParameter;
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
+		private void cancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			passwordBox.Password = "";
 		}
 
+		private void enterButton_Click(object sender, RoutedEventArgs e)
+		{
+			LoginViewModel.HandleLogin(passwordBox.Password);
+		}
+
+		private LoginViewModel LoginViewModel
+		{
+			get { return ((LoginViewModel) DataContext); }
+		}
+
+		public void Handle(InvalidPinEntered message)
+		{
+			//clear their old entry
+			passwordBox.Password = "";
+			//set focus back into the password box (it's probably on the enter button now)
+			passwordBox.Focus();
+			//display an error message for a short time.
+			errorText.BeginStoryboard(mErrorFadeInAnimation);
+		}
 	}
 }

@@ -3,7 +3,15 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="BBQRMSSolution.MainWindow"
 	x:Name="Window"
-	 Title="BBQ RMS"
-	Width="1366" Height="768" DataContext="{StaticResource ResourceKey=mainWindowViewModel}" WindowStyle="SingleBorderWindow" WindowState="Normal" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="857">
+	Title="BBQ RMS"
+	Width="1366"
+	Height="768"
+	DataContext="{StaticResource ResourceKey=mainWindowViewModel}"
+	WindowStyle="SingleBorderWindow"
+	WindowState="Maximized"
+	ResizeMode="CanResize"
+	WindowStartupLocation="CenterScreen"
+	MinHeight="500"
+	MinWidth="857">
 	<ContentPresenter Content="{Binding Path=FullScreenContent}"/>
 </Window>
