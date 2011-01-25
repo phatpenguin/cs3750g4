@@ -43,10 +43,10 @@
         </EntityType>
         <EntityType Name="Menu">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Employee_ApplicationUser">
           <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1">
@@ -130,9 +130,9 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BBQRMSModelStoreContainer" CdmEntityContainer="BBQRMSEntities">
           <EntitySetMapping Name="Menus"><EntityTypeMapping TypeName="BBQRMSModel.Menu"><MappingFragment StoreEntitySet="Menu">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+            <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="id" />
+              </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ApplicationUsers">
             <EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser">
               <MappingFragment StoreEntitySet="ApplicationUser">
@@ -183,7 +183,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BBQRMS">
-        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="2.75" PointY="0.75" Height="1.2636116536458335" IsExpanded="true" />
         <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333335" />
         <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="0.75" PointY="4" Height="3.7109993489583317" />
         <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >

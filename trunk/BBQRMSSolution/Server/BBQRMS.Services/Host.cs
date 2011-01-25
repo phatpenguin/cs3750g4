@@ -21,6 +21,5 @@ namespace BBQRMS.WCFServices
 			if (host != null)
 				host.Close();
 		}
-
 	}
 }

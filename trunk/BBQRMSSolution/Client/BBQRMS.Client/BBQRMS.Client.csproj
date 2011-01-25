@@ -221,6 +221,7 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
+    <None Include="BBQRMSSolution.ServerProxy.BBQRMSEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
