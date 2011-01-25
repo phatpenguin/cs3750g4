@@ -135,7 +135,7 @@ namespace BBQRMSSolution.ServerProxy
         }
     }
     /// <summary>
-    /// There are no comments for BBQRMSModel.Menu in the schema.
+    /// There are no comments for BBQRMSModel.SampleMenu in the schema.
     /// </summary>
     /// <KeyProperties>
     /// ID
@@ -145,7 +145,7 @@ namespace BBQRMSSolution.ServerProxy
     public partial class Menu : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
-        /// Create a new Menu object.
+        /// Create a new SampleMenu object.
         /// </summary>
         /// <param name="ID">Initial value of ID.</param>
         /// <param name="name">Initial value of Name.</param>

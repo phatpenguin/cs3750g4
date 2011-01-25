@@ -5,16 +5,18 @@ using System.Drawing;
 using BBQRMSSolution.Models;
 using BBQRMSSolution.ServerProxy;
 using Controls;
-using Menu = BBQRMSSolution.Models.Menu;
+using Menu = BBQRMSSolution.ServerProxy.Menu;
+using SampleMenu = BBQRMSSolution.Models.Menu;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
-		private readonly BBQRMSEntities mDataService;
+	    private readonly BBQRMSEntities mDataService;
 		private readonly ObservableCollection<OrderViewModel> _mPendingOrders;
 
-		public ObservableCollection<Menu> Menus { get; set; }
+		public ObservableCollection<SampleMenu> SampleMenus { get; set; }
+	    public ObservableCollection<Menu> Menus { get; set; }
 		public OrderViewModel Order { get;set;}
 
 		private const decimal TAX_PERCENTAGE = 8.25m;
@@ -29,15 +31,15 @@ namespace BBQRMSSolution.ViewModels
 			var r = new Random();
 			Order = new OrderViewModel { OrderNumber = r.Next(1,100) };
 
-			Menus = BuildSampleMenus();
+			SampleMenus = BuildSampleMenus();
 		}
 
-		private ObservableCollection<Menu> BuildSampleMenus()
+		private ObservableCollection<SampleMenu> BuildSampleMenus()
 		{
 			return
-				new ObservableCollection<Menu>
+				new ObservableCollection<SampleMenu>
 					{
-						new Menu
+						new SampleMenu
 							{
 								Name = "Meats",
 								BackColor = "#990000",
@@ -50,7 +52,7 @@ namespace BBQRMSSolution.ViewModels
 										new MenuItem {Name = "Pulled Chicken",ImageSource="/Graphics/chicken.jpg", Id=13, Price=5.25m, DoAction = new DelegateCommand(AddMenuItem)}
 									}
 							},
-						new Menu
+						new SampleMenu
 							{
 								Name = "Sides",
 								BackColor = "#009900",
@@ -66,7 +68,7 @@ namespace BBQRMSSolution.ViewModels
 									}
 
 							},
-						new Menu
+						new SampleMenu
 							{
 								Name = "Drinks",
 								BackColor = "#000099",
@@ -92,7 +94,7 @@ namespace BBQRMSSolution.ViewModels
 
 			Order = new OrderViewModel();
 
-			Menus = BuildSampleMenus();
+		    Menus = new ObservableCollection<Menu>(mDataService.Menus.Execute());
 		}
 		
 		public void AddMenuItem(Object mi)

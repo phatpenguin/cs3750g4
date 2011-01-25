@@ -61,6 +61,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BBQRMS.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="BBQRMSEntities.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
