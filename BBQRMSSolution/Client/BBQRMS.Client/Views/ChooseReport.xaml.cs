@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Input;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
@@ -9,5 +12,13 @@ namespace BBQRMSSolution.Views
 			// Required to initialize variables
 			InitializeComponent();
 		}
+
+		private void HandleDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			ViewModel.RunReportCommand.Execute(null);
+		}
+
+		private ChooseReportViewModel ViewModel { get { return (ChooseReportViewModel) DataContext; } }
+
 	}
 }

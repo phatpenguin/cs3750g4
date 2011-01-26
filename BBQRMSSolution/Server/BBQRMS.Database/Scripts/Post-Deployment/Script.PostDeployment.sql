@@ -11,4 +11,4 @@ Post-Deployment Script Template
 */
 
 :r .\ReferenceData\InitialEmployeesAndUsers.sql
-:r .\ReferenceData\InitialMenus.sql
+--:r .\ReferenceData\InitialMenus.sql

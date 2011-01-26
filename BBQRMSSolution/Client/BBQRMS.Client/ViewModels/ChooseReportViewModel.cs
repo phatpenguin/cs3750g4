@@ -1,19 +1,20 @@
 using System;
 using System.Collections.ObjectModel;
+using BBQRMSSolution.ServerProxy;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class ChooseReportViewModel : ViewModelBase
 	{
-		public ChooseReportViewModel(IMessageBus messageBus)
+		public ChooseReportViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
 		{
 			mMessageBus = messageBus;
 
 			Reports =
 				new ObservableCollection<ReportViewModel>
 					{
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Most Popular Items",
 								Group = "Sales",
@@ -24,7 +25,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Daily Sales graph",
 								Group = "Sales",
@@ -35,7 +36,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Weekly Sales graph",
 								Group = "Sales",
@@ -46,7 +47,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Sales by type pie chart",
 								Group = "Sales",
@@ -57,7 +58,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Monthly Sales by type bar chart",
 								Group = "Sales",
@@ -68,7 +69,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Daily Inventory Levels",
 								Group = "Inventory",
@@ -81,7 +82,7 @@ namespace BBQRMSSolution.ViewModels
 											{Prompt = "Choose Item", Options = {"Ribs", "Chicken", "Brisket"}, SelectedOption = "Ribs"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Daily Inventory used",
 								Group = "Inventory",
@@ -94,7 +95,7 @@ namespace BBQRMSSolution.ViewModels
 											{Prompt = "Choose Item", Options = {"Ribs", "Chicken", "Brisket"}, SelectedOption = "Ribs"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Weekly Cost of inventory",
 								Group = "Inventory",
@@ -105,7 +106,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Monthly cost of inventory",
 								Group = "Inventory",
@@ -116,7 +117,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Weekly Hours worked",
 								Group = "Employees",
@@ -127,7 +128,7 @@ namespace BBQRMSSolution.ViewModels
 										new ReportDateParameterViewModel {Prompt = "End Date"},
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Individual employee schedule",
 								Group = "Employees",
@@ -139,7 +140,7 @@ namespace BBQRMSSolution.ViewModels
 											{Prompt = "Selecte employee", Options = {"Jane Doe", "John Doe", "Bob", "Alice"}}
 									}
 							},
-						new ReportViewModel
+						new ReportViewModel(dataService)
 							{
 								ReportName = "Staff schedule",
 								Group = "Employees",
