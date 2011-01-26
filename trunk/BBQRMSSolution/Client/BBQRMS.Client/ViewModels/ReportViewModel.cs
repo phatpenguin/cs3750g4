@@ -1,12 +1,27 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
+using BBQRMSSolution.ServerProxy;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class ReportViewModel : ViewModelBase
 	{
-		public ReportViewModel()
+		private readonly BBQRMSEntities mDataService;
+
+		[Obsolete("Used only by the designer")]
+		protected ReportViewModel()
 		{
+			
+		}
+
+		public ReportViewModel(BBQRMSEntities dataService)
+		{
+			mDataService = dataService;
 			mParameters = new ObservableCollection<ReportParameterViewModel>();
 		}
 
@@ -62,6 +77,32 @@ namespace BBQRMSSolution.ViewModels
 				}
 			}
 		}
+
+		private static Stream GetReportDefinitions()
+		{
+			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
+		}
+
+		private IEnumerable GetData()
+		{
+			//If the refresh button on report viewer is going to function, the IEnumerable needs to support more than one enumeration.
+			return mDataService.Menus.Execute().ToList();
+		}
+
+		public void RunReport(IReportViewer reportViewer)
+		{
+			//TODO:
+			// 1) verify input parameters
+			// 2) load report definition (what if it's already loaded and the user just wants to change parameter values?)
+			reportViewer.LoadReportDefinition(GetReportDefinitions());
+			// 3) retrieve report data
+			IEnumerable data = GetData();
+			// 4) assign the data to the report's data source(s)
+			IList<string> names = reportViewer.GetDataSourceNames();
+			reportViewer.AddDataSource(names[0], data);
+			// 5) _run_ the report.
+			reportViewer.RefreshReport();
+		}
 	}
 
 	public abstract class ReportParameterViewModel : ViewModelBase
@@ -100,6 +141,24 @@ namespace BBQRMSSolution.ViewModels
 		}
 	}
 
+	public class ReportBoolParameterViewModel : ReportParameterViewModel
+	{
+		private bool mValue;
+
+		public bool Value
+		{
+			get { return mValue; }
+			set
+			{
+				if (value != mValue)
+				{
+					mValue = value;
+					NotifyPropertyChanged("Value");
+				}
+			}
+		}
+	}
+
 	public class ReportOptionParameterViewModel : ReportParameterViewModel
 	{
 		public ReportOptionParameterViewModel()
@@ -123,5 +182,21 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 		public ObservableCollection<string> Options { get; private set; }
+	}
+
+	public class DesignTimeReportViewModel : ReportViewModel
+	{
+#pragma warning disable 612,618
+		public DesignTimeReportViewModel()
+#pragma warning restore 612,618
+		{
+			Parameters.Add(new ReportDateParameterViewModel {Prompt = "Start Date", Value = DateTime.Now.Date.AddMonths(-1)});
+			Parameters.Add(new ReportDateParameterViewModel {Prompt = "End Date", Value = DateTime.Now.Date});
+			Parameters.Add(new ReportOptionParameterViewModel {Prompt = "Choose", Options = {"First", "Second"}});
+			Parameters.Add(new ReportBoolParameterViewModel {Prompt = "Choose", Value = true});
+			ReportName = "Sample Report";
+			Group = "Sample Group";
+			HasChart = true;
+		}
 	}
 }

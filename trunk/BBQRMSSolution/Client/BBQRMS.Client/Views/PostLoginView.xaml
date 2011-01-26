@@ -15,22 +15,7 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-		<ItemsControl>
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<StackPanel Orientation="Horizontal" />
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-<!--			<ItemsControl.ItemTemplate>-->
-<!--				<DataTemplate>-->
-<!--					<Button Command="{Binding GoToContentCommand}" Padding="4" Margin="1,2,1,2">-->
-<!--						<StackPanel>-->
-<!--							<Image Source="{Binding Path=ImageSource}" Width="32" Height="32"/>-->
-<!--							<TextBlock Text="{Binding Path=Name}"/>-->
-<!--						</StackPanel>-->
-<!--					</Button>-->
-<!--				</DataTemplate>-->
-<!--			</ItemsControl.ItemTemplate>-->
+		<StackPanel Grid.Row="0" Orientation="Horizontal">
 			<Button x:Name="takeOrders" Padding="4" Margin="1,2,1,2" Click="takeOrders_Click">
 				<StackPanel>
 					<Image Source="/Graphics/accessories-text-editor.png" Width="32" Height="32"/>
@@ -79,7 +64,7 @@
 					<TextBlock Text="Manage Menus"/>
 				</StackPanel>
 			</Button>
-		</ItemsControl>
+		</StackPanel>
 		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,70,0" Text="{Binding Path=SecurityContext.CurrentUser.firstName}"/>
 		<Button Grid.Row="0" Name="logout" HorizontalAlignment="Right" Padding="4" Margin="1,2,1,2" Click="logout_Click">
 			<StackPanel>

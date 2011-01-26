@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Reporting.WinForms;
+using BBQRMSSolution.ViewModels;
 using RUBPrototypes.SampleData;
 
 namespace BBQRMSSolution.Views
@@ -22,21 +21,19 @@ namespace BBQRMSSolution.Views
 	/// </summary>
 	public partial class ReportViewer : UserControl
 	{
-		private readonly InventoryItems mItemsData;
-
 		public ReportViewer()
 		{
 			InitializeComponent();
-			mItemsData = new InventoryItems();
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			reportViewer.LocalReport.LoadReportDefinition(Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.InventoryLevelsGraph.rdlc"));
+			ViewModel.RunReport(new ReportViewerWrapper(reportViewer));
+		}
 
-			//var inventoryItemsObj = FindResource("InventoryItems");
-			reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", mItemsData));
-			reportViewer.RefreshReport();
+		private ReportViewModel ViewModel
+		{
+			get { return (ReportViewModel) DataContext; }
 		}
 	}
 }

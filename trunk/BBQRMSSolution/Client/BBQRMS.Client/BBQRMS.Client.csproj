@@ -86,9 +86,9 @@
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
-    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MethodOfPayment.cs" />
+    <Compile Include="ViewModels\IReportViewer.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="SampleData\SampleOrders.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
@@ -136,6 +136,7 @@
     <Compile Include="Views\ReportViewer.xaml.cs">
       <DependentUpon>ReportViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReportViewerWrapper.cs" />
     <Compile Include="Views\RoleManagement.xaml.cs">
       <DependentUpon>RoleManagement.xaml</DependentUpon>
     </Compile>
@@ -221,7 +222,7 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
-    <None Include="BBQRMSSolution.ServerProxy.BBQRMSEntities.datasource" />
+    <None Include="Properties\DataSources\BBQRMSSolution.ServerProxy.Menu.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -236,6 +237,7 @@
     <Resource Include="Graphics\x-office-spreadsheet.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\Export_Menus.rdlc" />
     <EmbeddedResource Include="Reports\InventoryLevelsGraph.rdlc" />
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{DE2221A4-3807-4338-8187-4884BCFF6436}</Project>

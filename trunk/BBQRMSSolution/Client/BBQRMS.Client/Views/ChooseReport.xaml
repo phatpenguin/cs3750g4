@@ -58,6 +58,11 @@
 					</GroupStyle.ContainerStyle>
 				</GroupStyle>
 			</ListView.GroupStyle>
+			<ListView.ItemContainerStyle>
+				<Style>
+					<EventSetter Event="ListViewItem.MouseDoubleClick" Handler="HandleDoubleClick"/>
+				</Style>
+			</ListView.ItemContainerStyle>
 		</ListView>
 		<Grid Grid.Row="2">
 			<Button Width="Auto" Height="Auto" HorizontalAlignment="Right" Padding="3" Margin="3" VerticalAlignment="Center" Command="{Binding RunReportCommand}">_Run Report</Button>

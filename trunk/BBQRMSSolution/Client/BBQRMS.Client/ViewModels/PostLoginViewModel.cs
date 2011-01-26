@@ -59,6 +59,10 @@ namespace BBQRMSSolution.ViewModels
 		{
 			//TODO: Show a new or existing viewmodel for taking orders.
 			mMessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(mDataService, mPendingOrders, mMessageBus)));
+			//TODO:
+			// Maybe each of these modules can be represented by an instance (mockable).
+			// Then we each can just work with that instance to handle the button click by providing a method which might show an existing VM or create a new one.
+			// Each module instance could hold onto the reusable viewmodels.
 		}
 
 		public void HandleCashier()
@@ -82,7 +86,7 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleReporting()
 		{
 			//TODO: Show a new or existing viewmodel for reporting.
-			mMessageBus.Publish(new ShowScreen(new ChooseReportViewModel(mMessageBus)));
+			mMessageBus.Publish(new ShowScreen(new ChooseReportViewModel(mDataService, mMessageBus)));
 		}
 
 		public void HandleManageEmployees()
@@ -94,8 +98,14 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleManageInventory()
 		{
 			//TODO: Show a new or existing viewmodel for managing inventory.
-			mMessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel()));
+			//This was changed just to get the solution to compile.
+			mMessageBus.Publish(new ShowScreen(new DummyInventoryManagementMenuViewModel()));
 		}
+		//This is here just to get the solution to compile.
+		public class DummyInventoryManagementMenuViewModel : ViewModelBase
+		{
+		}
+
 
 		public void HandleManageMenus()
 		{
