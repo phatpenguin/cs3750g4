@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Location]
 (
 	Id		int identity,
-	Descr	nvarchar NOT NULL
+	Descr	nvarchar(MAX) NOT NULL
 )
