@@ -343,6 +343,9 @@
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialEmployeesAndUsers.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPaymentTypeData.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
   </ItemGroup>
   <Target Name="AfterDeploy">
     <Message Importance="high" Text="This is running after deploy" />

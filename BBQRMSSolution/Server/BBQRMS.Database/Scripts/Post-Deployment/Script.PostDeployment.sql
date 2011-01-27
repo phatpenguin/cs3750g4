@@ -10,5 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+:r .\ReferenceData\InitialPaymentTypeData.sql
 :r .\ReferenceData\InitialEmployeesAndUsers.sql
 :r .\ReferenceData\InitialMenus.sql

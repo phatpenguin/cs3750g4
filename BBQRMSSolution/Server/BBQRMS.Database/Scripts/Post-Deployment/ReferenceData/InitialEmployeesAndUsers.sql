@@ -7,6 +7,32 @@
 /* This script will create a handful of initial users who will then be able to log in */
 
 select top 0 *
+into #EmployeePayTypes
+from (select * from [dbo].[EmployeePayTypes]
+union select top 0 * from [dbo].[EmployeePayTypes]) a
+
+insert into #PaymentType
+values 
+(1, 'Hourly'),
+(2, 'Salary')
+
+
+set identity_insert [dbo].[EmployeePayTypes] on
+
+update [dbo].[EmployeePayTypes]
+set Id = Source.Id,
+Descr = Source.Descr
+from [dbo].[EmployeePayTypes] Target inner join #EmployeePayTypes Source on Target.id = Source.id
+
+insert into [dbo].[EmployeePayTypes] (Id, Descr)
+select Source.*
+from [dbo].[EmployeePayTypes] Target right join #EmployeePayTypes Source on Target.id = Source.id
+where Target.id is null
+
+set identity_insert [dbo].[EmployeePayTypes] off
+
+
+select top 0 *
 into #Employee
 from (select * from [dbo].[Employee]
 union select top 0 * from [dbo].[Employee]) a
