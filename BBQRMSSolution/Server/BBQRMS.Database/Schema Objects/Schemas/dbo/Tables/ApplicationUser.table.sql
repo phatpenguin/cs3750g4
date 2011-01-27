@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[ApplicationUser]
 (
-	IdPart varchar(10) NOT NULL, 
-	PersonalPart varchar(10) NOT NULL,
+	IdPart nvarchar(10) NOT NULL, 
+	PersonalPart nvarchar(MAX) NOT NULL,
 	EmployeeId int NOT NULL,
-	DisplayName varchar(100) NOT NULL
+	DisplayName nvarchar(100) NOT NULL
 )

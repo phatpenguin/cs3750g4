@@ -22,11 +22,11 @@ set identity_insert [dbo].[EmployeePayTypes] on
 update [dbo].[EmployeePayTypes]
 set Id = Source.Id,
 Descr = Source.Descr
-from [dbo].[EmployeePayTypes] Target inner join #EmployeePayTypes Source on Target.id = Source.id
+from [dbo].[EmployeePayTypes] Target inner join #EmployeePayTypes Source on Target.Id = Source.Id
 
 insert into [dbo].[EmployeePayTypes] (Id, Descr)
 select Source.*
-from [dbo].[EmployeePayTypes] Target right join #EmployeePayTypes Source on Target.id = Source.id
+from [dbo].[EmployeePayTypes] Target right join #EmployeePayTypes Source on Target.Id = Source.Id
 where Target.id is null
 
 set identity_insert [dbo].[EmployeePayTypes] off
