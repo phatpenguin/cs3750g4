@@ -3,7 +3,7 @@
   <Version>1.0</Version>
   <Properties>
     <AlwaysCreateNewDatabase>False</AlwaysCreateNewDatabase>
-    <BlockIncrementalDeploymentIfDataLoss>True</BlockIncrementalDeploymentIfDataLoss>
+    <BlockIncrementalDeploymentIfDataLoss>False</BlockIncrementalDeploymentIfDataLoss>
     <DeployDatabaseProperties>True</DeployDatabaseProperties>
     <DeploymentCollationPreference>UseSourceModelCollation</DeploymentCollationPreference>
     <DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>False</DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>

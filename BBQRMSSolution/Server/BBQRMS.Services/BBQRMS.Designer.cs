@@ -19,6 +19,8 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_Employee_ApplicationUser", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "ApplicationUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ApplicationUser), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_MenuItemMap_Menu", "Menu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Menu), "MenuItemMap", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.MenuItemMap), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_MenuItemMap_MenuItem", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.MenuItem), "MenuItemMap", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.MenuItemMap), true)]
 
 #endregion
 
@@ -117,6 +119,38 @@ namespace BBQRMS.WCFServices
             }
         }
         private ObjectSet<Employee> _Employees;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MenuItem> MenuItems
+        {
+            get
+            {
+                if ((_MenuItems == null))
+                {
+                    _MenuItems = base.CreateObjectSet<MenuItem>("MenuItems");
+                }
+                return _MenuItems;
+            }
+        }
+        private ObjectSet<MenuItem> _MenuItems;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                if ((_MenuItemMaps == null))
+                {
+                    _MenuItemMaps = base.CreateObjectSet<MenuItemMap>("MenuItemMaps");
+                }
+                return _MenuItemMaps;
+            }
+        }
+        private ObjectSet<MenuItemMap> _MenuItemMaps;
 
         #endregion
         #region AddTo Methods
@@ -143,6 +177,22 @@ namespace BBQRMS.WCFServices
         public void AddToEmployees(Employee employee)
         {
             base.AddObject("Employees", employee);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MenuItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMenuItems(MenuItem menuItem)
+        {
+            base.AddObject("MenuItems", menuItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MenuItemMaps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMenuItemMaps(MenuItemMap menuItemMap)
+        {
+            base.AddObject("MenuItemMaps", menuItemMap);
         }
 
         #endregion
@@ -784,6 +834,373 @@ namespace BBQRMS.WCFServices
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MenuItemMap_Menu", "MenuItemMap")]
+        public EntityCollection<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MenuItemMap>("BBQRMSModel.FK_MenuItemMap_Menu", "MenuItemMap");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuItemMap>("BBQRMSModel.FK_MenuItemMap_Menu", "MenuItemMap", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="MenuItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MenuItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MenuItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        public static MenuItem CreateMenuItem(global::System.Int32 id, global::System.String name, global::System.String description)
+        {
+            MenuItem menuItem = new MenuItem();
+            menuItem.ID = id;
+            menuItem.Name = name;
+            menuItem.Description = description;
+            return menuItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Price;
+        partial void OnPriceChanging(Nullable<global::System.Decimal> value);
+        partial void OnPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MenuItemMap_MenuItem", "MenuItemMap")]
+        public EntityCollection<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MenuItemMap>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItemMap");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuItemMap>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItemMap", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="MenuItemMap")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MenuItemMap : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MenuItemMap object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="menuID">Initial value of the MenuID property.</param>
+        /// <param name="menuItemID">Initial value of the MenuItemID property.</param>
+        public static MenuItemMap CreateMenuItemMap(global::System.Int32 id, global::System.Int32 menuID, global::System.Int32 menuItemID)
+        {
+            MenuItemMap menuItemMap = new MenuItemMap();
+            menuItemMap.ID = id;
+            menuItemMap.MenuID = menuID;
+            menuItemMap.MenuItemID = menuItemID;
+            return menuItemMap;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MenuID
+        {
+            get
+            {
+                return _MenuID;
+            }
+            set
+            {
+                OnMenuIDChanging(value);
+                ReportPropertyChanging("MenuID");
+                _MenuID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MenuID");
+                OnMenuIDChanged();
+            }
+        }
+        private global::System.Int32 _MenuID;
+        partial void OnMenuIDChanging(global::System.Int32 value);
+        partial void OnMenuIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MenuItemID
+        {
+            get
+            {
+                return _MenuItemID;
+            }
+            set
+            {
+                OnMenuItemIDChanging(value);
+                ReportPropertyChanging("MenuItemID");
+                _MenuItemID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MenuItemID");
+                OnMenuItemIDChanged();
+            }
+        }
+        private global::System.Int32 _MenuItemID;
+        partial void OnMenuItemIDChanging(global::System.Int32 value);
+        partial void OnMenuItemIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MenuItemMap_Menu", "Menu")]
+        public Menu Menu
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Menu>("BBQRMSModel.FK_MenuItemMap_Menu", "Menu").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Menu>("BBQRMSModel.FK_MenuItemMap_Menu", "Menu").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Menu> MenuReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Menu>("BBQRMSModel.FK_MenuItemMap_Menu", "Menu");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Menu>("BBQRMSModel.FK_MenuItemMap_Menu", "Menu", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MenuItemMap_MenuItem", "MenuItem")]
+        public MenuItem MenuItem
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItem").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItem").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<MenuItem> MenuItemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MenuItem>("BBQRMSModel.FK_MenuItemMap_MenuItem", "MenuItem", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
