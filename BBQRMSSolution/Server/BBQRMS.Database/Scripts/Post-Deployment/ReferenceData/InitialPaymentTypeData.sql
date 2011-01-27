@@ -15,8 +15,7 @@ values
 set identity_insert [dbo].[PaymentType] on
 
 update [dbo].[PaymentType]
-set Id = Source.Id,
-Descr = Source.Descr
+set Descr = Source.Descr
 from [dbo].[PaymentType] Target inner join #PaymentType Source on Target.id = Source.id
 
 insert into [dbo].[PaymentType] (Id, Descr)
