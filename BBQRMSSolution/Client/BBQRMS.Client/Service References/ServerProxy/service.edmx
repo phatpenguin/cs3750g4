@@ -7,6 +7,7 @@
         </Key>
         <Property Name="ID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        <NavigationProperty Name="MenuItemMaps" Relationship="BBQRMSModel.FK_MenuItemMap_Menu" FromRole="Menu" ToRole="MenuItemMap" />
       </EntityType>
       <EntityType Name="ApplicationUser">
         <Key>
@@ -37,6 +38,26 @@
         <Property Name="payAmount" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
         <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
       </EntityType>
+      <EntityType Name="MenuItem">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Price" Type="Edm.Decimal" Nullable="true" Precision="18" Scale="0" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="MenuItemMaps" Relationship="BBQRMSModel.FK_MenuItemMap_MenuItem" FromRole="MenuItem" ToRole="MenuItemMap" />
+      </EntityType>
+      <EntityType Name="MenuItemMap">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="MenuID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="MenuItemID" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Menu" Relationship="BBQRMSModel.FK_MenuItemMap_Menu" FromRole="MenuItemMap" ToRole="Menu" />
+        <NavigationProperty Name="MenuItem" Relationship="BBQRMSModel.FK_MenuItemMap_MenuItem" FromRole="MenuItemMap" ToRole="MenuItem" />
+      </EntityType>
       <Association Name="FK_Employee_ApplicationUser">
         <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="1" />
         <End Role="ApplicationUser" Type="BBQRMSModel.ApplicationUser" Multiplicity="*" />
@@ -49,15 +70,49 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="FK_MenuItemMap_Menu">
+        <End Role="Menu" Type="BBQRMSModel.Menu" Multiplicity="1" />
+        <End Role="MenuItemMap" Type="BBQRMSModel.MenuItemMap" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Menu">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="MenuItemMap">
+            <PropertyRef Name="MenuID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_MenuItemMap_MenuItem">
+        <End Role="MenuItem" Type="BBQRMSModel.MenuItem" Multiplicity="1" />
+        <End Role="MenuItemMap" Type="BBQRMSModel.MenuItemMap" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="MenuItem">
+            <PropertyRef Name="ID" />
+          </Principal>
+          <Dependent Role="MenuItemMap">
+            <PropertyRef Name="MenuItemID" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
     </Schema>
     <Schema Namespace="BBQRMS.WCFServices" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="BBQRMSEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
         <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
         <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
+        <EntitySet Name="MenuItems" EntityType="BBQRMSModel.MenuItem" />
+        <EntitySet Name="MenuItemMaps" EntityType="BBQRMSModel.MenuItemMap" />
         <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
           <End Role="Employee" EntitySet="Employees" />
           <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+        </AssociationSet>
+        <AssociationSet Name="FK_MenuItemMap_Menu" Association="BBQRMSModel.FK_MenuItemMap_Menu">
+          <End Role="Menu" EntitySet="Menus" />
+          <End Role="MenuItemMap" EntitySet="MenuItemMaps" />
+        </AssociationSet>
+        <AssociationSet Name="FK_MenuItemMap_MenuItem" Association="BBQRMSModel.FK_MenuItemMap_MenuItem">
+          <End Role="MenuItem" EntitySet="MenuItems" />
+          <End Role="MenuItemMap" EntitySet="MenuItemMaps" />
         </AssociationSet>
       </EntityContainer>
     </Schema>

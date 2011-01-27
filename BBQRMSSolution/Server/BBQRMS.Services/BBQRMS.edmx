@@ -28,10 +28,10 @@
           <Key>
             <PropertyRef Name="idPart" />
           </Key>
-          <Property Name="idPart" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="personalPart" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="idPart" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="personalPart" Type="nvarchar(max)" Nullable="false" />
           <Property Name="employeeId" Type="int" Nullable="false" />
-          <Property Name="displayName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="displayName" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -41,9 +41,9 @@
           <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="hireDate" Type="datetime" Nullable="false" />
-          <Property Name="phone1" Type="nvarchar" MaxLength="1" />
-          <Property Name="phone2" Type="nvarchar" MaxLength="1" />
-          <Property Name="phone3" Type="nvarchar" MaxLength="1" />
+          <Property Name="phone1" Type="nvarchar(max)" />
+          <Property Name="phone2" Type="nvarchar(max)" />
+          <Property Name="phone3" Type="nvarchar(max)" />
           <Property Name="address1" Type="nvarchar(max)" />
           <Property Name="address2" Type="nvarchar(max)" />
           <Property Name="email1" Type="nvarchar(max)" />
@@ -56,22 +56,22 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="MenuItem">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="numeric" Scale="2" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Price" Type="numeric" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="MenuItemMap">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MenuID" />
+            <PropertyRef Name="MenuItemID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="MenuItemID" Type="int" Nullable="false" />
         </EntityType>
@@ -90,9 +90,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MenuItemMap_Menu">
-          <End Role="Menu" Type="BBQRMSModel.Store.Menu" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Menu" Type="BBQRMSModel.Store.Menu" Multiplicity="1" />
           <End Role="MenuItemMap" Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Menu">
@@ -104,13 +102,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MenuItemMap_MenuItem">
-          <End Role="MenuItem" Type="BBQRMSModel.Store.MenuItem" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="MenuItem" Type="BBQRMSModel.Store.MenuItem" Multiplicity="1" />
           <End Role="MenuItemMap" Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MenuItem">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MenuItemMap">
               <PropertyRef Name="MenuItemID" />
@@ -122,32 +118,19 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BBQRMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BBQRMSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
           <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
           <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
           <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
           </AssociationSet>
+          <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
           <EntitySet Name="MenuItems" EntityType="BBQRMSModel.MenuItem" />
-          <EntitySet Name="MenuItemMaps" EntityType="BBQRMSModel.MenuItemMap" />
-          <AssociationSet Name="FK_MenuItemMap_Menu" Association="BBQRMSModel.FK_MenuItemMap_Menu">
+          <AssociationSet Name="MenuItemMap" Association="BBQRMSModel.MenuItemMap">
             <End Role="Menu" EntitySet="Menus" />
-            <End Role="MenuItemMap" EntitySet="MenuItemMaps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MenuItemMap_MenuItem" Association="BBQRMSModel.FK_MenuItemMap_MenuItem">
             <End Role="MenuItem" EntitySet="MenuItems" />
-            <End Role="MenuItemMap" EntitySet="MenuItemMaps" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Menu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="MenuItemMaps" Relationship="BBQRMSModel.FK_MenuItemMap_Menu" FromRole="Menu" ToRole="MenuItemMap" />
-        </EntityType>
+          </EntityContainer>
         <EntityType Name="ApplicationUser">
           <Key>
             <PropertyRef Name="idPart" />
@@ -189,60 +172,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap" FromRole="Menu" ToRole="MenuItem" />
+        </EntityType>
         <EntityType Name="MenuItem">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="Price" Precision="18" Scale="2" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Price" Precision="18" Scale="0" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MenuItemMaps" Relationship="BBQRMSModel.FK_MenuItemMap_MenuItem" FromRole="MenuItem" ToRole="MenuItemMap" />
+          <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap" FromRole="MenuItem" ToRole="Menu" />
         </EntityType>
-        <EntityType Name="MenuItemMap">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="MenuID" Nullable="false" />
-          <Property Type="Int32" Name="MenuItemID" Nullable="false" />
-          <NavigationProperty Name="Menu" Relationship="BBQRMSModel.FK_MenuItemMap_Menu" FromRole="MenuItemMap" ToRole="Menu" />
-          <NavigationProperty Name="MenuItem" Relationship="BBQRMSModel.FK_MenuItemMap_MenuItem" FromRole="MenuItemMap" ToRole="MenuItem" />
-        </EntityType>
-        <Association Name="FK_MenuItemMap_Menu">
-          <End Type="BBQRMSModel.Menu" Role="Menu" Multiplicity="1" />
-          <End Type="BBQRMSModel.MenuItemMap" Role="MenuItemMap" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Menu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MenuItemMap">
-              <PropertyRef Name="MenuID" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="MenuItemMap">
+          <End Type="BBQRMSModel.Menu" Role="Menu" Multiplicity="*" />
+          <End Type="BBQRMSModel.MenuItem" Role="MenuItem" Multiplicity="*" />
         </Association>
-        <Association Name="FK_MenuItemMap_MenuItem">
-          <End Type="BBQRMSModel.MenuItem" Role="MenuItem" Multiplicity="1" />
-          <End Type="BBQRMSModel.MenuItemMap" Role="MenuItemMap" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MenuItem">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MenuItemMap">
-              <PropertyRef Name="MenuItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BBQRMSModelStoreContainer" CdmEntityContainer="BBQRMSEntities">
-          <EntitySetMapping Name="Menus"><EntityTypeMapping TypeName="BBQRMSModel.Menu"><MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ApplicationUsers">
             <EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser">
               <MappingFragment StoreEntitySet="ApplicationUser">
@@ -272,25 +229,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MenuItems">
-            <EntityTypeMapping TypeName="BBQRMSModel.MenuItem">
-              <MappingFragment StoreEntitySet="MenuItem">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="BBQRMSModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MenuItemMaps">
-            <EntityTypeMapping TypeName="BBQRMSModel.MenuItemMap">
-              <MappingFragment StoreEntitySet="MenuItemMap">
-                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="BBQRMSModel.MenuItem">
+              <MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="MenuItemMap" TypeName="BBQRMSModel.MenuItemMap" StoreEntitySet="MenuItemMap">
+            <EndProperty Name="MenuItem">
+              <ScalarProperty Name="Id" ColumnName="MenuItemID" />
+            </EndProperty>
+            <EndProperty Name="Menu">
+              <ScalarProperty Name="ID" ColumnName="MenuID" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -312,23 +276,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BBQRMS">
-        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="6.875" PointY="4.125" Height="1.427958984375" IsExpanded="true" />
         <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="3" PointY="0.625" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="0.5" PointY="0.5" Height="3.2357796223958317" />
         <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >
           <ConnectorPoint PointX="2" PointY="1.5033268229166668" />
           <ConnectorPoint PointX="3" PointY="1.5033268229166668" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="BBQRMSModel.MenuItem" Width="1.5" PointX="4.25" PointY="4" Height="1.7566536458333317" />
-        <EntityTypeShape EntityType="BBQRMSModel.MenuItemMap" Width="1.5" PointX="5.375" PointY="0.625" Height="1.7566536458333317" />
-        <AssociationConnector Association="BBQRMSModel.FK_MenuItemMap_Menu" >
-          <ConnectorPoint PointX="7.65625" PointY="4.125" />
-          <ConnectorPoint PointX="7.65625" PointY="1.5033268229166659" />
-          <ConnectorPoint PointX="6.875" PointY="1.5033268229166659" />
-        </AssociationConnector>
-        <AssociationConnector Association="BBQRMSModel.FK_MenuItemMap_MenuItem" >
-          <ConnectorPoint PointX="5.5625" PointY="4" />
-          <ConnectorPoint PointX="5.5625" PointY="2.3816536458333317" />
+        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="5.5" PointY="1.75" Height="1.4279589843750031" />
+        <EntityTypeShape EntityType="BBQRMSModel.MenuItem" Width="1.5" PointX="8.875" PointY="1.625" Height="1.7566536458333317" />
+        <AssociationConnector Association="BBQRMSModel.MenuItemMap" >
+          <ConnectorPoint PointX="7" PointY="2.4639794921875016" />
+          <ConnectorPoint PointX="8.875" PointY="2.4639794921875016" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>
