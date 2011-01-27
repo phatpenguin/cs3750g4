@@ -38,9 +38,9 @@ union select top 0 * from [dbo].[MenuItem]) a
 
 insert into #MenuItem
 values 
-(1, 'Soda', 1.25, 'This is a drink'),
-(2, 'Ribs', 5.99, 'This is a entree'),
-(3, 'Sides', 3.25, 'This is a side')
+(1, 1.25, 'Soda', 'This is a drink'),
+(2, 5.99, 'Ribs', 'This is a entree'),
+(3, 3.25, 'Sides', 'This is a side')
 
 set identity_insert [dbo].[MenuItem] on
 
