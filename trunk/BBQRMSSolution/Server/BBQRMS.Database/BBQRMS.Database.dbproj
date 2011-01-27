@@ -231,9 +231,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ApplicationUser.UK_ApplicationUser_displayName.ukey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\MenuItem.MenuItem_Menu_FK.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ConsumedInventory.ConsumedInventory_MasterInventoryId_FK.fkey.sql">
       <SubType>Code</SubType>
     </Build>
