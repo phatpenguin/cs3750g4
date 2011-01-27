@@ -5,6 +5,7 @@ using BBQRMSSolution.Models;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 using Menu = BBQRMSSolution.ServerProxy.Menu;
+using MenuItem = BBQRMSSolution.ServerProxy.MenuItemMap;
 
 namespace BBQRMSSolution.ViewModels
 {
@@ -49,21 +50,21 @@ namespace BBQRMSSolution.ViewModels
 			foreach (var oi in Order.Items)
 			{
 				isFound = true;
-				if (oi.MenuItem.Id == menuItem.Id)
+				/*if (oi.MenuItem.Id == menuItem.Id)
 				{
 					oi.Quantity++;
 					NotifyPropertyChanged("oi");
 					break;
-				}
+				}*/
 				isFound = false;
 			}
 			if (!isFound || Order.Items.Count == 0)
 			{
-				var orderItem = new OrderItem { MenuItem = menuItem, Quantity = 1, DoAction = new DelegateCommand(RemoveMenuItem) };
-				Order.Items.Add(orderItem);
+				//var orderItem = new OrderItem { MenuItem = menuItem, Quantity = 1, DoAction = new DelegateCommand(RemoveMenuItem) };
+				//Order.Items.Add(orderItem);
 			}
 
-			Order.SubTotal += menuItem.Price;
+			//Order.SubTotal += menuItem.Price;
 			Order.TaxAmount = Order.SubTotal * (TAX_PERCENTAGE / 100);
 			Order.TotalPrice = Order.SubTotal + Order.TaxAmount;
 		}

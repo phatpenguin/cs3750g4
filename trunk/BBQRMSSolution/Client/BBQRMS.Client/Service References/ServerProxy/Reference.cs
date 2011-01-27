@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 1/22/2011 12:05:30 AM
+// Generation date: 1/26/2011 9:41:54 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -110,6 +110,40 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<Employee> _Employees;
         /// <summary>
+        /// There are no comments for MenuItems in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<MenuItem> MenuItems
+        {
+            get
+            {
+                if ((this._MenuItems == null))
+                {
+                    this._MenuItems = base.CreateQuery<MenuItem>("MenuItems");
+                }
+                return this._MenuItems;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<MenuItem> _MenuItems;
+        /// <summary>
+        /// There are no comments for MenuItemMaps in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                if ((this._MenuItemMaps == null))
+                {
+                    this._MenuItemMaps = base.CreateQuery<MenuItemMap>("MenuItemMaps");
+                }
+                return this._MenuItemMaps;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<MenuItemMap> _MenuItemMaps;
+        /// <summary>
         /// There are no comments for Menus in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -133,9 +167,25 @@ namespace BBQRMSSolution.ServerProxy
         {
             base.AddObject("Employees", employee);
         }
+        /// <summary>
+        /// There are no comments for MenuItems in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToMenuItems(MenuItem menuItem)
+        {
+            base.AddObject("MenuItems", menuItem);
+        }
+        /// <summary>
+        /// There are no comments for MenuItemMaps in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToMenuItemMaps(MenuItemMap menuItemMap)
+        {
+            base.AddObject("MenuItemMaps", menuItemMap);
+        }
     }
     /// <summary>
-    /// There are no comments for BBQRMSModel.SampleMenu in the schema.
+    /// There are no comments for BBQRMSModel.Menu in the schema.
     /// </summary>
     /// <KeyProperties>
     /// ID
@@ -145,7 +195,7 @@ namespace BBQRMSSolution.ServerProxy
     public partial class Menu : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
-        /// Create a new SampleMenu object.
+        /// Create a new Menu object.
         /// </summary>
         /// <param name="ID">Initial value of ID.</param>
         /// <param name="name">Initial value of Name.</param>
@@ -201,6 +251,24 @@ namespace BBQRMSSolution.ServerProxy
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for MenuItemMaps in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                return this._MenuItemMaps;
+            }
+            set
+            {
+                this._MenuItemMaps = value;
+                this.OnPropertyChanged("MenuItemMaps");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<MenuItemMap> _MenuItemMaps = new global::System.Data.Services.Client.DataServiceCollection<MenuItemMap>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -691,6 +759,286 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<ApplicationUser> _ApplicationUsers = new global::System.Data.Services.Client.DataServiceCollection<ApplicationUser>(null, System.Data.Services.Client.TrackingMode.None);
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.MenuItem in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("MenuItems")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
+    public partial class MenuItem : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new MenuItem object.
+        /// </summary>
+        /// <param name="ID">Initial value of ID.</param>
+        /// <param name="name">Initial value of Name.</param>
+        /// <param name="description">Initial value of Description.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static MenuItem CreateMenuItem(int ID, string name, string description)
+        {
+            MenuItem menuItem = new MenuItem();
+            menuItem.ID = ID;
+            menuItem.Name = name;
+            menuItem.Description = description;
+            return menuItem;
+        }
+        /// <summary>
+        /// There are no comments for Property ID in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this._ID = value;
+                this.OnIDChanged();
+                this.OnPropertyChanged("ID");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _ID;
+        partial void OnIDChanging(int value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Price in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<decimal> Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                this.OnPriceChanging(value);
+                this._Price = value;
+                this.OnPriceChanged();
+                this.OnPropertyChanged("Price");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<decimal> _Price;
+        partial void OnPriceChanging(global::System.Nullable<decimal> value);
+        partial void OnPriceChanged();
+        /// <summary>
+        /// There are no comments for Property Description in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this._Description = value;
+                this.OnDescriptionChanged();
+                this.OnPropertyChanged("Description");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for MenuItemMaps in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<MenuItemMap> MenuItemMaps
+        {
+            get
+            {
+                return this._MenuItemMaps;
+            }
+            set
+            {
+                this._MenuItemMaps = value;
+                this.OnPropertyChanged("MenuItemMaps");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<MenuItemMap> _MenuItemMaps = new global::System.Data.Services.Client.DataServiceCollection<MenuItemMap>(null, System.Data.Services.Client.TrackingMode.None);
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.MenuItemMap in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("MenuItemMaps")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("ID")]
+    public partial class MenuItemMap : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new MenuItemMap object.
+        /// </summary>
+        /// <param name="ID">Initial value of ID.</param>
+        /// <param name="menuID">Initial value of MenuID.</param>
+        /// <param name="menuItemID">Initial value of MenuItemID.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static MenuItemMap CreateMenuItemMap(int ID, int menuID, int menuItemID)
+        {
+            MenuItemMap menuItemMap = new MenuItemMap();
+            menuItemMap.ID = ID;
+            menuItemMap.MenuID = menuID;
+            menuItemMap.MenuItemID = menuItemID;
+            return menuItemMap;
+        }
+        /// <summary>
+        /// There are no comments for Property ID in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this._ID = value;
+                this.OnIDChanged();
+                this.OnPropertyChanged("ID");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _ID;
+        partial void OnIDChanging(int value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// There are no comments for Property MenuID in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int MenuID
+        {
+            get
+            {
+                return this._MenuID;
+            }
+            set
+            {
+                this.OnMenuIDChanging(value);
+                this._MenuID = value;
+                this.OnMenuIDChanged();
+                this.OnPropertyChanged("MenuID");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _MenuID;
+        partial void OnMenuIDChanging(int value);
+        partial void OnMenuIDChanged();
+        /// <summary>
+        /// There are no comments for Property MenuItemID in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int MenuItemID
+        {
+            get
+            {
+                return this._MenuItemID;
+            }
+            set
+            {
+                this.OnMenuItemIDChanging(value);
+                this._MenuItemID = value;
+                this.OnMenuItemIDChanged();
+                this.OnPropertyChanged("MenuItemID");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _MenuItemID;
+        partial void OnMenuItemIDChanging(int value);
+        partial void OnMenuItemIDChanged();
+        /// <summary>
+        /// There are no comments for Menu in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Menu Menu
+        {
+            get
+            {
+                return this._Menu;
+            }
+            set
+            {
+                this._Menu = value;
+                this.OnPropertyChanged("Menu");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Menu _Menu;
+        /// <summary>
+        /// There are no comments for MenuItem in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public MenuItem MenuItem
+        {
+            get
+            {
+                return this._MenuItem;
+            }
+            set
+            {
+                this._MenuItem = value;
+                this.OnPropertyChanged("MenuItem");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private MenuItem _MenuItem;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

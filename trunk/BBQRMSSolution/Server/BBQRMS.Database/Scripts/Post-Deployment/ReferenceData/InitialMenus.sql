@@ -49,7 +49,7 @@ set name = Source.name
 
 from [dbo].[MenuItem] Target inner join #MenuItem Source on Target.id = Source.id
 
-insert into [dbo].[MenuItem] (id, name)
+insert into [dbo].[MenuItem] (Id, Price, Name, Description)
 select Source.*
 from [dbo].[MenuItem] Target right join #MenuItem Source on Target.id = Source.id
 where Target.id is null
@@ -61,22 +61,14 @@ into #MenuItemMap
 from (select * from [dbo].[MenuItemMap]
 union select top 0 * from [dbo].[MenuItemMap]) a
 
+delete from MenuItemMap
+
 insert into #MenuItemMap
 values 
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3)
+(1, 1),
+(2, 2),
+(3, 3)
 
-set identity_insert [dbo].[MenuItemMap] on
-
-update [dbo].[MenuItemMap]
-set name = Source.name
-
-from [dbo].[MenuItemMap] Target inner join #MenuItemMap Source on Target.id = Source.id
-
-insert into [dbo].[MenuItemMap] (id, name)
+insert into [dbo].[MenuItemMap] (MenuID, MenuItemID)
 select Source.*
-from [dbo].[MenuItemMap] Target right join #MenuItemMap Source on Target.id = Source.id
-where Target.id is null
-
-set identity_insert [dbo].[MenuItemMap] off
+from #MenuItemMap Source
