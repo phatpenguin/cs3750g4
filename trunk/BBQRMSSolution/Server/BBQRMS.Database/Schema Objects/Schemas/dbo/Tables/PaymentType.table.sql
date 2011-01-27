@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[PaymentType]
 (
-	id		int identity,
-	descr	nvarchar NOT NULL
+	Id		int identity,
+	Descr	nvarchar NOT NULL
 )

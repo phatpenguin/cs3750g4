@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[EmployeeTimeClock]
 (
-	id			int identity,
-	employeeId	int	NOT NULL,
-	clockInTimeUTC	smalldatetime NOT NULL,
-	clockOutTimeUTC smalldatetime NULL
+	Id			int identity,
+	EmployeeId	int	NOT NULL,
+	ClockInTimeUTC	smalldatetime NOT NULL,
+	ClockOutTimeUTC smalldatetime NULL
 )

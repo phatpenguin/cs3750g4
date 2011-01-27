@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Supplier]
 (
-	id				int identity,
-	name			nvarchar(MAX) NOT NULL,
-	address1		nvarchar NOT NULL,
-	phone1			nvarchar NOT NULL,
-	rating			int	NULL
+	Id				int identity,
+	Name			nvarchar(MAX) NOT NULL,
+	Address1		nvarchar NOT NULL,
+	Phone1			nvarchar NOT NULL,
+	Rating			int	NULL
 )

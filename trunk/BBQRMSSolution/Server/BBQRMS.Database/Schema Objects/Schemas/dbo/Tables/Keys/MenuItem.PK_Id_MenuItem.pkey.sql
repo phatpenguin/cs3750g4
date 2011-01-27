@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[MenuItem]
+	ADD CONSTRAINT [PK_Id_MenuItem]
+	PRIMARY KEY (Id)

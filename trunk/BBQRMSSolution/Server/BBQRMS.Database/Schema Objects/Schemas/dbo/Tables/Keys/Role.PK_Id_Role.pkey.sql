@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Role]
+	ADD CONSTRAINT [PK_Id_Role]
+	PRIMARY KEY (Id)

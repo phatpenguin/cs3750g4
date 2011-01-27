@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[ConsumedInventory]
 (
-	id					int	identity,
-	masterInventoryId	int	NOT NULL,
-	quantity			money NOT NULL,
-	consumptionTypeId	int	NOT NULL,
-	dateConsumed		dateTime NOT NULL,
-	employeeId			int NOT NULL
+	Id					int	identity,
+	MasterInventoryId	int	NOT NULL,
+	Quantity			money NOT NULL,
+	ConsumptionTypeId	int	NOT NULL,
+	DateConsumed		dateTime NOT NULL,
+	EmployeeId			int NOT NULL
 )
