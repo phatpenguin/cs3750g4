@@ -1,16 +1,16 @@
 ﻿CREATE TABLE [dbo].[Employee]
 (
-	id			int identity,
-	firstName	nvarchar(MAX) NOT NULL,
-	lastName	nvarchar(MAX) NOT NULL,
-	hireDate	datetime not null,
-	phone1		nvarchar,
-	phone2		nvarchar,
-	phone3		nvarchar, 
-	address1	nvarchar(MAX) NULL,
-	address2	nvarchar(MAX) NULL,
-	email1		nvarchar(MAX) NULL,
-	email2		nvarchar(MAX) NULL,
-	payTypeId	int NOT NULL,
-	payAmount	money NOT NULL
+	Id			int identity,
+	FirstName	nvarchar(MAX) NOT NULL,
+	LastName	nvarchar(MAX) NOT NULL,
+	HireDate	datetime not null,
+	Phone1		nvarchar,
+	Phone2		nvarchar,
+	Phone3		nvarchar, 
+	Address1	nvarchar(MAX) NULL,
+	Address2	nvarchar(MAX) NULL,
+	Email1		nvarchar(MAX) NULL,
+	Email2		nvarchar(MAX) NULL,
+	PayTypeId	int NOT NULL,
+	PayAmount	money NOT NULL
 )

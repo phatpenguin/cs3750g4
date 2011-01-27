@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[MasterInventory]
 (
-	id				int	identity,
-	name			nvarchar NOT NULL,
-	unitQty			int NOT NULL,
-	expirationDate	datetime NOT NULL,
-	orderLeadDays	int	NOT NULL
+	Id				int	identity,
+	Name			nvarchar NOT NULL,
+	UnitQty			int NOT NULL,
+	ExpirationDate	datetime NOT NULL,
+	OrderLeadDays	int	NOT NULL
 )

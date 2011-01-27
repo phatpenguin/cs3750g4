@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[MenuItem]
 (
-	id		int identity,
-	menuId	int NOT NULL,
-	name	nvarchar NOT NULL,
-	descr	nvarchar(MAX) NOT NULL
+	Id		int identity,
+	MenuId	int NOT NULL,
+	Name	nvarchar NOT NULL,
+	Descr	nvarchar(MAX) NOT NULL
 )

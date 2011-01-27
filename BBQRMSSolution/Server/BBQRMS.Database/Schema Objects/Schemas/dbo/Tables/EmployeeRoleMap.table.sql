@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[EmployeeRoleMap]
 (
-	id			int identity, 
-	employeeId	int NOT NULL,
-	roleId		int NOT NULL
+	Id			int identity, 
+	EmployeeId	int NOT NULL,
+	RoleId		int NOT NULL
 )

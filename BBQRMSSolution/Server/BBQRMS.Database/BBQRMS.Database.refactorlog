@@ -35,4 +35,46 @@
     <Property Name="ParentElementType" Value="ISql90Schema" />
     <Property Name="NewName" Value="[SupplierContact]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b6b44806-52fd-4093-82c7-2fc1bec7d2cb" ChangeDateTime="01/25/2011 04:31:21">
+    <Property Name="ElementName" Value="[dbo].[ConsumedInventory_ConsumptionTypeId_FK]" />
+    <Property Name="ElementType" Value="ISql90ForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ConsumedInventory]" />
+    <Property Name="ParentElementType" Value="ISql100Table" />
+    <Property Name="NewName" Value="[FK_ConsumptionTypeId_ConsumedInventory]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6cf235cf-b297-4c70-8054-c76151e3b295" ChangeDateTime="01/25/2011 04:33:49">
+    <Property Name="ElementName" Value="[dbo].[ConsumedInventory_MasterInventoryId_FK]" />
+    <Property Name="ElementType" Value="ISql90ForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="" />
+    <Property Name="ParentElementType" Value="" />
+    <Property Name="NewName" Value="[FK_MasterInventoryId_ConsumedInventory]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="05ad17fb-c890-49ce-b4df-316e64944ddf" ChangeDateTime="01/25/2011 04:37:18">
+    <Property Name="ElementName" Value="[dbo].[ConsumedInventory_EmployeeId_FK]" />
+    <Property Name="ElementType" Value="ISql90ForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ConsumedInventory]" />
+    <Property Name="ParentElementType" Value="ISql100Table" />
+    <Property Name="NewName" Value="[FK_EmployeeId_ConsumedInventory]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e550e22-76cf-4302-a3d4-a8a16b2308fa" ChangeDateTime="01/25/2011 04:48:46">
+    <Property Name="ElementName" Value="[dbo].[EmployeeRoleMap].[id]" />
+    <Property Name="ElementType" Value="ISql100SimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EmployeeRoleMap]" />
+    <Property Name="ParentElementType" Value="ISql100Table" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a9150a0f-403b-498f-8015-db0932e81588" ChangeDateTime="01/27/2011 00:59:18">
+    <Property Name="ElementName" Value="[dbo].[TableSections]" />
+    <Property Name="ElementType" Value="ISql100Table" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="ISql90Schema" />
+    <Property Name="NewName" Value="[TableSection]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3dbc2020-efcd-4982-90d4-2ae092f960f0" ChangeDateTime="01/27/2011 01:19:02">
+    <Property Name="ElementName" Value="[dbo].[MenuItem_Menu_FK]" />
+    <Property Name="ElementType" Value="ISql90ForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[MenuItem]" />
+    <Property Name="ParentElementType" Value="ISql100Table" />
+    <Property Name="NewName" Value="[FK_MenuId_MenuItem]" />
+  </Operation>
 </Operations>

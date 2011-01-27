@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ItemSupplierMap]
 (
-	id					int	identity,
-	masterInventoryId	int NOT NULL,
-	supplierId			int NOT NULL
+	Id					int	identity,
+	MasterInventoryId	int NOT NULL,
+	SupplierId			int NOT NULL
 )
