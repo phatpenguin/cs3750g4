@@ -333,6 +333,9 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\TableSection.PK_Id_TableSection.pkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\MenuItemMap.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <DeploymentExtensionConfiguration Include="BBQRMS.Database.refactorlog">
@@ -341,6 +344,9 @@
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialEmployeesAndUsers.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialMenus.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPaymentTypeData.sql">
