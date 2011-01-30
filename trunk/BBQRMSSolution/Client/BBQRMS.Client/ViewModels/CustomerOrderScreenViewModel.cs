@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using BBQRMSSolution.Models;
+using OrderItem = BBQRMSSolution.Models.OrderItem;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 using Menu = BBQRMSSolution.ServerProxy.Menu;
-using MenuItem = BBQRMSSolution.ServerProxy.MenuItemMap;
+using MenuItem = BBQRMSSolution.ServerProxy.MenuItem;
 
 namespace BBQRMSSolution.ViewModels
 {
