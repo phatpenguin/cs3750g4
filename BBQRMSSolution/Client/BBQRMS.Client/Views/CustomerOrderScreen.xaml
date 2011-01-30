@@ -13,10 +13,10 @@
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid >
-				<Button Margin="2" Width="115" Height="95" Command="{Binding DoAction}" CommandParameter="{Binding}" VerticalContentAlignment="Bottom">
-					<Button.Background>
+				<Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom">
+					<!--Button.Background>
 						<ImageBrush ImageSource="{Binding ImageSource}"/>
-					</Button.Background>
+					</Button.Background-->
 					<StackPanel Background="#FFBFC9D9">
 						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" FontSize="12" Foreground="Black">
 							<Run Text="{Binding Id}" /><Run Text=" - " /><Run Text="{Binding Name}" />
