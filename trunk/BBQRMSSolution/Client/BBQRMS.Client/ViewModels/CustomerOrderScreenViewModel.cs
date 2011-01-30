@@ -40,6 +40,11 @@ namespace BBQRMSSolution.ViewModels
 			Order = new OrderViewModel();
 
 			Menus = new ObservableCollection<Menu>(mDataService.Menus.Execute());
+		    foreach (Menu menu in Menus)
+		    {
+		        mDataService.LoadProperty(menu, "MenuItems");
+		    }
+            
 		}
 
 		public void AddMenuItem(Object mi)

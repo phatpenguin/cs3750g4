@@ -10,6 +10,9 @@
 
 // Original file name:
 // Generation date: 1/28/2011 6:07:06 AM
+using System.Collections.ObjectModel;
+using System.Data.Services.Client;
+
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -79,7 +82,7 @@ namespace BBQRMSSolution.ServerProxy
         /// There are no comments for Employees in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<Employee> Employees
+        public DataServiceQuery<Employee> Employees
         {
             get
             {

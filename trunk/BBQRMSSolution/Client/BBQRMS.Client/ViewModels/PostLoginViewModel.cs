@@ -92,8 +92,9 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleManageEmployees()
 		{
 			//TODO: Show a new or existing viewmodel for managing employees.
-			mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
-		}
+//			mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
+            mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(mDataService, mMessageBus)));
+        }
 
 		public void HandleManageInventory()
 		{
