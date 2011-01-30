@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
@@ -19,21 +21,34 @@ namespace BBQRMSSolution.Views
     /// </summary>
     public partial class EmployeeManangment : UserControl
     {
+        private EmployeeManagementViewModel employeeManagementViewModel;
+
         public EmployeeManangment()
         {
             InitializeComponent();
-            EmployeeList.SelectionChanged += new SelectionChangedEventHandler(EmployeeList_SelectionChanged);
-            RoleList.SelectionChanged += new SelectionChangedEventHandler(RoleList_SelectionChanged);
         }
 
-        private void RoleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public EmployeeManagementViewModel ViewModel
         {
-            employeeManagmentContent.Content = new RoleManagement();
+            get
+            {
+                if (employeeManagementViewModel == null)
+                {
+                    employeeManagementViewModel = ((EmployeeManagementViewModel) DataContext);
+                }
+                return employeeManagementViewModel;
+            }
         }
 
-        private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SaveCommand(object sender, RoutedEventArgs e)
         {
-            employeeManagmentContent.Content = new EmployeeInfo();
+            
+            ViewModel.HandleSaveClick();
+        }
+
+        private void AddEmployeeCommand(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleCreateEmployee();
         }
     }
 }

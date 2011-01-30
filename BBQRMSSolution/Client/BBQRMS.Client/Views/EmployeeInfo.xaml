@@ -9,44 +9,46 @@
     <StackPanel DockPanel.Dock="Left">
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="First Name:" Width="120"/>
-        <TextBox Text="8" Width="300"/>
+        <TextBox Width="300" Text="{Binding Path=firstName}"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Last Name:" Width="120"/>
-        <TextBox Text="8" Width="300"/>
+        <TextBox  Text="{Binding Path=lastName}" Width="300"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Home Phone:" Width="120"/>
-        <TextBox Text="(801) 548-8467" Width="150"/>
+        <TextBox Text="{Binding Path=phone1}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Cell Phone:" Width="120"/>
-        <TextBox Text="(801) 654-8945" Width="150"/>
+        <TextBox Text="{Binding Path=phone2}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Other Phone:" Width="120"/>
-        <TextBox Text="(801) 894-2654" Width="150"/>
+        <TextBox Text="{Binding Path=phone3}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Email 1:" Width="120"/>
-        <TextBox Text="crazyjoe23@hotmail.com" Width="150"/>
+        <TextBox Text="{Binding Path=email1}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Email 2:" Width="120"/>
-        <TextBox Text="" Width="150"/>
+        <TextBox Text="{Binding Path=email2}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Address:" Width="120"/>
-        <TextBox Text="12345 Sumrandom Street" Width="300"/>
+        <TextBox Text="{Binding Path=address1}" Width="300"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Address Line 2:" Width="120"/>
-        <TextBox Text="Appt. #567" Width="300"/>
+        <TextBox Text="{Binding Path=address2}" Width="300"/>
       </StackPanel>
+<!--
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="City, State Zip:" Width="120"/>
-        <TextBox Text="West Valley City, UT 84095" Width="250"/>
+        <TextBox Text="{Binding Path=city}" Width="250"/>
       </StackPanel>
+-->
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Role:" Width="120"/>
         <ComboBox Width="150" SelectedIndex="2">
@@ -75,20 +77,20 @@
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Comp. Rate:" Width="120"/>
-      <TextBox Text="$4.25" Width="250"/>
+      <TextBox Text="{Binding Path=firstName}" Width="250"/>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Hire Date:" Width="120"/>
-      <TextBox Text="04/01/2009" Width="250"/>
+      <TextBox Text="{Binding Path=firstName}" Width="250"/>
     </StackPanel>
     <StackPanel Margin="0" Orientation="Horizontal">
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Last Clocked In:" Width="120"/>
-        <TextBlock Text="8:05am Oct. 25th 2010" Width="150" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=firstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Clock on for:" Width="120"/>
-        <TextBlock Text="3:45:23" Width="150" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=firstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
     </StackPanel>
   </StackPanel>
