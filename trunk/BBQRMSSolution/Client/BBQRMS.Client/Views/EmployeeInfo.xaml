@@ -5,43 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
   <StackPanel Margin="5">
-    <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Width="783" Text="John Doe"/>
+    <StackPanel Orientation="Horizontal">
+      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text="{Binding Path=FirstName}"/>
+      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text=" "/>
+      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text="{Binding Path=LastName}"/>
+    </StackPanel>
     <StackPanel DockPanel.Dock="Left">
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="First Name:" Width="120"/>
-        <TextBox Width="300" Text="{Binding Path=firstName}"/>
+        <TextBox Width="300" Text="{Binding Path=FirstName}"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Last Name:" Width="120"/>
-        <TextBox  Text="{Binding Path=lastName}" Width="300"/>
+        <TextBox  Text="{Binding Path=LastName}" Width="300"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Home Phone:" Width="120"/>
-        <TextBox Text="{Binding Path=phone1}" Width="150"/>
+        <TextBox Text="{Binding Path=Phone1}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Cell Phone:" Width="120"/>
-        <TextBox Text="{Binding Path=phone2}" Width="150"/>
+        <TextBox Text="{Binding Path=Phone2}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Other Phone:" Width="120"/>
-        <TextBox Text="{Binding Path=phone3}" Width="150"/>
+        <TextBox Text="{Binding Path=Phone3}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Email 1:" Width="120"/>
-        <TextBox Text="{Binding Path=email1}" Width="150"/>
+        <TextBox Text="{Binding Path=Email1}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Email 2:" Width="120"/>
-        <TextBox Text="{Binding Path=email2}" Width="150"/>
+        <TextBox Text="{Binding Path=Email2}" Width="150"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Address:" Width="120"/>
-        <TextBox Text="{Binding Path=address1}" Width="300"/>
+        <TextBox Text="{Binding Path=Address1}" Width="300"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Address Line 2:" Width="120"/>
-        <TextBox Text="{Binding Path=address2}" Width="300"/>
+        <TextBox Text="{Binding Path=Address2}" Width="300"/>
       </StackPanel>
 <!--
       <StackPanel Margin="2" Orientation="Horizontal">
@@ -51,46 +55,39 @@
 -->
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Role:" Width="120"/>
-        <ComboBox Width="150" SelectedIndex="2">
-          <ComboBoxItem >Cashier</ComboBoxItem>
-          <ComboBoxItem >Admin</ComboBoxItem>
-          <ComboBoxItem>Cook</ComboBoxItem>
-          <ComboBoxItem>Server</ComboBoxItem>
-        </ComboBox>
-      </StackPanel>
-      <StackPanel Margin="2" Orientation="Horizontal">
-        <Label FontWeight="Bold" Content="User Privleges:" Width="120"/>
-        <ListBox Width="150" SelectedIndex="2">
-          <ListBoxItem >Edit Inventory</ListBoxItem>
-          <ListBoxItem >Manage Menu</ListBoxItem>
+        <ListBox Width="150" SelectionMode="Extended"
+                 ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.Roles}"
+                 >
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Path=Description}"/>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
         </ListBox>
-        <Button Height="25" Margin="5" Content="Add Privleges"/>
       </StackPanel>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Comp. Type:" Width="120"/>
-      <ComboBox Width="150" SelectedIndex="1">
-        <ComboBoxItem >Salary</ComboBoxItem>
-        <ComboBoxItem >Hourly</ComboBoxItem>
-        <ComboBoxItem>Contract</ComboBoxItem>
+      <ComboBox Width="150" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.PayTypes}" 
+                DisplayMemberPath="Descr" SelectedValue="{Binding Path=EmployeePayType}">
       </ComboBox>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Comp. Rate:" Width="120"/>
-      <TextBox Text="{Binding Path=firstName}" Width="250"/>
+      <TextBox Text="{Binding Path=PayAmount}" Width="250"/>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Hire Date:" Width="120"/>
-      <TextBox Text="{Binding Path=firstName}" Width="250"/>
+      <TextBox Text="{Binding Path=HireDate}" Width="250"/>
     </StackPanel>
     <StackPanel Margin="0" Orientation="Horizontal">
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Last Clocked In:" Width="120"/>
-        <TextBlock Text="{Binding Path=firstName}" Width="150" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=FirstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Clock on for:" Width="120"/>
-        <TextBlock Text="{Binding Path=firstName}" Width="150" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=FirstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
     </StackPanel>
   </StackPanel>

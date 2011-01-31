@@ -6,22 +6,58 @@
     <edmx:StorageModels>
     <Schema Namespace="BBQRMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BBQRMSModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="BBQRMSModel.Store.__RefactorLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ApplicationUser" EntityType="BBQRMSModel.Store.ApplicationUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumedInventory" EntityType="BBQRMSModel.Store.ConsumedInventory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumptionType" EntityType="BBQRMSModel.Store.ConsumptionType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Employee" EntityType="BBQRMSModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EmployeePayType" EntityType="BBQRMSModel.Store.EmployeePayType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EmployeeRoleMap" EntityType="BBQRMSModel.Store.EmployeeRoleMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EmployeeTimeClock" EntityType="BBQRMSModel.Store.EmployeeTimeClock" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemSupplierMap" EntityType="BBQRMSModel.Store.ItemSupplierMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Location" EntityType="BBQRMSModel.Store.Location" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MasterInventory" EntityType="BBQRMSModel.Store.MasterInventory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Menu" EntityType="BBQRMSModel.Store.Menu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MenuItem" EntityType="BBQRMSModel.Store.MenuItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MenuItemMap" EntityType="BBQRMSModel.Store.MenuItemMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="BBQRMSModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItem" EntityType="BBQRMSModel.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderType" EntityType="BBQRMSModel.Store.OrderType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentType" EntityType="BBQRMSModel.Store.PaymentType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Privilege" EntityType="BBQRMSModel.Store.Privilege" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Role" EntityType="BBQRMSModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RolePrivilegeMap" EntityType="BBQRMSModel.Store.RolePrivilegeMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier" EntityType="BBQRMSModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SupplierContact" EntityType="BBQRMSModel.Store.SupplierContact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SupplierContactMap" EntityType="BBQRMSModel.Store.SupplierContactMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TableSection" EntityType="BBQRMSModel.Store.TableSection" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ConsumptionTypeId_ConsumedInventory" Association="BBQRMSModel.Store.FK_ConsumptionTypeId_ConsumedInventory">
+            <End Role="ConsumptionType" EntitySet="ConsumptionType" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventory" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.Store.FK_Employee_ApplicationUser">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ApplicationUser" EntitySet="ApplicationUser" />
           </AssociationSet>
+          <AssociationSet Name="FK_EmployeeId_ConsumedInventory" Association="BBQRMSModel.Store.FK_EmployeeId_ConsumedInventory">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventory" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmployeeId_EmployeeRoleMap" Association="BBQRMSModel.Store.FK_EmployeeId_EmployeeRoleMap">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="EmployeeRoleMap" EntitySet="EmployeeRoleMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationId_Order" Association="BBQRMSModel.Store.FK_LocationId_Order">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterInventoryId_ConsumedInventory" Association="BBQRMSModel.Store.FK_MasterInventoryId_ConsumedInventory">
+            <End Role="MasterInventory" EntitySet="MasterInventory" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuItemId_OrderItem" Association="BBQRMSModel.Store.FK_MenuItemId_OrderItem">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuItemMap_Menu" Association="BBQRMSModel.Store.FK_MenuItemMap_Menu">
             <End Role="Menu" EntitySet="Menu" />
@@ -30,6 +66,26 @@
           <AssociationSet Name="FK_MenuItemMap_MenuItem" Association="BBQRMSModel.Store.FK_MenuItemMap_MenuItem">
             <End Role="MenuItem" EntitySet="MenuItem" />
             <End Role="MenuItemMap" EntitySet="MenuItemMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderId_OrderItem" Association="BBQRMSModel.Store.FK_OrderId_OrderItem">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItemId_Order" Association="BBQRMSModel.Store.FK_OrderItemId_Order">
+            <End Role="OrderItem" EntitySet="OrderItem" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTypeId_Order" Association="BBQRMSModel.Store.FK_OrderTypeId_Order">
+            <End Role="OrderType" EntitySet="OrderType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTypeId_Order" Association="BBQRMSModel.Store.FK_PaymentTypeId_Order">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayTypeId_Employee" Association="BBQRMSModel.Store.FK_PayTypeId_Employee">
+            <End Role="EmployeePayType" EntitySet="EmployeePayType" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_PrivilegeId_RolePrivilegeMap" Association="BBQRMSModel.Store.FK_PrivilegeId_RolePrivilegeMap">
             <End Role="Privilege" EntitySet="Privilege" />
@@ -43,7 +99,25 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="RolePrivilegeMap" EntitySet="RolePrivilegeMap" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupplierContactId_SupplierContactMap" Association="BBQRMSModel.Store.FK_SupplierContactId_SupplierContactMap">
+            <End Role="SupplierContact" EntitySet="SupplierContact" />
+            <End Role="SupplierContactMap" EntitySet="SupplierContactMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierId_SupplierContactMap" Association="BBQRMSModel.Store.FK_SupplierId_SupplierContactMap">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierContactMap" EntitySet="SupplierContactMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TableSectionId_Order" Association="BBQRMSModel.Store.FK_TableSectionId_Order">
+            <End Role="TableSection" EntitySet="TableSection" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="ApplicationUser">
           <Key>
             <PropertyRef Name="IdPart" />
@@ -52,6 +126,24 @@
           <Property Name="PersonalPart" Type="nvarchar(max)" Nullable="false" />
           <Property Name="EmployeeId" Type="int" Nullable="false" />
           <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ConsumedInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MasterInventoryId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="money" Nullable="false" />
+          <Property Name="ConsumptionTypeId" Type="int" Nullable="false" />
+          <Property Name="DateConsumed" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsumptionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descr" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -71,6 +163,13 @@
           <Property Name="PayTypeId" Type="int" Nullable="false" />
           <Property Name="PayAmount" Type="money" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmployeePayType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descr" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="EmployeeRoleMap">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -78,6 +177,40 @@
           </Key>
           <Property Name="EmployeeId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTimeClock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="ClockInTimeUTC" Type="smalldatetime" Nullable="false" />
+          <Property Name="ClockOutTimeUTC" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="ItemSupplierMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MasterInventoryId" Type="int" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descr" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MasterInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UnitQty" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderLeadDays" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -103,6 +236,46 @@
           <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="MenuItemID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderItemId" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="OrderTypeId" Type="int" Nullable="false" />
+          <Property Name="TableId" Type="int" Nullable="false" />
+          <Property Name="TableSectionId" Type="int" Nullable="false" />
+          <Property Name="Total" Type="money" Nullable="false" />
+          <Property Name="OrderRecieved" Type="int" Nullable="false" />
+          <Property Name="EnteredTime" Type="datetime" Nullable="false" />
+          <Property Name="CompletedType" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuItemId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descr" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descr" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Privilege">
           <Key>
             <PropertyRef Name="Id" />
@@ -125,9 +298,54 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="PrivilegeId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'BBQRMS.dbo.EmployeePrivilege' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+        </EntityType>
+        <EntityType Name="SupplierContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone2" Type="nvarchar(max)" />
+          <Property Name="Phone3" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SupplierContactMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="SupplierContactId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TableSection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descr" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ConsumptionTypeId_ConsumedInventory">
+          <End Role="ConsumptionType" Type="BBQRMSModel.Store.ConsumptionType" Multiplicity="1" />
+          <End Role="ConsumedInventory" Type="BBQRMSModel.Store.ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumptionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="ConsumptionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_ApplicationUser">
           <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -142,6 +360,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeId_ConsumedInventory">
+          <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1" />
+          <End Role="ConsumedInventory" Type="BBQRMSModel.Store.ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeId_EmployeeRoleMap">
           <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1" />
           <End Role="EmployeeRoleMap" Type="BBQRMSModel.Store.EmployeeRoleMap" Multiplicity="*" />
@@ -151,6 +381,42 @@
             </Principal>
             <Dependent Role="EmployeeRoleMap">
               <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationId_Order">
+          <End Role="Location" Type="BBQRMSModel.Store.Location" Multiplicity="1" />
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterInventoryId_ConsumedInventory">
+          <End Role="MasterInventory" Type="BBQRMSModel.Store.MasterInventory" Multiplicity="1" />
+          <End Role="ConsumedInventory" Type="BBQRMSModel.Store.ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterInventory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="MasterInventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuItemId_OrderItem">
+          <End Role="MenuItem" Type="BBQRMSModel.Store.MenuItem" Multiplicity="1" />
+          <End Role="OrderItem" Type="BBQRMSModel.Store.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="MenuItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,6 +441,66 @@
             </Principal>
             <Dependent Role="MenuItemMap">
               <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderId_OrderItem">
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="BBQRMSModel.Store.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItemId_Order">
+          <End Role="OrderItem" Type="BBQRMSModel.Store.OrderItem" Multiplicity="1" />
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTypeId_Order">
+          <End Role="OrderType" Type="BBQRMSModel.Store.OrderType" Multiplicity="1" />
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTypeId_Order">
+          <End Role="PaymentType" Type="BBQRMSModel.Store.PaymentType" Multiplicity="1" />
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayTypeId_Employee">
+          <End Role="EmployeePayType" Type="BBQRMSModel.Store.EmployeePayType" Multiplicity="1" />
+          <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PayTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,6 +540,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupplierContactId_SupplierContactMap">
+          <End Role="SupplierContact" Type="BBQRMSModel.Store.SupplierContact" Multiplicity="1" />
+          <End Role="SupplierContactMap" Type="BBQRMSModel.Store.SupplierContactMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierContact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierContactMap">
+              <PropertyRef Name="SupplierContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierId_SupplierContactMap">
+          <End Role="Supplier" Type="BBQRMSModel.Store.Supplier" Multiplicity="1" />
+          <End Role="SupplierContactMap" Type="BBQRMSModel.Store.SupplierContactMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierContactMap">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TableSectionId_Order">
+          <End Role="TableSection" Type="BBQRMSModel.Store.TableSection" Multiplicity="1" />
+          <End Role="Order" Type="BBQRMSModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableSection">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TableSectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -241,6 +603,74 @@
             <End Role="Privilege" EntitySet="Privileges" />
             <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
+          <EntitySet Name="C__RefactorLog" EntityType="BBQRMSModel.C__RefactorLog" />
+          <EntitySet Name="ConsumedInventories" EntityType="BBQRMSModel.ConsumedInventory" />
+          <EntitySet Name="ConsumptionTypes" EntityType="BBQRMSModel.ConsumptionType" />
+          <EntitySet Name="EmployeePayTypes" EntityType="BBQRMSModel.EmployeePayType" />
+          <EntitySet Name="EmployeeTimeClocks" EntityType="BBQRMSModel.EmployeeTimeClock" />
+          <EntitySet Name="ItemSupplierMaps" EntityType="BBQRMSModel.ItemSupplierMap" />
+          <EntitySet Name="Locations" EntityType="BBQRMSModel.Location" />
+          <EntitySet Name="MasterInventories" EntityType="BBQRMSModel.MasterInventory" />
+          <EntitySet Name="Orders" EntityType="BBQRMSModel.Order" />
+          <EntitySet Name="OrderItems" EntityType="BBQRMSModel.OrderItem" />
+          <EntitySet Name="OrderTypes" EntityType="BBQRMSModel.OrderType" />
+          <EntitySet Name="PaymentTypes" EntityType="BBQRMSModel.PaymentType" />
+          <EntitySet Name="Suppliers" EntityType="BBQRMSModel.Supplier" />
+          <EntitySet Name="SupplierContacts" EntityType="BBQRMSModel.SupplierContact" />
+          <EntitySet Name="SupplierContactMaps" EntityType="BBQRMSModel.SupplierContactMap" />
+          <EntitySet Name="TableSections" EntityType="BBQRMSModel.TableSection" />
+          <AssociationSet Name="FK_ConsumptionTypeId_ConsumedInventory" Association="BBQRMSModel.FK_ConsumptionTypeId_ConsumedInventory">
+            <End Role="ConsumptionType" EntitySet="ConsumptionTypes" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeId_ConsumedInventory" Association="BBQRMSModel.FK_EmployeeId_ConsumedInventory">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterInventoryId_ConsumedInventory" Association="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory">
+            <End Role="MasterInventory" EntitySet="MasterInventories" />
+            <End Role="ConsumedInventory" EntitySet="ConsumedInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayTypeId_Employee" Association="BBQRMSModel.FK_PayTypeId_Employee">
+            <End Role="EmployeePayType" EntitySet="EmployeePayTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationId_Order" Association="BBQRMSModel.FK_LocationId_Order">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuItemId_OrderItem" Association="BBQRMSModel.FK_MenuItemId_OrderItem">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderId_OrderItem" Association="BBQRMSModel.FK_OrderId_OrderItem">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItemId_Order" Association="BBQRMSModel.FK_OrderItemId_Order">
+            <End Role="OrderItem" EntitySet="OrderItems" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTypeId_Order" Association="BBQRMSModel.FK_OrderTypeId_Order">
+            <End Role="OrderType" EntitySet="OrderTypes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentTypeId_Order" Association="BBQRMSModel.FK_PaymentTypeId_Order">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TableSectionId_Order" Association="BBQRMSModel.FK_TableSectionId_Order">
+            <End Role="TableSection" EntitySet="TableSections" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierId_SupplierContactMap" Association="BBQRMSModel.FK_SupplierId_SupplierContactMap">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierContactMap" EntitySet="SupplierContactMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierContactId_SupplierContactMap" Association="BBQRMSModel.FK_SupplierContactId_SupplierContactMap">
+            <End Role="SupplierContact" EntitySet="SupplierContacts" />
+            <End Role="SupplierContactMap" EntitySet="SupplierContactMaps" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Menu">
           <Key>
@@ -259,6 +689,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap1" FromRole="MenuItem" ToRole="Menu" />
+          <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_MenuItemId_OrderItem" FromRole="MenuItem" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="ApplicationUser">
           <Key>
@@ -289,6 +720,8 @@
           <Property Type="Decimal" Name="PayAmount" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
           <NavigationProperty Name="Roles" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_EmployeeId_ConsumedInventory" FromRole="Employee" ToRole="ConsumedInventory" />
+          <NavigationProperty Name="EmployeePayType" Relationship="BBQRMSModel.FK_PayTypeId_Employee" FromRole="Employee" ToRole="EmployeePayType" />
         </EntityType>
         <Association Name="FK_Employee_ApplicationUser">
           <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
@@ -330,6 +763,326 @@
         <Association Name="RolePrivilegeMap">
           <End Type="BBQRMSModel.Privilege" Role="Privilege" Multiplicity="*" />
           <End Type="BBQRMSModel.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Type="Guid" Name="OperationKey" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsumedInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MasterInventoryId" Nullable="false" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="ConsumptionTypeId" Nullable="false" />
+          <Property Type="DateTime" Name="DateConsumed" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <NavigationProperty Name="ConsumptionType" Relationship="BBQRMSModel.FK_ConsumptionTypeId_ConsumedInventory" FromRole="ConsumedInventory" ToRole="ConsumptionType" />
+          <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_EmployeeId_ConsumedInventory" FromRole="ConsumedInventory" ToRole="Employee" />
+          <NavigationProperty Name="MasterInventory" Relationship="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" FromRole="ConsumedInventory" ToRole="MasterInventory" />
+        </EntityType>
+        <EntityType Name="ConsumptionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_ConsumptionTypeId_ConsumedInventory" FromRole="ConsumptionType" ToRole="ConsumedInventory" />
+        </EntityType>
+        <EntityType Name="EmployeePayType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="BBQRMSModel.FK_PayTypeId_Employee" FromRole="EmployeePayType" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmployeeTimeClock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="DateTime" Name="ClockInTimeUTC" Nullable="false" />
+          <Property Type="DateTime" Name="ClockOutTimeUTC" />
+        </EntityType>
+        <EntityType Name="ItemSupplierMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MasterInventoryId" Nullable="false" />
+          <Property Type="Int32" Name="SupplierId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_LocationId_Order" FromRole="Location" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="MasterInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UnitQty" Nullable="false" />
+          <Property Type="DateTime" Name="ExpirationDate" Nullable="false" />
+          <Property Type="Int32" Name="OrderLeadDays" Nullable="false" />
+          <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" FromRole="MasterInventory" ToRole="ConsumedInventory" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderItemId" Nullable="false" />
+          <Property Type="Int32" Name="PaymentTypeId" Nullable="false" />
+          <Property Type="Int32" Name="LocationId" Nullable="false" />
+          <Property Type="Int32" Name="OrderTypeId" Nullable="false" />
+          <Property Type="Int32" Name="TableId" Nullable="false" />
+          <Property Type="Int32" Name="TableSectionId" Nullable="false" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="OrderRecieved" Nullable="false" />
+          <Property Type="DateTime" Name="EnteredTime" Nullable="false" />
+          <Property Type="DateTime" Name="CompletedType" />
+          <NavigationProperty Name="Location" Relationship="BBQRMSModel.FK_LocationId_Order" FromRole="Order" ToRole="Location" />
+          <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_OrderId_OrderItem" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="OrderItem" Relationship="BBQRMSModel.FK_OrderItemId_Order" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="OrderType" Relationship="BBQRMSModel.FK_OrderTypeId_Order" FromRole="Order" ToRole="OrderType" />
+          <NavigationProperty Name="PaymentType" Relationship="BBQRMSModel.FK_PaymentTypeId_Order" FromRole="Order" ToRole="PaymentType" />
+          <NavigationProperty Name="TableSection" Relationship="BBQRMSModel.FK_TableSectionId_Order" FromRole="Order" ToRole="TableSection" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MenuItemId" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="UnitPrice" Nullable="false" />
+          <NavigationProperty Name="MenuItem" Relationship="BBQRMSModel.FK_MenuItemId_OrderItem" FromRole="OrderItem" ToRole="MenuItem" />
+          <NavigationProperty Name="Order" Relationship="BBQRMSModel.FK_OrderId_OrderItem" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_OrderItemId_Order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_OrderTypeId_Order" FromRole="OrderType" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_PaymentTypeId_Order" FromRole="PaymentType" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Rating" />
+          <NavigationProperty Name="SupplierContactMaps" Relationship="BBQRMSModel.FK_SupplierId_SupplierContactMap" FromRole="Supplier" ToRole="SupplierContactMap" />
+        </EntityType>
+        <EntityType Name="SupplierContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone3" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SupplierContactMaps" Relationship="BBQRMSModel.FK_SupplierContactId_SupplierContactMap" FromRole="SupplierContact" ToRole="SupplierContactMap" />
+        </EntityType>
+        <EntityType Name="SupplierContactMap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SupplierId" Nullable="false" />
+          <Property Type="Int32" Name="SupplierContactId" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="BBQRMSModel.FK_SupplierId_SupplierContactMap" FromRole="SupplierContactMap" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierContact" Relationship="BBQRMSModel.FK_SupplierContactId_SupplierContactMap" FromRole="SupplierContactMap" ToRole="SupplierContact" />
+        </EntityType>
+        <EntityType Name="TableSection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descr" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_TableSectionId_Order" FromRole="TableSection" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_ConsumptionTypeId_ConsumedInventory">
+          <End Type="BBQRMSModel.ConsumptionType" Role="ConsumptionType" Multiplicity="1" />
+          <End Type="BBQRMSModel.ConsumedInventory" Role="ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumptionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="ConsumptionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeId_ConsumedInventory">
+          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="BBQRMSModel.ConsumedInventory" Role="ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterInventoryId_ConsumedInventory">
+          <End Type="BBQRMSModel.MasterInventory" Role="MasterInventory" Multiplicity="1" />
+          <End Type="BBQRMSModel.ConsumedInventory" Role="ConsumedInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterInventory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsumedInventory">
+              <PropertyRef Name="MasterInventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayTypeId_Employee">
+          <End Type="BBQRMSModel.EmployeePayType" Role="EmployeePayType" Multiplicity="1" />
+          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PayTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationId_Order">
+          <End Type="BBQRMSModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuItemId_OrderItem">
+          <End Type="BBQRMSModel.MenuItem" Role="MenuItem" Multiplicity="1" />
+          <End Type="BBQRMSModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderId_OrderItem">
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="BBQRMSModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItemId_Order">
+          <End Type="BBQRMSModel.OrderItem" Role="OrderItem" Multiplicity="1" />
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTypeId_Order">
+          <End Type="BBQRMSModel.OrderType" Role="OrderType" Multiplicity="1" />
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentTypeId_Order">
+          <End Type="BBQRMSModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TableSectionId_Order">
+          <End Type="BBQRMSModel.TableSection" Role="TableSection" Multiplicity="1" />
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableSection">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TableSectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierId_SupplierContactMap">
+          <End Type="BBQRMSModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="BBQRMSModel.SupplierContactMap" Role="SupplierContactMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierContactMap">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierContactId_SupplierContactMap">
+          <End Type="BBQRMSModel.SupplierContact" Role="SupplierContact" Multiplicity="1" />
+          <End Type="BBQRMSModel.SupplierContactMap" Role="SupplierContactMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierContact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierContactMap">
+              <PropertyRef Name="SupplierContactId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -424,6 +1177,163 @@
               <ScalarProperty Name="Id" ColumnName="PrivilegeId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="BBQRMSModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumedInventories">
+            <EntityTypeMapping TypeName="BBQRMSModel.ConsumedInventory">
+              <MappingFragment StoreEntitySet="ConsumedInventory">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="DateConsumed" ColumnName="DateConsumed" />
+                <ScalarProperty Name="ConsumptionTypeId" ColumnName="ConsumptionTypeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MasterInventoryId" ColumnName="MasterInventoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumptionTypes">
+            <EntityTypeMapping TypeName="BBQRMSModel.ConsumptionType">
+              <MappingFragment StoreEntitySet="ConsumptionType">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePayTypes">
+            <EntityTypeMapping TypeName="BBQRMSModel.EmployeePayType">
+              <MappingFragment StoreEntitySet="EmployeePayType">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTimeClocks">
+            <EntityTypeMapping TypeName="BBQRMSModel.EmployeeTimeClock">
+              <MappingFragment StoreEntitySet="EmployeeTimeClock">
+                <ScalarProperty Name="ClockOutTimeUTC" ColumnName="ClockOutTimeUTC" />
+                <ScalarProperty Name="ClockInTimeUTC" ColumnName="ClockInTimeUTC" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemSupplierMaps">
+            <EntityTypeMapping TypeName="BBQRMSModel.ItemSupplierMap">
+              <MappingFragment StoreEntitySet="ItemSupplierMap">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="MasterInventoryId" ColumnName="MasterInventoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="BBQRMSModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterInventories">
+            <EntityTypeMapping TypeName="BBQRMSModel.MasterInventory">
+              <MappingFragment StoreEntitySet="MasterInventory">
+                <ScalarProperty Name="OrderLeadDays" ColumnName="OrderLeadDays" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="UnitQty" ColumnName="UnitQty" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BBQRMSModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="CompletedType" ColumnName="CompletedType" />
+                <ScalarProperty Name="EnteredTime" ColumnName="EnteredTime" />
+                <ScalarProperty Name="OrderRecieved" ColumnName="OrderRecieved" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TableSectionId" ColumnName="TableSectionId" />
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="BBQRMSModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTypes">
+            <EntityTypeMapping TypeName="BBQRMSModel.OrderType">
+              <MappingFragment StoreEntitySet="OrderType">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="BBQRMSModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="BBQRMSModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierContacts">
+            <EntityTypeMapping TypeName="BBQRMSModel.SupplierContact">
+              <MappingFragment StoreEntitySet="SupplierContact">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierContactMaps">
+            <EntityTypeMapping TypeName="BBQRMSModel.SupplierContactMap">
+              <MappingFragment StoreEntitySet="SupplierContactMap">
+                <ScalarProperty Name="SupplierContactId" ColumnName="SupplierContactId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableSections">
+            <EntityTypeMapping TypeName="BBQRMSModel.TableSection">
+              <MappingFragment StoreEntitySet="TableSection">
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -454,18 +1364,105 @@
           <ConnectorPoint PointX="1.5" PointY="2.4802864583333317" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.MenuItemMap1" >
-          <ConnectorPoint PointX="7" PointY="2.2738891601562496" />
-          <ConnectorPoint PointX="8.875" PointY="2.2738891601562496" />
+          <ConnectorPoint PointX="7" PointY="2.547841796875" />
+          <ConnectorPoint PointX="8.875" PointY="2.547841796875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="BBQRMSModel.Privilege" Width="1.5" PointX="0.75" PointY="9.875" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="BBQRMSModel.Role" Width="1.5" PointX="0.75" PointY="7.5" Height="1.7879850260416674" />
         <AssociationConnector Association="BBQRMSModel.EmployeeRoleMap" >
-          <ConnectorPoint PointX="1.5" PointY="6.90330078125" />
+          <ConnectorPoint PointX="1.5" PointY="7.2879036458333317" />
           <ConnectorPoint PointX="1.5" PointY="7.5" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.RolePrivilegeMap" >
           <ConnectorPoint PointX="1.5" PointY="9.875" />
           <ConnectorPoint PointX="1.5" PointY="9.2879850260416674" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BBQRMSModel.C__RefactorLog" Width="1.5" PointX="7.375" PointY="8.875" Height="1.2110807291666674" />
+        <EntityTypeShape EntityType="BBQRMSModel.ConsumedInventory" Width="1.5" PointX="3" PointY="4" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="BBQRMSModel.ConsumptionType" Width="1.5" PointX="0.75" PointY="15.125" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BBQRMSModel.EmployeePayType" Width="1.5" PointX="0.75" PointY="12.5" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BBQRMSModel.EmployeeTimeClock" Width="1.5" PointX="5.375" PointY="12.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.ItemSupplierMap" Width="1.5" PointX="3.375" PointY="12.875" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BBQRMSModel.Location" Width="1.5" PointX="11.125" PointY="5.25" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BBQRMSModel.MasterInventory" Width="1.5" PointX="0.75" PointY="17.375" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="BBQRMSModel.Order" Width="1.5" PointX="13.375" PointY="0.75" Height="4.2879036458333388" />
+        <EntityTypeShape EntityType="BBQRMSModel.OrderItem" Width="1.5" PointX="11.125" PointY="1.625" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="BBQRMSModel.OrderType" Width="1.5" PointX="11.125" PointY="7.625" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BBQRMSModel.PaymentType" Width="1.5" PointX="11.125" PointY="9.875" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BBQRMSModel.Supplier" Width="1.5" PointX="5.375" PointY="5.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="BBQRMSModel.SupplierContact" Width="1.5" PointX="5.375" PointY="9" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BBQRMSModel.SupplierContactMap" Width="1.5" PointX="7.625" PointY="5.25" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="BBQRMSModel.TableSection" Width="1.5" PointX="11.125" PointY="12.25" Height="1.595683593749996" />
+        <AssociationConnector Association="BBQRMSModel.FK_ConsumptionTypeId_ConsumedInventory" >
+          <ConnectorPoint PointX="2.25" PointY="15.922841796875" />
+          <ConnectorPoint PointX="2.9635391666666666" PointY="15.922841796875" />
+          <ConnectorPoint PointX="3.1302058333333336" PointY="15.922841796875" />
+          <ConnectorPoint PointX="3.15625" PointY="15.922841796875" />
+          <ConnectorPoint PointX="3.15625" PointY="6.7494921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_EmployeeId_ConsumedInventory" >
+          <ConnectorPoint PointX="2.25" PointY="5.37474609375" />
+          <ConnectorPoint PointX="3" PointY="5.37474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" >
+          <ConnectorPoint PointX="2.25" PointY="18.4612939453125" />
+          <ConnectorPoint PointX="3.0468725" PointY="18.4612939453125" />
+          <ConnectorPoint PointX="3.0468725" PointY="6.7494921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_PayTypeId_Employee" >
+          <ConnectorPoint PointX="0.75115284615384614" PointY="12.5" />
+          <ConnectorPoint PointX="0.375" PointY="12.123847153846153" />
+          <ConnectorPoint PointX="0.375" PointY="7.6629036458333317" />
+          <ConnectorPoint PointX="0.75" PointY="7.2879036458333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_LocationId_Order" >
+          <ConnectorPoint PointX="12.625" PointY="6.0478417968750016" />
+          <ConnectorPoint PointX="13.432287916666665" PointY="6.0478417968750007" />
+          <ConnectorPoint PointX="13.598954583333333" PointY="6.0478417968750016" />
+          <ConnectorPoint PointX="13.635414166666665" PointY="6.0478417968750007" />
+          <ConnectorPoint PointX="13.802080833333333" PointY="6.0478417968750016" />
+          <ConnectorPoint PointX="14.125" PointY="6.0478417968750016" />
+          <ConnectorPoint PointX="14.125" PointY="5.0379036458333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_MenuItemId_OrderItem" >
+          <ConnectorPoint PointX="10.375" PointY="2.7112939453125" />
+          <ConnectorPoint PointX="11.125" PointY="2.7112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_OrderId_OrderItem" >
+          <ConnectorPoint PointX="13.375" PointY="2.9035953776041694" />
+          <ConnectorPoint PointX="12.625" PointY="2.9035953776041694" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_OrderItemId_Order" >
+          <ConnectorPoint PointX="12.625" PointY="2.2017976888020847" />
+          <ConnectorPoint PointX="13.375" PointY="2.2017976888020847" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_OrderTypeId_Order" >
+          <ConnectorPoint PointX="12.625" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="13.432287916666665" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="13.598954583333333" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="13.7187475" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="13.7187475" PointY="5.0379036458333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_PaymentTypeId_Order" >
+          <ConnectorPoint PointX="12.625" PointY="10.672841796875002" />
+          <ConnectorPoint PointX="13.432287916666665" PointY="10.672841796875002" />
+          <ConnectorPoint PointX="13.598954583333333" PointY="10.672841796875002" />
+          <ConnectorPoint PointX="14.5312525" PointY="10.672841796875002" />
+          <ConnectorPoint PointX="14.5312525" PointY="5.0379036458333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_TableSectionId_Order" >
+          <ConnectorPoint PointX="12.625" PointY="13.047841796874998" />
+          <ConnectorPoint PointX="13.515621249999999" PointY="13.047841796874998" />
+          <ConnectorPoint PointX="13.515621249999999" PointY="5.0379036458333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_SupplierId_SupplierContactMap" >
+          <ConnectorPoint PointX="6.875" PointY="6.2401432291666694" />
+          <ConnectorPoint PointX="7.625" PointY="6.2401432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_SupplierContactId_SupplierContactMap" >
+          <ConnectorPoint PointX="6.875" PointY="10.480540364583334" />
+          <ConnectorPoint PointX="9.03125" PointY="10.480540364583334" />
+          <ConnectorPoint PointX="9.03125" PointY="7.2302864583333388" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>
