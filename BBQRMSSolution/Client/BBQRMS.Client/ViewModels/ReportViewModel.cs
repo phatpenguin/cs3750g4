@@ -16,7 +16,6 @@ namespace BBQRMSSolution.ViewModels
 		[Obsolete("Used only by the designer")]
 		protected ReportViewModel()
 		{
-			
 		}
 
 		public ReportViewModel(BBQRMSEntities dataService)
@@ -78,7 +77,7 @@ namespace BBQRMSSolution.ViewModels
 			}
 		}
 
-		private static Stream GetReportDefinitions()
+		private static Stream GetReportDefinition()
 		{
 			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
 		}
@@ -94,7 +93,7 @@ namespace BBQRMSSolution.ViewModels
 			//TODO:
 			// 1) verify input parameters
 			// 2) load report definition (what if it's already loaded and the user just wants to change parameter values?)
-			reportViewer.LoadReportDefinition(GetReportDefinitions());
+			reportViewer.LoadReportDefinition(GetReportDefinition());
 			// 3) retrieve report data
 			IEnumerable data = GetData();
 			// 4) assign the data to the report's data source(s)
