@@ -10,9 +10,9 @@ insert into #Privilege (Id, Description)
 values
 (1, 'Take Orders'),
 (2, 'Cashier'),
-(3, 'Cooks Screen'),
-(4, 'Quick Inventory'),
-(5, 'Reporting'),
+(3, 'Use Cooks Screen'),
+(4, 'Use Quick Inventory'),
+(5, 'Run Reports'),
 (6, 'Manage Employees'),
 (7, 'Manage Inventory'),
 (8, 'Manage Menus')
