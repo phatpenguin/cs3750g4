@@ -285,7 +285,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeePayType.PK_Id_EmployeePayType.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeRoleMap.PK_Id_EmployeeRoleMap.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeRoleMap.PK_EmployeeId_RoleId_EmployeeRoleMap.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeTimeClock.PK_Id_EmployeeTimeClock.pkey.sql">
@@ -339,6 +339,24 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\MenuItemMap.FK_MenuItem_MenuItemMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Privilege.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\RolePrivilegeMap.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Privilege.PK_Id_Privilege.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\RolePrivilegeMap.PK_RoleId_PrivilegeId_RolePrivilegeMap.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\RolePrivilegeMap.FK_RoleId_RolePrivilegeMap.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\RolePrivilegeMap.FK_PrivilegeId_RolePrivilegeMap.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialEmployeesAndUsers.sql">
@@ -348,6 +366,9 @@
       <SubType>NotInBuild</SubType>
     </NotInBuild>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPaymentTypeData.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPrivilegesAndRoles.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
   </ItemGroup>

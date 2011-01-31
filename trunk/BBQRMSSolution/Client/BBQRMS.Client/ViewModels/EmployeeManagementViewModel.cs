@@ -10,6 +10,11 @@ namespace BBQRMSSolution.ViewModels
         private readonly BBQRMSEntities mDataService;
         ObservableCollection<Employee> employees;
 
+		[Obsolete("This constructor to be used only by the VS designer")]
+		public EmployeeManagementViewModel()
+		{
+			
+		}
 
 	    public EmployeeManagementViewModel(BBQRMSEntities bbqrmsEntities, IMessageBus mMessageBus)
 	    {
@@ -39,7 +44,7 @@ namespace BBQRMSSolution.ViewModels
 
 	    public void HandleSaveClick()
 	    {
-            if (SelectedEmployee.id > 0)
+            if (SelectedEmployee.Id > 0)
             {
                 mDataService.UpdateObject(selectedEmployee);
             }

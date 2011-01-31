@@ -4,97 +4,162 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Alias="Self" Namespace="BBQRMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008">
+    <Schema Namespace="BBQRMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BBQRMSModelStoreContainer">
-          <EntitySet Name="ApplicationUser" EntityType="BBQRMSModel.Store.ApplicationUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employee" EntityType="BBQRMSModel.Store.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menu" EntityType="BBQRMSModel.Store.Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MenuItem" EntityType="BBQRMSModel.Store.MenuItem" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MenuItemMap" EntityType="BBQRMSModel.Store.MenuItemMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="BBQRMSModel.Store.ApplicationUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="BBQRMSModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EmployeeRoleMap" EntityType="BBQRMSModel.Store.EmployeeRoleMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu" EntityType="BBQRMSModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MenuItem" EntityType="BBQRMSModel.Store.MenuItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MenuItemMap" EntityType="BBQRMSModel.Store.MenuItemMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Privilege" EntityType="BBQRMSModel.Store.Privilege" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="BBQRMSModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RolePrivilegeMap" EntityType="BBQRMSModel.Store.RolePrivilegeMap" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.Store.FK_Employee_ApplicationUser">
-            <End EntitySet="Employee" Role="Employee" />
-            <End EntitySet="ApplicationUser" Role="ApplicationUser" />
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeId_EmployeeRoleMap" Association="BBQRMSModel.Store.FK_EmployeeId_EmployeeRoleMap">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeRoleMap" EntitySet="EmployeeRoleMap" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuItemMap_Menu" Association="BBQRMSModel.Store.FK_MenuItemMap_Menu">
-            <End EntitySet="Menu" Role="Menu" />
-            <End EntitySet="MenuItemMap" Role="MenuItemMap" />
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuItemMap" EntitySet="MenuItemMap" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuItemMap_MenuItem" Association="BBQRMSModel.Store.FK_MenuItemMap_MenuItem">
-            <End EntitySet="MenuItem" Role="MenuItem" />
-            <End EntitySet="MenuItemMap" Role="MenuItemMap" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="MenuItemMap" EntitySet="MenuItemMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrivilegeId_RolePrivilegeMap" Association="BBQRMSModel.Store.FK_PrivilegeId_RolePrivilegeMap">
+            <End Role="Privilege" EntitySet="Privilege" />
+            <End Role="RolePrivilegeMap" EntitySet="RolePrivilegeMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleId_EmployeeRoleMap" Association="BBQRMSModel.Store.FK_RoleId_EmployeeRoleMap">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="EmployeeRoleMap" EntitySet="EmployeeRoleMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleId_RolePrivilegeMap" Association="BBQRMSModel.Store.FK_RoleId_RolePrivilegeMap">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RolePrivilegeMap" EntitySet="RolePrivilegeMap" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ApplicationUser">
           <Key>
-            <PropertyRef Name="idPart" />
+            <PropertyRef Name="IdPart" />
           </Key>
-          <Property Name="idPart" Nullable="false" MaxLength="10" Type="nvarchar" />
-          <Property Name="personalPart" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="employeeId" Nullable="false" Type="int" />
-          <Property Name="displayName" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="IdPart" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="PersonalPart" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="firstName" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="lastName" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="hireDate" Nullable="false" Type="datetime" />
-          <Property Name="phone1" Type="nvarchar(max)" />
-          <Property Name="phone2" Type="nvarchar(max)" />
-          <Property Name="phone3" Type="nvarchar(max)" />
-          <Property Name="address1" Type="nvarchar(max)" />
-          <Property Name="address2" Type="nvarchar(max)" />
-          <Property Name="email1" Type="nvarchar(max)" />
-          <Property Name="email2" Type="nvarchar(max)" />
-          <Property Name="payTypeId" Nullable="false" Type="int" />
-          <Property Name="payAmount" Nullable="false" Type="money" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar(max)" />
+          <Property Name="Phone2" Type="nvarchar(max)" />
+          <Property Name="Phone3" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="Email1" Type="nvarchar(max)" />
+          <Property Name="Email2" Type="nvarchar(max)" />
+          <Property Name="PayTypeId" Type="int" Nullable="false" />
+          <Property Name="PayAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeRoleMap">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" Nullable="false" MaxLength="200" Type="nvarchar" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="MenuItem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Price" Scale="2" Type="numeric" />
-          <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="numeric" Scale="2" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="MenuItemMap">
           <Key>
             <PropertyRef Name="MenuID" />
             <PropertyRef Name="MenuItemID" />
           </Key>
-          <Property Name="MenuID" Nullable="false" Type="int" />
-          <Property Name="MenuItemID" Nullable="false" Type="int" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="MenuItemID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePrivilegeMap">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="PrivilegeId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PrivilegeId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BBQRMS.dbo.EmployeePrivilege' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <Association Name="FK_Employee_ApplicationUser">
-          <End Type="BBQRMSModel.Store.Employee" Multiplicity="1" Role="Employee">
+          <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="BBQRMSModel.Store.ApplicationUser" Multiplicity="*" Role="ApplicationUser" />
+          <End Role="ApplicationUser" Type="BBQRMSModel.Store.ApplicationUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ApplicationUser">
-              <PropertyRef Name="employeeId" />
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeId_EmployeeRoleMap">
+          <End Role="Employee" Type="BBQRMSModel.Store.Employee" Multiplicity="1" />
+          <End Role="EmployeeRoleMap" Type="BBQRMSModel.Store.EmployeeRoleMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeRoleMap">
+              <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MenuItemMap_Menu">
-          <End Type="BBQRMSModel.Store.Menu" Multiplicity="1" Role="Menu" />
-          <End Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" Role="MenuItemMap" />
+          <End Role="Menu" Type="BBQRMSModel.Store.Menu" Multiplicity="1" />
+          <End Role="MenuItemMap" Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Menu">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MenuItemMap">
               <PropertyRef Name="MenuID" />
@@ -102,8 +167,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MenuItemMap_MenuItem">
-          <End Type="BBQRMSModel.Store.MenuItem" Multiplicity="1" Role="MenuItem" />
-          <End Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" Role="MenuItemMap" />
+          <End Role="MenuItem" Type="BBQRMSModel.Store.MenuItem" Multiplicity="1" />
+          <End Role="MenuItemMap" Type="BBQRMSModel.Store.MenuItemMap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MenuItem">
               <PropertyRef Name="Id" />
@@ -113,72 +178,77 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PrivilegeId_RolePrivilegeMap">
+          <End Role="Privilege" Type="BBQRMSModel.Store.Privilege" Multiplicity="1" />
+          <End Role="RolePrivilegeMap" Type="BBQRMSModel.Store.RolePrivilegeMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePrivilegeMap">
+              <PropertyRef Name="PrivilegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleId_EmployeeRoleMap">
+          <End Role="Role" Type="BBQRMSModel.Store.Role" Multiplicity="1" />
+          <End Role="EmployeeRoleMap" Type="BBQRMSModel.Store.EmployeeRoleMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeRoleMap">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleId_RolePrivilegeMap">
+          <End Role="Role" Type="BBQRMSModel.Store.Role" Multiplicity="1" />
+          <End Role="RolePrivilegeMap" Type="BBQRMSModel.Store.RolePrivilegeMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePrivilegeMap">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BBQRMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BBQRMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
+          <EntitySet Name="MenuItems" EntityType="BBQRMSModel.MenuItem" />
           <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
           <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
           <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
           </AssociationSet>
-          <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
-          <EntitySet Name="MenuItems" EntityType="BBQRMSModel.MenuItem" />
-          <AssociationSet Name="MenuItemMap" Association="BBQRMSModel.MenuItemMap">
+          <AssociationSet Name="MenuItemMap1" Association="BBQRMSModel.MenuItemMap1">
             <End Role="Menu" EntitySet="Menus" />
             <End Role="MenuItem" EntitySet="MenuItems" />
           </AssociationSet>
+          <EntitySet Name="Privileges" EntityType="BBQRMSModel.Privilege" />
+          <EntitySet Name="Roles" EntityType="BBQRMSModel.Role" />
+          <AssociationSet Name="EmployeeRoleMap" Association="BBQRMSModel.EmployeeRoleMap">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="RolePrivilegeMap" Association="BBQRMSModel.RolePrivilegeMap">
+            <End Role="Privilege" EntitySet="Privileges" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="ApplicationUser">
-          <Key>
-            <PropertyRef Name="idPart" />
-          </Key>
-          <Property Type="String" Name="idPart" Nullable="false" />
-          <Property Type="String" Name="personalPart" Nullable="false" />
-          <Property Type="Int32" Name="employeeId" Nullable="false" />
-          <Property Type="String" Name="displayName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="firstName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="lastName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="hireDate" Nullable="false" />
-          <Property Type="String" Name="phone1" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="phone2" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="phone3" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="address1" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="address2" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email1" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email2" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="payTypeId" Nullable="false" />
-          <Property Type="Decimal" Name="payAmount" Nullable="false" Precision="19" Scale="4" />
-          <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
-        </EntityType>
-        <Association Name="FK_Employee_ApplicationUser">
-          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
-          <End Type="BBQRMSModel.ApplicationUser" Role="ApplicationUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ApplicationUser">
-              <PropertyRef Name="employeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Menu">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap" FromRole="Menu" ToRole="MenuItem" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap1" FromRole="Menu" ToRole="MenuItem" />
         </EntityType>
         <EntityType Name="MenuItem">
           <Key>
@@ -188,11 +258,78 @@
           <Property Type="Decimal" Name="Price" Precision="18" Scale="2" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap" FromRole="MenuItem" ToRole="Menu" />
+          <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap1" FromRole="MenuItem" ToRole="Menu" />
         </EntityType>
-        <Association Name="MenuItemMap">
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="IdPart" />
+          </Key>
+          <Property Type="String" Name="IdPart" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonalPart" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="HireDate" Nullable="false" />
+          <Property Type="String" Name="Phone1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone3" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PayTypeId" Nullable="false" />
+          <Property Type="Decimal" Name="PayAmount" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Roles" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Employee" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Employee_ApplicationUser">
+          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="BBQRMSModel.ApplicationUser" Role="ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MenuItemMap1">
           <End Type="BBQRMSModel.Menu" Role="Menu" Multiplicity="*" />
           <End Type="BBQRMSModel.MenuItem" Role="MenuItem" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="BBQRMSModel.RolePrivilegeMap" FromRole="Privilege" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Privileges" Relationship="BBQRMSModel.RolePrivilegeMap" FromRole="Role" ToRole="Privilege" />
+        </EntityType>
+        <Association Name="EmployeeRoleMap">
+          <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="BBQRMSModel.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        <Association Name="RolePrivilegeMap">
+          <End Type="BBQRMSModel.Privilege" Role="Privilege" Multiplicity="*" />
+          <End Type="BBQRMSModel.Role" Role="Role" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -200,40 +337,11 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BBQRMSModelStoreContainer" CdmEntityContainer="BBQRMSEntities">
-          <EntitySetMapping Name="ApplicationUsers">
-            <EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser">
-              <MappingFragment StoreEntitySet="ApplicationUser">
-                <ScalarProperty Name="displayName" ColumnName="displayName" />
-                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
-                <ScalarProperty Name="personalPart" ColumnName="personalPart" />
-                <ScalarProperty Name="idPart" ColumnName="idPart" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="BBQRMSModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="payAmount" ColumnName="payAmount" />
-                <ScalarProperty Name="payTypeId" ColumnName="payTypeId" />
-                <ScalarProperty Name="email2" ColumnName="email2" />
-                <ScalarProperty Name="email1" ColumnName="email1" />
-                <ScalarProperty Name="address2" ColumnName="address2" />
-                <ScalarProperty Name="address1" ColumnName="address1" />
-                <ScalarProperty Name="phone3" ColumnName="phone3" />
-                <ScalarProperty Name="phone2" ColumnName="phone2" />
-                <ScalarProperty Name="phone1" ColumnName="phone1" />
-                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="BBQRMSModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -247,12 +355,73 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="MenuItemMap" TypeName="BBQRMSModel.MenuItemMap" StoreEntitySet="MenuItemMap">
+          <EntitySetMapping Name="ApplicationUsers">
+            <EntityTypeMapping TypeName="BBQRMSModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="PersonalPart" ColumnName="PersonalPart" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BBQRMSModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MenuItemMap1" TypeName="BBQRMSModel.MenuItemMap1" StoreEntitySet="MenuItemMap">
             <EndProperty Name="MenuItem">
               <ScalarProperty Name="Id" ColumnName="MenuItemID" />
             </EndProperty>
             <EndProperty Name="Menu">
-              <ScalarProperty Name="ID" ColumnName="MenuID" />
+              <ScalarProperty Name="Id" ColumnName="MenuID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Privileges">
+            <EntityTypeMapping TypeName="BBQRMSModel.Privilege">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BBQRMSModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EmployeeRoleMap" TypeName="BBQRMSModel.EmployeeRoleMap" StoreEntitySet="EmployeeRoleMap">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="Id" ColumnName="EmployeeId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolePrivilegeMap" TypeName="BBQRMSModel.RolePrivilegeMap" StoreEntitySet="RolePrivilegeMap">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Privilege">
+              <ScalarProperty Name="Id" ColumnName="PrivilegeId" />
             </EndProperty>
           </AssociationSetMapping>
           </EntityContainerMapping>
@@ -276,17 +445,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BBQRMS">
-        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="3" PointY="0.625" Height="1.7566536458333335" />
-        <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="0.5" PointY="0.5" Height="3.2357796223958317" />
-        <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >
-          <ConnectorPoint PointX="2" PointY="1.5033268229166668" />
-          <ConnectorPoint PointX="3" PointY="1.5033268229166668" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="5.5" PointY="1.75" Height="1.4279589843750031" />
+        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="5.5" PointY="1.75" Height="1.7879850260416661" />
         <EntityTypeShape EntityType="BBQRMSModel.MenuItem" Width="1.5" PointX="8.875" PointY="1.625" Height="1.7566536458333317" />
-        <AssociationConnector Association="BBQRMSModel.MenuItemMap" >
-          <ConnectorPoint PointX="7" PointY="2.4639794921875016" />
-          <ConnectorPoint PointX="8.875" PointY="2.4639794921875016" />
+        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="0.75" PointY="0.5" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="0.75" PointY="3" Height="3.9033007812499996" />
+        <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >
+          <ConnectorPoint PointX="1.5" PointY="3" />
+          <ConnectorPoint PointX="1.5" PointY="2.4802864583333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.MenuItemMap1" >
+          <ConnectorPoint PointX="7" PointY="2.2738891601562496" />
+          <ConnectorPoint PointX="8.875" PointY="2.2738891601562496" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BBQRMSModel.Privilege" Width="1.5" PointX="0.75" PointY="9.875" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BBQRMSModel.Role" Width="1.5" PointX="0.75" PointY="7.5" Height="1.7879850260416674" />
+        <AssociationConnector Association="BBQRMSModel.EmployeeRoleMap" >
+          <ConnectorPoint PointX="1.5" PointY="6.90330078125" />
+          <ConnectorPoint PointX="1.5" PointY="7.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.RolePrivilegeMap" >
+          <ConnectorPoint PointX="1.5" PointY="9.875" />
+          <ConnectorPoint PointX="1.5" PointY="9.2879850260416674" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

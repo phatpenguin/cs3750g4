@@ -10,62 +10,89 @@
 	d:DesignWidth="1350"
 	d:DataContext="{d:DesignInstance Type=ViewModels:PostLoginViewModel, IsDesignTimeCreatable=True}"
 	UseLayoutRounding="True">
+	<UserControl.Resources>
+		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot" Background="{DynamicResource ApplicationBackgroundBrush}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button x:Name="takeOrders" Padding="4" Margin="1,2,1,2" Click="takeOrders_Click">
+			<Button
+				x:Name="takeOrders" Padding="4" Margin="1,2,1,2"
+				Click="takeOrders_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/accessories-text-editor.png" Width="32" Height="32"/>
 					<TextBlock Text="Take Orders"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="cashier" Padding="4" Margin="1,2,1,2" Click="cashier_Click">
+			<Button
+				x:Name="cashier" Padding="4" Margin="1,2,1,2" 
+				Click="cashier_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanCashier, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/cash.png" Width="32" Height="32"/>
 					<TextBlock Text="Cashier Order"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="cook" Padding="4" Margin="1,2,1,2" Click="cook_Click">
+			<Button
+				x:Name="cook" Padding="4" Margin="1,2,1,2"
+				Click="cook_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/Anonymous_Chef.png" Width="32" Height="32"/>
 					<TextBlock Text="Cooks Screen"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="quickInventory" Padding="4" Margin="1,2,1,2" Click="quickInventory_Click">
+			<Button
+				x:Name="quickInventory" Padding="4" Margin="1,2,1,2"
+				Click="quickInventory_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanQuickInventory, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/to_do_list_cheked_1.png" Width="32" Height="32"/>
 					<TextBlock Text="Quick Inventory Screen"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="reporting" Padding="4" Margin="1,2,1,2" Click="reporting_Click">
+			<Button
+				x:Name="reporting" Padding="4" Margin="1,2,1,2" 
+				Click="reporting_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanReporting, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/x-office-spreadsheet.png" Width="32" Height="32"/>
 					<TextBlock Text="Reporting"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="manageEmployees" Padding="4" Margin="1,2,1,2" Click="manageEmployees_Click">
+			<Button 
+				x:Name="manageEmployees" Padding="4" Margin="1,2,1,2" 
+				Click="manageEmployees_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/system-users.png" Width="32" Height="32"/>
 					<TextBlock Text="Manage Employees"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="manageInventory" Padding="4" Margin="1,2,1,2" Click="manageInventory_Click">
+			<Button
+				x:Name="manageInventory" Padding="4" Margin="1,2,1,2"
+				Click="manageInventory_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageInventory, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/file_manager.png" Width="32" Height="32"/>
 					<TextBlock Text="Manage Inventory"/>
 				</StackPanel>
 			</Button>
-			<Button x:Name="manageMenus" Padding="4" Margin="1,2,1,2" Click="manageMenus_Click">
+			<Button
+				x:Name="manageMenus" Padding="4" Margin="1,2,1,2"
+				Click="manageMenus_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/menu.png" Width="32" Height="32"/>
 					<TextBlock Text="Manage Menus"/>
 				</StackPanel>
 			</Button>
 		</StackPanel>
-		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,70,0" Text="{Binding Path=SecurityContext.CurrentUser.firstName}"/>
+		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,70,0" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
 		<Button Grid.Row="0" Name="logout" HorizontalAlignment="Right" Padding="4" Margin="1,2,1,2" Click="logout_Click">
 			<StackPanel>
 				<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />

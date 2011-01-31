@@ -1,4 +1,5 @@
 using System;
+using System.Data.Services.Client;
 using System.Linq;
 using BBQRMSSolution.ServerProxy;
 using Controls;
@@ -28,7 +29,7 @@ namespace BBQRMSSolution.ViewModels
 			{
 				// check the validity of the PIN
 				//TODO: maybe check a local cache of credentials like Windows does when we can't communicate with the server.
-				IQueryable<ApplicationUser> results = mDataService.ApplicationUsers.Expand("Employee").Where(au => au.idPart == parts[0] && au.personalPart == parts[1]);
+				IQueryable<ApplicationUser> results = mDataService.ApplicationUsers.Expand("Employee/Roles/Privileges").Where(au => au.IdPart == parts[0] && au.PersonalPart == parts[1]);
 				//TODO: the following should be done on a background thread (with a shortish timeout) while a 'busy' animation is displayed.
 				var applicationUser = results.FirstOrDefault();
 				if(applicationUser == null)

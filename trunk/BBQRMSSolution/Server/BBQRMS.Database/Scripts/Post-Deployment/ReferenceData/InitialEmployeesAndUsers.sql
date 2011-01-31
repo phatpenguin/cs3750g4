@@ -6,6 +6,9 @@
 -- =============================================
 /* This script will create a handful of initial users who will then be able to log in */
 
+----------------------------------
+-- EmployeePayType
+----------------------------------
 select top 0 *
 into #EmployeePayType
 from (select * from [dbo].[EmployeePayType]
@@ -30,7 +33,9 @@ where Target.id is null
 
 set identity_insert [dbo].[EmployeePayType] off
 
-
+----------------------------------
+-- Employee
+----------------------------------
 select top 0 *
 into #Employee
 from (select * from [dbo].[Employee]
@@ -66,8 +71,20 @@ where Target.id is null
 
 set identity_insert [dbo].[Employee] off
 
+----------------------------------
+-- EmployeeRoleMap
+----------------------------------
+delete from EmployeeRoleMap where EmployeeId in (select Id from #Employee)
+insert into [dbo].[EmployeeRoleMap] (EmployeeId, RoleId)
+values
+(1,1), -- First user - Admin
+(2,2), -- Second user - Cashier
+(3,3) -- Third user - Cook
 
 
+----------------------------------
+-- ApplicationUser
+----------------------------------
 select top 0 *
 into #ApplicationUser
 from [dbo].[ApplicationUser]

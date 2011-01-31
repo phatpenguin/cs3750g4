@@ -1,42 +1,13 @@
 ﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
     <Schema Namespace="BBQRMSModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-      <EntityType Name="ApplicationUser">
-        <Key>
-          <PropertyRef Name="idPart" />
-        </Key>
-        <Property Name="idPart" Type="Edm.String" Nullable="false" />
-        <Property Name="personalPart" Type="Edm.String" Nullable="false" />
-        <Property Name="employeeId" Type="Edm.Int32" Nullable="false" />
-        <Property Name="displayName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-        <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
-      </EntityType>
-      <EntityType Name="Employee">
-        <Key>
-          <PropertyRef Name="id" />
-        </Key>
-        <Property Name="id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-        <Property Name="firstName" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="lastName" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="hireDate" Type="Edm.DateTime" Nullable="false" />
-        <Property Name="phone1" Type="Edm.String" Nullable="true" MaxLength="1" Unicode="true" FixedLength="false" />
-        <Property Name="phone2" Type="Edm.String" Nullable="true" MaxLength="1" Unicode="true" FixedLength="false" />
-        <Property Name="phone3" Type="Edm.String" Nullable="true" MaxLength="1" Unicode="true" FixedLength="false" />
-        <Property Name="address1" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="address2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="email1" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="email2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <Property Name="payTypeId" Type="Edm.Int32" Nullable="false" />
-        <Property Name="payAmount" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
-        <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
-      </EntityType>
       <EntityType Name="Menu">
         <Key>
-          <PropertyRef Name="ID" />
+          <PropertyRef Name="Id" />
         </Key>
-        <Property Name="ID" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-        <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap" FromRole="Menu" ToRole="MenuItem" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap1" FromRole="Menu" ToRole="MenuItem" />
       </EntityType>
       <EntityType Name="MenuItem">
         <Key>
@@ -46,38 +17,103 @@
         <Property Name="Price" Type="Edm.Decimal" Nullable="true" Precision="18" Scale="2" />
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap" FromRole="MenuItem" ToRole="Menu" />
+        <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap1" FromRole="MenuItem" ToRole="Menu" />
+      </EntityType>
+      <EntityType Name="ApplicationUser">
+        <Key>
+          <PropertyRef Name="IdPart" />
+        </Key>
+        <Property Name="IdPart" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        <Property Name="PersonalPart" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="EmployeeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DisplayName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
+      </EntityType>
+      <EntityType Name="Employee">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="LastName" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="HireDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Phone1" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Phone2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Phone3" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Address1" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Address2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Email1" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Email2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="PayTypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PayAmount" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
+        <NavigationProperty Name="Roles" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Employee" ToRole="Role" />
+      </EntityType>
+      <EntityType Name="Privilege">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        <NavigationProperty Name="Roles" Relationship="BBQRMSModel.RolePrivilegeMap" FromRole="Privilege" ToRole="Role" />
+      </EntityType>
+      <EntityType Name="Role">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Employees" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Role" ToRole="Employee" />
+        <NavigationProperty Name="Privileges" Relationship="BBQRMSModel.RolePrivilegeMap" FromRole="Role" ToRole="Privilege" />
       </EntityType>
       <Association Name="FK_Employee_ApplicationUser">
         <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="1" />
         <End Role="ApplicationUser" Type="BBQRMSModel.ApplicationUser" Multiplicity="*" />
         <ReferentialConstraint>
           <Principal Role="Employee">
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Principal>
           <Dependent Role="ApplicationUser">
-            <PropertyRef Name="employeeId" />
+            <PropertyRef Name="EmployeeId" />
           </Dependent>
         </ReferentialConstraint>
       </Association>
-      <Association Name="MenuItemMap">
+      <Association Name="MenuItemMap1">
         <End Role="Menu" Type="BBQRMSModel.Menu" Multiplicity="*" />
         <End Role="MenuItem" Type="BBQRMSModel.MenuItem" Multiplicity="*" />
+      </Association>
+      <Association Name="EmployeeRoleMap">
+        <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="*" />
+        <End Role="Role" Type="BBQRMSModel.Role" Multiplicity="*" />
+      </Association>
+      <Association Name="RolePrivilegeMap">
+        <End Role="Privilege" Type="BBQRMSModel.Privilege" Multiplicity="*" />
+        <End Role="Role" Type="BBQRMSModel.Role" Multiplicity="*" />
       </Association>
     </Schema>
     <Schema Namespace="BBQRMS.WCFServices" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="BBQRMSEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-        <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
-        <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
         <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
         <EntitySet Name="MenuItems" EntityType="BBQRMSModel.MenuItem" />
+        <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
+        <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
+        <EntitySet Name="Privileges" EntityType="BBQRMSModel.Privilege" />
+        <EntitySet Name="Roles" EntityType="BBQRMSModel.Role" />
         <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
           <End Role="Employee" EntitySet="Employees" />
           <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
         </AssociationSet>
-        <AssociationSet Name="MenuItemMap" Association="BBQRMSModel.MenuItemMap">
+        <AssociationSet Name="MenuItemMap1" Association="BBQRMSModel.MenuItemMap1">
           <End Role="Menu" EntitySet="Menus" />
           <End Role="MenuItem" EntitySet="MenuItems" />
+        </AssociationSet>
+        <AssociationSet Name="EmployeeRoleMap" Association="BBQRMSModel.EmployeeRoleMap">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="Role" EntitySet="Roles" />
+        </AssociationSet>
+        <AssociationSet Name="RolePrivilegeMap" Association="BBQRMSModel.RolePrivilegeMap">
+          <End Role="Privilege" EntitySet="Privileges" />
+          <End Role="Role" EntitySet="Roles" />
         </AssociationSet>
       </EntityContainer>
     </Schema>
