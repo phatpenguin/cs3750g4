@@ -20,7 +20,7 @@ namespace BBQRMSSolution.ViewModels
 		public PostLoginViewModel()
 		{
 			var sc = new DesignTimeSecurityContext();
-			sc.CurrentUser = new Employee {firstName = "Fred", lastName = "Jones"};
+			sc.CurrentUser = new Employee {FirstName = "Fred", LastName = "Jones"};
 			mSecurityContext = sc;
 		}
 

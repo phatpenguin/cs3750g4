@@ -45,7 +45,7 @@ namespace BBQRMS.Client.Tests
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("1011");
 			//Make sure a message was published with the correct data.
-			mockEvents.Verify(e => e.Publish(It.Is<UserLoggedIn>(u => u.Employee.firstName == "First")));
+			mockEvents.Verify(e => e.Publish(It.Is<UserLoggedIn>(u => u.Employee.FirstName == "First")));
 			mockEvents.Verify(e => e.Publish(It.IsAny<InvalidPinEntered>()), Times.Never());
 		}
 

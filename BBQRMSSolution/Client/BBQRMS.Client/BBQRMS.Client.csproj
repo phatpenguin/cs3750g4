@@ -77,6 +77,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SecurityContext.cs" />
+    <Compile Include="ServerProxy\EmployeePrivileges.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeePrivileges.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServerProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +232,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="ServerProxy\EmployeePrivileges.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EmployeePrivileges.cs</LastGenOutput>
+    </None>
     <None Include="Service References\ServerProxy\service.edmx" />
     <Page Include="Views\ChooseReport.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -327,6 +336,9 @@
       <Generator>DataServiceClientGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
