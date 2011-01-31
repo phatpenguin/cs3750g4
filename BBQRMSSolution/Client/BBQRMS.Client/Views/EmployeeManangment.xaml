@@ -15,9 +15,9 @@
           <ListBox.ItemTemplate>
             <DataTemplate>
               <StackPanel Orientation="Horizontal">
-              <TextBlock Text="{Binding Path=lastName}"/>
+              <TextBlock Text="{Binding Path=LastName}"/>
               <TextBlock Text=", "/>
-              <TextBlock Text="{Binding Path=firstName}"/>
+              <TextBlock Text="{Binding Path=FirstName}"/>
               </StackPanel>
             </DataTemplate>            
           </ListBox.ItemTemplate>
@@ -29,9 +29,9 @@
           <ListBox.ItemTemplate>
             <DataTemplate>
               <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=lastName}"/>
+                <TextBlock Text="{Binding Path=LastName}"/>
                 <TextBlock Text=", "/>
-                <TextBlock Text="{Binding Path=firstName}"/>
+                <TextBlock Text="{Binding Path=FirstName}"/>
               </StackPanel>
             </DataTemplate>
           </ListBox.ItemTemplate>

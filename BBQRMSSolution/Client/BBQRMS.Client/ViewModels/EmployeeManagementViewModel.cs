@@ -9,6 +9,11 @@ namespace BBQRMSSolution.ViewModels
 	{
         private readonly BBQRMSEntities mDataService;
         ObservableCollection<Employee> employees;
+        private ObservableCollection<EmployeePayType> payTypes;
+        private ObservableCollection<Role> roles;
+        private Employee selectedEmployee;
+        private IMessageBus mMessageBus;
+
 
 		[Obsolete("This constructor to be used only by the VS designer")]
 		public EmployeeManagementViewModel()
@@ -22,17 +27,33 @@ namespace BBQRMSSolution.ViewModels
 	        this.mMessageBus = mMessageBus;
 
 	        Employees = new ObservableCollection<Employee>(mDataService.Employees);
+	        foreach (Employee employee in employees)
+	        {
+                mDataService.LoadProperty(employee, "EmployeePayType");
+                mDataService.LoadProperty(employee, "Roles");
+            }
+	        PayTypes = new ObservableCollection<EmployeePayType>(mDataService.EmployeePayTypes);
+	        Roles = new ObservableCollection<Role>(mDataService.Roles);
 	    }
 
-	    
+	    public ObservableCollection<Role> Roles
+	    {
+	        get { return roles; }
+	        set { roles = value; NotifyPropertyChanged("Roles");}
+	    }
+
+	    public ObservableCollection<EmployeePayType> PayTypes
+	    {
+	        get { return payTypes; }
+	        set { payTypes = value;  NotifyPropertyChanged("PayTypes");}
+	    }
+
+
 	    public ObservableCollection<Employee> Employees
 	    {
 	        get { return employees; }
 	        set { employees = value; NotifyPropertyChanged("Employees");}
 	    }
-
-	    private Employee selectedEmployee;
-	    private IMessageBus mMessageBus;
 
 	    public Employee SelectedEmployee
 	    {
