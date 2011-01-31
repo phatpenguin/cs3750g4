@@ -40,7 +40,7 @@
 			<Button
 				x:Name="cook" Padding="4" Margin="1,2,1,2"
 				Click="cook_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/Anonymous_Chef.png" Width="32" Height="32"/>
 					<TextBlock Text="Cooks Screen"/>
@@ -49,7 +49,7 @@
 			<Button
 				x:Name="quickInventory" Padding="4" Margin="1,2,1,2"
 				Click="quickInventory_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanQuickInventory, Converter={StaticResource boolToVisibilityConverter}}">
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseQuickInventory, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/to_do_list_cheked_1.png" Width="32" Height="32"/>
 					<TextBlock Text="Quick Inventory Screen"/>
@@ -58,7 +58,7 @@
 			<Button
 				x:Name="reporting" Padding="4" Margin="1,2,1,2" 
 				Click="reporting_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanReporting, Converter={StaticResource boolToVisibilityConverter}}">
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
 					<Image Source="/Graphics/x-office-spreadsheet.png" Width="32" Height="32"/>
 					<TextBlock Text="Reporting"/>
