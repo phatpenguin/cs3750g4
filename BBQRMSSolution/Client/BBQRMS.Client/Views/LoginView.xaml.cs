@@ -41,6 +41,7 @@ namespace BBQRMSSolution.Views
 		private void cancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			passwordBox.Password = "";
+			passwordBox.Focus();
 		}
 
 		private void enterButton_Click(object sender, RoutedEventArgs e)
