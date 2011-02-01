@@ -21,8 +21,8 @@ namespace BBQRMSSolution.SampleData
 								OrderSubmittedDate = startDate.AddMinutes(-7).AddSeconds(-15),
 								Items =
 									{
-										new OrderItem {MenuItem = new MenuItem {Name = "Ribs"}, Quantity = 3},
-										new OrderItem {MenuItem = new MenuItem {Name = "Sodas"}, Quantity = 3},
+										//new OrderItem {MenuItem = new MenuItem {Name = "Ribs"}, Quantity = 3},
+										//new OrderItem {MenuItem = new MenuItem {Name = "Sodas"}, Quantity = 3},
 									}
 							},
 						new OrderViewModel
@@ -31,8 +31,8 @@ namespace BBQRMSSolution.SampleData
 								OrderSubmittedDate = startDate.AddMinutes(-6).AddSeconds(-10),
 								Items =
 									{
-										new OrderItem {MenuItem = new MenuItem {Name = "Chicken"}, Quantity = 3},
-										new OrderItem {MenuItem = new MenuItem {Name = "Sodas"}, Quantity = 3},
+										//new OrderItem {MenuItem = new MenuItem {Name = "Chicken"}, Quantity = 3},
+										//new OrderItem {MenuItem = new MenuItem {Name = "Sodas"}, Quantity = 3},
 									}
 							},
 					};

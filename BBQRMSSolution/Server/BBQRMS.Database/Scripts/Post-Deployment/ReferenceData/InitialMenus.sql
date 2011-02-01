@@ -15,7 +15,7 @@ insert into #Menu
 values 
 (1, 'Drinks'),
 (2, 'Entrees'),
-(3, 'Sides')
+(3, 'Fries')
 
 set identity_insert [dbo].[Menu] on
 
@@ -37,10 +37,34 @@ from (select * from [dbo].[MenuItem]
 union select top 0 * from [dbo].[MenuItem]) a
 
 insert into #MenuItem
-values 
-(1, 1.25, 'Soda', 'This is a drink'),
-(2, 5.99, 'Ribs', 'This is a entree'),
-(3, 3.25, 'Sides', 'This is a side')
+(Id,Price,Name,Description,Image)
+select 1, 1.25, 'Soda', 'This is a drink',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\soda.jpg', SINGLE_BLOB) AS BLOB
+
+insert into #MenuItem
+(Id,Price,Name,Description,Image)
+select 2, 5.99, 'Ribs', 'This is a entree',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\ribs.png', SINGLE_BLOB) AS BLOB
+
+insert into #MenuItem
+(Id,Price,Name,Description,Image)
+select 3, 3.25, 'Fries', 'This is a side',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\fries.jpg', SINGLE_BLOB) AS BLOB
+
+insert into #MenuItem
+(Id,Price,Name,Description,Image)
+select 4, 1.50, 'Lemonade', 'This is another drink',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\sobe.jpg', SINGLE_BLOB) AS BLOB
+
+insert into #MenuItem
+(Id,Price,Name,Description,Image)
+select 5, 4.75, 'Pulled Pork', 'This is another entree',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\pork.jpg', SINGLE_BLOB) AS BLOB
+
+insert into #MenuItem
+(Id,Price,Name,Description,Image)
+select 6, 4.00, 'Coleslaw', 'This is another side',NULL
+--BulkColumn FROM OPENROWSET(Bulk 'c:\temp\coleslaw.jpg', SINGLE_BLOB) AS BLOB
 
 set identity_insert [dbo].[MenuItem] on
 
@@ -49,7 +73,7 @@ set name = Source.name
 
 from [dbo].[MenuItem] Target inner join #MenuItem Source on Target.id = Source.id
 
-insert into [dbo].[MenuItem] (Id, Price, Name, Description)
+insert into [dbo].[MenuItem] (Id, Price, Name, Description, Image)
 select Source.*
 from [dbo].[MenuItem] Target right join #MenuItem Source on Target.id = Source.id
 where Target.id is null
@@ -66,8 +90,11 @@ delete from MenuItemMap
 insert into #MenuItemMap
 values 
 (1, 1),
+(1, 4),
 (2, 2),
-(3, 3)
+(2, 5),
+(3, 3),
+(3, 6)
 
 insert into [dbo].[MenuItemMap] (MenuID, MenuItemID)
 select Source.*
