@@ -102,10 +102,6 @@ namespace BBQRMSSolution.ViewModels
 			//This was changed just to get the solution to compile.
 			mMessageBus.Publish(new ShowScreen(new DummyInventoryManagementMenuViewModel()));
 		}
-		//This is here just to get the solution to compile.
-		public class DummyInventoryManagementMenuViewModel : ViewModelBase
-		{
-		}
 
 
 		public void HandleManageMenus()
