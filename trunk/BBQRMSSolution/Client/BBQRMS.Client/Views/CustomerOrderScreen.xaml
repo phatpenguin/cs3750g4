@@ -3,20 +3,23 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Views="clr-namespace:BBQRMSSolution.Views" mc:Ignorable="d"
 	x:Class="BBQRMSSolution.Views.CustomerOrderScreen"
 	x:Name="Window"
 	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}">
+    
 	<UserControl.Resources>
 		<ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
 			<WrapPanel IsItemsHost="True"/>
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid >
-				<Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom">
-					<!--Button.Background>
-						<ImageBrush ImageSource="{Binding ImageSource}"/>
-					</Button.Background-->
+				<Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom" 
+                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Views:CustomerOrderScreen}}, Path=DataContext.AddToOrder}" CommandParameter="{Binding}">
+					<Button.Background>
+						<ImageBrush ImageSource="{Binding Image}"/>
+					</Button.Background>
 					<StackPanel Background="#FFBFC9D9">
 						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" FontSize="12" Foreground="Black">
 							<Run Text="{Binding Id}" /><Run Text=" - " /><Run Text="{Binding Name}" />
@@ -65,12 +68,12 @@
 			</TabControl>
 		</DockPanel>
 		<DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" Width="439">
-            <DataGrid ItemsSource="{Binding Order.Items}" FontSize="14" AutoGenerateColumns="False" HeadersVisibility="Column" Background="{x:Null}" Width="439">
+            <DataGrid ItemsSource="{Binding Order.Items}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="439">
 				<DataGrid.Columns>
 					<DataGridTextColumn Binding="{Binding Number}" Header="#"/>
-					<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty"/>
-					<DataGridTextColumn Binding="{Binding MenuItem.Name}" Header="Item" IsReadOnly="True" Width="*"/>
-					<DataGridTextColumn Binding="{Binding MenuItem.Price}" Header="Price" IsReadOnly="True"/>
+					<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True"/>
+					<DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" Width="*"/>
+					<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
 					<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>

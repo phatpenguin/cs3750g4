@@ -91,7 +91,6 @@
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
-    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MethodOfPayment.cs" />
     <Compile Include="ViewModels\IReportViewer.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />

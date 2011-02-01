@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BBQRMSSolution.ViewModels;
+﻿using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Models
 {
 	public class OrderItem : BaseModel
 	{
-		public MenuItem MenuItem { get; set; }
+	    private BBQRMSSolution.ServerProxy.MenuItem _mi;
+		public BBQRMSSolution.ServerProxy.MenuItem MenuItem { get { return _mi; } set { _mi = value; Price = (decimal)_mi.Price; Name = _mi.Name; } }
 
-		private int q;
-		public int Quantity { get { return q; } set { q = value; NotifyPropertyChanged("quantity"); } }
+		private int _q;
+        public int Quantity { get { return _q; } set { _q = value; Price = (decimal)MenuItem.Price*value; NotifyPropertyChanged("quantity"); NotifyPropertyChanged("price");} }
 		public DelegateCommand DoAction { get; set; }
 
-		public OrderItem()
+        public string Name { get; private set; }
+	    public decimal Price { get; private set; }
+
+	    public OrderItem()
 		{
-			MenuItem = new MenuItem();
+
 		}
 	}
 }

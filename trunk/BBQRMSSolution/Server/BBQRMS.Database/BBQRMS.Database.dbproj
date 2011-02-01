@@ -249,9 +249,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeRoleMap.FK_RoleId_EmployeeRoleMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderItemId_Order.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentTypeId_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -261,19 +258,10 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderTypeId_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderItem.FK_MenuItemId_OrderItem.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderItem.FK_OrderId_OrderItem.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\SupplierContactMap.FK_SupplierId_SupplierContactMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\SupplierContactMap.FK_SupplierContactId_SupplierContactMap.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_TableSectionId_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ConsumedInventory.PK_Id_CunsumedInventory.pkey.sql">
@@ -337,6 +325,12 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\MenuItemMap.FK_MenuItem_MenuItemMap.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\OrderPayment.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderPayment.FK_OrderPayment_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Privilege.table.sql">
