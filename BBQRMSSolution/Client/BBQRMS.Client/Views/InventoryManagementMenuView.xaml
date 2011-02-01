@@ -8,9 +8,9 @@
   
         <DockPanel Name="dockPanel1">
         <StackPanel Name="stackPanel1" DockPanel.Dock="Left" >
-            <Button Content="task 1" Height="23" Name="button1" Width="75" Click="button1_Click" />
-            <Button Content="task 2" Height="23" Name="button2" Width="75" />
-            <Button Content="task 3" Height="23" Name="button3" Width="75" />
+            <Button Content="Add Supplier" Name="button1" Click="button1_Click" />
+            <Button Content="Receive Inventory" Name="button2"  Click="button2_Click"/>
+            <Button Content="Reconcile Inventory" Name="button3"  Click="button3_Click"/>
         </StackPanel>
         <ContentPresenter Name="PlaceHolder"/>
 
