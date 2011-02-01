@@ -33,12 +33,12 @@ namespace BBQRMSSolution.Views
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.HandleReceiveInventory();
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.HandleReconcileInventory();
         }
    
     }
