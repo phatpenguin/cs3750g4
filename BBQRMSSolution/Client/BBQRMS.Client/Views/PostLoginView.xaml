@@ -78,7 +78,7 @@
 				Click="manageInventory_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageInventory, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
-					<Image Source="/Graphics/file_manager.png" Width="32" Height="32"/>
+					<Image Source="/Graphics/file_manager.png" Width="32" Height="32" ImageFailed="Image_ImageFailed" />
 					<TextBlock Text="Manage Inventory"/>
 				</StackPanel>
 			</Button>

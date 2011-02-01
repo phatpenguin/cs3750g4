@@ -59,5 +59,10 @@ namespace BBQRMSSolution.Views
 		{
 			ViewModel.HandleLogout();
 		}
+
+        private void Image_ImageFailed(object sender, System.Windows.ExceptionRoutedEventArgs e)
+        {
+
+        }
 	}
 }

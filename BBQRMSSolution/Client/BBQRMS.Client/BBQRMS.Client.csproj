@@ -90,6 +90,7 @@
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
+    <Compile Include="ViewModels\InventoryManagementMenuViewModel.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\MethodOfPayment.cs" />
     <Compile Include="ViewModels\IReportViewer.cs" />
@@ -124,6 +125,9 @@
     </Compile>
     <Compile Include="Views\InventoryManagement.xaml.cs">
       <DependentUpon>InventoryManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryManagementMenuView.xaml.cs">
+      <DependentUpon>InventoryManagementMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -191,6 +195,10 @@
     <Page Include="Views\InventoryManagement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InventoryManagementMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
