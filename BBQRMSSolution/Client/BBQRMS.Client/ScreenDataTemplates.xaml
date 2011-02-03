@@ -55,4 +55,9 @@
 	<DataTemplate DataType="{x:Type ViewModels:ChangePINViewModel}">
 		<Views:ChangePINView />
 	</DataTemplate>
+
+    <DataTemplate DataType="{x:Type ViewModels:SupplierDetailViewModel}">
+        <Views:SupplierDetailView />
+    </DataTemplate>
+    
 </ResourceDictionary>

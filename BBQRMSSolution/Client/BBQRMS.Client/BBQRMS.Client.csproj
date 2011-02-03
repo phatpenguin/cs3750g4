@@ -99,6 +99,7 @@
     <Compile Include="SampleData\SampleOrders.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
+    <Compile Include="ViewModels\SupplierDetailViewModel.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +152,9 @@
     <Compile Include="Views\ReportViewerWrapper.cs" />
     <Compile Include="Views\RoleManagement.xaml.cs">
       <DependentUpon>RoleManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SupplierDetailView.xaml.cs">
+      <DependentUpon>SupplierDetailView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoleManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SupplierDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
