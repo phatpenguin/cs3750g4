@@ -100,7 +100,7 @@ namespace BBQRMSSolution.ViewModels
 		{
 			//TODO: Show a new or existing viewmodel for managing inventory.
 			//This was changed just to get the solution to compile.
-			mMessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel()));
+            mMessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel(mDataService, mMessageBus)));
 		}
 
 

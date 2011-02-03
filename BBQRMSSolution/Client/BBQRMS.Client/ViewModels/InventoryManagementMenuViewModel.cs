@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Controls;
+using System.Collections.ObjectModel;
+using BBQRMSSolution.ServerProxy;
+
 
 namespace BBQRMSSolution.ViewModels
 {   
     public class InventoryManagementMenuViewModel:ViewModelBase
     {
-        public InventoryManagementMenuViewModel()
+      
+        private readonly IMessageBus mMessageBus;
+        private BBQRMSEntities mDataService;
+
+        public InventoryManagementMenuViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
         {
+            mMessageBus = messageBus;
+            mDataService = dataService;
 
         }
 
