@@ -78,7 +78,7 @@
 				Click="manageInventory_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageInventory, Converter={StaticResource boolToVisibilityConverter}}">
 				<StackPanel>
-					<Image Source="/Graphics/file_manager.png" Width="32" Height="32" ImageFailed="Image_ImageFailed" />
+					<Image Source="/Graphics/file_manager.png" Width="32" Height="32" />
 					<TextBlock Text="Manage Inventory"/>
 				</StackPanel>
 			</Button>
@@ -93,12 +93,19 @@
 			</Button>
 		</StackPanel>
 		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,70,0" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-		<Button Grid.Row="0" Name="logout" HorizontalAlignment="Right" Padding="4" Margin="1,2,1,2" Click="logout_Click">
-			<StackPanel>
-				<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />
-				<TextBlock Text="Log Out" />
-			</StackPanel>
-		</Button>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Grid.Row="0" Name="changePin" Padding="4" Margin="1,2,1,2" Click="changePin_Click">
+				<StackPanel>
+					<TextBlock Text="Change PIN" />
+				</StackPanel>
+			</Button>
+			<Button Grid.Row="0" Name="logout" Padding="4" Margin="1,2,1,2" Click="logout_Click">
+				<StackPanel>
+					<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />
+					<TextBlock Text="Log Out" />
+				</StackPanel>
+			</Button>
+		</StackPanel>
 		<ContentPresenter Grid.Row="1" Name="mainContent" Content="{Binding Path=Content}"/>
 	</Grid>
 </UserControl>

@@ -47,7 +47,12 @@
 	<DataTemplate DataType="{x:Type ViewModels:QuickInventoryViewModel}">
 		<Views:QuickInventoryScreen />
 	</DataTemplate>
-    <DataTemplate DataType="{x:Type ViewModels:InventoryManagementMenuViewModel}">
-        <Views:InventoryManagementMenuView />
-    </DataTemplate>
+
+	<DataTemplate DataType="{x:Type ViewModels:InventoryManagementMenuViewModel}">
+		<Views:InventoryManagementMenuView />
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type ViewModels:ChangePINViewModel}">
+		<Views:ChangePINView />
+	</DataTemplate>
 </ResourceDictionary>

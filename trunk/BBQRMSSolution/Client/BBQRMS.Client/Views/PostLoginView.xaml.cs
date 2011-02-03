@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
@@ -60,9 +62,9 @@ namespace BBQRMSSolution.Views
 			ViewModel.HandleLogout();
 		}
 
-        private void Image_ImageFailed(object sender, System.Windows.ExceptionRoutedEventArgs e)
-        {
-
-        }
+		private void changePin_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleChangePIN();
+		}
 	}
 }

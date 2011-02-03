@@ -119,6 +119,11 @@ namespace BBQRMSSolution.ViewModels
 		{
 			Content = message.ViewModelToShow;
 		}
+
+		public void HandleChangePIN()
+		{
+			mMessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
+		}
 	}
 
 	public class DesignTimeSecurityContext : SecurityContext
