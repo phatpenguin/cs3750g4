@@ -12,20 +12,20 @@ namespace BBQRMSSolution.ViewModels
     public class InventoryManagementMenuViewModel:ViewModelBase
     {
       
-        private readonly IMessageBus mMessageBus;
-        private BBQRMSEntities mDataService;
+        private readonly IMessageBus _MessageBus;
+        private BBQRMSEntities _DataService;
+        private ViewModelBase _Content;
+   
 
         public InventoryManagementMenuViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
         {
-            mMessageBus = messageBus;
-            mDataService = dataService;
+            _MessageBus = messageBus;
+            _DataService = dataService;
 
         }
 
-        private ViewModelBase _Content;
-        public ViewModelBase Content
         
-        {
+        public ViewModelBase Content{
             get { return _Content; }
             set
             {
@@ -40,7 +40,7 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleAddSupplier()
         {
-            //Content = new LoginView
+            Content = new SupplierDetailViewModel(_DataService, _MessageBus);
 
         }
         public void HandleReceiveInventory()

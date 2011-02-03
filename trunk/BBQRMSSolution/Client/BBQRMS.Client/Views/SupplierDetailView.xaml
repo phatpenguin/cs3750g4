@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="BBQRMSSolution.Views.SupplierDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <DockPanel>
+        <StackPanel>
+            <ListBox ItemsSource="{Binding Path=Suppliers}">
+                
+            </ListBox>
+        </StackPanel>
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  Height="20"/>
+                    <RowDefinition  Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Supplier Name"  Name="SupplierNameLbl" Grid.Column="0" Grid.Row="0"/>
+                <TextBox Name="SupplierNameTb" Grid.Column="1" Grid.Row="0"/>
+
+                <Label Content="Address" Name="AddressLbl" Grid.Column="0" Grid.Row="1" />
+                <TextBox Name="AddressTb" Grid.Column="1" Grid.Row="1" />
+
+                <Label Content="State" Name="StateLbl" Grid.Column="0" Grid.Row="2"/>
+                <TextBox Name="StateTb"  Grid.Column="1" Grid.Row="2"/>
+
+                <Label Content="Zip" Name="ZipLbl" Grid.Column="0" Grid.Row="3"/>
+                <TextBox Name="ZipTb" Grid.Column="1" Grid.Row="3" TextChanged="ZipTb_TextChanged" />
+
+                <Label Content="Phone Number" Name="PhoneNumberLbl" Grid.Column="0" Grid.Row="4" />
+                <TextBox Name="PhoneNumberTb" Grid.Column="1" Grid.Row="4" />
+
+                <Label Content="Point of Contact"  Name="POCLbl" Grid.Column="0" Grid.Row="5" />
+                <TextBox Name="POCTb" Grid.Column="1" Grid.Row="5" />
+                
+                <Button Grid.Column="0" Grid.Row="8" Content="Save" Click="Button_Click" />
+                <Button Grid.Column="1" Grid.Row="8" Content="Delete" Click="Button_Click_1" />
+                
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

@@ -12,7 +12,7 @@
             <Button Content="Receive Inventory" Name="button2"  Click="button2_Click"/>
             <Button Content="Reconcile Inventory" Name="button3"  Click="button3_Click"/>
         </StackPanel>
-        <ContentPresenter Name="PlaceHolder"/>
+        <ContentPresenter Name="PlaceHolder" Content="{Binding Path=Content}"/>
 
     </DockPanel>
 </UserControl>
