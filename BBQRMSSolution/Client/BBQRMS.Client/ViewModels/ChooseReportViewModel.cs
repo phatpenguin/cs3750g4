@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -197,15 +198,5 @@ namespace BBQRMSSolution.ViewModels
 				}
 			}
 		}
-	}
-
-	public class ShowScreen
-	{
-		public ShowScreen(ViewModelBase viewModel)
-		{
-			ViewModelToShow = viewModel;
-		}
-
-		public ViewModelBase ViewModelToShow { get; private set; }
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
-using BBQRMSSolution.ViewModels;
+using BBQRMSSolution.ViewModels.Messages;
 
 namespace BBQRMSSolution
 {
@@ -11,10 +11,10 @@ namespace BBQRMSSolution
 	{
 		public MainWindow()
 		{
-			this.InitializeComponent();
+			InitializeComponent();
 
 			// Insert code required on object creation below this point.
-			this.Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+			Closing += MainWindow_Closing;
 		}
 
 		private void MainWindow_Closing(object sender, CancelEventArgs e)

@@ -1,7 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data.Services.Client;
+using System.Linq;
 using BBQRMSSolution.SampleData;
 using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -15,6 +18,7 @@ namespace BBQRMSSolution.ViewModels
 		private ViewModelBase mContent;
 
 		private readonly ObservableCollection<OrderViewModel> mPendingOrders = SampleOrders.Sample;
+		private bool mClockOutVisible;
 
 		[Obsolete("To be used only at design time")]
 		public PostLoginViewModel()
@@ -124,14 +128,57 @@ namespace BBQRMSSolution.ViewModels
 		{
 			mMessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
 		}
+
+		public void HandleClockOut()
+		{
+			// show clock-out confirmation user interface
+			ClockOutVisible = true;
+		}
+
+		public bool ClockOutVisible
+		{
+			get {
+				return mClockOutVisible;
+			}
+			set
+			{
+				if (value != mClockOutVisible)
+				{
+					mClockOutVisible = value;
+					mMessageBus.Publish(new ClockOutMode(mClockOutVisible));
+					NotifyPropertyChanged("ClockOutVisible");
+				}
+			}
+		}
+
+		public void ConfirmClockOut()
+		{
+			//TODO: actually clock out.
+			var openClocks =
+				mDataService.EmployeeTimeClocks.Where(
+					tc => tc.EmployeeId == mSecurityContext.CurrentUser.Id && tc.ClockOutTimeUTC == null).OrderByDescending(tc => tc.ClockInTimeUTC).ToList();
+			if(openClocks.Count == 0)
+			{
+				//TODO: handle the exceptional case.. no open timeclock.
+			}
+			else
+			{
+				openClocks[0].ClockOutTimeUTC = TimeProvider.Current.UtcNow;
+				mDataService.UpdateObject(openClocks[0]);
+				mDataService.SaveChanges(SaveChangesOptions.Batch);
+				HandleLogout();
+				ClockOutVisible = false;
+			}
+		}
+
+		public void CancelClockOut()
+		{
+			ClockOutVisible = false;
+		}
 	}
 
 	public class DesignTimeSecurityContext : SecurityContext
 	{
 		public new Employee CurrentUser { get; set; }
-	}
-
-	public class UserLoggingOut
-	{
 	}
 }

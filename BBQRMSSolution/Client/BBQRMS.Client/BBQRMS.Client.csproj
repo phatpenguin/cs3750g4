@@ -87,9 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
+    <Compile Include="TimeProvider.cs" />
     <Compile Include="ViewModels\ChangePINViewModel.cs" />
+    <Compile Include="ViewModels\Messages\ClockOutMode.cs" />
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
+    <Compile Include="ViewModels\Messages\InvalidPinEntered.cs" />
     <Compile Include="ViewModels\InventoryItem.cs" />
     <Compile Include="ViewModels\InventoryManagementMenuViewModel.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
@@ -99,9 +102,17 @@
     <Compile Include="SampleData\SampleOrders.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Messages\ShowScreen.cs" />
     <Compile Include="ViewModels\SupplierDetailViewModel.cs" />
+    <Compile Include="ViewModels\Messages\ShutdownRequested.cs" />
+    <Compile Include="ViewModels\Messages\UserLoggedIn.cs" />
+    <Compile Include="ViewModels\Messages\Shutdown.cs" />
+    <Compile Include="ViewModels\Messages\UserLoggingOut.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClockOutView.xaml.cs">
+      <DependentUpon>ClockOutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
@@ -181,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ChangePINView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClockOutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

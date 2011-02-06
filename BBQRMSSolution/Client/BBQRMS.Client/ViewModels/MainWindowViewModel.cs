@@ -1,6 +1,7 @@
 using System;
 using BBQRMSSolution.Properties;
 using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -74,9 +75,5 @@ namespace BBQRMSSolution.ViewModels
 			else
 				mMessageBus.Publish(new Shutdown());
 		}
-	}
-
-	public class Shutdown
-	{
 	}
 }

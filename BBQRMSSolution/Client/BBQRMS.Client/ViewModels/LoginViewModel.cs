@@ -2,6 +2,7 @@ using System;
 using System.Data.Services.Client;
 using System.Linq;
 using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -38,7 +39,8 @@ namespace BBQRMSSolution.ViewModels
 				}
 				else
 				{
-					// store the current user's identity and roles so the rest of the application can access them.
+					PrepareTimeClock(applicationUser.Employee);
+					//Let everyone who is listening set up for the new user.
 					mEvents.Publish(new UserLoggedIn(applicationUser.Employee));
 				}
 			}
@@ -48,33 +50,17 @@ namespace BBQRMSSolution.ViewModels
 		{
 			mEvents.Publish(new ShutdownRequested());
 		}
-	}
 
-	public class ShutdownRequested
-	{
-		private bool mCancelled;
-		public bool Cancelled
+		public void PrepareTimeClock(Employee employee)
 		{
-			get { return mCancelled; }
-			set
+			var openclocks =
+				mDataService.EmployeeTimeClocks.Where(tc => tc.EmployeeId == employee.Id && tc.ClockOutTimeUTC == null).ToList();
+			if (openclocks.Count == 0)
 			{
-				if(value)
-					mCancelled = true;
+				mDataService.AddToEmployeeTimeClocks(new EmployeeTimeClock {EmployeeId = employee.Id});
+				//TODO: what if this fails?
+				var resp = mDataService.SaveChanges(SaveChangesOptions.Batch);
 			}
 		}
-	}
-
-	public class UserLoggedIn
-	{
-		public UserLoggedIn(Employee applicationUser)
-		{
-			Employee = applicationUser;
-		}
-
-		public Employee Employee { get; private set; }
-	}
-
-	public class InvalidPinEntered
-	{
 	}
 }
