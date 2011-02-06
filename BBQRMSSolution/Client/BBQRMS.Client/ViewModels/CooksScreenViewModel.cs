@@ -1,7 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using BBQRMSSolution.Models;
-using BBQRMSSolution.SampleData;
 
 namespace BBQRMSSolution.ViewModels
 {
@@ -9,15 +7,8 @@ namespace BBQRMSSolution.ViewModels
 	{
 		private readonly ObservableCollection<OrderViewModel> mPendingOrders;
 
-		[Obsolete("Used for design-time only")]
 		public CooksScreenViewModel()
 		{
-			mPendingOrders = SampleOrders.Sample;
-		}
-
-		public CooksScreenViewModel(ObservableCollection<OrderViewModel> pendingOrders)
-		{
-			mPendingOrders = pendingOrders;
 			CompleteOrderCommand = new DelegateCommand(HandleCompleteOrder);
 		}
 

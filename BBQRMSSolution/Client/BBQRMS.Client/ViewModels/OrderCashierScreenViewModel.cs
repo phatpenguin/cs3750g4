@@ -6,21 +6,21 @@ namespace BBQRMSSolution.ViewModels
 {
 	class OrderCashierScreenViewModel : ViewModelBase
 	{
-		private IMessageBus mMessageBus;
+		private IMessageBus _mMessageBus;
 
 		public OrderViewModel Order { get; set; }
 		public ObservableCollection<MethodOfPayment> MopList { get; set; }
 
 		public OrderCashierScreenViewModel()
 		{
-			Order = new OrderViewModel();
+			Order = new OrderViewModel(null,null);
 
 			MakeMethodOfPaymentList();
 		}
 
 		public OrderCashierScreenViewModel(OrderViewModel orderViewModel, IMessageBus navigationService)
 		{
-			mMessageBus = navigationService;
+			_mMessageBus = navigationService;
 			Order = orderViewModel;
 
 			MakeMethodOfPaymentList();

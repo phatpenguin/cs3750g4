@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Threading;
+using Controls;
 using OrderItem = BBQRMSSolution.Models.OrderItem;
 using BBQRMSSolution.ServerProxy;
 
@@ -11,14 +12,20 @@ namespace BBQRMSSolution.ViewModels
 		private Timer _t;
 		private decimal _st, _tp, _ta;
 
+        private readonly IMessageBus _mMessageBus;
+        private readonly BBQRMSEntities _mDataService;
+
         private const decimal TAX_PERCENTAGE = 8.25m;
 
 		public decimal SubTotal { get { return _st; } set { _st = value; NotifyPropertyChanged("subTotal"); } }
 		public decimal TotalPrice { get { return _tp; } set { _tp = value; NotifyPropertyChanged("totalPrice"); } }
 		public decimal TaxAmount { get { return _ta; } set { _ta = value; NotifyPropertyChanged("taxAmount"); } }
 
-		public OrderViewModel()
+		public OrderViewModel(IMessageBus mMessageBus,BBQRMSEntities mDataService)
 		{
+		    _mMessageBus = mMessageBus;
+		    _mDataService = mDataService;
+
 			DateTime now = DateTime.Now;
 			now = now.AddMilliseconds(-now.Millisecond);
 			OrderSubmittedDate = now;
@@ -27,6 +34,10 @@ namespace BBQRMSSolution.ViewModels
 			TotalPrice = 0.00m;
 			SubTotal = 0.00m;
 			TaxAmount = 0.00m;
+
+            var order = new Order();
+
+		    _mDataService.Menus.Expand("MenuItems");
 		}
 
 		private void UpdateAge(object state)

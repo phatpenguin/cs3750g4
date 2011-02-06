@@ -54,15 +54,6 @@
 					</StackPanel>
 				</Button>
 				<Button
-				x:Name="cashier" Padding="4" Margin="1,2,1,2" 
-				Click="cashier_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanCashier, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/cash.png" Width="32" Height="32"/>
-						<TextBlock Text="Cashier Order"/>
-					</StackPanel>
-				</Button>
-				<Button
 				x:Name="cook" Padding="4" Margin="1,2,1,2"
 				Click="cook_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">

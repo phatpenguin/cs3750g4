@@ -1,8 +1,9 @@
 ﻿CREATE TABLE [dbo].[OrderItem]
 (
-	Id			int identity,
-	Name	int	NOT NULL,
-	Quantity	int	NOT NULL,
-	UnitPrice	int NOT NULL,
-	TaxAmt		numeric(18,10)
+	Id			int				identity,
+	OrderId		int				NOT NULL,
+	Name		int				NOT NULL,
+	Quantity	int				NOT NULL,
+	UnitPrice	numeric(18,10)	NOT NULL,
+	UnitTax		numeric(18,10)	NOT NULL
 )

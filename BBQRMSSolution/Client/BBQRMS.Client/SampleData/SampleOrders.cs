@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.Models;
-using BBQRMSSolution.ViewModels;
+/*using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.SampleData
 {
@@ -40,4 +40,4 @@ namespace BBQRMSSolution.SampleData
 
 		public static ObservableCollection<OrderViewModel> Sample { get; private set; }
 	}
-}
+}*/
