@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using BBQRMSSolution.ViewModels.Messages;
 using OrderItem = BBQRMSSolution.Models.OrderItem;
 using BBQRMSSolution.ServerProxy;
 using Controls;

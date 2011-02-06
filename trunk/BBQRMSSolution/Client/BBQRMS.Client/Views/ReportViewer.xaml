@@ -57,7 +57,7 @@
 				<Button Margin="5" Click="Button_Click">Run report</Button>
 			</Grid>
 		</StackPanel>
-		<WindowsFormsHost Grid.Column="1" Grid.Row="1">
+		<WindowsFormsHost Grid.Column="1" Grid.Row="1" x:Name="winFormsHost">
 			<WinForms:ReportViewer x:Name="reportViewer" Dock="Fill" />
 		</WindowsFormsHost>
 	</Grid>

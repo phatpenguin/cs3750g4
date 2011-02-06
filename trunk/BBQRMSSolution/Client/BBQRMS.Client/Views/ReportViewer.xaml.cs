@@ -1,29 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BBQRMSSolution.ViewModels;
-using RUBPrototypes.SampleData;
+using BBQRMSSolution.ViewModels.Messages;
+using Controls;
 
 namespace BBQRMSSolution.Views
 {
-	/// <summary>
-	/// Interaction logic for ReportViewer.xaml
-	/// </summary>
-	public partial class ReportViewer : UserControl
+	public partial class ReportViewer : UserControl, IHandle<ClockOutMode>
 	{
 		public ReportViewer()
 		{
 			InitializeComponent();
+			GlobalApplicationState.MessageBus.Subscribe(this);
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,6 +22,11 @@ namespace BBQRMSSolution.Views
 		private ReportViewModel ViewModel
 		{
 			get { return (ReportViewModel) DataContext; }
+		}
+
+		public void Handle(ClockOutMode message)
+		{
+			winFormsHost.Visibility = message.ClockOutVisible ? Visibility.Hidden : Visibility.Visible;
 		}
 	}
 }

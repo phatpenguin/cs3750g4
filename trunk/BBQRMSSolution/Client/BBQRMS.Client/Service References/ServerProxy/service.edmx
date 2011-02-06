@@ -17,6 +17,7 @@
         <Property Name="Price" Type="Edm.Decimal" Nullable="true" Precision="18" Scale="2" />
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <Property Name="Image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
         <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap1" FromRole="MenuItem" ToRole="Menu" />
         <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_MenuItemId_OrderItem" FromRole="MenuItem" ToRole="OrderItem" />
       </EntityType>
@@ -51,6 +52,7 @@
         <NavigationProperty Name="Roles" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Employee" ToRole="Role" />
         <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_EmployeeId_ConsumedInventory" FromRole="Employee" ToRole="ConsumedInventory" />
         <NavigationProperty Name="EmployeePayType" Relationship="BBQRMSModel.FK_PayTypeId_Employee" FromRole="Employee" ToRole="EmployeePayType" />
+        <NavigationProperty Name="EmployeeTimeClocks" Relationship="BBQRMSModel.FK_EmployeeTimeClock_Employee" FromRole="Employee" ToRole="EmployeeTimeClock" />
       </EntityType>
       <EntityType Name="Privilege">
         <Key>
@@ -68,12 +70,6 @@
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <NavigationProperty Name="Employees" Relationship="BBQRMSModel.EmployeeRoleMap" FromRole="Role" ToRole="Employee" />
         <NavigationProperty Name="Privileges" Relationship="BBQRMSModel.RolePrivilegeMap" FromRole="Role" ToRole="Privilege" />
-      </EntityType>
-      <EntityType Name="C__RefactorLog">
-        <Key>
-          <PropertyRef Name="OperationKey" />
-        </Key>
-        <Property Name="OperationKey" Type="Edm.Guid" Nullable="false" />
       </EntityType>
       <EntityType Name="ConsumedInventory">
         <Key>
@@ -113,6 +109,7 @@
         <Property Name="EmployeeId" Type="Edm.Int32" Nullable="false" />
         <Property Name="ClockInTimeUTC" Type="Edm.DateTime" Nullable="false" />
         <Property Name="ClockOutTimeUTC" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_EmployeeTimeClock_Employee" FromRole="EmployeeTimeClock" ToRole="Employee" />
       </EntityType>
       <EntityType Name="ItemSupplierMap">
         <Key>
@@ -172,6 +169,8 @@
         <Property Name="OrderId" Type="Edm.Int32" Nullable="false" />
         <Property Name="Quantity" Type="Edm.Int32" Nullable="false" />
         <Property Name="UnitPrice" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TaxAmt" Type="Edm.Decimal" Nullable="true" Precision="18" Scale="10" />
         <NavigationProperty Name="MenuItem" Relationship="BBQRMSModel.FK_MenuItemId_OrderItem" FromRole="OrderItem" ToRole="MenuItem" />
         <NavigationProperty Name="Order" Relationship="BBQRMSModel.FK_OrderId_OrderItem" FromRole="OrderItem" ToRole="Order" />
         <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_OrderItemId_Order" FromRole="OrderItem" ToRole="Order" />
@@ -413,6 +412,18 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="FK_EmployeeTimeClock_Employee">
+        <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="1" />
+        <End Role="EmployeeTimeClock" Type="BBQRMSModel.EmployeeTimeClock" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Employee">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="EmployeeTimeClock">
+            <PropertyRef Name="EmployeeId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
     </Schema>
     <Schema Namespace="BBQRMS.WCFServices" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="BBQRMSEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -422,7 +433,6 @@
         <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
         <EntitySet Name="Privileges" EntityType="BBQRMSModel.Privilege" />
         <EntitySet Name="Roles" EntityType="BBQRMSModel.Role" />
-        <EntitySet Name="C__RefactorLog" EntityType="BBQRMSModel.C__RefactorLog" />
         <EntitySet Name="ConsumedInventories" EntityType="BBQRMSModel.ConsumedInventory" />
         <EntitySet Name="ConsumptionTypes" EntityType="BBQRMSModel.ConsumptionType" />
         <EntitySet Name="EmployeePayTypes" EntityType="BBQRMSModel.EmployeePayType" />
@@ -505,6 +515,10 @@
         <AssociationSet Name="FK_SupplierContactId_SupplierContactMap" Association="BBQRMSModel.FK_SupplierContactId_SupplierContactMap">
           <End Role="SupplierContact" EntitySet="SupplierContacts" />
           <End Role="SupplierContactMap" EntitySet="SupplierContactMaps" />
+        </AssociationSet>
+        <AssociationSet Name="FK_EmployeeTimeClock_Employee" Association="BBQRMSModel.FK_EmployeeTimeClock_Employee">
+          <End Role="Employee" EntitySet="Employees" />
+          <End Role="EmployeeTimeClock" EntitySet="EmployeeTimeClocks" />
         </AssociationSet>
       </EntityContainer>
     </Schema>

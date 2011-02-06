@@ -4,8 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
-	mc:Ignorable="d" 
+	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Views="clr-namespace:BBQRMSSolution.Views" xmlns:System="clr-namespace:System;assembly=mscorlib" mc:Ignorable="d" 
 	d:DesignHeight="730"
 	d:DesignWidth="1350"
 	d:DataContext="{d:DesignInstance Type=ViewModels:PostLoginViewModel, IsDesignTimeCreatable=True}"
@@ -13,99 +12,134 @@
 	<UserControl.Resources>
 		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
 	</UserControl.Resources>
-	<Grid x:Name="LayoutRoot" Background="{DynamicResource ApplicationBackgroundBrush}">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
-		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button
+	<Grid x:Name="LayoutRoot">
+			<!-- Clock-out UI is behind the main application grid until it's supposed to show. Then the ZIndex puts it in front. -->
+		<Views:ClockOutView No="ClockOutNo_Click" Yes="ClockOutYes_Click">
+			<UserControl.Style>
+				<Style>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Path=ClockOutVisible}" Value="True">
+							<Setter Property="Panel.ZIndex" Value="200"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</UserControl.Style>
+		</Views:ClockOutView>
+
+		<!-- the main application frame -->
+		<Grid
+			Panel.ZIndex="100"
+			Background="{DynamicResource ApplicationBackgroundBrush}">
+			<Grid.Style>
+				<Style>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Path=ClockOutVisible}" Value="True">
+							<Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Grid.Style>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<StackPanel Grid.Row="0" Orientation="Horizontal">
+				<Button
 				x:Name="takeOrders" Padding="4" Margin="1,2,1,2"
 				Click="takeOrders_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/accessories-text-editor.png" Width="32" Height="32"/>
-					<TextBlock Text="Take Orders"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/accessories-text-editor.png" Width="32" Height="32"/>
+						<TextBlock Text="Take Orders"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="cashier" Padding="4" Margin="1,2,1,2" 
 				Click="cashier_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanCashier, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/cash.png" Width="32" Height="32"/>
-					<TextBlock Text="Cashier Order"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/cash.png" Width="32" Height="32"/>
+						<TextBlock Text="Cashier Order"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="cook" Padding="4" Margin="1,2,1,2"
 				Click="cook_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/Anonymous_Chef.png" Width="32" Height="32"/>
-					<TextBlock Text="Cooks Screen"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/Anonymous_Chef.png" Width="32" Height="32"/>
+						<TextBlock Text="Cooks Screen"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="quickInventory" Padding="4" Margin="1,2,1,2"
 				Click="quickInventory_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseQuickInventory, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/to_do_list_cheked_1.png" Width="32" Height="32"/>
-					<TextBlock Text="Quick Inventory Screen"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/to_do_list_cheked_1.png" Width="32" Height="32"/>
+						<TextBlock Text="Quick Inventory Screen"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="reporting" Padding="4" Margin="1,2,1,2" 
 				Click="reporting_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/x-office-spreadsheet.png" Width="32" Height="32"/>
-					<TextBlock Text="Reporting"/>
-				</StackPanel>
-			</Button>
-			<Button 
+					<StackPanel>
+						<Image Source="/Graphics/x-office-spreadsheet.png" Width="32" Height="32"/>
+						<TextBlock Text="Reporting"/>
+					</StackPanel>
+				</Button>
+				<Button 
 				x:Name="manageEmployees" Padding="4" Margin="1,2,1,2" 
 				Click="manageEmployees_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/system-users.png" Width="32" Height="32"/>
-					<TextBlock Text="Manage Employees"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/system-users.png" Width="32" Height="32"/>
+						<TextBlock Text="Manage Employees"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="manageInventory" Padding="4" Margin="1,2,1,2"
 				Click="manageInventory_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageInventory, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/file_manager.png" Width="32" Height="32" />
-					<TextBlock Text="Manage Inventory"/>
-				</StackPanel>
-			</Button>
-			<Button
+					<StackPanel>
+						<Image Source="/Graphics/file_manager.png" Width="32" Height="32" />
+						<TextBlock Text="Manage Inventory"/>
+					</StackPanel>
+				</Button>
+				<Button
 				x:Name="manageMenus" Padding="4" Margin="1,2,1,2"
 				Click="manageMenus_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}">
-				<StackPanel>
-					<Image Source="/Graphics/menu.png" Width="32" Height="32"/>
-					<TextBlock Text="Manage Menus"/>
-				</StackPanel>
-			</Button>
-		</StackPanel>
-		<TextBlock Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,70,0" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button Grid.Row="0" Name="changePin" Padding="4" Margin="1,2,1,2" Click="changePin_Click">
-				<StackPanel>
-					<TextBlock Text="Change PIN" />
-				</StackPanel>
-			</Button>
-			<Button Grid.Row="0" Name="logout" Padding="4" Margin="1,2,1,2" Click="logout_Click">
-				<StackPanel>
-					<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />
-					<TextBlock Text="Log Out" />
-				</StackPanel>
-			</Button>
-		</StackPanel>
-		<ContentPresenter Grid.Row="1" Name="mainContent" Content="{Binding Path=Content}"/>
+					<StackPanel>
+						<Image Source="/Graphics/menu.png" Width="32" Height="32"/>
+						<TextBlock Text="Manage Menus"/>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+				<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
+				<Button Name="changePin" Padding="4" Margin="1,2,1,2" Click="changePin_Click">
+					<StackPanel>
+						<TextBlock Text="Change PIN" />
+					</StackPanel>
+				</Button>
+				<Button Name="clockOut" Padding="4" Margin="1,2,1,2" Click="clockOut_Click">
+					<StackPanel>
+						<TextBlock Text="Clock Out" />
+					</StackPanel>
+				</Button>
+				<Button Name="logout" Padding="4" Margin="1,2,1,2" Click="logout_Click">
+					<StackPanel>
+						<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />
+						<TextBlock Text="Log Out" />
+					</StackPanel>
+				</Button>
+			</StackPanel>
+
+			<!-- The current application screen appears here -->
+			<ContentPresenter Grid.Row="1" Name="mainContent" Content="{Binding Path=Content}"/>
+
+		</Grid>
 	</Grid>
 </UserControl>

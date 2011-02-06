@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 1/31/2011 11:31:15 AM
+// Generation date: 2/6/2011 1:19:23 AM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -160,23 +160,6 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<Role> _Roles;
-        /// <summary>
-        /// There are no comments for C__RefactorLog in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> C__RefactorLog
-        {
-            get
-            {
-                if ((this._C__RefactorLog == null))
-                {
-                    this._C__RefactorLog = base.CreateQuery<C__RefactorLog>("C__RefactorLog");
-                }
-                return this._C__RefactorLog;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> _C__RefactorLog;
         /// <summary>
         /// There are no comments for ConsumedInventories in the schema.
         /// </summary>
@@ -479,14 +462,6 @@ namespace BBQRMSSolution.ServerProxy
         public void AddToRoles(Role role)
         {
             base.AddObject("Roles", role);
-        }
-        /// <summary>
-        /// There are no comments for C__RefactorLog in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToC__RefactorLog(C__RefactorLog c__RefactorLog)
-        {
-            base.AddObject("C__RefactorLog", c__RefactorLog);
         }
         /// <summary>
         /// There are no comments for ConsumedInventories in the schema.
@@ -818,6 +793,35 @@ namespace BBQRMSSolution.ServerProxy
         private string _Description;
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Property Image in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public byte[] Image
+        {
+            get
+            {
+                if ((this._Image != null))
+                {
+                    return ((byte[])(this._Image.Clone()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.OnImageChanging(value);
+                this._Image = value;
+                this.OnImageChanged();
+                this.OnPropertyChanged("Image");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private byte[] _Image;
+        partial void OnImageChanging(byte[] value);
+        partial void OnImageChanged();
         /// <summary>
         /// There are no comments for Menus in the schema.
         /// </summary>
@@ -1398,6 +1402,24 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private EmployeePayType _EmployeePayType;
+        /// <summary>
+        /// There are no comments for EmployeeTimeClocks in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<EmployeeTimeClock> EmployeeTimeClocks
+        {
+            get
+            {
+                return this._EmployeeTimeClocks;
+            }
+            set
+            {
+                this._EmployeeTimeClocks = value;
+                this.OnPropertyChanged("EmployeeTimeClocks");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<EmployeeTimeClock> _EmployeeTimeClocks = new global::System.Data.Services.Client.DataServiceCollection<EmployeeTimeClock>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1608,60 +1630,6 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<Privilege> _Privileges = new global::System.Data.Services.Client.DataServiceCollection<Privilege>(null, System.Data.Services.Client.TrackingMode.None);
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for BBQRMSModel.C__RefactorLog in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// OperationKey
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("C__RefactorLog")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("OperationKey")]
-    public partial class C__RefactorLog : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new C__RefactorLog object.
-        /// </summary>
-        /// <param name="operationKey">Initial value of OperationKey.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static C__RefactorLog CreateC__RefactorLog(global::System.Guid operationKey)
-        {
-            C__RefactorLog c__RefactorLog = new C__RefactorLog();
-            c__RefactorLog.OperationKey = operationKey;
-            return c__RefactorLog;
-        }
-        /// <summary>
-        /// There are no comments for Property OperationKey in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Guid OperationKey
-        {
-            get
-            {
-                return this._OperationKey;
-            }
-            set
-            {
-                this.OnOperationKeyChanging(value);
-                this._OperationKey = value;
-                this.OnOperationKeyChanged();
-                this.OnPropertyChanged("OperationKey");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Guid _OperationKey;
-        partial void OnOperationKeyChanging(global::System.Guid value);
-        partial void OnOperationKeyChanged();
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2206,6 +2174,24 @@ namespace BBQRMSSolution.ServerProxy
         private global::System.Nullable<global::System.DateTime> _ClockOutTimeUTC;
         partial void OnClockOutTimeUTCChanging(global::System.Nullable<global::System.DateTime> value);
         partial void OnClockOutTimeUTCChanged();
+        /// <summary>
+        /// There are no comments for Employee in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Employee Employee
+        {
+            get
+            {
+                return this._Employee;
+            }
+            set
+            {
+                this._Employee = value;
+                this.OnPropertyChanged("Employee");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Employee _Employee;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -3001,8 +2987,9 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="orderId">Initial value of OrderId.</param>
         /// <param name="quantity">Initial value of Quantity.</param>
         /// <param name="unitPrice">Initial value of UnitPrice.</param>
+        /// <param name="name">Initial value of Name.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static OrderItem CreateOrderItem(int ID, int menuItemId, int orderId, int quantity, int unitPrice)
+        public static OrderItem CreateOrderItem(int ID, int menuItemId, int orderId, int quantity, int unitPrice, int name)
         {
             OrderItem orderItem = new OrderItem();
             orderItem.Id = ID;
@@ -3010,6 +2997,7 @@ namespace BBQRMSSolution.ServerProxy
             orderItem.OrderId = orderId;
             orderItem.Quantity = quantity;
             orderItem.UnitPrice = unitPrice;
+            orderItem.Name = name;
             return orderItem;
         }
         /// <summary>
@@ -3122,6 +3110,50 @@ namespace BBQRMSSolution.ServerProxy
         private int _UnitPrice;
         partial void OnUnitPriceChanging(int value);
         partial void OnUnitPriceChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Name;
+        partial void OnNameChanging(int value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property TaxAmt in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<decimal> TaxAmt
+        {
+            get
+            {
+                return this._TaxAmt;
+            }
+            set
+            {
+                this.OnTaxAmtChanging(value);
+                this._TaxAmt = value;
+                this.OnTaxAmtChanged();
+                this.OnPropertyChanged("TaxAmt");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<decimal> _TaxAmt;
+        partial void OnTaxAmtChanging(global::System.Nullable<decimal> value);
+        partial void OnTaxAmtChanged();
         /// <summary>
         /// There are no comments for MenuItem in the schema.
         /// </summary>

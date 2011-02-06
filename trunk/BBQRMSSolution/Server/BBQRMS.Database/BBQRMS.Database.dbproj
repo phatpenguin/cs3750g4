@@ -351,6 +351,9 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\RolePrivilegeMap.FK_PrivilegeId_RolePrivilegeMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeTimeClock.FK_EmployeeTimeClock_Employee.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialEmployeesAndUsers.sql">

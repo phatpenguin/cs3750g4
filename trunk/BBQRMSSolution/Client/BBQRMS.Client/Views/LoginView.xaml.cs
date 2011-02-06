@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using BBQRMSSolution.ViewModels;
+using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.Views
@@ -11,7 +12,7 @@ namespace BBQRMSSolution.Views
 	/// </summary>
 	public partial class LoginView : UserControl, IHandle<InvalidPinEntered>
 	{
-		private Storyboard mErrorFadeInAnimation;
+		private readonly Storyboard mErrorFadeInAnimation;
 
 		public LoginView()
 		{

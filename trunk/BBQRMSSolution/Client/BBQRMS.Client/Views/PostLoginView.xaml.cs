@@ -66,5 +66,20 @@ namespace BBQRMSSolution.Views
 		{
 			ViewModel.HandleChangePIN();
 		}
+
+		private void clockOut_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleClockOut();
+		}
+
+		private void ClockOutNo_Click(object sender, EventArgs e)
+		{
+			ViewModel.CancelClockOut();
+		}
+
+		private void ClockOutYes_Click(object sender, EventArgs e)
+		{
+			ViewModel.ConfirmClockOut();
+		}
 	}
 }

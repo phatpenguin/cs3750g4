@@ -1,3 +1,4 @@
+using System;
 using System.Data.Services;
 
 namespace BBQRMS.WCFServices
@@ -7,6 +8,15 @@ namespace BBQRMS.WCFServices
 		public static void InitializeService(IDataServiceConfiguration config)
 		{
 			config.SetEntitySetAccessRule("*", EntitySetRights.All);
+		}
+
+		[ChangeInterceptor("EmployeeTimeClocks")]
+		public void OnChangeEmployeeTimeClocks(EmployeeTimeClock tc, UpdateOperations operations)
+		{
+			if(operations == UpdateOperations.Add)
+			{
+				tc.ClockInTimeUTC = TimeProvider.Current.UtcNow;
+			}
 		}
 	}
 }
