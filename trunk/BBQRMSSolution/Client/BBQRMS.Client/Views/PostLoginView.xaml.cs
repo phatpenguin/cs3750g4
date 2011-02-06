@@ -22,11 +22,6 @@ namespace BBQRMSSolution.Views
 			ViewModel.HandleTakeOrders();
 		}
 
-		private void cashier_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			ViewModel.HandleCashier();
-		}
-
 		private void cook_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			ViewModel.HandleCooksScreen();

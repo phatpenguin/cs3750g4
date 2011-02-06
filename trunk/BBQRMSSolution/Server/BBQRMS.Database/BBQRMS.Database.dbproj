@@ -125,6 +125,7 @@
     <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Functions\" />
     <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Schemes\" />
     <Folder Include="Scripts\Post-Deployment\ReferenceData" />
+    <Folder Include="Scripts\Pre-Deployment\ReferenceData" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -249,12 +250,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeRoleMap.FK_RoleId_EmployeeRoleMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentTypeId_Order.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_LocationId_Order.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderTypeId_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -351,6 +346,42 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\RolePrivilegeMap.FK_PrivilegeId_RolePrivilegeMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderItem.FK_OrderItem_Order.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\DinerType.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\PaymentStatus.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\OrderStatus.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_DinerTypeId_Order.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderStatusId_OrderStatus.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentStatusId_PaymentStatus.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Payments.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Payment.FK_PaymentTypeId_PaymentType.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\DinerType.PK_DinerType.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderStatus.PK_OrderStatus.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PaymentStatus.PK_PaymentStatus.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeTimeClock.FK_EmployeeTimeClock_Employee.fkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -366,6 +397,9 @@
       <SubType>NotInBuild</SubType>
     </NotInBuild>
     <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPrivilegesAndRoles.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Pre-Deployment\ReferenceData\DropTables.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
   </ItemGroup>
