@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
@@ -19,24 +20,32 @@ namespace BBQRMSSolution.Views
     /// </summary>
     public partial class SupplierDetailView : UserControl
     {
+        SupplierDetailViewModel ViewModel { get { return (SupplierDetailViewModel)DataContext; } }
         public SupplierDetailView()
         {
             InitializeComponent();
         }
 
-        private void ZipTb_TextChanged(object sender, TextChangedEventArgs e)
+        private void SupplierNameTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //capture value and insert into an objects attribute.
+        }
+
+        private void Button_Save(object sender, RoutedEventArgs e)
+        {
+            ViewModel.saveSupplier();
+        }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_AddSupplier(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.addSupplier();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

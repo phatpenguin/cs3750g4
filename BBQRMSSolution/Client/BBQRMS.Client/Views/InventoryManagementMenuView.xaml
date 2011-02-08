@@ -8,7 +8,7 @@
   
         <DockPanel Name="dockPanel1">
         <StackPanel Name="stackPanel1" DockPanel.Dock="Left" >
-            <Button Content="Add Supplier" Name="button1" Click="button1_Click" />
+            <Button Content="Manage Suppliers" Name="button1" Click="button1_Click" />
             <Button Content="Receive Inventory" Name="button2"  Click="button2_Click"/>
             <Button Content="Reconcile Inventory" Name="button3"  Click="button3_Click"/>
         </StackPanel>
