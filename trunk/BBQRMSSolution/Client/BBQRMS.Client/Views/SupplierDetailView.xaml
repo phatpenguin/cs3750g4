@@ -8,12 +8,13 @@
 
     <DockPanel>
         <StackPanel>
-            <ListBox ItemsSource="{Binding Path=Suppliers}">
+            <ListBox ItemsSource="{Binding Path=Suppliers}" SelectedItem="{Binding Path=SelectedSupplier}" DisplayMemberPath="Name">
                 
             </ListBox>
+            <Button Content="Add Supplier" Click="Button_AddSupplier" />
         </StackPanel>
         <StackPanel>
-            <Grid>
+            <Grid DataContext="{Binding Path=SelectedSupplier}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition  Height="auto"/>
@@ -29,25 +30,25 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Supplier Name"  Name="SupplierNameLbl" Grid.Column="0" Grid.Row="0"/>
-                <TextBox Name="SupplierNameTb" Grid.Column="1" Grid.Row="0"/>
+                <TextBox Name="SupplierNameTb" Grid.Column="1" Grid.Row="0"  Text="{Binding Path=Name}" />
 
                 <Label Content="Address" Name="AddressLbl" Grid.Column="0" Grid.Row="1" />
-                <TextBox Name="AddressTb" Grid.Column="1" Grid.Row="1" />
+                <TextBox Name="AddressTb" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Address1}" />
 
                 <Label Content="State" Name="StateLbl" Grid.Column="0" Grid.Row="2"/>
-                <TextBox Name="StateTb"  Grid.Column="1" Grid.Row="2"/>
+                <TextBox Name="StateTb"  Grid.Column="1" Grid.Row="2" />
 
                 <Label Content="Zip" Name="ZipLbl" Grid.Column="0" Grid.Row="3"/>
-                <TextBox Name="ZipTb" Grid.Column="1" Grid.Row="3" TextChanged="ZipTb_TextChanged" />
+                <TextBox Name="ZipTb" Grid.Column="1" Grid.Row="3" />
 
                 <Label Content="Phone Number" Name="PhoneNumberLbl" Grid.Column="0" Grid.Row="4" />
-                <TextBox Name="PhoneNumberTb" Grid.Column="1" Grid.Row="4" />
+                <TextBox Name="PhoneNumberTb" Grid.Column="1" Grid.Row="4" Text="{Binding Path=Phone1}" />
 
                 <Label Content="Point of Contact"  Name="POCLbl" Grid.Column="0" Grid.Row="5" />
                 <TextBox Name="POCTb" Grid.Column="1" Grid.Row="5" />
                 
-                <Button Grid.Column="0" Grid.Row="8" Content="Save" Click="Button_Click" />
-                <Button Grid.Column="1" Grid.Row="8" Content="Delete" Click="Button_Click_1" />
+                <Button Grid.Column="0" Grid.Row="8" Content="Save" Click="Button_Save" />
+                <Button Grid.Column="1" Grid.Row="8" Content="Delete" Click="Button_Delete" />
                 
             </Grid>
         </StackPanel>
