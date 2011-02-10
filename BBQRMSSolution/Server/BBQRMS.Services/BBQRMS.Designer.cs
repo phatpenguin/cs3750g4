@@ -3863,15 +3863,15 @@ namespace BBQRMS.WCFServices
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="address1">Initial value of the Address1 property.</param>
-        /// <param name="phone1">Initial value of the Phone1 property.</param>
-        public static Supplier CreateSupplier(global::System.Int32 id, global::System.String name, global::System.String address1, global::System.String phone1)
+        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="phone">Initial value of the Phone property.</param>
+        public static Supplier CreateSupplier(global::System.Int32 id, global::System.String name, global::System.String address, global::System.String phone)
         {
             Supplier supplier = new Supplier();
             supplier.Id = id;
             supplier.Name = name;
-            supplier.Address1 = address1;
-            supplier.Phone1 = phone1;
+            supplier.Address = address;
+            supplier.Phone = phone;
             return supplier;
         }
 
@@ -3932,54 +3932,6 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Address1
-        {
-            get
-            {
-                return _Address1;
-            }
-            set
-            {
-                OnAddress1Changing(value);
-                ReportPropertyChanging("Address1");
-                _Address1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Address1");
-                OnAddress1Changed();
-            }
-        }
-        private global::System.String _Address1;
-        partial void OnAddress1Changing(global::System.String value);
-        partial void OnAddress1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Phone1
-        {
-            get
-            {
-                return _Phone1;
-            }
-            set
-            {
-                OnPhone1Changing(value);
-                ReportPropertyChanging("Phone1");
-                _Phone1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Phone1");
-                OnPhone1Changed();
-            }
-        }
-        private global::System.String _Phone1;
-        partial void OnPhone1Changing(global::System.String value);
-        partial void OnPhone1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int32> Rating
@@ -4000,6 +3952,126 @@ namespace BBQRMS.WCFServices
         private Nullable<global::System.Int32> _Rating;
         partial void OnRatingChanging(Nullable<global::System.Int32> value);
         partial void OnRatingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String State
+        {
+            get
+            {
+                return _State;
+            }
+            set
+            {
+                OnStateChanging(value);
+                ReportPropertyChanging("State");
+                _State = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("State");
+                OnStateChanged();
+            }
+        }
+        private global::System.String _State;
+        partial void OnStateChanging(global::System.String value);
+        partial void OnStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Zip
+        {
+            get
+            {
+                return _Zip;
+            }
+            set
+            {
+                OnZipChanging(value);
+                ReportPropertyChanging("Zip");
+                _Zip = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Zip");
+                OnZipChanged();
+            }
+        }
+        private global::System.String _Zip;
+        partial void OnZipChanging(global::System.String value);
+        partial void OnZipChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PointOfContact
+        {
+            get
+            {
+                return _PointOfContact;
+            }
+            set
+            {
+                OnPointOfContactChanging(value);
+                ReportPropertyChanging("PointOfContact");
+                _PointOfContact = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PointOfContact");
+                OnPointOfContactChanged();
+            }
+        }
+        private global::System.String _PointOfContact;
+        partial void OnPointOfContactChanging(global::System.String value);
+        partial void OnPointOfContactChanged();
 
         #endregion
     

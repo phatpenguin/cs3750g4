@@ -64,9 +64,17 @@ namespace BBQRMSSolution.ViewModels
 
         internal void saveSupplier()
         {
-            _DataService.AddToSuppliers(_SelectedSupplier);
-            _DataService.SaveChanges();
-           
+            // the ID of the supplier (if its new is 0) once its saved the id will be generated from the database sequence.
+            if (_SelectedSupplier.Id > 0)
+            {
+                _DataService.UpdateObject(_SelectedSupplier);
+            }
+            else
+            {
+
+                _DataService.AddToSuppliers(_SelectedSupplier);
+                _DataService.SaveChanges();
+            }
         }
     }
 }

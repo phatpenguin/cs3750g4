@@ -311,8 +311,11 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Address1" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Phone1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="PointOfContact" Type="nvarchar(max)" />
           <Property Name="Rating" Type="int" />
         </EntityType>
         <EntityType Name="SupplierContact">
@@ -798,10 +801,13 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Rating" />
           <NavigationProperty Name="SupplierContactMaps" Relationship="BBQRMSModel.FK_SupplierId_SupplierContactMap" FromRole="Supplier" ToRole="SupplierContactMap" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="State" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Zip" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PointOfContact" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SupplierContact">
           <Key>
@@ -1174,9 +1180,12 @@
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="BBQRMSModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="PointOfContact" ColumnName="PointOfContact" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1316,7 +1325,7 @@
         <EntityTypeShape EntityType="BBQRMSModel.ItemSupplierMap" Width="1.5" PointX="3.375" PointY="12.875" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="BBQRMSModel.Location" Width="1.5" PointX="11.125" PointY="5.25" Height="1.5956835937500031" />
         <EntityTypeShape EntityType="BBQRMSModel.MasterInventory" Width="1.5" PointX="0.75" PointY="17.375" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="BBQRMSModel.Supplier" Width="1.5" PointX="5.375" PointY="5.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="BBQRMSModel.Supplier" Width="1.5" PointX="5.375" PointY="5.125" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="BBQRMSModel.SupplierContact" Width="1.5" PointX="5.375" PointY="9" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="BBQRMSModel.SupplierContactMap" Width="1.5" PointX="7.625" PointY="5.25" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="BBQRMSModel.TableSection" Width="1.5" PointX="11.125" PointY="12.25" Height="1.595683593749996" />
@@ -1343,8 +1352,8 @@
           <ConnectorPoint PointX="0.75" PointY="7.480205078125" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_SupplierId_SupplierContactMap" >
-          <ConnectorPoint PointX="6.875" PointY="6.2401432291666694" />
-          <ConnectorPoint PointX="7.625" PointY="6.2401432291666694" />
+          <ConnectorPoint PointX="6.875" PointY="6.1283268229166659" />
+          <ConnectorPoint PointX="7.625" PointY="6.1283268229166659" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_SupplierContactId_SupplierContactMap" >
           <ConnectorPoint PointX="6.875" PointY="10.182444661458334" />
