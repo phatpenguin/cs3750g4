@@ -8,6 +8,7 @@ namespace BBQRMS.WCFServices
 		public static void InitializeService(IDataServiceConfiguration config)
 		{
 			config.SetEntitySetAccessRule("*", EntitySetRights.All);
+			config.UseVerboseErrors = true;
 		}
 
 		[ChangeInterceptor("EmployeeTimeClocks")]
