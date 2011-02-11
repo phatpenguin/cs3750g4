@@ -90,6 +90,9 @@
         <TextBlock Text="{Binding Path=FirstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
     </StackPanel>
-    <Button Content="Save" Width="150" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.SaveEmployee}"/>
+    <StackPanel Orientation="Horizontal">
+      <Button Content="Save" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.SaveEmployee}" Style="{StaticResource Button.Save}"/>
+      <Button Content="Delete" Style="{StaticResource Button.Delete}"/>
+    </StackPanel>
   </StackPanel>
 </UserControl>

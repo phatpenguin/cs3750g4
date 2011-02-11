@@ -59,7 +59,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\VisibilityBehavior.cs" />
     <Compile Include="Converters\InvertedBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="DragDropControl\DragDropHelper.cs" />
     <Compile Include="DragDropControl\DragDropUtilities.cs" />
     <Compile Include="DragDropControl\DraggedAdorner.cs" />

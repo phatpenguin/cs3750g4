@@ -40,7 +40,11 @@
         <Views:InventoryManagement />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:InventoryItem}">
+  <DataTemplate DataType="{x:Type ViewModels:MenuManagementViewModel}">
+    <Views:MenuManagement />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type ViewModels:InventoryItem}">
         <Views:InventoryItemDetail />
     </DataTemplate>
 	

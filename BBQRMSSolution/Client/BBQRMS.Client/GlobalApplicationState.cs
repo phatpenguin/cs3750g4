@@ -1,4 +1,5 @@
-﻿using Controls;
+﻿using BBQRMSSolution.ServerProxy;
+using Controls;
 
 namespace BBQRMSSolution
 {
@@ -15,6 +16,8 @@ namespace BBQRMSSolution
 		public static IMessageBus MessageBus { get; private set; }
 
 		public static SecurityContext SecurityContext { get; private set; }
+
+        public static BBQRMSEntities Entities { get; set; }
 
 		/// <summary>
 		/// This property is True while the application is doing an unconditional shutdown.

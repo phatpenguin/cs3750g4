@@ -42,11 +42,6 @@ namespace BBQRMSSolution.Views
 			ViewModel.HandleManageInventory();
 		}
 
-        private void manageMenus_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ViewModel.HandleManageMenus();
-        }
-
         private void adminBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             ViewModel.HandleAdminBtn();

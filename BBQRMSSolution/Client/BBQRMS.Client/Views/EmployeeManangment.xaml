@@ -4,13 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 						 xmlns:Views="clr-namespace:BBQRMSSolution.Views"
-						 xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
-						 mc:Ignorable="d" 
+						 xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" mc:Ignorable="d" 
 	d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeManagementViewModel, IsDesignTimeCreatable=True}">
   <DockPanel>
     <DockPanel DockPanel.Dock="Left">
       <StackPanel DockPanel.Dock="Bottom" >
-        <TextBlock Text="Roles" Margin="5,0" FontWeight="Bold"/>
+        <Label Content="Roles" Margin="5,0" FontWeight="Bold"/>
         <ListBox Name="RoleList" Margin="5" ItemsSource="{Binding Path=Employees}">
           <ListBox.ItemTemplate>
             <DataTemplate>
@@ -22,10 +21,10 @@
             </DataTemplate>            
           </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Create New Employee" Click="AddEmployeeCommand"/>
+        <Button Content="Add Employee" Click="AddEmployeeCommand" Style="{StaticResource Button.Add}"/>
       </StackPanel>
       <DockPanel DockPanel.Dock="Top" >
-        <TextBlock Text="Employees" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top"/>
+        <Label Content="Employees" Margin="5,0" DockPanel.Dock="Top"/>
         <ListBox Name="EmployeeList" Width="119" Margin="5" ItemsSource="{Binding Path=Employees}" SelectedItem="{Binding Path=SelectedEmployee, Mode=TwoWay}">
           <ListBox.ItemTemplate>
             <DataTemplate>
@@ -39,6 +38,8 @@
         </ListBox>
       </DockPanel>
     </DockPanel>
-    <Views:EmployeeInfo DataContext="{Binding Path=SelectedEmployee}"/>
+    <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedEmployee, Mode=TwoWay}" Visibility="Collapsed">
+      <Views:EmployeeInfo DataContext="{Binding Path=SelectedEmployee}"/>
+    </DockPanel>
   </DockPanel>
 </UserControl>
