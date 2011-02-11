@@ -49,18 +49,22 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Converters\Converters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="DragDropControl\DragDropHelper.cs" />
     <Compile Include="DragDropControl\DragDropUtilities.cs" />
     <Compile Include="DragDropControl\DraggedAdorner.cs" />
     <Compile Include="DragDropControl\InsertionAdorner.cs" />
     <Compile Include="MessageBus.cs" />
-    <Compile Include="InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

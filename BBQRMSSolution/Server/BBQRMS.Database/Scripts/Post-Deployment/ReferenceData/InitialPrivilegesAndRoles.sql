@@ -15,7 +15,8 @@ values
 (5, 'Run Reports'),
 (6, 'Manage Employees'),
 (7, 'Manage Inventory'),
-(8, 'Manage Menus')
+(8, 'Manage Menus'),
+(9, 'Open Admin')
 
 delete from [dbo].[RolePrivilegeMap] where PrivilegeId not in (select Id from #Privilege)
 delete from [dbo].[Privilege] where Id not in (select Id from #Privilege)

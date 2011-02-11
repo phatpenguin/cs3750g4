@@ -5,12 +5,11 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 	xmlns:ic="http://schemas.microsoft.com/expression/2010/interactions"
-	xmlns:local="clr-namespace:BBQRMSSolution" xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Controls="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d"
+	xmlns:local="clr-namespace:BBQRMSSolution" xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Controls="clr-namespace:Controls;assembly=Controls" xmlns:Converters="clr-namespace:Controls.Converters;assembly=Controls" mc:Ignorable="d"
 	x:Class="BBQRMSSolution.Views.ChooseReport"
 	d:DesignWidth="800" d:DesignHeight="480">
 	<UserControl.Resources>
-		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
-		<Controls:InvertedBoolToVisibilityConverter x:Key="invertBoolToVisibilityConverter" />
+		
 		<DataTemplate x:Key="ReportsItemTemplate">
 			<StackPanel Orientation="Horizontal">
 				<Image Source="/Graphics/x-office-spreadsheet.png" Visibility="{Binding HasChart, Converter={StaticResource boolToVisibilityConverter}}"/>

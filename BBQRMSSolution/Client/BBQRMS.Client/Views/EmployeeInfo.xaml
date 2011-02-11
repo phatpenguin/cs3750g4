@@ -69,7 +69,7 @@
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Comp. Type:" Width="120"/>
       <ComboBox Width="150" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.PayTypes}" 
-                DisplayMemberPath="Descr" SelectedValue="{Binding Path=EmployeePayType}">
+                DisplayMemberPath="Descr" SelectedValue="{Binding RelativeSource={RelativeSource Self}, Path=EmployeePayType, Mode=TwoWay}">
       </ComboBox>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
@@ -90,5 +90,6 @@
         <TextBlock Text="{Binding Path=FirstName}" Width="150" VerticalAlignment="Center"/>
       </StackPanel>
     </StackPanel>
+    <Button Content="Save" Width="150" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.SaveEmployee}"/>
   </StackPanel>
 </UserControl>

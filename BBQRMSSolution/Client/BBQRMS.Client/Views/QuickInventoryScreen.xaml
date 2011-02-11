@@ -40,7 +40,6 @@
 				</ItemsControl.ItemsPanel>
 			</ItemsControl>
 		</DataTemplate>
-		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
 	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
 		<TabControl TabStripPlacement="Left" ContentTemplate="{StaticResource ResourceKey=tabContent}" ItemsSource="{Binding Locations}">

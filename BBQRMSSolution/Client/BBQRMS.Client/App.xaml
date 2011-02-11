@@ -5,9 +5,12 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ScreenDataTemplates.xaml"/>
-			</ResourceDictionary.MergedDictionaries>
-			<ViewModels:MainWindowViewModel x:Key="mainWindowViewModel" />
+        <ResourceDictionary Source="Styles\ScreenDataTemplates.xaml"/>
+        <ResourceDictionary Source="Graphics\images.xaml"/>
+        <ResourceDictionary Source="/Controls;component/Converters/Converters.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+			
+      <ViewModels:MainWindowViewModel x:Key="mainWindowViewModel" />
 
 			<!-- Resources scoped at the Application level should be defined here. -->
 			<Style x:Key="PageHeadingStyle" TargetType="{x:Type TextBlock}">
