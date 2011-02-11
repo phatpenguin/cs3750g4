@@ -101,6 +101,11 @@ namespace BBQRMSSolution.ViewModels
             //TODO: Show a new or existing viewmodel for managing menus.
         }
 
+        public void HandleAdminBtn()
+        {
+            mMessageBus.Publish(new ShowScreen(new AdministrationViewModel(mDataService, mMessageBus)));
+        }
+
         public void HandleLogout()
         {
             mMessageBus.Publish(new UserLoggingOut());
@@ -112,10 +117,6 @@ namespace BBQRMSSolution.ViewModels
             Content = message.ViewModelToShow;
         }
 
-        public void HandleChangePIN()
-        {
-            mMessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
-        }
         public void HandleClockOut()
         {
             // show clock-out confirmation user interface

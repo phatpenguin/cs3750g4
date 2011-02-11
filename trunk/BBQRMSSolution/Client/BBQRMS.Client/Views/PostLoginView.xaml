@@ -9,9 +9,6 @@
 	d:DesignWidth="1350"
 	d:DataContext="{d:DesignInstance Type=ViewModels:PostLoginViewModel, IsDesignTimeCreatable=True}"
 	UseLayoutRounding="True">
-	<UserControl.Resources>
-		<BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
-	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
 			<!-- Clock-out UI is behind the main application grid until it's supposed to show. Then the ZIndex puts it in front. -->
 		<Views:ClockOutView No="ClockOutNo_Click" Yes="ClockOutYes_Click">
@@ -80,15 +77,6 @@
 						<TextBlock Text="Reporting"/>
 					</StackPanel>
 				</Button>
-				<Button 
-				x:Name="manageEmployees" Padding="4" Margin="1,2,1,2" 
-				Click="manageEmployees_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/system-users.png" Width="32" Height="32"/>
-						<TextBlock Text="Manage Employees"/>
-					</StackPanel>
-				</Button>
 				<Button
 				x:Name="manageInventory" Padding="4" Margin="1,2,1,2"
 				Click="manageInventory_Click"
@@ -98,31 +86,34 @@
 						<TextBlock Text="Manage Inventory"/>
 					</StackPanel>
 				</Button>
-				<Button
+        <Button
 				x:Name="manageMenus" Padding="4" Margin="1,2,1,2"
 				Click="manageMenus_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/menu.png" Width="32" Height="32"/>
-						<TextBlock Text="Manage Menus"/>
-					</StackPanel>
-				</Button>
-			</StackPanel>
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <StackPanel>
+            <Image Source="{StaticResource BBQRMS.Image.Menu}" Width="32" Height="32"/>
+            <TextBlock Text="Manage Menus"/>
+          </StackPanel>
+        </Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 				<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-				<Button Name="changePin" Padding="4" Margin="1,2,1,2" Click="changePin_Click">
-					<StackPanel>
-						<TextBlock Text="Change PIN" />
-					</StackPanel>
-				</Button>
-				<Button Name="clockOut" Padding="4" Margin="1,2,1,2" Click="clockOut_Click">
+        <Button
+				x:Name="adminBtn" Padding="4" Margin="1,2,1,2"
+				Click="adminBtn_Click">
+          <StackPanel>
+            <Image Source="{StaticResource BBQRMS.Image.Administrator}" Width="32" Height="32"/>
+            <TextBlock Text="Admin"/>
+          </StackPanel>
+        </Button>
+        <Button Name="clockOut" Padding="4" Margin="1,2,1,2" Click="clockOut_Click">
 					<StackPanel>
 						<TextBlock Text="Clock Out" />
 					</StackPanel>
 				</Button>
 				<Button Name="logout" Padding="4" Margin="1,2,1,2" Click="logout_Click">
 					<StackPanel>
-						<Image Source="/Graphics/system-log-out.png" Width="32" Height="32" />
+						<Image Source="{StaticResource BBQRMS.Image.SystemLogOut}" Width="32" Height="32" />
 						<TextBlock Text="Log Out" />
 					</StackPanel>
 				</Button>

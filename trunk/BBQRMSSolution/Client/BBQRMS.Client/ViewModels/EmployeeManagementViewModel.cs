@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.ServerProxy;
 using Controls;
@@ -26,12 +27,14 @@ namespace BBQRMSSolution.ViewModels
 	        mDataService = bbqrmsEntities;
 	        this.mMessageBus = mMessageBus;
 
-	        Employees = new ObservableCollection<Employee>(mDataService.Employees);
+	        Employees = new ObservableCollection<Employee>(mDataService.Employees.Expand("EmployeePayType").Expand("Roles"));
+/*
 	        foreach (Employee employee in employees)
 	        {
                 mDataService.LoadProperty(employee, "EmployeePayType");
                 mDataService.LoadProperty(employee, "Roles");
             }
+*/
 	        PayTypes = new ObservableCollection<EmployeePayType>(mDataService.EmployeePayTypes);
 	        Roles = new ObservableCollection<Role>(mDataService.Roles);
 	    }
@@ -63,17 +66,19 @@ namespace BBQRMSSolution.ViewModels
 	        }
 	    }
 
+        public DelegateCommand SaveEmployee { get { return new DelegateCommand(HandleSaveClick); } }
+        public DelegateCommand AddEmployee { get { return new DelegateCommand(HandleCreateEmployee); } }
+
 	    public void HandleSaveClick()
 	    {
-            if (SelectedEmployee.Id > 0)
-            {
-                mDataService.UpdateObject(selectedEmployee);
-            }
-            else
-            {
+           
+            if (SelectedEmployee.Id > 0) {
+                mDataService.UpdateObject(SelectedEmployee);
+            } else {
                 mDataService.AddToEmployees(SelectedEmployee);
             }
-	    }
+	        mDataService.SaveChanges();
+        }
 
         public void HandleCreateEmployee()
         {

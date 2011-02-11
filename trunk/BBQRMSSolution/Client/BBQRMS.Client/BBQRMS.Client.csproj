@@ -88,6 +88,7 @@
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
     <Compile Include="TimeProvider.cs" />
+    <Compile Include="ViewModels\AdministrationViewModel.cs" />
     <Compile Include="ViewModels\ChangePINViewModel.cs" />
     <Compile Include="ViewModels\Messages\ClockOutMode.cs" />
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
@@ -102,6 +103,9 @@
     <Compile Include="SampleData\SampleOrders.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
+    <Compile Include="Views\Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Messages\ShowScreen.cs" />
     <Compile Include="ViewModels\SupplierDetailViewModel.cs" />
     <Compile Include="ViewModels\Messages\ShutdownRequested.cs" />
@@ -167,6 +171,10 @@
     <Compile Include="Views\SupplierDetailView.xaml.cs">
       <DependentUpon>SupplierDetailView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Graphics\images.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,7 +195,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ScreenDataTemplates.xaml">
+    <Page Include="Styles\ScreenDataTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -378,6 +390,10 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\administrator.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.

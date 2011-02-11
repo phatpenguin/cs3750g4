@@ -37,29 +37,24 @@ namespace BBQRMSSolution.Views
 			ViewModel.HandleReporting();
 		}
 
-		private void manageEmployees_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			ViewModel.HandleManageEmployees();
-		}
-
 		private void manageInventory_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			ViewModel.HandleManageInventory();
 		}
 
-		private void manageMenus_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			ViewModel.HandleManageMenus();
-		}
+        private void manageMenus_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ViewModel.HandleManageMenus();
+        }
 
-		private void logout_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void adminBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ViewModel.HandleAdminBtn();
+        }
+
+        private void logout_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			ViewModel.HandleLogout();
-		}
-
-		private void changePin_Click(object sender, RoutedEventArgs e)
-		{
-			ViewModel.HandleChangePIN();
 		}
 
 		private void clockOut_Click(object sender, RoutedEventArgs e)

@@ -22,6 +22,7 @@
             </DataTemplate>            
           </ListBox.ItemTemplate>
         </ListBox>
+        <Button Content="Create New Employee" Click="AddEmployeeCommand"/>
       </StackPanel>
       <DockPanel DockPanel.Dock="Top" >
         <TextBlock Text="Employees" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top"/>
@@ -39,9 +40,5 @@
       </DockPanel>
     </DockPanel>
     <Views:EmployeeInfo DataContext="{Binding Path=SelectedEmployee}"/>
-    <StackPanel>
-      <Button Content="Save" Click="SaveCommand"/>
-      <Button Content="Create New Employee" Click="AddEmployeeCommand"/>
-    </StackPanel>
   </DockPanel>
 </UserControl>
