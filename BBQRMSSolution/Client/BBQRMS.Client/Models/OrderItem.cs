@@ -1,4 +1,5 @@
 ﻿using BBQRMSSolution.ViewModels;
+using Controls;
 
 namespace BBQRMSSolution.Models
 {

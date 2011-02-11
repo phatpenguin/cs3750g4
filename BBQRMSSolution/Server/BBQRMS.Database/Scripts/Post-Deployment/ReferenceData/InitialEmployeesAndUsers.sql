@@ -43,9 +43,9 @@ union select top 0 * from [dbo].[Employee]) a
 
 insert into #Employee (Id, LastName, FirstName, HireDate, Phone1, Phone2, Phone3, Address1, Address2, Email1, Email2, PayTypeId, PayAmount)
 values 
-(1, 'First', 'User', '2011-01-19', '(801) 867-2103', '(801) 867-2102', '(801) 240-2542', '1600 Pensilvania Ave.', 'Washington, DC 10001', 'noreply@spamyou.net', null, 1, 7.25),
-(2, 'Second', 'User', '2010-01-19', null, null, null, null, null, null, null, 1, 9.45),
-(3, 'Third', 'User', '2010-01-19', null, null, null, null, null, null, null, 1, 9.45)
+(1, 'Hodgkin', 'Jerod (user 1)', '2011-01-19', '(801) 867-2103', '(801) 867-2102', '(801) 240-2542', '1600 Pensilvania Ave.', 'Washington, DC 10001', 'noreply@spamyou.net', null, 1, 7.25),
+(2, 'Leonard', 'Scott (user 2)', '2010-01-19', '801 555 1212', null, null, null, null, null, null, 1, 9.45),
+(3, 'Floyd', 'Jessie (user 3)', '2010-01-19', '411', null, null, null, null, null, null, 1, 9.45)
 
 set identity_insert [dbo].[Employee] on
 

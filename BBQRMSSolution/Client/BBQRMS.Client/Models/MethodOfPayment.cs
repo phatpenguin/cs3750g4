@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BBQRMSSolution.ViewModels;
+using Controls;
 
 namespace BBQRMSSolution.Models
 {
