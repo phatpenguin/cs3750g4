@@ -128,7 +128,6 @@
     </Compile>
     <Compile Include="SampleData\InventoryItems.cs" />
     <Compile Include="ViewModels\ChooseReportViewModel.cs" />
-    <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\EmployeeManagementViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

@@ -2,8 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Controls="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d">
   <StackPanel Margin="5">
     <StackPanel Orientation="Horizontal">
       <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text="{Binding Path=FirstName}"/>
@@ -55,6 +54,24 @@
 -->
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Role:" Width="120"/>
+        <Controls:ListComboBox Width="150" SelectionMode="Extended"
+                ItemsSource="{Binding Path=Roles}"
+                SelectableItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.Roles}"
+                ItemContainerStyle="{StaticResource ListBoxItem.ListComboBoxItemStyle}"
+                DragDrop:DragDropHelper.IsDragSource="true"
+                DragDrop:DragDropHelper.IsDropTarget="true"                           
+                DragDrop:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItem.ListComboBoxItemStyle.DataTemplate}"
+                               >
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <DockPanel LastChildFill="True">
+                <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Description}" Width="130" Margin="2,0,0,0"/>
+              </DockPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </Controls:ListComboBox>
+        <Button Style="{StaticResource Button.Add}"/>
+<!--
         <ListBox Width="150" SelectionMode="Extended"
                  ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.Roles}"
                  >
@@ -64,6 +81,7 @@
             </DataTemplate>
           </ListBox.ItemTemplate>
         </ListBox>
+-->
       </StackPanel>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
