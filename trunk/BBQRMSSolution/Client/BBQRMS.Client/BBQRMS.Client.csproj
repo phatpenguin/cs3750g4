@@ -90,6 +90,7 @@
     <Compile Include="TimeProvider.cs" />
     <Compile Include="ViewModels\AdministrationViewModel.cs" />
     <Compile Include="ViewModels\ChangePINViewModel.cs" />
+    <Compile Include="ViewModels\MenuManagementViewModel.cs" />
     <Compile Include="ViewModels\Messages\ClockOutMode.cs" />
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
@@ -152,6 +153,9 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuManagement.xaml.cs">
+      <DependentUpon>MenuManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OrderCashierScreen.xaml.cs">
       <DependentUpon>OrderCashierScreen.xaml</DependentUpon>
     </Compile>
@@ -171,6 +175,7 @@
     <Compile Include="Views\SupplierDetailView.xaml.cs">
       <DependentUpon>SupplierDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControlBase.cs" />
     <Page Include="Graphics\images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +199,10 @@
     <Page Include="SampleData\InventoryItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\DefaultStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\ScreenDataTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -240,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -393,7 +406,14 @@
   <ItemGroup>
     <Resource Include="Graphics\administrator.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Graphics\add.png" />
+    <Resource Include="Graphics\cross.png" />
+    <Resource Include="Graphics\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\save.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.

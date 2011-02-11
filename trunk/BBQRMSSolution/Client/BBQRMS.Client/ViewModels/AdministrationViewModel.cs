@@ -9,15 +9,10 @@ using Controls;
 namespace BBQRMSSolution.ViewModels
 {
     public class AdministrationViewModel : ViewModelBase {
-        private readonly BBQRMSEntities mDataService;
-        private readonly IMessageBus mMessageBus;
         private ViewModelBase mContent;
 
-        public AdministrationViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
-   		{
-   		    this.mMessageBus = messageBus;
-   		    this.mDataService = dataService;
-   		}
+        public AdministrationViewModel() {
+        }
 
         public ViewModelBase Content
         {
@@ -33,12 +28,17 @@ namespace BBQRMSSolution.ViewModels
         }
 
         public void HandleChangePIN() {
-            mMessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
+            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
         }
 
         public void HandleManageEmployees()
         {
-            mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(mDataService, mMessageBus)));
+            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
+        }
+
+        public void HandleManageMenus()
+        {
+            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new MenuManagementViewModel()));
         }
     }
 }

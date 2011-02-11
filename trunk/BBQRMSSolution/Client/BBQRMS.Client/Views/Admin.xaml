@@ -2,23 +2,22 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewmodels:AdministrationViewModel, IsDesignTimeCreatable=True}">
   <DockPanel>
     <StackPanel>
-      <Button Name="changePin" Padding="4" Margin="1,2,1,2" Click="changePin_Click">
+      <Button Name="changePin" Click="changePin_Click" Style="{StaticResource Button.TouchButton}" Content="Change PIN" />
+      <Button Name="manageEmployees" Click="manageEmployees_Click" Style="{StaticResource Button.Admin}" 
+              Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees}" Visibility="Collapsed"
+              Content="Manage Employees" />
+      <Button Name="manageMenus" Click="manageMenus_Click" Style="{StaticResource Button.TouchButton}"
+              Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}">
         <StackPanel>
-          <TextBlock Text="Change PIN" />
+          <Image Source="{StaticResource BBQRMS.Image.Menu}" Width="32" Height="32"/>
+          <TextBlock Text="Manage Menus"/>
         </StackPanel>
       </Button>
-      <Button Name="manageEmployees" Padding="4" Margin="1,2,1,2"
-      Click="manageEmployees_Click" Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees, Converter={StaticResource boolToVisibilityConverter}}">
-        <StackPanel>
-          <Image Source="/Graphics/system-users.png" Width="32" Height="32"/>
-          <TextBlock Text="Manage Employees"/>
-        </StackPanel>
-      </Button>
+
     </StackPanel>
 
     <!-- The current application screen appears here -->

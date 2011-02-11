@@ -15,17 +15,10 @@ namespace BBQRMSSolution.ViewModels
         private Employee selectedEmployee;
         private IMessageBus mMessageBus;
 
-
-		[Obsolete("This constructor to be used only by the VS designer")]
-		public EmployeeManagementViewModel()
-		{
-			
-		}
-
-	    public EmployeeManagementViewModel(BBQRMSEntities bbqrmsEntities, IMessageBus mMessageBus)
+	    public EmployeeManagementViewModel()
 	    {
-	        mDataService = bbqrmsEntities;
-	        this.mMessageBus = mMessageBus;
+	        mDataService = GlobalApplicationState.Entities;
+	        this.mMessageBus = GlobalApplicationState.MessageBus;
 
 	        Employees = new ObservableCollection<Employee>(mDataService.Employees.Expand("EmployeePayType").Expand("Roles"));
 /*

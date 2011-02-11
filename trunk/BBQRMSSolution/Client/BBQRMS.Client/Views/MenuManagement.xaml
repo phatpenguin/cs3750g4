@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="BBQRMSSolution.Views.MenuManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             >
+  <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
+    <DockPanel DockPanel.Dock="Left">
+      <Label Content="Menus" DockPanel.Dock="Top"/>
+      <Button Style="{StaticResource Button.Add}" Content="Add Menu" DockPanel.Dock="Bottom"/>
+      <ListBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">        
+      </ListBox>
+    </DockPanel>
+    <Border Style="{StaticResource Border.Vertical}" DockPanel.Dock="Left" />
+    <DockPanel DockPanel.Dock="Right">
+      <TextBlock Text="Right"/>
+    </DockPanel>
+    <DockPanel>
+      <TextBlock Text="Middle"/>
+      <Border Style="{StaticResource Border.Default}">
+        
+      </Border>
+    </DockPanel>
+  </DockPanel>
+</UserControl>

@@ -25,6 +25,7 @@ namespace BBQRMSSolution.ViewModels
 			mMessageBus = messageBus;
 			mSecurityContext = securityContext;
 			mDataService = new BBQRMSEntities(serverAddress);
+		    GlobalApplicationState.Entities = mDataService;
 			messageBus.Subscribe(this);
 			ShowLoginScreen();
 		}

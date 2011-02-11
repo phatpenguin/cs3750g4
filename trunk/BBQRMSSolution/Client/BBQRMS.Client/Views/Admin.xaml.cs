@@ -40,6 +40,11 @@ namespace BBQRMSSolution.Views
             ViewModel.HandleChangePIN();
         }
 
+        private void manageMenus_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ViewModel.HandleManageMenus();
+        }
+
 
     }
 }

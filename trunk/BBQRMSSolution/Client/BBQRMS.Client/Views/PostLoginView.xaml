@@ -86,24 +86,13 @@
 						<TextBlock Text="Manage Inventory"/>
 					</StackPanel>
 				</Button>
-        <Button
-				x:Name="manageMenus" Padding="4" Margin="1,2,1,2"
-				Click="manageMenus_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}">
-          <StackPanel>
-            <Image Source="{StaticResource BBQRMS.Image.Menu}" Width="32" Height="32"/>
-            <TextBlock Text="Manage Menus"/>
-          </StackPanel>
-        </Button>
       </StackPanel>
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 				<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-        <Button
-				x:Name="adminBtn" Padding="4" Margin="1,2,1,2"
-				Click="adminBtn_Click">
+        <Button x:Name="adminBtn"	Click="adminBtn_Click" Style="{StaticResource Button.TouchButton}">
           <StackPanel>
             <Image Source="{StaticResource BBQRMS.Image.Administrator}" Width="32" Height="32"/>
-            <TextBlock Text="Admin"/>
+            <TextBlock Text="Admin" />
           </StackPanel>
         </Button>
         <Button Name="clockOut" Padding="4" Margin="1,2,1,2" Click="clockOut_Click">
@@ -118,10 +107,8 @@
 					</StackPanel>
 				</Button>
 			</StackPanel>
-
-			<!-- The current application screen appears here -->
-			<ContentPresenter Grid.Row="1" Name="mainContent" Content="{Binding Path=Content}"/>
-
-		</Grid>
+			  <!-- The current application screen appears here -->
+  	  <ContentPresenter Name="mainContent" Content="{Binding Path=Content}" Grid.Row="1"/>
+  	</Grid>
 	</Grid>
 </UserControl>
