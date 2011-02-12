@@ -97,7 +97,7 @@ namespace BBQRMSSolution.ViewModels
             {
                 //int id, int orderId, String name, int qty, decimal unitprice, decimal unittax, int menuitemid
                 var orderItem = OrderItem.CreateOrderItem(0, Order.Id, menuItem.Name, 1, (decimal)menuItem.Price,
-                                                          (decimal)(menuItem.Price*TAX_PERCENTAGE), menuItem.Id);
+                    (decimal)(menuItem.Price*TAX_PERCENTAGE), menuItem.Id);
 
                 Order.OrderItems.Add(orderItem);
                 _mDataService.SaveChanges();
@@ -115,7 +115,7 @@ namespace BBQRMSSolution.ViewModels
             if (orderItem.Quantity > 1) orderItem.Quantity--;
             else Order.OrderItems.Remove(orderItem);
 
-            //SubTotal -= (decimal)orderItem.MenuItem.Price;
+            SubTotal -= (decimal)orderItem.MenuItem.Price;
             TaxAmount = SubTotal * (TAX_PERCENTAGE / 100);
             TotalPrice = SubTotal + TaxAmount;
         }

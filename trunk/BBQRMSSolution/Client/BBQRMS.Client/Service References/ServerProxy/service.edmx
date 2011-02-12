@@ -175,16 +175,16 @@
         <Property Name="Date" Type="Edm.DateTime" Nullable="false" />
         <Property Name="OrderTypeId" Type="Edm.Int32" Nullable="false" />
         <Property Name="DinerTypeId" Type="Edm.Int32" Nullable="false" />
-        <Property Name="PaymentStatusId" Type="Edm.Int32" Nullable="false" />
-        <Property Name="OrderStatusId" Type="Edm.Int32" Nullable="false" />
         <Property Name="Memo" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />
+        <Property Name="PaymentStateId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OrderStateId" Type="Edm.Int32" Nullable="false" />
         <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
         <NavigationProperty Name="OrderType" Relationship="BBQRMSModel.FK_OrderTypeId_Order" FromRole="Order" ToRole="OrderType" />
         <NavigationProperty Name="OrderPayments" Relationship="BBQRMSModel.FK_OrderPayment_Order" FromRole="Order" ToRole="OrderPayment" />
         <NavigationProperty Name="DinerType" Relationship="BBQRMSModel.FK_DinerTypeId_Order" FromRole="Order" ToRole="DinerType" />
-        <NavigationProperty Name="OrderStatus" Relationship="BBQRMSModel.FK_OrderStatusId_Order" FromRole="Order" ToRole="OrderStatu" />
-        <NavigationProperty Name="PaymentStatus" Relationship="BBQRMSModel.FK_PaymentStatusId_Order" FromRole="Order" ToRole="PaymentStatu" />
         <NavigationProperty Name="Payments" Relationship="BBQRMSModel.FK_OrderId_Payment" FromRole="Order" ToRole="Payment" />
+        <NavigationProperty Name="OrderState" Relationship="BBQRMSModel.FK_OrderStateId_Order" FromRole="Order" ToRole="OrderState" />
+        <NavigationProperty Name="PaymentState" Relationship="BBQRMSModel.FK_PaymentStateId_Order" FromRole="Order" ToRole="PaymentState" />
       </EntityType>
       <EntityType Name="OrderItem">
         <Key>
@@ -241,24 +241,6 @@
         <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
         <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_DinerTypeId_Order" FromRole="DinerType" ToRole="Order" />
       </EntityType>
-      <EntityType Name="OrderStatus">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-        <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
-        <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_OrderStatusId_Order" FromRole="OrderStatu" ToRole="Order" />
-      </EntityType>
-      <EntityType Name="PaymentStatus">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-        <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
-        <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_PaymentStatusId_Order" FromRole="PaymentStatu" ToRole="Order" />
-      </EntityType>
       <EntityType Name="Payment">
         <Key>
           <PropertyRef Name="Id" />
@@ -273,6 +255,24 @@
         <Property Name="Memo" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />
         <NavigationProperty Name="Order" Relationship="BBQRMSModel.FK_OrderId_Payment" FromRole="Payment" ToRole="Order" />
         <NavigationProperty Name="PaymentType" Relationship="BBQRMSModel.FK_PaymentTypeId_Payment" FromRole="Payment" ToRole="PaymentType" />
+      </EntityType>
+      <EntityType Name="OrderState">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+        <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+        <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_OrderStateId_Order" FromRole="OrderState" ToRole="Order" />
+      </EntityType>
+      <EntityType Name="PaymentState">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+        <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+        <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_PaymentStateId_Order" FromRole="PaymentState" ToRole="Order" />
       </EntityType>
       <Association Name="FK_Employee_ApplicationUser">
         <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="1" />
@@ -430,30 +430,6 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
-      <Association Name="FK_OrderStatusId_Order">
-        <End Role="OrderStatu" Type="BBQRMSModel.OrderStatus" Multiplicity="1" />
-        <End Role="Order" Type="BBQRMSModel.Order" Multiplicity="*" />
-        <ReferentialConstraint>
-          <Principal Role="OrderStatu">
-            <PropertyRef Name="Id" />
-          </Principal>
-          <Dependent Role="Order">
-            <PropertyRef Name="OrderStatusId" />
-          </Dependent>
-        </ReferentialConstraint>
-      </Association>
-      <Association Name="FK_PaymentStatusId_Order">
-        <End Role="PaymentStatu" Type="BBQRMSModel.PaymentStatus" Multiplicity="1" />
-        <End Role="Order" Type="BBQRMSModel.Order" Multiplicity="*" />
-        <ReferentialConstraint>
-          <Principal Role="PaymentStatu">
-            <PropertyRef Name="Id" />
-          </Principal>
-          <Dependent Role="Order">
-            <PropertyRef Name="PaymentStatusId" />
-          </Dependent>
-        </ReferentialConstraint>
-      </Association>
       <Association Name="FK_OrderItem_MenuItem">
         <End Role="MenuItem" Type="BBQRMSModel.MenuItem" Multiplicity="1" />
         <End Role="OrderItem" Type="BBQRMSModel.OrderItem" Multiplicity="*" />
@@ -490,6 +466,30 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="FK_OrderStateId_Order">
+        <End Role="OrderState" Type="BBQRMSModel.OrderState" Multiplicity="1" />
+        <End Role="Order" Type="BBQRMSModel.Order" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="OrderState">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Order">
+            <PropertyRef Name="OrderStateId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_PaymentStateId_Order">
+        <End Role="PaymentState" Type="BBQRMSModel.PaymentState" Multiplicity="1" />
+        <End Role="Order" Type="BBQRMSModel.Order" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="PaymentState">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Order">
+            <PropertyRef Name="PaymentStateId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
     </Schema>
     <Schema Namespace="BBQRMS.WCFServices" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="BBQRMSEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -514,9 +514,9 @@
         <EntitySet Name="PaymentTypes" EntityType="BBQRMSModel.PaymentType" />
         <EntitySet Name="OrderPayments" EntityType="BBQRMSModel.OrderPayment" />
         <EntitySet Name="DinerTypes" EntityType="BBQRMSModel.DinerType" />
-        <EntitySet Name="OrderStatus1" EntityType="BBQRMSModel.OrderStatus" />
-        <EntitySet Name="PaymentStatus1" EntityType="BBQRMSModel.PaymentStatus" />
         <EntitySet Name="Payments" EntityType="BBQRMSModel.Payment" />
+        <EntitySet Name="OrderStates" EntityType="BBQRMSModel.OrderState" />
+        <EntitySet Name="PaymentStates" EntityType="BBQRMSModel.PaymentState" />
         <AssociationSet Name="FK_Employee_ApplicationUser" Association="BBQRMSModel.FK_Employee_ApplicationUser">
           <End Role="Employee" EntitySet="Employees" />
           <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
@@ -577,14 +577,6 @@
           <End Role="DinerType" EntitySet="DinerTypes" />
           <End Role="Order" EntitySet="Orders" />
         </AssociationSet>
-        <AssociationSet Name="FK_OrderStatusId_Order" Association="BBQRMSModel.FK_OrderStatusId_Order">
-          <End Role="OrderStatu" EntitySet="OrderStatus1" />
-          <End Role="Order" EntitySet="Orders" />
-        </AssociationSet>
-        <AssociationSet Name="FK_PaymentStatusId_Order" Association="BBQRMSModel.FK_PaymentStatusId_Order">
-          <End Role="PaymentStatu" EntitySet="PaymentStatus1" />
-          <End Role="Order" EntitySet="Orders" />
-        </AssociationSet>
         <AssociationSet Name="FK_OrderItem_MenuItem" Association="BBQRMSModel.FK_OrderItem_MenuItem">
           <End Role="MenuItem" EntitySet="MenuItems" />
           <End Role="OrderItem" EntitySet="OrderItems" />
@@ -596,6 +588,14 @@
         <AssociationSet Name="FK_PaymentTypeId_Payment" Association="BBQRMSModel.FK_PaymentTypeId_Payment">
           <End Role="PaymentType" EntitySet="PaymentTypes" />
           <End Role="Payment" EntitySet="Payments" />
+        </AssociationSet>
+        <AssociationSet Name="FK_OrderStateId_Order" Association="BBQRMSModel.FK_OrderStateId_Order">
+          <End Role="OrderState" EntitySet="OrderStates" />
+          <End Role="Order" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="FK_PaymentStateId_Order" Association="BBQRMSModel.FK_PaymentStateId_Order">
+          <End Role="PaymentState" EntitySet="PaymentStates" />
+          <End Role="Order" EntitySet="Orders" />
         </AssociationSet>
       </EntityContainer>
     </Schema>
