@@ -282,7 +282,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="MenuItemId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Scale="10" />
           <Property Name="UnitTax" Type="numeric" Nullable="false" Scale="10" />
@@ -1094,7 +1094,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="OrderId" Nullable="false" />
-          <Property Type="Int32" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="Int32" Name="Quantity" Nullable="false" />
           <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="18" Scale="10" />
           <Property Type="Decimal" Name="UnitTax" Nullable="false" Precision="18" Scale="10" />
@@ -1667,7 +1667,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="BBQRMSModel.DinerType" Width="1.5" PointX="12.75" PointY="1.5" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="BBQRMSModel.OrderStatus" Width="1.5" PointX="15.625" PointY="5.875" Height="1.5923063151041674" />
-        <EntityTypeShape EntityType="BBQRMSModel.PaymentStatus" Width="1.875" PointX="10.5" PointY="7" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="BBQRMSModel.PaymentStatus" Width="1.875" PointX="11.125" PointY="7.25" Height="1.5923063151041674" />
         <AssociationConnector Association="BBQRMSModel.FK_DinerTypeId_Order" >
           <ConnectorPoint PointX="14" PointY="3.0923063151041674" />
           <ConnectorPoint PointX="14" PointY="3.5" />
@@ -1676,25 +1676,23 @@
           <ConnectorPoint PointX="15.625" PointY="6.3875634765625" />
           <ConnectorPoint PointX="15.25" PointY="6.3875634765625" />
         </AssociationConnector>
-        <AssociationConnector Association="BBQRMSModel.FK_PaymentStatusId_Order" >
-          <ConnectorPoint PointX="10.90625" PointY="7" />
-          <ConnectorPoint PointX="10.90625" PointY="3.84375" />
-          <ConnectorPoint PointX="11.729166666666666" PointY="3.8437499999999996" />
-          <ConnectorPoint PointX="11.895833333333334" PointY="3.84375" />
-          <ConnectorPoint PointX="13.75" PointY="3.84375" />
+        <AssociationConnector Association="BBQRMSModel.FK_PaymentStatusId_Order" ManuallyRouted="false" >
+          <ConnectorPoint PointX="13" PointY="8.0461531575520837" />
+          <ConnectorPoint PointX="13.946146089448011" PointY="8.0461531575520837" />
+          <ConnectorPoint PointX="13.946146089448011" PointY="6.900126953125" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderItem_MenuItem" >
           <ConnectorPoint PointX="11.8125" PointY="3.3353483072916661" />
           <ConnectorPoint PointX="11.8125" PointY="4.25" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="BBQRMSModel.Payment" Width="1.5" PointX="13.625" PointY="7.5" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="BBQRMSModel.Payment" Width="1.5" PointX="14.25" PointY="7.75" Height="2.0853483072916674" />
         <AssociationConnector Association="BBQRMSModel.FK_OrderId_Payment" >
-          <ConnectorPoint PointX="14.4375" PointY="6.900126953125" />
-          <ConnectorPoint PointX="14.4375" PointY="7.5" />
+          <ConnectorPoint PointX="14.75" PointY="6.900126953125" />
+          <ConnectorPoint PointX="14.75" PointY="7.75" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_PaymentTypeId_Payment" >
           <ConnectorPoint PointX="17.625" PointY="8.5461531575520837" />
-          <ConnectorPoint PointX="15.125" PointY="8.5461531575520837" />
+          <ConnectorPoint PointX="15.75" PointY="8.5461531575520837" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>
