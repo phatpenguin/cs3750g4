@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Payments]
+﻿CREATE TABLE [dbo].[Payment]
 (
 	Id				int				identity, 
 	OrderId			int				NOT NULL,

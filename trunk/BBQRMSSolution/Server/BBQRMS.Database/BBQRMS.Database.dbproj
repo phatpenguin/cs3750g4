@@ -184,9 +184,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\ItemSupplierMap.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Locations.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\MasterInventory.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -214,10 +211,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\SupplierContacts.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Suppliers.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\TableSections.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Supplier.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ApplicationUser.FK_Employee_ApplicationUser.fkey.sql">
@@ -277,9 +271,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\ItemSupplierMap.PK_Id_ItemSupplierMap.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Location.PK_Id_Location.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\MasterInventory.PK_Id_MasterInventory.pkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -308,9 +299,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\SupplierContactMap.PK_Id_SupplierContactMap.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\TableSection.PK_Id_TableSection.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\MenuItemMap.table.sql">
@@ -367,7 +355,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentStatusId_PaymentStatus.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Payments.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Payment.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Payment.FK_PaymentTypeId_PaymentType.fkey.sql">
@@ -383,6 +371,12 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeTimeClock.FK_EmployeeTimeClock_Employee.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderItem.FK_MenuItemId_OrderItem.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Payment.FK_OrderId_Payment.fkey.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
