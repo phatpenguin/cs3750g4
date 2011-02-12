@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[PaymentStatus]
+﻿CREATE TABLE [dbo].[PaymentState]
 (
 	Id			int				NOT NULL, 
 	Description varchar(MAX)	NOT NULL,

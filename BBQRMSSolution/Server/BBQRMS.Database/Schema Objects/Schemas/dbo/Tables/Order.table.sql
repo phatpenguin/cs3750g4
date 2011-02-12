@@ -5,7 +5,7 @@
 	Date			datetime		NOT NULL,
 	OrderTypeId		int				NOT NULL,
 	DinerTypeId		int				NOT NULL,
-	PaymentStatusId	int				NOT NULL,
-	OrderStatusId	int				NOT NULL,
+	PaymentStateId	int				NOT NULL,
+	OrderStateId	int				NOT NULL,
 	Memo			text			
 )

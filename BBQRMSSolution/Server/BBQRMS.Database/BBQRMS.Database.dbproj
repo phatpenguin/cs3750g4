@@ -202,7 +202,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\PaymentType.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Roles.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Role.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\SupplierContactMap.table.sql">
@@ -340,19 +340,19 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\DinerType.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\PaymentStatus.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\PaymentState.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\OrderStatus.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\OrderState.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_DinerTypeId_Order.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderStatusId_OrderStatus.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_OrderStateId_OrderState.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentStatusId_PaymentStatus.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Order.FK_PaymentStateId_PaymentState.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Payment.table.sql">
@@ -364,10 +364,10 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\DinerType.PK_DinerType.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderStatus.PK_OrderStatus.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderState.PK_OrderState.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PaymentStatus.PK_PaymentStatus.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PaymentState.PK_PaymentState.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\EmployeeTimeClock.FK_EmployeeTimeClock_Employee.fkey.sql">

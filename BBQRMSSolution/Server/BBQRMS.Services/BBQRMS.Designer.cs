@@ -33,11 +33,11 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderTypeId_Order", "OrderType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.OrderType), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderPayment_Order", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "OrderPayment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.OrderPayment), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_DinerTypeId_Order", "DinerType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.DinerType), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
-[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderStatusId_Order", "OrderStatu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.OrderStatus), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
-[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_PaymentStatusId_Order", "PaymentStatu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.PaymentStatus), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderItem_MenuItem", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.MenuItem), "OrderItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.OrderItem), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderId_Payment", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "Payment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Payment), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_PaymentTypeId_Payment", "PaymentType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.PaymentType), "Payment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Payment), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderStateId_Order", "OrderState", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.OrderState), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_PaymentStateId_Order", "PaymentState", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.PaymentState), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
 
 #endregion
 
@@ -428,38 +428,6 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<OrderStatus> OrderStatus1
-        {
-            get
-            {
-                if ((_OrderStatus1 == null))
-                {
-                    _OrderStatus1 = base.CreateObjectSet<OrderStatus>("OrderStatus1");
-                }
-                return _OrderStatus1;
-            }
-        }
-        private ObjectSet<OrderStatus> _OrderStatus1;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<PaymentStatus> PaymentStatus1
-        {
-            get
-            {
-                if ((_PaymentStatus1 == null))
-                {
-                    _PaymentStatus1 = base.CreateObjectSet<PaymentStatus>("PaymentStatus1");
-                }
-                return _PaymentStatus1;
-            }
-        }
-        private ObjectSet<PaymentStatus> _PaymentStatus1;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Payment> Payments
         {
             get
@@ -472,6 +440,38 @@ namespace BBQRMS.WCFServices
             }
         }
         private ObjectSet<Payment> _Payments;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<OrderState> OrderStates
+        {
+            get
+            {
+                if ((_OrderStates == null))
+                {
+                    _OrderStates = base.CreateObjectSet<OrderState>("OrderStates");
+                }
+                return _OrderStates;
+            }
+        }
+        private ObjectSet<OrderState> _OrderStates;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PaymentState> PaymentStates
+        {
+            get
+            {
+                if ((_PaymentStates == null))
+                {
+                    _PaymentStates = base.CreateObjectSet<PaymentState>("PaymentStates");
+                }
+                return _PaymentStates;
+            }
+        }
+        private ObjectSet<PaymentState> _PaymentStates;
 
         #endregion
         #region AddTo Methods
@@ -645,27 +645,27 @@ namespace BBQRMS.WCFServices
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the OrderStatus1 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToOrderStatus1(OrderStatus orderStatus)
-        {
-            base.AddObject("OrderStatus1", orderStatus);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the PaymentStatus1 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPaymentStatus1(PaymentStatus paymentStatus)
-        {
-            base.AddObject("PaymentStatus1", paymentStatus);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Payments EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPayments(Payment payment)
         {
             base.AddObject("Payments", payment);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the OrderStates EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOrderStates(OrderState orderState)
+        {
+            base.AddObject("OrderStates", orderState);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PaymentStates EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPaymentStates(PaymentState paymentState)
+        {
+            base.AddObject("PaymentStates", paymentState);
         }
 
         #endregion
@@ -2767,9 +2767,9 @@ namespace BBQRMS.WCFServices
         /// <param name="date">Initial value of the Date property.</param>
         /// <param name="orderTypeId">Initial value of the OrderTypeId property.</param>
         /// <param name="dinerTypeId">Initial value of the DinerTypeId property.</param>
-        /// <param name="paymentStatusId">Initial value of the PaymentStatusId property.</param>
-        /// <param name="orderStatusId">Initial value of the OrderStatusId property.</param>
-        public static Order CreateOrder(global::System.Int32 id, global::System.Int32 number, global::System.DateTime date, global::System.Int32 orderTypeId, global::System.Int32 dinerTypeId, global::System.Int32 paymentStatusId, global::System.Int32 orderStatusId)
+        /// <param name="paymentStateId">Initial value of the PaymentStateId property.</param>
+        /// <param name="orderStateId">Initial value of the OrderStateId property.</param>
+        public static Order CreateOrder(global::System.Int32 id, global::System.Int32 number, global::System.DateTime date, global::System.Int32 orderTypeId, global::System.Int32 dinerTypeId, global::System.Int32 paymentStateId, global::System.Int32 orderStateId)
         {
             Order order = new Order();
             order.Id = id;
@@ -2777,8 +2777,8 @@ namespace BBQRMS.WCFServices
             order.Date = date;
             order.OrderTypeId = orderTypeId;
             order.DinerTypeId = dinerTypeId;
-            order.PaymentStatusId = paymentStatusId;
-            order.OrderStatusId = orderStatusId;
+            order.PaymentStateId = paymentStateId;
+            order.OrderStateId = orderStateId;
             return order;
         }
 
@@ -2911,54 +2911,6 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 PaymentStatusId
-        {
-            get
-            {
-                return _PaymentStatusId;
-            }
-            set
-            {
-                OnPaymentStatusIdChanging(value);
-                ReportPropertyChanging("PaymentStatusId");
-                _PaymentStatusId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PaymentStatusId");
-                OnPaymentStatusIdChanged();
-            }
-        }
-        private global::System.Int32 _PaymentStatusId;
-        partial void OnPaymentStatusIdChanging(global::System.Int32 value);
-        partial void OnPaymentStatusIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 OrderStatusId
-        {
-            get
-            {
-                return _OrderStatusId;
-            }
-            set
-            {
-                OnOrderStatusIdChanging(value);
-                ReportPropertyChanging("OrderStatusId");
-                _OrderStatusId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("OrderStatusId");
-                OnOrderStatusIdChanged();
-            }
-        }
-        private global::System.Int32 _OrderStatusId;
-        partial void OnOrderStatusIdChanging(global::System.Int32 value);
-        partial void OnOrderStatusIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Memo
@@ -2979,6 +2931,54 @@ namespace BBQRMS.WCFServices
         private global::System.String _Memo;
         partial void OnMemoChanging(global::System.String value);
         partial void OnMemoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PaymentStateId
+        {
+            get
+            {
+                return _PaymentStateId;
+            }
+            set
+            {
+                OnPaymentStateIdChanging(value);
+                ReportPropertyChanging("PaymentStateId");
+                _PaymentStateId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PaymentStateId");
+                OnPaymentStateIdChanged();
+            }
+        }
+        private global::System.Int32 _PaymentStateId;
+        partial void OnPaymentStateIdChanging(global::System.Int32 value);
+        partial void OnPaymentStateIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 OrderStateId
+        {
+            get
+            {
+                return _OrderStateId;
+            }
+            set
+            {
+                OnOrderStateIdChanging(value);
+                ReportPropertyChanging("OrderStateId");
+                _OrderStateId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("OrderStateId");
+                OnOrderStateIdChanged();
+            }
+        }
+        private global::System.Int32 _OrderStateId;
+        partial void OnOrderStateIdChanging(global::System.Int32 value);
+        partial void OnOrderStateIdChanged();
 
         #endregion
     
@@ -3110,82 +3110,6 @@ namespace BBQRMS.WCFServices
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderStatusId_Order", "OrderStatu")]
-        public OrderStatus OrderStatus
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderStatus>("BBQRMSModel.FK_OrderStatusId_Order", "OrderStatu").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderStatus>("BBQRMSModel.FK_OrderStatusId_Order", "OrderStatu").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<OrderStatus> OrderStatusReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderStatus>("BBQRMSModel.FK_OrderStatusId_Order", "OrderStatu");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<OrderStatus>("BBQRMSModel.FK_OrderStatusId_Order", "OrderStatu", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_PaymentStatusId_Order", "PaymentStatu")]
-        public PaymentStatus PaymentStatus
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentStatus>("BBQRMSModel.FK_PaymentStatusId_Order", "PaymentStatu").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentStatus>("BBQRMSModel.FK_PaymentStatusId_Order", "PaymentStatu").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<PaymentStatus> PaymentStatusReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentStatus>("BBQRMSModel.FK_PaymentStatusId_Order", "PaymentStatu");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PaymentStatus>("BBQRMSModel.FK_PaymentStatusId_Order", "PaymentStatu", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderId_Payment", "Payment")]
         public EntityCollection<Payment> Payments
         {
@@ -3198,6 +3122,82 @@ namespace BBQRMS.WCFServices
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Payment>("BBQRMSModel.FK_OrderId_Payment", "Payment", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderStateId_Order", "OrderState")]
+        public OrderState OrderState
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderState>("BBQRMSModel.FK_OrderStateId_Order", "OrderState").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderState>("BBQRMSModel.FK_OrderStateId_Order", "OrderState").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<OrderState> OrderStateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<OrderState>("BBQRMSModel.FK_OrderStateId_Order", "OrderState");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<OrderState>("BBQRMSModel.FK_OrderStateId_Order", "OrderState", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_PaymentStateId_Order", "PaymentState")]
+        public PaymentState PaymentState
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentState>("BBQRMSModel.FK_PaymentStateId_Order", "PaymentState").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentState>("BBQRMSModel.FK_PaymentStateId_Order", "PaymentState").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PaymentState> PaymentStateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PaymentState>("BBQRMSModel.FK_PaymentStateId_Order", "PaymentState");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PaymentState>("BBQRMSModel.FK_PaymentStateId_Order", "PaymentState", value);
                 }
             }
         }
@@ -3705,26 +3705,26 @@ namespace BBQRMS.WCFServices
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="OrderStatus")]
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="OrderState")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class OrderStatus : EntityObject
+    public partial class OrderState : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new OrderStatus object.
+        /// Create a new OrderState object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="code">Initial value of the Code property.</param>
-        public static OrderStatus CreateOrderStatus(global::System.Int32 id, global::System.String description, global::System.String code)
+        public static OrderState CreateOrderState(global::System.Int32 id, global::System.String description, global::System.String code)
         {
-            OrderStatus orderStatus = new OrderStatus();
-            orderStatus.Id = id;
-            orderStatus.Description = description;
-            orderStatus.Code = code;
-            return orderStatus;
+            OrderState orderState = new OrderState();
+            orderState.Id = id;
+            orderState.Description = description;
+            orderState.Code = code;
+            return orderState;
         }
 
         #endregion
@@ -3815,18 +3815,18 @@ namespace BBQRMS.WCFServices
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderStatusId_Order", "Order")]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderStateId_Order", "Order")]
         public EntityCollection<Order> Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("BBQRMSModel.FK_OrderStatusId_Order", "Order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("BBQRMSModel.FK_OrderStateId_Order", "Order");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("BBQRMSModel.FK_OrderStatusId_Order", "Order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("BBQRMSModel.FK_OrderStateId_Order", "Order", value);
                 }
             }
         }
@@ -4214,26 +4214,26 @@ namespace BBQRMS.WCFServices
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="PaymentStatus")]
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="PaymentState")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class PaymentStatus : EntityObject
+    public partial class PaymentState : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new PaymentStatus object.
+        /// Create a new PaymentState object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="code">Initial value of the Code property.</param>
-        public static PaymentStatus CreatePaymentStatus(global::System.Int32 id, global::System.String description, global::System.String code)
+        public static PaymentState CreatePaymentState(global::System.Int32 id, global::System.String description, global::System.String code)
         {
-            PaymentStatus paymentStatus = new PaymentStatus();
-            paymentStatus.Id = id;
-            paymentStatus.Description = description;
-            paymentStatus.Code = code;
-            return paymentStatus;
+            PaymentState paymentState = new PaymentState();
+            paymentState.Id = id;
+            paymentState.Description = description;
+            paymentState.Code = code;
+            return paymentState;
         }
 
         #endregion
@@ -4324,18 +4324,18 @@ namespace BBQRMS.WCFServices
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_PaymentStatusId_Order", "Order")]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_PaymentStateId_Order", "Order")]
         public EntityCollection<Order> Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("BBQRMSModel.FK_PaymentStatusId_Order", "Order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("BBQRMSModel.FK_PaymentStateId_Order", "Order");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("BBQRMSModel.FK_PaymentStatusId_Order", "Order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("BBQRMSModel.FK_PaymentStateId_Order", "Order", value);
                 }
             }
         }

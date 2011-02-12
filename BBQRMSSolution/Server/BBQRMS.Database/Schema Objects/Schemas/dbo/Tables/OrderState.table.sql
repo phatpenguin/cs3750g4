@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[OrderStatus]
+﻿CREATE TABLE [dbo].[OrderState]
 (
 	Id			int				NOT NULL, 
 	Description varchar(MAX)	NOT NULL,
