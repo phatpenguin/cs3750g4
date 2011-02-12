@@ -32,11 +32,11 @@ namespace BBQRMSSolution.ViewModels
 
 			Order = new OrderViewModel(_mMessageBus,_mDataService);
 
-		        Menus = new ObservableCollection<Menu>(_mDataService.Menus.Execute());
-		        foreach(var m in Menus)
-		        {
-		            _mDataService.LoadProperty(m, "MenuItems");
-		        }
+		    Menus = new ObservableCollection<Menu>(_mDataService.Menus.Execute());
+		    foreach(var m in Menus)
+		    {
+		        _mDataService.LoadProperty(m, "MenuItems");
+		    }
 
 		    foreach (Menu menu in Menus)
 		    {

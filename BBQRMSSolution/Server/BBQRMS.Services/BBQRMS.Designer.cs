@@ -3225,7 +3225,7 @@ namespace BBQRMS.WCFServices
         /// <param name="unitPrice">Initial value of the UnitPrice property.</param>
         /// <param name="unitTax">Initial value of the UnitTax property.</param>
         /// <param name="menuItemId">Initial value of the MenuItemId property.</param>
-        public static OrderItem CreateOrderItem(global::System.Int32 id, global::System.Int32 orderId, global::System.Int32 name, global::System.Int32 quantity, global::System.Decimal unitPrice, global::System.Decimal unitTax, global::System.Int32 menuItemId)
+        public static OrderItem CreateOrderItem(global::System.Int32 id, global::System.Int32 orderId, global::System.String name, global::System.Int32 quantity, global::System.Decimal unitPrice, global::System.Decimal unitTax, global::System.Int32 menuItemId)
         {
             OrderItem orderItem = new OrderItem();
             orderItem.Id = id;
@@ -3297,7 +3297,7 @@ namespace BBQRMS.WCFServices
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Name
+        public global::System.String Name
         {
             get
             {
@@ -3307,13 +3307,13 @@ namespace BBQRMS.WCFServices
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value);
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
         }
-        private global::System.Int32 _Name;
-        partial void OnNameChanging(global::System.Int32 value);
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
     
         /// <summary>
