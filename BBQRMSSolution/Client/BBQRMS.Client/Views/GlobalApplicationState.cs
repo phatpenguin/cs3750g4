@@ -1,23 +1,14 @@
-﻿using BBQRMSSolution.ServerProxy;
-using Controls;
+﻿using Controls;
 
-namespace BBQRMSSolution
+namespace BBQRMSSolution.Views
 {
 	public static class GlobalApplicationState
 	{
 		static GlobalApplicationState()
 		{
 			MessageBus = new MessageBus();
-
-			SecurityContext = new SecurityContext();
-
-			MessageBus.Subscribe(SecurityContext);
 		}
 		public static IMessageBus MessageBus { get; private set; }
-
-		public static SecurityContext SecurityContext { get; private set; }
-
-        public static BBQRMSEntities Entities { get; set; }
 
 		/// <summary>
 		/// This property is True while the application is doing an unconditional shutdown.

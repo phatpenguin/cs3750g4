@@ -10,16 +10,20 @@ namespace BBQRMSSolution.ViewModels
 {
     public class SupplierDetailViewModel:ViewModelBase
     {
-        private readonly IMessageBus _MessageBus;
-        private BBQRMSEntities _DataService;
-        private ObservableCollection<Supplier> _Supplier;
-        private Supplier _SelectedSupplier;
+        private ObservableCollection<Supplier> _supplier;
+        private Supplier _selectedSupplier;
 
+			[Obsolete("Used for design-time only", true)]
+    	public SupplierDetailViewModel()
+    	{
+    		//TODO: fill in the properties with some simulated data for the VS designer
+    	}
         //constructor
         public SupplierDetailViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
         {
-            _DataService = dataService;
-            Suppliers = new ObservableCollection<Supplier>(_DataService.Suppliers);
+            DataService = dataService;
+					MessageBus = messageBus;
+            Suppliers = new ObservableCollection<Supplier>(DataService.Suppliers);
             
         }
 
@@ -28,17 +32,17 @@ namespace BBQRMSSolution.ViewModels
         {
             get
             {
-                return _Supplier;
+                return _supplier;
             }
             set
             {
-                _Supplier = value; NotifyPropertyChanged("Suppliers");
+                _supplier = value; NotifyPropertyChanged("Suppliers");
             }
 
         }
 
 
-        internal void addSupplier()
+        internal void AddSupplier()
         {
             Supplier x = new Supplier();
             Suppliers.Add(x);
@@ -52,28 +56,28 @@ namespace BBQRMSSolution.ViewModels
         {
             get
             {
-                return _SelectedSupplier;
+                return _selectedSupplier;
             }
             set
             {
-                _SelectedSupplier = value;
+                _selectedSupplier = value;
                 NotifyPropertyChanged("SelectedSupplier");
             }
         }
 
 
-        internal void saveSupplier()
+        internal void SaveSupplier()
         {
             // the ID of the supplier (if its new is 0) once its saved the id will be generated from the database sequence.
-            if (_SelectedSupplier.Id > 0)
+            if (_selectedSupplier.Id > 0)
             {
-                _DataService.UpdateObject(_SelectedSupplier);
-            }
+                DataService.UpdateObject(_selectedSupplier);
+								DataService.SaveChanges();
+						}
             else
             {
-
-                _DataService.AddToSuppliers(_SelectedSupplier);
-                _DataService.SaveChanges();
+                DataService.AddToSuppliers(_selectedSupplier);
+                DataService.SaveChanges();
             }
         }
     }

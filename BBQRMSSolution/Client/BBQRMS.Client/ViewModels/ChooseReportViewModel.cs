@@ -1,16 +1,23 @@
 using System;
 using System.Collections.ObjectModel;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class ChooseReportViewModel : ViewModelBase
 	{
+		[Obsolete("Used for design-time only", true)]
+		public ChooseReportViewModel() : this(null, null)
+		{
+			
+		}
+
 		public ChooseReportViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
 		{
-			mMessageBus = messageBus;
+			DataService = dataService;
+			MessageBus = messageBus;
 
 			Reports =
 				new ObservableCollection<ReportViewModel>
@@ -160,7 +167,7 @@ namespace BBQRMSSolution.ViewModels
 
 		public void HandleRunReport()
 		{
-			mMessageBus.Publish(new ShowScreen(SelectedReport));
+			MessageBus.Publish(new ShowScreen(SelectedReport));
 		}
 
 		private bool CanRunReport()
@@ -168,32 +175,31 @@ namespace BBQRMSSolution.ViewModels
 			return SelectedReport != null;
 		}
 
-		private ReportViewModel mSelectedReport;
+		private ReportViewModel _selectedReport;
 
 		public ReportViewModel SelectedReport
 		{
-			get { return mSelectedReport; }
+			get { return _selectedReport; }
 			set
 			{
-				if (value != mSelectedReport)
+				if (value != _selectedReport)
 				{
-					mSelectedReport = value;
+					_selectedReport = value;
 					NotifyPropertyChanged("SelectedReport");
 				}
 			}
 		}
 
-		private ObservableCollection<ReportViewModel> mReports;
-		private readonly IMessageBus mMessageBus;
+		private ObservableCollection<ReportViewModel> _reports;
 
 		public ObservableCollection<ReportViewModel> Reports
 		{
-			get { return mReports; }
+			get { return _reports; }
 			set
 			{
-				if (value != mReports)
+				if (value != _reports)
 				{
-					mReports = value;
+					_reports = value;
 					NotifyPropertyChanged("Reports");
 				}
 			}

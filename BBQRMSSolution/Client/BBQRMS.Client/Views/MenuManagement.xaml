@@ -1,13 +1,23 @@
-﻿<UserControl x:Class="BBQRMSSolution.Views.MenuManagement"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             >
+﻿<Views:UserControlBase
+	x:Class="BBQRMSSolution.Views.MenuManagement"
+	x:TypeArguments="ViewModels:MenuManagementViewModel"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d"
+	d:DataContext="{d:DesignInstance Type={x:Type ViewModels:MenuManagementViewModel}, IsDesignTimeCreatable=True}"
+	>
   <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
     <DockPanel DockPanel.Dock="Left">
-      <Label Content="Menus" DockPanel.Dock="Top"/>
-      <Button Style="{StaticResource Button.Add}" Content="Add Menu" DockPanel.Dock="Bottom"/>
+      <Label Content="Menus"
+						 DockPanel.Dock="Top"/>
+			<c:ImageButton
+				Style="{StaticResource ImageButton.FormButton}"
+				ImageSource="{StaticResource BBQRMS.Image.Add}"
+				Content="Add Menu" DockPanel.Dock="Bottom"/>
       <ListBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">        
       </ListBox>
     </DockPanel>
@@ -22,4 +32,4 @@
       </Border>
     </DockPanel>
   </DockPanel>
-</UserControl>
+</Views:UserControlBase>

@@ -5,7 +5,7 @@ using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
-	public partial class ChooseReport : UserControl
+	public partial class ChooseReport : UserControlBase<ChooseReportViewModel>
 	{
 		public ChooseReport()
 		{

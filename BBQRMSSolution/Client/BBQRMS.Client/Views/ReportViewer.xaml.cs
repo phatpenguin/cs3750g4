@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.Views

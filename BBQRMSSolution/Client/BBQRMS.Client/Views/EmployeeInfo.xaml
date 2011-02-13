@@ -1,14 +1,24 @@
-﻿<UserControl x:Class="BBQRMSSolution.Views.EmployeeInfo"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Controls="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d">
+﻿<Views:UserControlBase
+	x:Class="BBQRMSSolution.Views.EmployeeInfo"
+	x:TypeArguments="ServerProxy:Employee"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	xmlns:c="clr-namespace:Controls;assembly=Controls"
+	xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls"
+	xmlns:SampleData="clr-namespace:RUBPrototypes.SampleData"
+	xmlns:ServerProxy="clr-namespace:BBQRMSSolution.ServerProxy"
+	mc:Ignorable="d"
+	d:DataContext="{d:DesignInstance Type={x:Type SampleData:DesignTimeEmployee}, IsDesignTimeCreatable=True}"
+	x:Name="me"
+	>
   <StackPanel Margin="5">
-    <StackPanel Orientation="Horizontal">
-      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text="{Binding Path=FirstName}"/>
-      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text=" "/>
-      <TextBlock  FontSize="18" FontWeight="Bold" Height="32" Text="{Binding Path=LastName}"/>
-    </StackPanel>
+		<TextBlock Height="32" FontSize="18" FontWeight="Bold" >
+      <Run Text="{Binding Path=FirstName}"/>
+      <Run Text="{Binding Path=LastName}"/>
+    </TextBlock>
     <StackPanel DockPanel.Dock="Left">
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="First Name:" Width="120"/>
@@ -54,9 +64,9 @@
 -->
       <StackPanel Margin="2" Orientation="Horizontal">
         <Label FontWeight="Bold" Content="Role:" Width="120"/>
-        <Controls:ListComboBox Width="150" SelectionMode="Extended"
+        <c:ListComboBox Width="150" SelectionMode="Extended"
                 ItemsSource="{Binding Path=Roles}"
-                SelectableItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.Roles}"
+                SelectableItemsSource="{Binding ElementName=me, Path=AllRoles}"
                 ItemContainerStyle="{StaticResource ListBoxItem.ListComboBoxItemStyle}"
                 DragDrop:DragDropHelper.IsDragSource="true"
                 DragDrop:DragDropHelper.IsDropTarget="true"                           
@@ -69,8 +79,12 @@
               </DockPanel>
             </DataTemplate>
           </ListBox.ItemTemplate>
-        </Controls:ListComboBox>
-        <Button Style="{StaticResource Button.Add}"/>
+        </c:ListComboBox>
+				<c:ImageButton
+					Style="{StaticResource ImageButton.FormButton}"
+					ImageSource="{StaticResource BBQRMS.Image.Add}"
+				/>
+
 <!--
         <ListBox Width="150" SelectionMode="Extended"
                  ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.Roles}"
@@ -86,8 +100,8 @@
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Comp. Type:" Width="120"/>
-      <ComboBox Width="150" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.PayTypes}" 
-                DisplayMemberPath="Descr" SelectedValue="{Binding RelativeSource={RelativeSource Self}, Path=EmployeePayType, Mode=TwoWay}">
+			<ComboBox Width="150" ItemsSource="{Binding ElementName=me, Path=PayTypes, FallbackValue={x:Static Member=SampleData:DesignTimePayTypes.All}}" 
+                DisplayMemberPath="Descr" SelectedItem="{Binding Path=EmployeePayType}">
       </ComboBox>
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
@@ -96,7 +110,7 @@
     </StackPanel>
     <StackPanel Margin="2" Orientation="Horizontal">
       <Label FontWeight="Bold" Content="Hire Date:" Width="120"/>
-      <TextBox Text="{Binding Path=HireDate}" Width="250"/>
+      <TextBox Text="{Binding Path=HireDate, StringFormat=d}" Width="250"/>
     </StackPanel>
     <StackPanel Margin="0" Orientation="Horizontal">
       <StackPanel Margin="2" Orientation="Horizontal">
@@ -109,8 +123,16 @@
       </StackPanel>
     </StackPanel>
     <StackPanel Orientation="Horizontal">
-      <Button Content="Save" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.SaveEmployee}" Style="{StaticResource Button.Save}"/>
-      <Button Content="Delete" Style="{StaticResource Button.Delete}"/>
+			<c:ImageButton
+				Style="{StaticResource ImageButton.FormButton}"
+				ImageSource="{StaticResource BBQRMS.Image.Save}"
+				Content="Save"
+				Command="{Binding ElementName=me, Path=SaveCommand}" />
+			<c:ImageButton
+				Style="{StaticResource ImageButton.FormButton}"
+				ImageSource="{StaticResource BBQRMS.Image.Trash}"
+				Content="Delete"
+				/>
     </StackPanel>
   </StackPanel>
-</UserControl>
+</Views:UserControlBase>

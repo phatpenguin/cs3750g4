@@ -3,8 +3,9 @@ using System.Data.Services.Client;
 using System.Linq;
 using BBQRMS.WCFServices;
 using BBQRMSSolution;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +13,7 @@ using Moq;
 using ServerTimeProvider = BBQRMS.WCFServices.TimeProvider;
 using BBQRMSEntities = BBQRMSSolution.ServerProxy.BBQRMSEntities;
 using Employee = BBQRMSSolution.ServerProxy.Employee;
-using ClientTimeProvider = BBQRMSSolution.TimeProvider;
+using ClientTimeProvider = BBQRMSSolution.BusinessLogic.TimeProvider;
 
 // ReSharper disable InconsistentNaming
 namespace BBQRMS.Client.Tests

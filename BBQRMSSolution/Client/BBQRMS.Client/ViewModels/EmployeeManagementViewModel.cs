@@ -1,26 +1,32 @@
 using System;
+using System.Data.Services.Client;
 using System.Linq;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.ServerProxy;
 using Controls;
+using RUBPrototypes.SampleData;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class EmployeeManagementViewModel : ViewModelBase
 	{
-        private readonly BBQRMSEntities mDataService;
         ObservableCollection<Employee> employees;
         private ObservableCollection<EmployeePayType> payTypes;
         private ObservableCollection<Role> roles;
         private Employee selectedEmployee;
-        private IMessageBus mMessageBus;
 
-	    public EmployeeManagementViewModel()
+		[Obsolete("Used for design-time only", true)]
+		public EmployeeManagementViewModel()
+		{
+			Employees = new ObservableCollection<Employee> {new DesignTimeEmployee(), new DesignTimeEmployee()};
+			SelectedEmployee = Employees[1];
+		}
+	    public EmployeeManagementViewModel(BBQRMSEntities dataService)
 	    {
-	        mDataService = GlobalApplicationState.Entities;
-	        this.mMessageBus = GlobalApplicationState.MessageBus;
+	    	DataService = dataService;
 
-	        Employees = new ObservableCollection<Employee>(mDataService.Employees.Expand("EmployeePayType").Expand("Roles"));
+				DataService.MergeOption = MergeOption.PreserveChanges;
+	        Employees = new ObservableCollection<Employee>(DataService.Employees.Expand("EmployeePayType").Expand("Roles"));
 /*
 	        foreach (Employee employee in employees)
 	        {
@@ -28,8 +34,8 @@ namespace BBQRMSSolution.ViewModels
                 mDataService.LoadProperty(employee, "Roles");
             }
 */
-	        PayTypes = new ObservableCollection<EmployeePayType>(mDataService.EmployeePayTypes);
-	        Roles = new ObservableCollection<Role>(mDataService.Roles);
+	        PayTypes = new ObservableCollection<EmployeePayType>(DataService.EmployeePayTypes);
+	        Roles = new ObservableCollection<Role>(DataService.Roles);
 	    }
 
 	    public ObservableCollection<Role> Roles
@@ -66,11 +72,11 @@ namespace BBQRMSSolution.ViewModels
 	    {
            
             if (SelectedEmployee.Id > 0) {
-                mDataService.UpdateObject(SelectedEmployee);
+                DataService.UpdateObject(SelectedEmployee);
             } else {
-                mDataService.AddToEmployees(SelectedEmployee);
+                DataService.AddToEmployees(SelectedEmployee);
             }
-	        mDataService.SaveChanges();
+	        DataService.SaveChanges();
         }
 
         public void HandleCreateEmployee()

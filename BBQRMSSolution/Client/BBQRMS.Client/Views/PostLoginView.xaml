@@ -1,27 +1,34 @@
-﻿<UserControl
+﻿<Views:UserControlBase
 	x:Class="BBQRMSSolution.Views.PostLoginView"
+	x:TypeArguments="ViewModels:PostLoginViewModel"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Views="clr-namespace:BBQRMSSolution.Views" xmlns:System="clr-namespace:System;assembly=mscorlib" mc:Ignorable="d" 
+	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:ViewParts="clr-namespace:BBQRMSSolution.Views.ViewParts" mc:Ignorable="d" 
 	d:DesignHeight="730"
 	d:DesignWidth="1350"
 	d:DataContext="{d:DesignInstance Type=ViewModels:PostLoginViewModel, IsDesignTimeCreatable=True}"
 	UseLayoutRounding="True">
 	<Grid x:Name="LayoutRoot">
 			<!-- Clock-out UI is behind the main application grid until it's supposed to show. Then the ZIndex puts it in front. -->
-		<Views:ClockOutView No="ClockOutNo_Click" Yes="ClockOutYes_Click">
+		<ViewParts:ClockOut No="ClockOutNo_Click" Yes="ClockOutYes_Click">
 			<UserControl.Style>
 				<Style>
 					<Style.Triggers>
 						<DataTrigger Binding="{Binding Path=ClockOutVisible}" Value="True">
 							<Setter Property="Panel.ZIndex" Value="200"/>
+							<Setter Property="ViewParts:ClockOut.IsEnabled" Value="True"/>
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Path=ClockOutVisible}" Value="False">
+							<Setter Property="ViewParts:ClockOut.IsEnabled" Value="False"/>
 						</DataTrigger>
 					</Style.Triggers>
 				</Style>
 			</UserControl.Style>
-		</Views:ClockOutView>
+		</ViewParts:ClockOut>
 
 		<!-- the main application frame -->
 		<Grid
@@ -40,75 +47,60 @@
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
-			<StackPanel Grid.Row="0" Orientation="Horizontal">
-				<Button
-				x:Name="takeOrders" Padding="4" Margin="1,2,1,2"
-				Click="takeOrders_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/accessories-text-editor.png" Width="32" Height="32"/>
-						<TextBlock Text="Take Orders"/>
-					</StackPanel>
-				</Button>
-				<Button
-				x:Name="cook" Padding="4" Margin="1,2,1,2"
-				Click="cook_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/Anonymous_Chef.png" Width="32" Height="32"/>
-						<TextBlock Text="Cooks Screen"/>
-					</StackPanel>
-				</Button>
-				<Button
-				x:Name="quickInventory" Padding="4" Margin="1,2,1,2"
-				Click="quickInventory_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseQuickInventory, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/to_do_list_cheked_1.png" Width="32" Height="32"/>
-						<TextBlock Text="Quick Inventory Screen"/>
-					</StackPanel>
-				</Button>
-				<Button
-				x:Name="reporting" Padding="4" Margin="1,2,1,2" 
-				Click="reporting_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/x-office-spreadsheet.png" Width="32" Height="32"/>
-						<TextBlock Text="Reporting"/>
-					</StackPanel>
-				</Button>
-				<Button
-				x:Name="manageInventory" Padding="4" Margin="1,2,1,2"
-				Click="manageInventory_Click"
-				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageInventory, Converter={StaticResource boolToVisibilityConverter}}">
-					<StackPanel>
-						<Image Source="/Graphics/file_manager.png" Width="32" Height="32" />
-						<TextBlock Text="Manage Inventory"/>
-					</StackPanel>
-				</Button>
-      </StackPanel>
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-				<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-        <Button x:Name="adminBtn"	Click="adminBtn_Click" Style="{StaticResource Button.TouchButton}">
-          <StackPanel>
-            <Image Source="{StaticResource BBQRMS.Image.Administrator}" Width="32" Height="32"/>
-            <TextBlock Text="Admin" />
-          </StackPanel>
-        </Button>
-        <Button Name="clockOut" Padding="4" Margin="1,2,1,2" Click="clockOut_Click">
-					<StackPanel>
-						<TextBlock Text="Clock Out" />
-					</StackPanel>
-				</Button>
-				<Button Name="logout" Padding="4" Margin="1,2,1,2" Click="logout_Click">
-					<StackPanel>
-						<Image Source="{StaticResource BBQRMS.Image.SystemLogOut}" Width="32" Height="32" />
-						<TextBlock Text="Log Out" />
-					</StackPanel>
-				</Button>
-			</StackPanel>
-			  <!-- The current application screen appears here -->
+			<Grid Grid.Row="0">
+				<Grid.Resources>
+					<Style TargetType="{x:Type c:ImageButton}">
+						<Setter Property="Padding" Value="4"/>
+						<Setter Property="Margin" Value="1,2,1,2"/>
+					</Style>
+				</Grid.Resources>
+				<StackPanel Orientation="Horizontal">
+					<c:ImageButton
+						Name="takeOrders"
+						Click="takeOrders_Click"
+						Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, Converter={StaticResource boolToVisibilityConverter}}"
+						ImageSource="/Graphics/accessories-text-editor.png"
+						Content="Take Orders" />
+					<c:ImageButton
+						Name="cook" 
+						Click="cook_Click"
+						Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}"
+						ImageSource="/Graphics/Anonymous_Chef.png"
+						Content="Cooks Screen" />
+					<c:ImageButton
+						Name="quickInventory"
+						Click="quickInventory_Click"
+						Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseQuickInventory, Converter={StaticResource boolToVisibilityConverter}}"
+						ImageSource="/Graphics/to_do_list_cheked_1.png"
+						Content="Quick Inventory Screen" />
+					<c:ImageButton
+						Name="reporting"
+						Click="reporting_Click"
+						Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, Converter={StaticResource boolToVisibilityConverter}}"
+						ImageSource="/Graphics/x-office-spreadsheet.png"
+						Content="Reporting" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
+					<c:ImageButton
+						Name="adminBtn"
+						Click="adminBtn_Click"
+						ImageSource="{StaticResource BBQRMS.Image.Administrator}"
+						Content="Admin" />
+					<c:ImageButton
+						Name="clockOut"
+						Click="clockOut_Click"
+						ImageSource="{StaticResource BBQRMS.Image.ClockOut}"
+						Content="Clock Out" />
+					<c:ImageButton
+						Name="logout"
+						Click="logout_Click"
+						ImageSource="{StaticResource BBQRMS.Image.SystemLogOut}"
+						Content="Log Out" />
+				</StackPanel>
+			</Grid>
+			<!-- The current application screen appears here -->
   	  <ContentPresenter Name="mainContent" Content="{Binding Path=Content}" Grid.Row="1"/>
   	</Grid>
 	</Grid>
-</UserControl>
+</Views:UserControlBase>

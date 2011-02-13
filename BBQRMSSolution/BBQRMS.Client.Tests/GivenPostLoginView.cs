@@ -2,8 +2,9 @@
 using System.Linq;
 using BBQRMS.WCFServices;
 using BBQRMSSolution;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -12,7 +13,7 @@ using Moq;
 using ServerTimeProvider = BBQRMS.WCFServices.TimeProvider;
 using BBQRMSEntities = BBQRMSSolution.ServerProxy.BBQRMSEntities;
 using Employee = BBQRMSSolution.ServerProxy.Employee;
-using ClientTimeProvider = BBQRMSSolution.TimeProvider;
+using ClientTimeProvider = BBQRMSSolution.BusinessLogic.TimeProvider;
 
 namespace BBQRMS.Client.Tests
 {
@@ -21,7 +22,7 @@ namespace BBQRMS.Client.Tests
 	{
 		private static Uri mServiceAddress;
 		private static BBQRMSEntities mDataService;
-		private SecurityContext mSecurityContext;
+		private Mock<ISecurityContext> mMockSecurityContext;
 		private Mock<IMessageBus> mMockMessageBus;
 
 		private static readonly TimeProviderForTesting time = new TimeProviderForTesting();
@@ -57,11 +58,10 @@ namespace BBQRMS.Client.Tests
 			LoginViewModel login = new LoginViewModel(mDataService, mMockMessageBus.Object);
 
 			login.PrepareTimeClock(employee);
-		
-			mSecurityContext = new SecurityContext();
 
+			mMockSecurityContext = new Mock<ISecurityContext>();
 			//Make this the logged-in employee.
-			((IHandle<UserLoggedIn>)mSecurityContext).Handle(new UserLoggedIn(employee));
+			mMockSecurityContext.SetupGet(s => s.CurrentUser).Returns(employee);
 		}
 
 		public static Employee MakeNewTestEmployee()
@@ -74,7 +74,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenUserClocksOutAndConfirms_ThenClockOutTimeIsRecordedAndUserIsLoggedOut()
 		{
-			PostLoginViewModel target = new PostLoginViewModel(mDataService, mMockMessageBus.Object, mSecurityContext);
+			PostLoginViewModel target = new PostLoginViewModel(mDataService, mMockMessageBus.Object, mMockSecurityContext.Object);
 			time.SkipForwardBy(TimeSpan.FromMinutes(5));
 			target.HandleClockOut();
 			Assert.IsTrue(target.ClockOutVisible);
@@ -82,7 +82,7 @@ namespace BBQRMS.Client.Tests
 			Assert.IsFalse(target.ClockOutVisible);
 			//TODO: verify that the correct EmployeeTimeClock record was updated
 
-			var timeClocks = mDataService.EmployeeTimeClocks.Where(tc => tc.EmployeeId == mSecurityContext.CurrentUser.Id).ToList();
+			var timeClocks = mDataService.EmployeeTimeClocks.Where(tc => tc.EmployeeId == mMockSecurityContext.Object.CurrentUser.Id).ToList();
 			Assert.AreEqual(1, timeClocks.Count);
 			Assert.IsNotNull(timeClocks[0].ClockOutTimeUTC);
 			Assert.IsTrue(timeClocks[0].ClockOutTimeUTC > timeClocks[0].ClockInTimeUTC);
@@ -101,7 +101,7 @@ namespace BBQRMS.Client.Tests
 		{
 			MessageBus messageBus = new MessageBus();
 			SecurityContext securityContext = new SecurityContext();
-			//GlobalApplicationState.cs does this at runtime:
+			//App.xaml.cs does this at runtime:
 			messageBus.Subscribe(securityContext);
 
 			// the MainWindowViewModel (and the view models created by it) subscribe themselves to the messageBus.
@@ -109,6 +109,7 @@ namespace BBQRMS.Client.Tests
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			Assert.IsNull(securityContext.CurrentUser);
 
+			//Login as a known, valid user.
 			loginViewModel.HandleLogin("1011");
 			Assert.IsNotNull(securityContext.CurrentUser);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));

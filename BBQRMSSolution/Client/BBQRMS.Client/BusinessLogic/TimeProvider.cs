@@ -1,6 +1,6 @@
 using System;
 
-namespace BBQRMSSolution
+namespace BBQRMSSolution.BusinessLogic
 {
 	public interface IClientTimeProvider
 	{

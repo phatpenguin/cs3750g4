@@ -1,27 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using BBQRMSSolution.Messages;
+using BBQRMSSolution.ViewModels;
+using Controls;
 
 namespace BBQRMSSolution.Views
 {
-	/// <summary>
-	/// Interaction logic for ChangePINView.xaml
-	/// </summary>
-	public partial class ChangePINView : UserControl
+	public partial class ChangePINView : UserControlBase<ChangePINViewModel>, IHandle<InvalidPinEntered>
 	{
 		public ChangePINView()
 		{
 			InitializeComponent();
+			GlobalApplicationState.MessageBus.Subscribe(this);
+			Loaded += ChangePINView_Loaded;
+		}
+
+		void ChangePINView_Loaded(object sender, RoutedEventArgs e)
+		{
+			pinEntry.Focus();
+		}
+
+		private void pinEntry_PinEntered(object sender, EventArgs args)
+		{
+			ViewModel.AcceptPin();
+		}
+
+		void IHandle<InvalidPinEntered>.Handle(InvalidPinEntered message)
+		{
+				pinEntry.ShowError(message.ErrorMessage);
 		}
 	}
 }

@@ -11,8 +11,6 @@ namespace BBQRMSSolution.ViewModels
         private Timer _t;
         private decimal _st, _tp, _ta;
 
-        private readonly IMessageBus _mMessageBus;
-        private readonly BBQRMSEntities _mDataService;
 
         public Order Order { get; set; }
 
@@ -22,10 +20,15 @@ namespace BBQRMSSolution.ViewModels
         public decimal TotalPrice { get { return _tp; } set { _tp = value; NotifyPropertyChanged("totalPrice"); } }
         public decimal TaxAmount { get { return _ta; } set { _ta = value; NotifyPropertyChanged("taxAmount"); } }
 
-        public OrderViewModel(IMessageBus mMessageBus, BBQRMSEntities mDataService)
+			[Obsolete("Used for design-time only", true)]
+    	public OrderViewModel()
+    	{
+    		//TODO: give all the properties some simulated data for the VS designer.
+    	}
+        public OrderViewModel(IMessageBus messageBus, BBQRMSEntities dataService)
         {
-            _mMessageBus = mMessageBus;
-            _mDataService = mDataService;
+            MessageBus = messageBus;
+            DataService = dataService;
 
             DateTime now = DateTime.Now;
             now = now.AddMilliseconds(-now.Millisecond);
@@ -38,8 +41,8 @@ namespace BBQRMSSolution.ViewModels
 
             //id,ordertypeid,number,date,dinertypeid,paymentstatusid,orderstatusid
             Order = Order.CreateOrder(0, 1, DateTime.Now, 1, 1, 1, 1);
-            _mDataService.AddToOrders(Order);
-            DataServiceResponse dataServiceResponse = _mDataService.SaveChanges();
+            DataService.AddToOrders(Order);
+            DataServiceResponse dataServiceResponse = DataService.SaveChanges();
         }
 
         private void UpdateAge(object state)
@@ -100,7 +103,7 @@ namespace BBQRMSSolution.ViewModels
                     (decimal)(menuItem.Price*TAX_PERCENTAGE), menuItem.Id);
 
                 Order.OrderItems.Add(orderItem);
-                _mDataService.SaveChanges();
+                DataService.SaveChanges();
             }
 
             SubTotal += (decimal)menuItem.Price;

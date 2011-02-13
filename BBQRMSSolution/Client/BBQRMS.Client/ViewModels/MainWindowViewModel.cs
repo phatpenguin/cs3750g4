@@ -1,57 +1,52 @@
 using System;
-using BBQRMSSolution.Properties;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class MainWindowViewModel : ViewModelBase, IHandle<UserLoggedIn>, IHandle<UserLoggingOut>, IHandle<ShutdownRequested>
 	{
-		private readonly IMessageBus mMessageBus;
-		private readonly SecurityContext mSecurityContext;
 
-		/// <summary>
-		/// This is called because an instance is instantiated in App.xaml's Resources.
-		/// MainWindow.xaml then uses it as its DataContext.
-		/// </summary>
+		[Obsolete("Called only at design time.", true)]
 		public MainWindowViewModel()
-			: this(new Uri(Settings.Default.dataServiceBaseUri), GlobalApplicationState.MessageBus, GlobalApplicationState.SecurityContext)
 		{
+			MessageBus = new MessageBus();
+			SecurityContext = new DesignTimeSecurityContext();
+			FullScreenContent = new LoginViewModel(DataService, MessageBus);
 		}
 
-		public MainWindowViewModel(Uri serverAddress, IMessageBus messageBus, SecurityContext securityContext)
+		public MainWindowViewModel(Uri serverAddress, IMessageBus messageBus, ISecurityContext securityContext)
 		{
-			mMessageBus = messageBus;
-			mSecurityContext = securityContext;
-			mDataService = new BBQRMSEntities(serverAddress);
-		    GlobalApplicationState.Entities = mDataService;
+			DataService = new BBQRMSEntities(serverAddress);
+			MessageBus = messageBus;
+			SecurityContext = securityContext;
+
 			messageBus.Subscribe(this);
 			ShowLoginScreen();
 		}
 
-		private readonly BBQRMSEntities mDataService;
-
 		public void ShowLoginScreen()
 		{
-			FullScreenContent = new LoginViewModel(mDataService, mMessageBus);
+			FullScreenContent = new LoginViewModel(DataService, MessageBus);
 		}
 
 		private void ShowPostLoginScreen()
 		{
-			FullScreenContent = new PostLoginViewModel(mDataService, mMessageBus, mSecurityContext);
+			FullScreenContent = new PostLoginViewModel(DataService, MessageBus, SecurityContext);
 		}
 
-		private ViewModelBase mFullScreenContent;
+		private ViewModelBase _fullScreenContent;
 
 		public ViewModelBase FullScreenContent
 		{
-			get { return mFullScreenContent; }
+			get { return _fullScreenContent; }
 			private set
 			{
-				if (value != mFullScreenContent)
+				if (value != _fullScreenContent)
 				{
-					mFullScreenContent = value;
+					_fullScreenContent = value;
 					NotifyPropertyChanged("FullScreenContent");
 				}
 			}
@@ -74,7 +69,7 @@ namespace BBQRMSSolution.ViewModels
 			if(false)
 				message.Cancelled = true;
 			else
-				mMessageBus.Publish(new Shutdown());
+				MessageBus.Publish(new Shutdown());
 		}
 	}
 }

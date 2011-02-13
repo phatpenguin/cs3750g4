@@ -2,43 +2,62 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
-    public class AdministrationViewModel : ViewModelBase {
-        private ViewModelBase mContent;
+	public class AdministrationViewModel : ViewModelBase
+	{
+		private ViewModelBase _content;
 
-        public AdministrationViewModel() {
-        }
+		[Obsolete("Used only for design-time only", true)]
+		public AdministrationViewModel()
+		{
+			
+		}
 
-        public ViewModelBase Content
-        {
-            get { return mContent; }
-            set
-            {
-                if (value != mContent)
-                {
-                    mContent = value;
-                    NotifyPropertyChanged("Content");
-                }
-            }
-        }
+		public AdministrationViewModel(BBQRMSEntities dataservice, IMessageBus messageBus, ISecurityContext securityContext)
+		{
+			DataService = dataservice;
+			MessageBus = messageBus;
+			SecurityContext = securityContext;
+		}
 
-        public void HandleChangePIN() {
-            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new ChangePINViewModel()));
-        }
+		public ViewModelBase Content
+		{
+			get { return _content; }
+			set
+			{
+				if (value != _content)
+				{
+					_content = value;
+					NotifyPropertyChanged("Content");
+				}
+			}
+		}
 
-        public void HandleManageEmployees()
-        {
-            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
-        }
+		public void HandleChangePIN()
+		{
+			MessageBus.Publish(new ShowScreen(new ChangePINViewModel(DataService, MessageBus, SecurityContext)));
+		}
 
-        public void HandleManageMenus()
-        {
-            GlobalApplicationState.MessageBus.Publish(new ShowScreen(new MenuManagementViewModel()));
-        }
-    }
+		public void HandleManageEmployees()
+		{
+			MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(DataService)));
+		}
+
+		public void HandleManageMenus()
+		{
+			MessageBus.Publish(new ShowScreen(new MenuManagementViewModel()));
+		}
+		public void HandleManageInventory()
+		{
+			//TODO: Show a new or existing viewmodel for managing inventory.
+			MessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel(DataService, MessageBus)));
+		}
+
+	}
 }

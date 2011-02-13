@@ -11,13 +11,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
 	/// <summary>
 	/// Interaction logic for OrderCashierScreen.xaml
 	/// </summary>
-	public partial class OrderCashierScreen : UserControl
+	public partial class OrderCashierScreen : UserControlBase<OrderCashierScreenViewModel>
 	{
 		public OrderCashierScreen()
 		{

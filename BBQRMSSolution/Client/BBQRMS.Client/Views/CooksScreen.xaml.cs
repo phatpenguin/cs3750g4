@@ -11,13 +11,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
 	/// <summary>
 	/// Interaction logic for CooksScreen.xaml
 	/// </summary>
-	public partial class CooksScreen : UserControl
+	public partial class CooksScreen : UserControlBase<CooksScreenViewModel>
 	{
 		public CooksScreen()
 		{

@@ -18,33 +18,32 @@ namespace BBQRMSSolution.Views
     /// <summary>
     /// Interaction logic for Admin.xaml
     /// </summary>
-    public partial class Admin : UserControl
-    {
-        private AdministrationViewModel administrationViewModel;
+	public partial class Admin : UserControlBase<AdministrationViewModel>
+	{
 
-        public Admin()  {
-            InitializeComponent();
-        }
+		public Admin()
+		{
+			InitializeComponent();
+		}
 
-        public AdministrationViewModel ViewModel {
-            get { return administrationViewModel ?? (administrationViewModel = ((AdministrationViewModel) DataContext)); }
-        }
+		private void manageEmployees_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleManageEmployees();
+		}
 
-        private void manageEmployees_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ViewModel.HandleManageEmployees();
-        }
+		private void changePin_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleChangePIN();
+		}
 
-        private void changePin_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.HandleChangePIN();
-        }
+		private void manageMenus_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleManageMenus();
+		}
 
-        private void manageMenus_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ViewModel.HandleManageMenus();
-        }
-
-
-    }
+		private void manageInventory_Click(object sender, RoutedEventArgs e)
+		{
+			ViewModel.HandleManageInventory();
+		}
+	}
 }

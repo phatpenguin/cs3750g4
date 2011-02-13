@@ -8,52 +8,54 @@ using BBQRMSSolution.ServerProxy;
 
 
 namespace BBQRMSSolution.ViewModels
-{   
-    public class InventoryManagementMenuViewModel:ViewModelBase
-    {
-      
-        private readonly IMessageBus _MessageBus;
-        private BBQRMSEntities _DataService;
-        private ViewModelBase _Content;
-   
+{
+	public class InventoryManagementMenuViewModel : ViewModelBase
+	{
 
-        public InventoryManagementMenuViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
-        {
-            _MessageBus = messageBus;
-            _DataService = dataService;
+		private ViewModelBase _content;
 
-        }
+		[Obsolete("Used for design-time only", true)]
+		public InventoryManagementMenuViewModel()
+		{
+			
+		}
 
-        
-        public ViewModelBase Content{
-            get { return _Content; }
-            set
-            {
-                if (value != _Content)
-                {
-                    _Content = value;
-                    NotifyPropertyChanged("Content");
-                }
-            }
-        }
+		public InventoryManagementMenuViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
+		{
+			DataService = dataService;
+			MessageBus = messageBus;
+		}
 
 
-        public void HandleAddSupplier()
-        {
-            Content = new SupplierDetailViewModel(_DataService, _MessageBus);
+		public ViewModelBase Content
+		{
+			get { return _content; }
+			set
+			{
+				if (value != _content)
+				{
+					_content = value;
+					NotifyPropertyChanged("Content");
+				}
+			}
+		}
 
-        }
-        public void HandleReceiveInventory()
-        {
+
+		public void HandleAddSupplier()
+		{
+			Content = new SupplierDetailViewModel(DataService, MessageBus);
+		}
+		public void HandleReceiveInventory()
+		{
 
 
-        }
-        public void HandleReconcileInventory()
-        {
+		}
+		public void HandleReconcileInventory()
+		{
 
 
-        }
-    }
+		}
+	}
 
-   
+
 }

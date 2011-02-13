@@ -1,8 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Animation;
+﻿using System;
+using System.Windows;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.Views
@@ -10,59 +9,35 @@ namespace BBQRMSSolution.Views
 	/// <summary>
 	/// Interaction logic for LoginView.xaml
 	/// </summary>
-	public partial class LoginView : UserControl, IHandle<InvalidPinEntered>
+	public partial class LoginView : UserControlBase<LoginViewModel>, IHandle<InvalidPinEntered>
 	{
-		private readonly Storyboard mErrorFadeInAnimation;
 
 		public LoginView()
 		{
 			InitializeComponent();
-			Loaded += new RoutedEventHandler(LoginView_Loaded);
+			Loaded += LoginView_Loaded;
 			GlobalApplicationState.MessageBus.Subscribe(this);
-			mErrorFadeInAnimation = (Storyboard)this.FindResource("fadeIn");
-
 		}
 
 		void LoginView_Loaded(object sender, RoutedEventArgs e)
 		{
-			passwordBox.Focus();
+			pinEntry.Focus();
 		}
 
 		private void exitButton_Click(object sender, RoutedEventArgs e)
 		{
-			LoginViewModel.Exit();
+			ViewModel.Exit();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		void IHandle<InvalidPinEntered>.Handle(InvalidPinEntered message)
 		{
-			Button pressed = (Button) sender;
-			passwordBox.Password += pressed.CommandParameter;
+			pinEntry.ShowError(message.ErrorMessage);
+			pinEntry.Cancel();
 		}
 
-		private void cancelButton_Click(object sender, RoutedEventArgs e)
+		private void PINEntry_OnPinEntered(object sender, EventArgs args)
 		{
-			passwordBox.Password = "";
-			passwordBox.Focus();
-		}
-
-		private void enterButton_Click(object sender, RoutedEventArgs e)
-		{
-			LoginViewModel.HandleLogin(passwordBox.Password);
-		}
-
-		private LoginViewModel LoginViewModel
-		{
-			get { return ((LoginViewModel) DataContext); }
-		}
-
-		public void Handle(InvalidPinEntered message)
-		{
-			//clear their old entry
-			passwordBox.Password = "";
-			//set focus back into the password box (it's probably on the enter button now)
-			passwordBox.Focus();
-			//display an error message for a short time.
-			errorText.BeginStoryboard(mErrorFadeInAnimation);
+			ViewModel.HandleLogin(pinEntry.PIN);
 		}
 	}
 }

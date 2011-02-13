@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows;
-using BBQRMSSolution.ViewModels.Messages;
+using BBQRMSSolution.Messages;
 
-namespace BBQRMSSolution
+namespace BBQRMSSolution.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -13,6 +13,7 @@ namespace BBQRMSSolution
 		{
 			InitializeComponent();
 
+			DataContext = ((App) Application.Current).GetMainWindowViewModel();
 			// Insert code required on object creation below this point.
 			Closing += MainWindow_Closing;
 		}
