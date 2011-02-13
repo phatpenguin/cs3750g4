@@ -33,7 +33,7 @@ namespace BBQRMSSolution.Views
 
         private void Button_Save(object sender, RoutedEventArgs e)
         {
-            ViewModel.saveSupplier();
+            ViewModel.SaveSupplier();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace BBQRMSSolution.Views
 
         private void Button_AddSupplier(object sender, RoutedEventArgs e)
         {
-            ViewModel.addSupplier();
+            ViewModel.AddSupplier();
         }
 
        

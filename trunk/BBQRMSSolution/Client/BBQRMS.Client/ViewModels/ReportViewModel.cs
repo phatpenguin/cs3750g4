@@ -11,8 +11,6 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class ReportViewModel : ViewModelBase
 	{
-		private readonly BBQRMSEntities mDataService;
-
 		[Obsolete("Used only by the designer")]
 		protected ReportViewModel()
 		{
@@ -20,58 +18,58 @@ namespace BBQRMSSolution.ViewModels
 
 		public ReportViewModel(BBQRMSEntities dataService)
 		{
-			mDataService = dataService;
-			mParameters = new ObservableCollection<ReportParameterViewModel>();
+			DataService = dataService;
+			_parameters = new ObservableCollection<ReportParameterViewModel>();
 		}
 
-		private readonly ObservableCollection<ReportParameterViewModel> mParameters;
+		private readonly ObservableCollection<ReportParameterViewModel> _parameters;
 
 		public ObservableCollection<ReportParameterViewModel> Parameters
 		{
-			get { return mParameters; }
+			get { return _parameters; }
 		}
 
-		private string mReportName;
+		private string _reportName;
 
 		public string ReportName
 		{
-			get { return mReportName; }
+			get { return _reportName; }
 			set
 			{
-				if (value != mReportName)
+				if (value != _reportName)
 				{
-					mReportName = value;
+					_reportName = value;
 					NotifyPropertyChanged("ReportName");
 				}
 			}
 		}
 
-		private string mGroup;
+		private string _group;
 
 		public string Group
 		{
-			get { return mGroup; }
+			get { return _group; }
 			set
 			{
-				if (value != mGroup)
+				if (value != _group)
 				{
-					mGroup = value;
+					_group = value;
 					NotifyPropertyChanged("Group");
 				}
 			}
 		}
 
-		private bool mHasChart;
+		private bool _hasChart;
 
 		public bool HasChart
 		{
 			get {
-				return mHasChart;
+				return _hasChart;
 			}
 			set {
-				if (value != mHasChart)
+				if (value != _hasChart)
 				{
-					mHasChart = value;
+					_hasChart = value;
 					NotifyPropertyChanged("HasChart");
 				}
 			}
@@ -85,7 +83,7 @@ namespace BBQRMSSolution.ViewModels
 		private IEnumerable GetData()
 		{
 			//If the refresh button on report viewer is going to function, the IEnumerable needs to support more than one enumeration.
-			return mDataService.Menus.Execute().ToList();
+			return DataService.Menus.Execute().ToList();
 		}
 
 		public void RunReport(IReportViewer reportViewer)
@@ -106,16 +104,16 @@ namespace BBQRMSSolution.ViewModels
 
 	public abstract class ReportParameterViewModel : ViewModelBase
 	{
-		private string mPrompt;
+		private string _prompt;
 
 		public string Prompt
 		{
-			get { return mPrompt; }
+			get { return _prompt; }
 			set
 			{
-				if (value != mPrompt)
+				if (value != _prompt)
 				{
-					mPrompt = value;
+					_prompt = value;
 					NotifyPropertyChanged("Prompt");
 				}
 			}
@@ -124,16 +122,16 @@ namespace BBQRMSSolution.ViewModels
 
 	public class ReportDateParameterViewModel : ReportParameterViewModel
 	{
-		private DateTime mValue;
+		private DateTime _value;
 
 		public DateTime Value
 		{
-			get { return mValue; }
+			get { return _value; }
 			set
 			{
-				if (value != mValue)
+				if (value != _value)
 				{
-					mValue = value;
+					_value = value;
 					NotifyPropertyChanged("Value");
 				}
 			}
@@ -142,16 +140,16 @@ namespace BBQRMSSolution.ViewModels
 
 	public class ReportBoolParameterViewModel : ReportParameterViewModel
 	{
-		private bool mValue;
+		private bool _value;
 
 		public bool Value
 		{
-			get { return mValue; }
+			get { return _value; }
 			set
 			{
-				if (value != mValue)
+				if (value != _value)
 				{
-					mValue = value;
+					_value = value;
 					NotifyPropertyChanged("Value");
 				}
 			}
@@ -165,16 +163,16 @@ namespace BBQRMSSolution.ViewModels
 			Options = new ObservableCollection<string>();
 		}
 
-		private string mSelectedOption;
+		private string _selectedOption;
 
 		public string SelectedOption
 		{
-			get { return mSelectedOption; }
+			get { return _selectedOption; }
 			set
 			{
-				if (value != mSelectedOption)
+				if (value != _selectedOption)
 				{
-					mSelectedOption = value;
+					_selectedOption = value;
 					NotifyPropertyChanged("SelectedOption");
 				}
 			}
