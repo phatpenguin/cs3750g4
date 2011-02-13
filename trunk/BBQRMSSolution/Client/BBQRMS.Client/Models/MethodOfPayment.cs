@@ -7,7 +7,7 @@ using Controls;
 
 namespace BBQRMSSolution.Models
 {
-	class MethodOfPayment : BaseModel
+	public class MethodOfPayment : BaseModel
 	{
 		public String Description { get; set; }
 		public String BackColor { get; set; }

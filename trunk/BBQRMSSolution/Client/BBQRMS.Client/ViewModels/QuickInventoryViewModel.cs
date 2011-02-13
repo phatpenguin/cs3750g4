@@ -1,12 +1,14 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
+using BBQRMSSolution.ServerProxy;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public class QuickInventoryViewModel : ViewModelBase
 	{
+		[Obsolete("Used for design-time only", true)]
 		public QuickInventoryViewModel()
 		{
 			Locations =
@@ -49,6 +51,11 @@ namespace BBQRMSSolution.ViewModels
 			RemoveInventoryCommand = new DelegateCommand(HandleRemovedInventoryCommand, CanRemoveInventory);
 		}
 
+		public QuickInventoryViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
+		{
+			DataService = dataService;
+			MessageBus = messageBus;
+		}
 
 		public ObservableCollection<InventoryLocation> Locations { get; private set; }
 
@@ -77,16 +84,16 @@ namespace BBQRMSSolution.ViewModels
 			return !IsWorking;
 		}
 
-		private bool mIsWorking;
+		private bool _isWorking;
 
 		public bool IsWorking
 		{
-			get { return mIsWorking; }
+			get { return _isWorking; }
 			set
 			{
-				if (value != mIsWorking)
+				if (value != _isWorking)
 				{
-					mIsWorking = value;
+					_isWorking = value;
 					NotifyPropertyChanged("IsWorking");
 				}
 			}
@@ -140,15 +147,15 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 
-		private int mNumber;
+		private int _number;
 		public int Number
 		{
-			get { return mNumber; }
+			get { return _number; }
 			private set
 			{
-				if (value != mNumber)
+				if (value != _number)
 				{
-					mNumber = value;
+					_number = value;
 					NotifyPropertyChanged("Number");
 				}
 			}

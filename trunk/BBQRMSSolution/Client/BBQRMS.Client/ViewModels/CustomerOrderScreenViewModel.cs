@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using BBQRMSSolution.ViewModels.Messages;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -8,7 +8,6 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
-		private readonly BBQRMSEntities _mDataService;
 
         public DelegateCommand AddToOrder { get { return new DelegateCommand(Order.AddItem); } }
 
@@ -18,47 +17,46 @@ namespace BBQRMSSolution.ViewModels
 		public DelegateCommand Cancel { get { return new DelegateCommand(CancelOrder); } }
 		public DelegateCommand Cashier { get { return new DelegateCommand(PlaceOrder); } }
 
-		[Obsolete("Used only for design-time")]
+		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
 		{
 			var r = new Random();
 		}
 
-		private readonly IMessageBus _mMessageBus;
-		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus navigationService)
+		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
 		{
-			_mDataService = dataService;
-			_mMessageBus = navigationService;
+			DataService = dataService;
+			MessageBus = messageBus;
 
-			Order = new OrderViewModel(_mMessageBus,_mDataService);
+			Order = new OrderViewModel(MessageBus,DataService);
 
-		    Menus = new ObservableCollection<Menu>(_mDataService.Menus.Execute());
+		    Menus = new ObservableCollection<Menu>(DataService.Menus.Execute());
 		    foreach(var m in Menus)
 		    {
-		        _mDataService.LoadProperty(m, "MenuItems");
+		        DataService.LoadProperty(m, "MenuItems");
 		    }
 
 		    foreach (Menu menu in Menus)
 		    {
-		        _mDataService.LoadProperty(menu, "MenuItems");
+		        DataService.LoadProperty(menu, "MenuItems");
 		    }
             
 		}
 
 		public void CancelOrder()
 		{
-			Order = new OrderViewModel(_mMessageBus,_mDataService);
+			Order = new OrderViewModel(MessageBus,DataService);
 			NotifyPropertyChanged("order");
 		}
 
 		public void PlaceOrder()
 		{
-			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order, _mMessageBus);
+			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order, MessageBus);
 
-            Order = new OrderViewModel(_mMessageBus, _mDataService);
+            Order = new OrderViewModel(MessageBus, DataService);
 			NotifyPropertyChanged("order");
 
-			_mMessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
+			MessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
 		}
 	}
 }

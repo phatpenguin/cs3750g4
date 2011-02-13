@@ -1,4 +1,4 @@
-﻿namespace BBQRMSSolution.ViewModels.Messages
+﻿namespace BBQRMSSolution.Messages
 {
 	public class ShutdownRequested
 	{

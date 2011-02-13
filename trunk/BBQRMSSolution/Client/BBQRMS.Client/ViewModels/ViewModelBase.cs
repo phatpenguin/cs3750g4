@@ -1,6 +1,6 @@
 using System.ComponentModel;
-using System.Collections.ObjectModel;
-using BBQRMSSolution.Models;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.ServerProxy;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -12,16 +12,14 @@ namespace BBQRMSSolution.ViewModels
 		protected void NotifyPropertyChanged(string propName)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
-			if(handler != null)
+			if (handler != null)
 				handler(this, new PropertyChangedEventArgs(propName));
 		}
 
-	    public SecurityContext SecurityContext {
-            get { return GlobalApplicationState.SecurityContext; }
-	    }
+		public ISecurityContext SecurityContext { get; protected set; }
 
-	    public IMessageBus MessageBus {
-            get { return GlobalApplicationState.MessageBus; }
-	    }
+		public IMessageBus MessageBus { get; protected set; }
+
+		public BBQRMSEntities DataService { get; protected set; }
 	}
 }

@@ -2,14 +2,14 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BBQRMSSolution.Views
+namespace BBQRMSSolution.Views.ViewParts
 {
 	/// <summary>
 	/// Interaction logic for ClockOutView.xaml
 	/// </summary>
-	public partial class ClockOutView : UserControl
+	public partial class ClockOut : UserControl
 	{
-		public ClockOutView()
+		public ClockOut()
 		{
 			InitializeComponent();
 		}

@@ -1,26 +1,27 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using BBQRMSSolution.Models;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
-	class OrderCashierScreenViewModel : ViewModelBase
+	public class OrderCashierScreenViewModel : ViewModelBase
 	{
-		private IMessageBus _mMessageBus;
 
 		public OrderViewModel Order { get; set; }
 		public ObservableCollection<MethodOfPayment> MopList { get; set; }
 
+		[Obsolete("Used for design-time only", true)]
 		public OrderCashierScreenViewModel()
 		{
-			Order = new OrderViewModel(null,null);
+			Order = new OrderViewModel();
 
 			MakeMethodOfPaymentList();
 		}
 
-		public OrderCashierScreenViewModel(OrderViewModel orderViewModel, IMessageBus navigationService)
+		public OrderCashierScreenViewModel(OrderViewModel orderViewModel, IMessageBus messageBus)
 		{
-			_mMessageBus = navigationService;
+			MessageBus = messageBus;
 			Order = orderViewModel;
 
 			MakeMethodOfPaymentList();

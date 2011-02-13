@@ -1,28 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Windows;
-using BBQRMSSolution.ViewModels.Messages;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
+using BBQRMSSolution.Properties;
+using BBQRMSSolution.ViewModels;
+using BBQRMSSolution.Views;
 using Controls;
 
 namespace BBQRMSSolution
 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
 	public partial class App : Application, IHandle<Shutdown>
 	{
-		protected override void OnStartup(StartupEventArgs e)
-		{
-			base.OnStartup(e);
-			GlobalApplicationState.MessageBus.Subscribe(this);
-		}
 
-		public void Handle(Shutdown message)
+		void IHandle<Shutdown>.Handle(Shutdown message)
 		{
 			GlobalApplicationState.ShuttingDown = true;
 			Shutdown(0);
+		}
+
+		public ViewModelBase GetMainWindowViewModel()
+		{
+			var securityContext = new SecurityContext();
+
+			GlobalApplicationState.MessageBus.Subscribe(this);
+			GlobalApplicationState.MessageBus.Subscribe(securityContext);
+			return
+				new MainWindowViewModel(
+					new Uri(Settings.Default.dataServiceBaseUri),
+					GlobalApplicationState.MessageBus,
+					securityContext);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
@@ -8,46 +7,39 @@ namespace BBQRMSSolution.Views
 	/// <summary>
 	/// Interaction logic for PostLoginView.xaml
 	/// </summary>
-	public partial class PostLoginView : UserControl
+	public partial class PostLoginView : UserControlBase<PostLoginViewModel>
 	{
 		public PostLoginView()
 		{
 			InitializeComponent();
 		}
 
-		PostLoginViewModel ViewModel { get { return (PostLoginViewModel) DataContext; }}
-
-		private void takeOrders_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void takeOrders_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleTakeOrders();
 		}
 
-		private void cook_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void cook_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleCooksScreen();
 		}
 
-		private void quickInventory_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void quickInventory_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleQuickInventoryScreen();
 		}
 
-		private void reporting_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void reporting_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleReporting();
 		}
 
-		private void manageInventory_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void adminBtn_Click(object sender, RoutedEventArgs e)
 		{
-			ViewModel.HandleManageInventory();
+			ViewModel.HandleAdminBtn();
 		}
 
-        private void adminBtn_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ViewModel.HandleAdminBtn();
-        }
-
-        private void logout_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void logout_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleLogout();
 		}

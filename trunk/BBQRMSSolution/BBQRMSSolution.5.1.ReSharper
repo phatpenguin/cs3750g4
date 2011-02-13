@@ -1,0 +1,150 @@
+<Configuration>
+  <CodeStyleSettings>
+    <ExternalPath IsNull="False">
+    </ExternalPath>
+    <Sharing>SOLUTION</Sharing>
+    <CSharp>
+      <FormatSettings>
+        <MODIFIERS_ORDER IsNull="False">
+          <Item>public</Item>
+          <Item>protected</Item>
+          <Item>internal</Item>
+          <Item>private</Item>
+          <Item>new</Item>
+          <Item>abstract</Item>
+          <Item>virtual</Item>
+          <Item>override</Item>
+          <Item>sealed</Item>
+          <Item>static</Item>
+          <Item>readonly</Item>
+          <Item>extern</Item>
+          <Item>unsafe</Item>
+          <Item>volatile</Item>
+        </MODIFIERS_ORDER>
+      </FormatSettings>
+      <UsingsSettings />
+      <Naming2>
+        <EventHandlerPatternLong>$object$_$event$</EventHandlerPatternLong>
+        <EventHandlerPatternShort>$event$Handler</EventHandlerPatternShort>
+        <OverrideDefaultSettings>True</OverrideDefaultSettings>
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="TypesAndNamespaces" />
+        <PredefinedRule Inspect="True" Prefix="I" Suffix="" Style="AaBb" ElementKind="Interfaces" />
+        <PredefinedRule Inspect="True" Prefix="T" Suffix="" Style="AaBb" ElementKind="TypeParameters" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="MethodPropertyEvent" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Locals" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="LocalConstants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Parameters" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PublicFields" />
+        <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateInstanceFields" />
+        <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateStaticFields" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Constants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateConstants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="StaticReadonly" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateStaticReadonly" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="EnumMember" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Other" />
+        <Abbreviation Text="PIN" />
+      </Naming2>
+    </CSharp>
+    <VB>
+      <FormatSettings />
+      <ImportsSettings />
+      <Naming2>
+        <EventHandlerPatternLong>$object$_On$event$</EventHandlerPatternLong>
+        <EventHandlerPatternShort>$event$Handler</EventHandlerPatternShort>
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="TypesAndNamespaces" />
+        <PredefinedRule Inspect="True" Prefix="I" Suffix="" Style="AaBb" ElementKind="Interfaces" />
+        <PredefinedRule Inspect="True" Prefix="T" Suffix="" Style="AaBb" ElementKind="TypeParameters" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="MethodPropertyEvent" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Locals" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="LocalConstants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Parameters" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PublicFields" />
+        <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateInstanceFields" />
+        <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateStaticFields" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Constants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateConstants" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="StaticReadonly" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateStaticReadonly" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="EnumMember" />
+        <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Other" />
+      </Naming2>
+    </VB>
+    <Web>
+      <Naming2>
+        <UserRule Name="ASP_TAG_NAME" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+        <UserRule Name="ASP_TAG_PREFIX" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+        <UserRule Name="ASP_FIELD" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+        <UserRule Name="ASP_HTML_CONTROL" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+      </Naming2>
+    </Web>
+    <Xaml>
+      <Naming2>
+        <UserRule Name="XAML_FIELD" Inspect="True" Prefix="_" Suffix="" Style="aaBb" />
+        <UserRule Name="NAMESPACE_ALIAS" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+        <UserRule Name="XAML_RESOURCE" Inspect="True" Prefix="" Suffix="" Style="AaBb" />
+      </Naming2>
+    </Xaml>
+    <XML>
+      <FormatSettings />
+    </XML>
+    <GenerateMemberBody />
+    <Naming2>
+      <EventHandlerPatternLong>$object$_$event$</EventHandlerPatternLong>
+      <EventHandlerPatternShort>$event$Handler</EventHandlerPatternShort>
+      <ExceptionName IsNull="False">
+      </ExceptionName>
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="TypesAndNamespaces" />
+      <PredefinedRule Inspect="True" Prefix="I" Suffix="" Style="AaBb" ElementKind="Interfaces" />
+      <PredefinedRule Inspect="True" Prefix="T" Suffix="" Style="AaBb" ElementKind="TypeParameters" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="MethodPropertyEvent" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Locals" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="LocalConstants" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="aaBb" ElementKind="Parameters" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PublicFields" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Constants" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="StaticReadonly" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="EnumMember" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Other" />
+      <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateInstanceFields" />
+      <PredefinedRule Inspect="True" Prefix="_" Suffix="" Style="aaBb" ElementKind="PrivateStaticFields" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateConstants" />
+      <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="PrivateStaticReadonly" />
+      <Abbreviation Text="ID" />
+      <Abbreviation Text="BBQRMS" />
+      <Abbreviation Text="PIN" />
+    </Naming2>
+  </CodeStyleSettings>
+  <SharedSolutionTemplateManager>
+    <LiveTemplates>
+      <Template uid="44263091-59eb-44aa-bb53-84554cd5e935" shortcut="propvm" description="New View Model Property. Calls NotifyPropertyChanged" text="		private $TYPE$ m$NAME$;&#xD;&#xA;		public $TYPE$ $NAME$&#xD;&#xA;		{&#xD;&#xA;			get { return m$NAME$; }&#xD;&#xA;			set&#xD;&#xA;			{&#xD;&#xA;				if(value != m$NAME$)&#xD;&#xA;				{&#xD;&#xA;					m$NAME$ = value;&#xD;&#xA;					NotifyPropertyChanged(&quot;$NAME$&quot;);&#xD;&#xA;				}&#xD;&#xA;			}&#xD;&#xA;		}" reformat="False" shortenQualifiedReferences="True">
+        <Context>
+          <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+        </Context>
+        <Categories />
+        <Variables>
+          <Variable name="NAME" expression="constant(&quot;Property&quot;)" initialRange="1" />
+          <Variable name="TYPE" expression="constant(&quot;string&quot;)" initialRange="1" />
+        </Variables>
+        <CustomProperties />
+      </Template>
+    </LiveTemplates>
+    <FileTemplates>
+      <Template uid="88969051-79d3-4c91-87ae-2f52c45b92b0" shortcut="" description="View Model" text="using System;&#xD;&#xA;using System.ComponentModel;&#xD;&#xA;using System.Data.Services.Client;&#xD;&#xA;using System.Linq;&#xD;&#xA;using BBQRMSSolution.BusinessLogic;&#xD;&#xA;using BBQRMSSolution.Messages;&#xD;&#xA;using BBQRMSSolution.ServerProxy;&#xD;&#xA;using Controls;&#xD;&#xA;&#xD;&#xA;namespace $NS$&#xD;&#xA;{  &#xD;&#xA;   public class $NAME$ : ViewModelBase&#xD;&#xA;   {&#xD;&#xA;       [Obsolete(&quot;Used for design-time only&quot;, true)]&#xD;&#xA;       public $NAME$() { }&#xD;&#xA;       &#xD;&#xA;       public $NAME$(BBQRMSEntities dataService, IMessageBus messageBus, ISecurityContext securityContext)&#xD;&#xA;       {&#xD;&#xA;           DataService = dataService;&#xD;&#xA;           MessageBus = messageBus;&#xD;&#xA;           SecurityContext = securityContext;&#xD;&#xA;       }&#xD;&#xA;			 $END$&#xD;&#xA;   }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+        <Context>
+          <ProjectLanguageContext language="CSharp" />
+        </Context>
+        <Categories />
+        <Variables>
+          <Variable name="NS" expression="fileDefaultNamespace()" initialRange="-1" />
+          <Variable name="NAME" expression="getFileNameWithoutExtension()" initialRange="-1" />
+        </Variables>
+        <CustomProperties>
+          <Property key="FileName" value="ViewModel" />
+          <Property key="Extension" value="cs" />
+          <Property key="ValidateFileName" value="True" />
+        </CustomProperties>
+      </Template>
+    </FileTemplates>
+  </SharedSolutionTemplateManager>
+</Configuration>

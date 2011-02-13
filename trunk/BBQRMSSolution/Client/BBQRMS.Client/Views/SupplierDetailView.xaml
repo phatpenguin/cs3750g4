@@ -2,17 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="600">
 
     <DockPanel>
-        <StackPanel>
-            <ListBox ItemsSource="{Binding Path=Suppliers}" SelectedItem="{Binding Path=SelectedSupplier}" DisplayMemberPath="Name">
-                
-            </ListBox>
-            <Button Content="Add Supplier" Click="Button_AddSupplier" />
-        </StackPanel>
+        <DockPanel>
+			<c:ImageButton
+				DockPanel.Dock="Bottom"
+				Style="{StaticResource ImageButton.FormButton}"
+				Content="Add Supplier"
+				ImageSource="{StaticResource BBQRMS.Image.Add}"
+				Click="Button_AddSupplier" />
+			<ListBox ItemsSource="{Binding Path=Suppliers}" SelectedItem="{Binding Path=SelectedSupplier}" DisplayMemberPath="Name">
+
+			</ListBox>
+		</DockPanel>
         <StackPanel>
             <Grid DataContext="{Binding Path=SelectedSupplier}">
                 <Grid.RowDefinitions>
@@ -47,9 +51,18 @@
                 <Label Content="Rating"  Name="RatingLbl" Grid.Column="0" Grid.Row="5" />
                 <TextBox Name="POCTb" Grid.Column="1" Grid.Row="5" Text="{Binding Path=Rating}" />
 
-                <Button Grid.Column="0" Grid.Row="8" Content="Save" Click="Button_Save" />
-                <Button Grid.Column="1" Grid.Row="8" Content="Delete" Click="Button_Delete" />
-                
+				<c:ImageButton
+					Grid.Column="0" Grid.Row="8" 
+					Style="{StaticResource ImageButton.FormButton}"
+					Content="Save"
+					ImageSource="{StaticResource BBQRMS.Image.Save}"
+					Click="Button_Save"/>
+				<c:ImageButton
+					Grid.Column="1" Grid.Row="8" 
+					Style="{StaticResource ImageButton.FormButton}"
+					Content="Delete"
+					ImageSource="{StaticResource BBQRMS.Image.Trash}"
+					Click="Button_Delete"/>
             </Grid>
         </StackPanel>
     </DockPanel>

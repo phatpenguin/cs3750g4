@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
-using BBQRMSSolution.ViewModels;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
-namespace BBQRMSSolution
+namespace BBQRMSSolution.BusinessLogic
 {
-	public class SecurityContext : INotifyPropertyChanged, IHandle<UserLoggedIn>, IHandle<UserLoggingOut>
+	public class SecurityContext : IHandle<UserLoggedIn>, IHandle<UserLoggingOut>, ISecurityContext
 	{
 		private Employee mCurrentUser;
 		public Employee CurrentUser
@@ -31,9 +30,14 @@ namespace BBQRMSSolution
 			CurrentUser = message.Employee;
 		}
 
-		public void Handle(UserLoggingOut message)
+		void IHandle<UserLoggingOut>.Handle(UserLoggingOut message)
 		{
 			CurrentUser = null;
 		}
+	}
+
+	public interface ISecurityContext : INotifyPropertyChanged
+	{
+		Employee CurrentUser { get; }
 	}
 }

@@ -18,10 +18,10 @@ namespace BBQRMSSolution.Views
     /// <summary>
     /// Interaction logic for InventoryManagementMenuView.xaml
     /// </summary>
-    public partial class InventoryManagementMenuView : UserControl
+    public partial class InventoryManagementMenuView : UserControlBase<InventoryManagementMenuViewModel>
     {
-        InventoryManagementMenuViewModel ViewModel { get { return (InventoryManagementMenuViewModel)DataContext; } }
-        public InventoryManagementMenuView()
+
+			public InventoryManagementMenuView()
         {
             InitializeComponent();
         }

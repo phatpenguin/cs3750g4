@@ -1,4 +1,6 @@
-﻿namespace BBQRMSSolution.ViewModels.Messages
+﻿using BBQRMSSolution.ViewModels;
+
+namespace BBQRMSSolution.Messages
 {
 	public class ShowScreen
 	{

@@ -68,7 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GlobalApplicationState.cs" />
+    <Compile Include="SampleData\DesignTimeEmployee.cs" />
+    <Compile Include="SampleData\DesignTimePayTypes.cs" />
+    <Compile Include="SampleData\DesignTimeRoles.cs" />
+    <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -76,7 +79,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SecurityContext.cs" />
+    <Compile Include="BusinessLogic\SecurityContext.cs" />
     <Compile Include="ServerProxy\EmployeePrivileges.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,17 +90,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
-    <Compile Include="TimeProvider.cs" />
+    <Compile Include="BusinessLogic\TimeProvider.cs" />
     <Compile Include="ViewModels\AdministrationViewModel.cs" />
     <Compile Include="ViewModels\ChangePINViewModel.cs" />
     <Compile Include="ViewModels\MenuManagementViewModel.cs" />
-    <Compile Include="ViewModels\Messages\ClockOutMode.cs" />
+    <Compile Include="Messages\ClockOutMode.cs" />
     <Compile Include="ViewModels\CooksScreenViewModel.cs" />
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
-    <Compile Include="ViewModels\Messages\InvalidPinEntered.cs" />
-    <Compile Include="ViewModels\InventoryItem.cs" />
+    <Compile Include="Messages\InvalidPinEntered.cs" />
     <Compile Include="ViewModels\InventoryManagementMenuViewModel.cs" />
-    <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="Models\MethodOfPayment.cs" />
     <Compile Include="ViewModels\IReportViewer.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -107,17 +108,17 @@
     <Compile Include="Views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Messages\ShowScreen.cs" />
+    <Compile Include="Messages\ShowScreen.cs" />
     <Compile Include="ViewModels\SupplierDetailViewModel.cs" />
-    <Compile Include="ViewModels\Messages\ShutdownRequested.cs" />
-    <Compile Include="ViewModels\Messages\UserLoggedIn.cs" />
-    <Compile Include="ViewModels\Messages\Shutdown.cs" />
-    <Compile Include="ViewModels\Messages\UserLoggingOut.cs" />
+    <Compile Include="Messages\ShutdownRequested.cs" />
+    <Compile Include="Messages\UserLoggedIn.cs" />
+    <Compile Include="Messages\Shutdown.cs" />
+    <Compile Include="Messages\UserLoggingOut.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClockOutView.xaml.cs">
-      <DependentUpon>ClockOutView.xaml</DependentUpon>
+    <Compile Include="Views\ViewParts\ClockOut.xaml.cs">
+      <DependentUpon>ClockOut.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
@@ -126,7 +127,6 @@
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SampleData\InventoryItems.cs" />
     <Compile Include="ViewModels\ChooseReportViewModel.cs" />
     <Compile Include="ViewModels\EmployeeManagementViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -139,12 +139,6 @@
     </Compile>
     <Compile Include="Views\EmployeeManangment.xaml.cs">
       <DependentUpon>EmployeeManangment.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InventoryItemDetail.xaml.cs">
-      <DependentUpon>InventoryItemDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InventoryManagement.xaml.cs">
-      <DependentUpon>InventoryManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InventoryManagementMenuView.xaml.cs">
       <DependentUpon>InventoryManagementMenuView.xaml</DependentUpon>
@@ -175,11 +169,14 @@
       <DependentUpon>SupplierDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControlBase.cs" />
+    <Compile Include="Views\ViewParts\PINEntry.xaml.cs">
+      <DependentUpon>PINEntry.xaml</DependentUpon>
+    </Compile>
     <Page Include="Graphics\images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -187,7 +184,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -195,10 +192,6 @@
       <DependentUpon>ChooseReport.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SampleData\InventoryItems.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Styles\DefaultStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,7 +208,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClockOutView.xaml">
+    <Page Include="Views\ViewParts\ClockOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,14 +227,6 @@
     <Page Include="Views\CustomerOrderScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\InventoryItemDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\InventoryManagement.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\InventoryManagementMenuView.xaml">
       <SubType>Designer</SubType>
@@ -276,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SupplierDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewParts\PINEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -408,10 +397,24 @@
   <ItemGroup>
     <Resource Include="Graphics\add.png" />
     <Resource Include="Graphics\cross.png" />
-    <Resource Include="Graphics\trash.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\clock_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\lock_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\list-add-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\media-floppy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\bin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

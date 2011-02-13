@@ -1,10 +1,14 @@
-﻿<UserControl x:Class="BBQRMSSolution.Views.EmployeeManangment"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-						 xmlns:Views="clr-namespace:BBQRMSSolution.Views"
-						 xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels" xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" mc:Ignorable="d" 
+﻿<Views:UserControlBase
+	x:Class="BBQRMSSolution.Views.EmployeeManangment"
+	x:TypeArguments="viewmodels:EmployeeManagementViewModel"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
+	xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d" 
+	x:Name="me"
 	d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeManagementViewModel, IsDesignTimeCreatable=True}">
   <DockPanel>
     <DockPanel DockPanel.Dock="Left">
@@ -21,7 +25,12 @@
             </DataTemplate>            
           </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Add Employee" Click="AddEmployeeCommand" Style="{StaticResource Button.Add}"/>
+				<c:ImageButton
+					Style="{StaticResource ImageButton.FormButton}"
+					ImageSource="{StaticResource BBQRMS.Image.Add}"
+					Content="Add Employee"
+					Click="AddEmployeeCommand"
+					/>
       </StackPanel>
       <DockPanel DockPanel.Dock="Top" >
         <Label Content="Employees" Margin="5,0" DockPanel.Dock="Top"/>
@@ -39,7 +48,12 @@
       </DockPanel>
     </DockPanel>
     <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedEmployee, Mode=TwoWay}" Visibility="Collapsed">
-      <Views:EmployeeInfo DataContext="{Binding Path=SelectedEmployee}"/>
+      <Views:EmployeeInfo
+				DataContext="{Binding Path=SelectedEmployee}"
+				PayTypes="{Binding ElementName=me, Path=DataContext.PayTypes}"
+				AllRoles="{Binding ElementName=me, Path=DataContext.Roles}"
+				SaveCommand="{Binding ElementName=me, Path=DataContext.SaveEmployee}"
+				/>
     </DockPanel>
   </DockPanel>
-</UserControl>
+</Views:UserControlBase>

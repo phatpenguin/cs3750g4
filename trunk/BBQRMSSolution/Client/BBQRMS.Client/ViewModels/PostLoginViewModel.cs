@@ -1,178 +1,160 @@
 using System;
+using System.ComponentModel;
 using System.Data.Services.Client;
 using System.Linq;
+using BBQRMSSolution.BusinessLogic;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
-using BBQRMSSolution.ViewModels.Messages;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
-    public class PostLoginViewModel : ViewModelBase, IHandle<ShowScreen>
-    {
-        private readonly IMessageBus mMessageBus;
-        private readonly BBQRMSEntities mDataService;
-        private readonly SecurityContext mSecurityContext;
+	public class PostLoginViewModel : ViewModelBase, IHandle<ShowScreen>
+	{
+		private ViewModelBase _content;
+		private bool _clockOutVisible;
 
-        private ViewModelBase mContent;
-        private bool mClockOutVisible;
-
-        [Obsolete("To be used only at design time")]
-        public PostLoginViewModel()
-        {
-            var sc = new DesignTimeSecurityContext();
-            sc.CurrentUser = new Employee { FirstName = "Fred", LastName = "Jones" };
-            mSecurityContext = sc;
-        }
-
-
-        public PostLoginViewModel(BBQRMSEntities dataService, IMessageBus messageBus, SecurityContext securityContext)
-        {
-            mMessageBus = messageBus;
-            mDataService = dataService;
-            mSecurityContext = securityContext;
-            messageBus.Subscribe(this);
-        }
-
-        public ViewModelBase Content
-        {
-            get { return mContent; }
-            set
-            {
-                if (value != mContent)
-                {
-                    mContent = value;
-                    NotifyPropertyChanged("Content");
-                }
-            }
-        }
-
-        public SecurityContext SecurityContext
-        {
-            get
-            {
-                return mSecurityContext;
-            }
-        }
+		[Obsolete("To be used only at design time", true)]
+		public PostLoginViewModel()
+		{
+			var sc =
+				new DesignTimeSecurityContext
+					{
+						CurrentUser = new Employee { FirstName = "Fred", LastName = "Jones" }
+					};
+			SecurityContext = sc;
+		}
 
 
-        public void HandleTakeOrders()
-        {
-            //TODO: Show a new or existing viewmodel for taking orders.
-            mMessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(mDataService, mMessageBus)));
-            //TODO:
-            // Maybe each of these modules can be represented by an instance (mockable).
-            // Then we each can just work with that instance to handle the button click by providing a method which might show an existing VM or create a new one.
-            // Each module instance could hold onto the reusable viewmodels.
-        }
-        public void HandleCooksScreen()
-        {
-            //TODO: Show a new or existing viewmodel for the cooks screen.
-            mMessageBus.Publish(new ShowScreen(new CooksScreenViewModel()));
-        }
+		public PostLoginViewModel(BBQRMSEntities dataService, IMessageBus messageBus, ISecurityContext securityContext)
+		{
+			MessageBus = messageBus;
+			DataService = dataService;
+			SecurityContext = securityContext;
+			
+			messageBus.Subscribe(this);
+		}
 
-        public void HandleQuickInventoryScreen()
-        {
-            //TODO: Show a new or existing viewmodel for quick inventory.
-            mMessageBus.Publish(new ShowScreen(new QuickInventoryViewModel()));
-        }
+		public ViewModelBase Content
+		{
+			get { return _content; }
+			set
+			{
+				if (value != _content)
+				{
+					_content = value;
+					NotifyPropertyChanged("Content");
+				}
+			}
+		}
 
-        public void HandleReporting()
-        {
-            //TODO: Show a new or existing viewmodel for reporting.
-            mMessageBus.Publish(new ShowScreen(new ChooseReportViewModel(mDataService, mMessageBus)));
-        }
+		public void HandleTakeOrders()
+		{
+			//TODO: Show a new or existing viewmodel for taking orders.
+			MessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(DataService, MessageBus)));
+			//TODO:
+			// Maybe each of these modules can be represented by an instance (mockable).
+			// Then we each can just work with that instance to handle the button click by providing a method which might show an existing VM or create a new one.
+			// Each module instance could hold onto the reusable viewmodels.
+		}
 
-        public void HandleManageEmployees()
-        {
-            //TODO: Show a new or existing viewmodel for managing employees.
-            //			mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
-            mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
-        }
+		public void HandleCooksScreen()
+		{
+			//TODO: Show a new or existing viewmodel for the cooks screen.
+			MessageBus.Publish(new ShowScreen(new CooksScreenViewModel(DataService, MessageBus)));
+		}
 
-        public void HandleManageInventory()
-        {
-            //TODO: Show a new or existing viewmodel for managing inventory.
-            //This was changed just to get the solution to compile.
-            mMessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel(mDataService, mMessageBus)));
-        }
+		public void HandleQuickInventoryScreen()
+		{
+			//TODO: Show a new or existing viewmodel for quick inventory.
+			MessageBus.Publish(new ShowScreen(new QuickInventoryViewModel(DataService, MessageBus)));
+		}
 
-        public void HandleManageMenus()
-        {
-            //TODO: Show a new or existing viewmodel for managing menus.
-        }
+		public void HandleReporting()
+		{
+			//TODO: Show a new or existing viewmodel for reporting.
+			MessageBus.Publish(new ShowScreen(new ChooseReportViewModel(DataService, MessageBus)));
+		}
 
-        public void HandleAdminBtn()
-        {
-            mMessageBus.Publish(new ShowScreen(new AdministrationViewModel()));
-        }
+		public void HandleManageEmployees()
+		{
+			//TODO: Show a new or existing viewmodel for managing employees.
+			//			mMessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel()));
+			MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(DataService)));
+		}
 
-        public void HandleLogout()
-        {
-            mMessageBus.Publish(new UserLoggingOut());
-        }
+		public void HandleManageMenus()
+		{
+			//TODO: Show a new or existing viewmodel for managing menus.
+		}
 
+		public void HandleAdminBtn()
+		{
+			MessageBus.Publish(new ShowScreen(new AdministrationViewModel(DataService, MessageBus, SecurityContext)));
+		}
 
-        void IHandle<ShowScreen>.Handle(ShowScreen message)
-        {
-            Content = message.ViewModelToShow;
-        }
+		public void HandleLogout()
+		{
+			MessageBus.Publish(new UserLoggingOut());
+		}
 
-        public void HandleClockOut()
-        {
-            // show clock-out confirmation user interface
-            ClockOutVisible = true;
-        }
+		public void HandleClockOut()
+		{
+			// show clock-out confirmation user interface
+			ClockOutVisible = true;
+		}
 
-        public bool ClockOutVisible
-        {
-            get
-            {
-                return mClockOutVisible;
-            }
-            set
-            {
-                if (value != mClockOutVisible)
-                {
-                    mClockOutVisible = value;
-                    mMessageBus.Publish(new ClockOutMode(mClockOutVisible));
-                    NotifyPropertyChanged("ClockOutVisible");
-                }
-            }
-        }
+		void IHandle<ShowScreen>.Handle(ShowScreen message)
+		{
+			Content = message.ViewModelToShow;
+		}
 
-        public void ConfirmClockOut()
-        {
-            //TODO: actually clock out.
-            var openClocks =
-                mDataService.EmployeeTimeClocks.Where(
-                    tc => tc.EmployeeId == mSecurityContext.CurrentUser.Id && tc.ClockOutTimeUTC == null).OrderByDescending(tc => tc.ClockInTimeUTC).ToList();
-            if (openClocks.Count == 0)
-            {
-                //TODO: handle the exceptional case.. no open timeclock.
-            }
-            else
-            {
-                openClocks[0].ClockOutTimeUTC = TimeProvider.Current.UtcNow;
-                mDataService.UpdateObject(openClocks[0]);
-                mDataService.SaveChanges(SaveChangesOptions.Batch);
-                HandleLogout();
-                ClockOutVisible = false;
-            }
-        }
+		public bool ClockOutVisible
+		{
+			get
+			{
+				return _clockOutVisible;
+			}
+			set
+			{
+				if (value != _clockOutVisible)
+				{
+					_clockOutVisible = value;
+					MessageBus.Publish(new ClockOutMode(_clockOutVisible));
+					NotifyPropertyChanged("ClockOutVisible");
+				}
+			}
+		}
 
-        public void CancelClockOut()
-        {
-            ClockOutVisible = false;
-        }
+		public void ConfirmClockOut()
+		{
+			// actually clock out.
+			var openClocks =
+					DataService.EmployeeTimeClocks.Where(
+							tc => tc.EmployeeId == SecurityContext.CurrentUser.Id && tc.ClockOutTimeUTC == null).OrderByDescending(tc => tc.ClockInTimeUTC).ToList();
+			if (openClocks.Count == 0)
+			{
+				//TODO: handle the exceptional case.. no open timeclock.
+			}
+			else
+			{
+				openClocks[0].ClockOutTimeUTC = TimeProvider.Current.UtcNow;
+				DataService.UpdateObject(openClocks[0]);
+				DataService.SaveChanges(SaveChangesOptions.Batch);
+				HandleLogout();
+				ClockOutVisible = false;
+			}
+		}
 
-        public class DesignTimeSecurityContext : SecurityContext
-        {
-            public new Employee CurrentUser { get; set; }
-        }
+		public void CancelClockOut()
+		{
+			ClockOutVisible = false;
+		}
+	}
 
-        public void Handle(ShowScreen message)
-        {
-            throw new NotImplementedException();
-        }
-    }
+	public class DesignTimeSecurityContext : ISecurityContext
+	{
+		public Employee CurrentUser { get; set; }
+		public event PropertyChangedEventHandler PropertyChanged;
+	}
 }

@@ -1,6 +1,6 @@
 ﻿using BBQRMSSolution.ServerProxy;
 
-namespace BBQRMSSolution.ViewModels.Messages
+namespace BBQRMSSolution.Messages
 {
 	public class UserLoggedIn
 	{

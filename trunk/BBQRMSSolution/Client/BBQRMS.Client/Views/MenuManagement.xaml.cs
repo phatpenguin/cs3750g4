@@ -18,17 +18,12 @@ namespace BBQRMSSolution.Views
     /// <summary>
     /// Interaction logic for MenuManagement.xaml
     /// </summary>
-    public partial class MenuManagement : UserControl
+    public partial class MenuManagement : UserControlBase<MenuManagementViewModel>
     {
-        private MenuManagementViewModel viewModel;
-
         public MenuManagement()
         {
             InitializeComponent();
         }
 
-        public MenuManagementViewModel ViewModel {
-            get { return viewModel ?? (viewModel = DataContext as MenuManagementViewModel); }
-        }
     }
 }

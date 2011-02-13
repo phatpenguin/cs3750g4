@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,6 +68,7 @@
     <Compile Include="DragDropControl\DragDropUtilities.cs" />
     <Compile Include="DragDropControl\DraggedAdorner.cs" />
     <Compile Include="DragDropControl\InsertionAdorner.cs" />
+    <Compile Include="ImageButton.cs" />
     <Compile Include="ListComboBox.cs" />
     <Compile Include="MessageBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

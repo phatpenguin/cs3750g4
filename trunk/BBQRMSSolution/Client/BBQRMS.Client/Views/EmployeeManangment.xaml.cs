@@ -19,25 +19,12 @@ namespace BBQRMSSolution.Views
     /// <summary>
     /// Interaction logic for EmployeeManangment.xaml
     /// </summary>
-    public partial class EmployeeManangment : UserControl
+    public partial class EmployeeManangment : UserControlBase<EmployeeManagementViewModel>
     {
-        private EmployeeManagementViewModel employeeManagementViewModel;
 
         public EmployeeManangment()
         {
             InitializeComponent();
-        }
-
-        public EmployeeManagementViewModel ViewModel
-        {
-            get
-            {
-                if (employeeManagementViewModel == null)
-                {
-                    employeeManagementViewModel = ((EmployeeManagementViewModel) DataContext);
-                }
-                return employeeManagementViewModel;
-            }
         }
 
         private void SaveCommand(object sender, RoutedEventArgs e)

@@ -36,18 +36,11 @@
 		<Views:EmployeeManangment />
 	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:InventoryManagementViewModel}">
-        <Views:InventoryManagement />
-    </DataTemplate>
-
   <DataTemplate DataType="{x:Type ViewModels:MenuManagementViewModel}">
     <Views:MenuManagement />
   </DataTemplate>
 
-  <DataTemplate DataType="{x:Type ViewModels:InventoryItem}">
-        <Views:InventoryItemDetail />
-    </DataTemplate>
-	
+
 	<DataTemplate DataType="{x:Type ViewModels:CooksScreenViewModel}">
 		<Views:CooksScreen />
 	</DataTemplate>

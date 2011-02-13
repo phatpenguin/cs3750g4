@@ -1,6 +1,7 @@
 using System;
 using BBQRMS.WCFServices;
 using BBQRMSSolution;
+using BBQRMSSolution.BusinessLogic;
 
 namespace BBQRMS.Client.Tests
 {
