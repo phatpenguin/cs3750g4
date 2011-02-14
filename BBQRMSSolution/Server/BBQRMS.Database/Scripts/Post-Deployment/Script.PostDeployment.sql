@@ -14,3 +14,7 @@ Post-Deployment Script Template
 :r .\ReferenceData\InitialPaymentTypeData.sql
 :r .\ReferenceData\InitialEmployeesAndUsers.sql
 :r .\ReferenceData\InitialMenus.sql
+:r .\ReferenceData\InitialDinerTypes.sql
+:r .\ReferenceData\InitialOrderStates.sql
+:r .\ReferenceData\InitialOrderTypes.sql
+:r .\ReferenceData\InitialPaymentStates.sql

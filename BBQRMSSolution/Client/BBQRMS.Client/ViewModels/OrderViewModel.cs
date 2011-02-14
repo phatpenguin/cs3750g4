@@ -14,7 +14,7 @@ namespace BBQRMSSolution.ViewModels
 
         public Order Order { get; set; }
 
-        private const decimal TAX_PERCENTAGE = 8.25m;
+        private const decimal TAX_PERCENTAGE = .0825m;
 
         public decimal SubTotal { get { return _st; } set { _st = value; NotifyPropertyChanged("subTotal"); } }
         public decimal TotalPrice { get { return _tp; } set { _tp = value; NotifyPropertyChanged("totalPrice"); } }
@@ -92,6 +92,8 @@ namespace BBQRMSSolution.ViewModels
                 {
                     oi.Quantity++;
                     NotifyPropertyChanged("oi");
+                    DataService.UpdateObject(oi);
+                    DataService.SaveChanges();
                     break;
                 }
                 isFound = false;
@@ -102,13 +104,13 @@ namespace BBQRMSSolution.ViewModels
                 var orderItem = OrderItem.CreateOrderItem(0, Order.Id, menuItem.Name, 1, (decimal)menuItem.Price,
                     (decimal)(menuItem.Price*TAX_PERCENTAGE), menuItem.Id);
 
+                DataService.AddToOrderItems(orderItem);
                 Order.OrderItems.Add(orderItem);
+                DataService.UpdateObject(Order);
                 DataService.SaveChanges();
             }
 
-            SubTotal += (decimal)menuItem.Price;
-            TaxAmount = SubTotal * (TAX_PERCENTAGE / 100);
-            TotalPrice = SubTotal + TaxAmount;
+            CalculateTotals();
         }
 
         public void RemoveItem(Object oi)
@@ -118,8 +120,18 @@ namespace BBQRMSSolution.ViewModels
             if (orderItem.Quantity > 1) orderItem.Quantity--;
             else Order.OrderItems.Remove(orderItem);
 
-            SubTotal -= (decimal)orderItem.MenuItem.Price;
-            TaxAmount = SubTotal * (TAX_PERCENTAGE / 100);
+            CalculateTotals();
+        }
+
+        private void CalculateTotals()
+        {
+            SubTotal = 0m;
+            TaxAmount = 0m;
+            foreach (var oi in Order.OrderItems)
+            {
+                SubTotal += oi.UnitPrice*oi.Quantity;
+                TaxAmount += Math.Round(oi.UnitTax*oi.Quantity,2);
+            }
             TotalPrice = SubTotal + TaxAmount;
         }
     }
