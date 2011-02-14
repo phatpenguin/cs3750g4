@@ -68,13 +68,13 @@
 				</TabControl.ContentTemplate>
 			</TabControl>
 		</DockPanel>
-		<DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" Width="439">
-            <DataGrid ItemsSource="{Binding Order.Items}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="439">
+		<DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" Width="439" DataContext="{Binding Order}">
+            <DataGrid ItemsSource="{Binding Order.OrderItems}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="439">
 				<DataGrid.Columns>
-					<DataGridTextColumn Binding="{Binding Number}" Header="#"/>
+					<DataGridTextColumn Binding="{Binding Id}" Header="#"/>
 					<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True"/>
 					<DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" Width="*"/>
-					<DataGridTextColumn Binding="{Binding Price}" Header="Price" IsReadOnly="True"/>
+					<DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" IsReadOnly="True"/>
 					<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
@@ -84,31 +84,23 @@
 					</DataGridTemplateColumn>
 				</DataGrid.Columns>
 			</DataGrid>
-			</DockPanel>
-        <Grid Grid.Column="1" Grid.Row="2" Height="166" HorizontalAlignment="Left" Margin="730,0,0,0" Name="grid1" VerticalAlignment="Top" Width="200">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="32*" />
-                <RowDefinition Height="25*" />
-                <RowDefinition Height="23*" />
-                <RowDefinition Height="27*" />
-                <RowDefinition Height="20*" />
-                <RowDefinition Height="39*" />
-            </Grid.RowDefinitions>
-            <TextBlock FontSize="15" TextAlignment="Right" Margin="0,6,0,0"><Run Text="Subtotal: $" /><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Margin="0,1,2,0" Grid.Row="1"><Run Text="Tax: $" /><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
-            <TextBlock Grid.Row="2" FontSize="18.667" TextAlignment="Right" Margin="0,0,0,0"><Run Text="Total: $" /><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="18.667" Height="20" Margin="0,0,2,0" TextAlignment="Right" Grid.Row="4"><Run Text="Payments: $" /> <Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="18.667" Height="20" Margin="0,2,0,17" TextAlignment="Right" Grid.Row="5"><Run Text="Remaining: $" /> <Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="18.667" Margin="0,0,0,0" TextAlignment="Right" Grid.Row="3"><Run Text="Discounts: $" /><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-        </Grid>
-        <Button Content="Cashier" Height="45" Grid.Column="1" Grid.Row="2" Command="{Binding Cashier}" Margin="0,172,137,81" Width="130" HorizontalAlignment="Right" />
-        <Button Content="Cancel Order" Height="45" Grid.Row="2" Command="{Binding Cancel}" Margin="0,172,274,81" Grid.Column="1" HorizontalAlignment="Right" Width="130" />
-        <Button Command="{Binding Cancel}" Content="Discount Order" Height="45" Margin="802,172,0,0" Grid.Row="2" Width="130" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <Button Command="{Binding Cancel}" Content="Add Payment" Height="45" Margin="528,223,274,30" Grid.Row="2" Grid.Column="1" Width="130" />
-        <Button Command="{Binding Cancel}" Content="Send to Kitchen" Height="45" Margin="0,223,137,30" Grid.Row="2" Width="130" Grid.Column="1" HorizontalAlignment="Right" />
-        <Button Command="{Binding Cashier}" Content="Recall Order" Height="45" HorizontalAlignment="Right" Margin="0,72,274,181" Width="130" Grid.Row="2" Grid.Column="1" />
-        <Button Command="{Binding Cashier}" Content="Save Order" Height="45" HorizontalAlignment="Right" Margin="0,21,274,232" Width="130" Grid.Row="2" Grid.Column="1" />
-        <Button Command="{Binding Cashier}" Content="Cashier" Height="45" HorizontalAlignment="Right" Margin="0,223,0,30" Width="130" Grid.Row="2" Grid.Column="1" />
-        <Button Command="{Binding Cashier}" Content="Recall Order" Height="45" HorizontalAlignment="Right" Margin="0,121,274,132" Width="130" Grid.Column="1" Grid.Row="2" />
+		</DockPanel>
+    
+            <Button Content="Cashier" Height="45" Command="{Binding Cashier}" Width="130" Grid.Column="1" Margin="136,252,173,0" Grid.Row="2" />
+            <Button Content="Cancel Order" Height="45" Command="{Binding Cancel}" Width="130" Grid.Column="1" Margin="0,252,309,0" Grid.Row="2" />
+            <Button Command="{Binding Cancel}" Content="Discount Order" Height="45" Width="130" Grid.Column="1" Margin="272,202,37,50" Grid.Row="2" />
+            <Button Command="{Binding Cancel}" Content="Add Payment" Height="45" Width="130" Grid.Column="1" Margin="136,202,173,50" Grid.Row="2" />
+            <Button Command="{Binding Cancel}" Content="Send to Kitchen" Height="45" Width="130" Grid.Column="1" Margin="0,202,309,50" Grid.Row="2" />
+            <Button Command="{Binding Cashier}" Content="Recall Order" Height="45" Width="130" Grid.Column="1" Margin="0,152,309,102" Grid.Row="2" />
+            <Button Command="{Binding Cashier}" Content="Save Order" Height="45" Width="130" Grid.Column="1" Margin="0,101,309,152" Grid.Row="2" />
+            <Button Command="{Binding Cashier}" Content="Cashier" Height="45" Width="130" Grid.Column="1" Margin="0,52,309,202" Grid.Row="2" />
+            <Button Command="{Binding Cashier}" Content="Recall Order" Height="45" Width="130" Grid.Column="1" Margin="272,253,37,0" Grid.Row="2" />
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,0,222,271" Grid.Row="2"><Run Text="Subtotal: $" /><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,33,222,238" Grid.Row="2"><Run Text="Tax: $" /><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,97,222,174" Grid.Row="2"><Run Text="Total: $" /><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,64,222,207" Grid.Row="2"><Run Text="Discounts: $" /><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,130,222,141" Grid.Row="2"><Run Text="Payments: $" /> <Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="81" Grid.Column="1" Margin="136,164,222,107" Grid.Row="2"><Run Text="Remaining: $" /> <Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+
     </Grid>
 </Views:UserControlBase>

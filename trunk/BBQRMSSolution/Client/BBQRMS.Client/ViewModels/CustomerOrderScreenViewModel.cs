@@ -20,7 +20,15 @@ namespace BBQRMSSolution.ViewModels
 		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
 		{
-			var r = new Random();
+		    Menu m1 = Menu.CreateMenu("FOOD", 0);
+		    Menu m2 = Menu.CreateMenu("FOOD2", 1);
+		    Menu m3 = Menu.CreateMenu("FOOD3", 2);
+
+            Menus = new ObservableCollection<Menu>();
+            Menus.Add(m1);
+            Menus.Add(m2);
+            Menus.Add(m3);
+
 		}
 
 		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
