@@ -1,0 +1,19 @@
+#summary Describes the design patterns and conventions used in the client source code.
+
+= Introduction =
+
+The client is built using a Model-View-ViewModel pattern and the source code is organized into namespaces and folders that match the layers of the architecture. Those layers are:
+  # Views
+  # View Models
+  # Business Logic
+  # Messages
+  # Model and data access
+
+We try to reduce coupling by using dependency injection, specifically constructor dependency injection. This improves 
+
+Remember to create SOLID classes:
+  * [http://www.tomdalling.com/blog/software-design/solid-class-design-the-single-responsibility-principle *S*ingle responsibility]
+  * [http://www.tomdalling.com/blog/software-design/solid-class-design-the-open-closed-principle *O*pen-closed principle]
+  * [http://www.tomdalling.com/blog/software-design/solid-class-design-the-liskov-substitution-principle *L*iskov substitution principle]
+  * [http://www.tomdalling.com/blog/software-design/solid-class-design-the-interface-segregation-principle *I*nterface segregation principle]
+  * [http://www.tomdalling.com/blog/software-design/solid-class-design-the-dependency-inversion-principle *D*ependency inversion principle]
