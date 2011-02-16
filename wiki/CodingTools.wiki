@@ -1,4 +1,4 @@
-#summary Describes tools, processes and resources to help create code in the project
+#summary Describes tools and resources to help create code in the project
 
 = Code Templates =
 Views and View Models should follow certain conventions. In order to help with that, there are Visual Studio 2010 item templates for each of those in source control which you can import into your personal templates folder.

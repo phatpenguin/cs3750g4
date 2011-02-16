@@ -1,0 +1,5 @@
+#summary How to write an automated test for a view model
+
+= Details =
+
+_TODO: fill in this page_
