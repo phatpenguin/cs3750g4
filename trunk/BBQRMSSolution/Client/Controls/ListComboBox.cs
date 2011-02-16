@@ -37,7 +37,7 @@ namespace Controls
         {
             SelectionChanged += ListComboBox_SelectionChanged;
             ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
-            SelectedIndex = 0;
+            //SelectedIndex = 0;
         }
 
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)

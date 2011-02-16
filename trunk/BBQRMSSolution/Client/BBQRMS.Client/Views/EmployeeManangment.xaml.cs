@@ -37,5 +37,15 @@ namespace BBQRMSSolution.Views
         {
             ViewModel.HandleCreateEmployee();
         }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ViewModel.HandlePayTypeSelectionChanged(payTypesCB.SelectedItem);
+        }
+
+        private void DeleteCommand(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleDeleteEmployee();
+        }
     }
 }

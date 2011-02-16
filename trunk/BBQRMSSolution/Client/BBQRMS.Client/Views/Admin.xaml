@@ -29,10 +29,16 @@
 				Content="Change PIN" />
       <c:ImageButton
 				Name="manageEmployees"
-				Click="manageEmployees_Click" 
+				Click="manageEmployees_Click"
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageEmployees, Converter={StaticResource boolToVisibilityConverter}}"
 				ImageSource="{StaticResource BBQRMS.Image.SystemUsers}"
 				Content="Manage Employees" />
+      <!--Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageRoles, Converter={StaticResource boolToVisibilityConverter}}"-->
+      <c:ImageButton
+				Name="manageRoles"
+				Click="manageRoles_Click"
+				ImageSource="{StaticResource BBQRMS.Image.SystemUsers}"
+				Content="Manage Roles" />
       <c:ImageButton
 				Name="manageMenus"
 				Click="manageMenus_Click"

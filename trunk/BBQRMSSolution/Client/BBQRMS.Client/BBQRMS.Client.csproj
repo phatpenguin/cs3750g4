@@ -71,6 +71,7 @@
     <Compile Include="SampleData\DesignTimeEmployee.cs" />
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />
+    <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
@@ -134,9 +135,6 @@
     <Compile Include="ViewModels\PostLoginViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\EmployeeInfo.xaml.cs">
-      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\EmployeeManangment.xaml.cs">
       <DependentUpon>EmployeeManangment.xaml</DependentUpon>
     </Compile>
@@ -213,10 +211,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CooksScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
