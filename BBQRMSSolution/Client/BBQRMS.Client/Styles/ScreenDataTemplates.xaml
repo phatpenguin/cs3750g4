@@ -32,9 +32,13 @@
 		<Views:ChooseReport />
 	</DataTemplate>
 
-	<DataTemplate DataType="{x:Type ViewModels:EmployeeManagementViewModel}">
-		<Views:EmployeeManangment />
-	</DataTemplate>
+  <DataTemplate DataType="{x:Type ViewModels:EmployeeManagementViewModel}">
+    <Views:EmployeeManangment />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type ViewModels:RoleManagementViewModel}">
+    <Views:RoleManagement />
+  </DataTemplate>
 
   <DataTemplate DataType="{x:Type ViewModels:MenuManagementViewModel}">
     <Views:MenuManagement />

@@ -7,24 +7,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
-	xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d" 
-	x:Name="me"
-	d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeManagementViewModel, IsDesignTimeCreatable=True}">
+	xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d" 
+  >
   <DockPanel>
     <DockPanel DockPanel.Dock="Left">
       <StackPanel DockPanel.Dock="Bottom" >
-        <Label Content="Roles" Margin="5,0" FontWeight="Bold"/>
-        <ListBox Name="RoleList" Margin="5" ItemsSource="{Binding Path=Employees}">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Orientation="Horizontal">
-              <TextBlock Text="{Binding Path=LastName}"/>
-              <TextBlock Text=", "/>
-              <TextBlock Text="{Binding Path=FirstName}"/>
-              </StackPanel>
-            </DataTemplate>            
-          </ListBox.ItemTemplate>
-        </ListBox>
 				<c:ImageButton
 					Style="{StaticResource ImageButton.FormButton}"
 					ImageSource="{StaticResource BBQRMS.Image.Add}"
@@ -48,12 +35,123 @@
       </DockPanel>
     </DockPanel>
     <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedEmployee, Mode=TwoWay}" Visibility="Collapsed">
-      <Views:EmployeeInfo
-				DataContext="{Binding Path=SelectedEmployee}"
-				PayTypes="{Binding ElementName=me, Path=DataContext.PayTypes}"
-				AllRoles="{Binding ElementName=me, Path=DataContext.Roles}"
-				SaveCommand="{Binding ElementName=me, Path=DataContext.SaveEmployee}"
+      <StackPanel Margin="5">
+        <TextBlock Height="32" FontSize="18" FontWeight="Bold" >
+          <Run Text="{Binding Path=SelectedEmployee.FirstName}"/>
+          <Run Text="{Binding Path=SelectedEmployee.LastName}"/>
+        </TextBlock>
+        <StackPanel DockPanel.Dock="Left">
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="First Name:" Width="120"/>
+            <TextBox Width="300" Text="{Binding Path=SelectedEmployee.FirstName}"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Last Name:" Width="120"/>
+            <TextBox  Text="{Binding Path=SelectedEmployee.LastName}" Width="300"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Home Phone:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Phone1}" Width="150"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Cell Phone:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Phone2}" Width="150"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Other Phone:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Phone3}" Width="150"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Email 1:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Email1}" Width="150"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Email 2:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Email2}" Width="150"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Address:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Address1}" Width="300"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Address Line 2:" Width="120"/>
+            <TextBox Text="{Binding Path=SelectedEmployee.Address2}" Width="300"/>
+          </StackPanel>
+          <!--
+      <StackPanel Margin="2" Orientation="Horizontal">
+        <Label FontWeight="Bold" Content="City, State Zip:" Width="120"/>
+        <TextBox Text="{Binding Path=city}" Width="250"/>
+      </StackPanel>
+-->
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Role:" Width="120"/>
+            <StackPanel>
+              <c:ListComboBox Width="300" Height="150" SelectionMode="Single" SelectedItem="null"
+                      x:Name="roleLCB"
+                      ItemsSource="{Binding Path=SelectedEmployee.Roles}"
+                      SelectableItemsSource="{Binding Path=Roles}"
+                      ItemContainerStyle="{StaticResource ListBoxItem.ListComboBoxItemStyle}"
+                      DragDrop:DragDropHelper.IsDragSource="true"
+                      DragDrop:DragDropHelper.IsDropTarget="true"
+                      DragDrop:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItem.ListComboBoxItemStyle.DataTemplate}"
+                               >
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <DockPanel LastChildFill="True">
+                      <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Description}" Margin="2,0,0,0"/>
+                    </DockPanel>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </c:ListComboBox>
+              <c:ImageButton Command="{Binding ElementName=roleLCB, Path=AddItem}"
+                             Style="{StaticResource ImageButton.FormButton}"
+                             ImageSource="{StaticResource BBQRMS.Image.Add}"
+                             Content="Add Role"
+                             HorizontalAlignment="Right"/>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="2" Orientation="Horizontal">
+          <Label FontWeight="Bold" Content="Comp. Type:" Width="120"/>
+          <ComboBox x:Name="payTypesCB" Width="150" ItemsSource="{Binding Path=PayTypes}"
+                    DisplayMemberPath="Descr" SelectedValue="Id" SelectedItem="{Binding Path=SelectedPayType}"
+                    SelectionChanged="OnSelectionChanged">
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Margin="2" Orientation="Horizontal">
+          <Label FontWeight="Bold" Content="Comp. Rate:" Width="120"/>
+          <TextBox Text="{Binding Path=SelectedEmployee.PayAmount}" Width="250"/>
+        </StackPanel>
+        <StackPanel Margin="2" Orientation="Horizontal">
+          <Label FontWeight="Bold" Content="Hire Date:" Width="120"/>
+          <TextBox Text="{Binding Path=SelectedEmployee.HireDate, StringFormat=d}" Width="250"/>
+        </StackPanel>
+<!--
+        <StackPanel Margin="0" Orientation="Horizontal">
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Last Clocked In:" Width="120"/>
+            <TextBlock Text="{Binding Path=SelectedEmployee.FirstName}" Width="150" VerticalAlignment="Center"/>
+          </StackPanel>
+          <StackPanel Margin="2" Orientation="Horizontal">
+            <Label FontWeight="Bold" Content="Clock on for:" Width="120"/>
+            <TextBlock Text="{Binding Path=SelectedEmployee.FirstName}" Width="150" VerticalAlignment="Center"/>
+          </StackPanel>
+        </StackPanel>
+-->
+        <StackPanel Orientation="Horizontal">
+          <c:ImageButton
+            Style="{StaticResource ImageButton.FormButton}"
+            ImageSource="{StaticResource BBQRMS.Image.Save}"
+            Content="Save"
+            Click="SaveCommand" />
+          <c:ImageButton
+            Style="{StaticResource ImageButton.FormButton}"
+            ImageSource="{StaticResource BBQRMS.Image.Trash}"
+            Content="Delete"
+            Click="DeleteCommand"
 				/>
+        </StackPanel>
+      </StackPanel>
     </DockPanel>
   </DockPanel>
 </Views:UserControlBase>

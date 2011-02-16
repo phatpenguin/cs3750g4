@@ -14,28 +14,29 @@ namespace BBQRMSSolution.ViewModels
         private ObservableCollection<EmployeePayType> payTypes;
         private ObservableCollection<Role> roles;
         private Employee selectedEmployee;
+        private EmployeePayType selectedPayType;
 
-		[Obsolete("Used for design-time only", true)]
-		public EmployeeManagementViewModel()
-		{
-			Employees = new ObservableCollection<Employee> {new DesignTimeEmployee(), new DesignTimeEmployee()};
-			SelectedEmployee = Employees[1];
-		}
 	    public EmployeeManagementViewModel(BBQRMSEntities dataService)
 	    {
 	    	DataService = dataService;
 
-				DataService.MergeOption = MergeOption.PreserveChanges;
-	        Employees = new ObservableCollection<Employee>(DataService.Employees.Expand("EmployeePayType").Expand("Roles"));
-/*
-	        foreach (Employee employee in employees)
-	        {
-                mDataService.LoadProperty(employee, "EmployeePayType");
-                mDataService.LoadProperty(employee, "Roles");
-            }
-*/
-	        PayTypes = new ObservableCollection<EmployeePayType>(DataService.EmployeePayTypes);
-	        Roles = new ObservableCollection<Role>(DataService.Roles);
+			ResetEmployeesList();
+
+	        ResetListSelectableLists();
+	    }
+
+	    private void ResetEmployeesList()
+	    {
+	        DataService.MergeOption = MergeOption.PreserveChanges;
+	        Employees = new ObservableCollection<Employee>(DataService.Employees.Expand("EmployeePayType").Expand("Roles")
+                //.Where(x=> x.Active)
+                );
+	    }
+
+	    private void ResetListSelectableLists()
+	    {
+	        PayTypes = new ObservableCollection<EmployeePayType>(DataService.EmployeePayTypes.ToList());
+	        Roles = new ObservableCollection<Role>(DataService.Roles.ToList());
 	    }
 
 	    public ObservableCollection<Role> Roles
@@ -60,30 +61,60 @@ namespace BBQRMSSolution.ViewModels
 	    public Employee SelectedEmployee
 	    {
 	        get { return selectedEmployee; }
-	        set { selectedEmployee = value; NotifyPropertyChanged("SelectedEmployee");
-	            //HandleDisplayEmployeeInfoView(selectedEmployee);
-	        }
+	        set
+	        {
+	            selectedEmployee = value;
+                ResetListSelectableLists();
+
+                if (selectedEmployee != null && selectedEmployee.Id > 0)
+                {
+                    DataService.LoadProperty(selectedEmployee, "Roles");
+                    DataService.LoadProperty(selectedEmployee, "EmployeePayType");
+                    SelectedPayType = PayTypes.Where(x=> x.Id == selectedEmployee.EmployeePayType.Id).FirstOrDefault();
+                }
+                NotifyPropertyChanged("SelectedEmployee");
+            }
 	    }
 
-        public DelegateCommand SaveEmployee { get { return new DelegateCommand(HandleSaveClick); } }
+	    public EmployeePayType SelectedPayType
+	    {
+	        get { return selectedPayType; }
+	        set { 
+                selectedPayType = value;
+	            NotifyPropertyChanged("SelectedPayType");
+            }
+	    }
+
+	    public DelegateCommand SaveEmployee { get { return new DelegateCommand(HandleSaveClick); } }
         public DelegateCommand AddEmployee { get { return new DelegateCommand(HandleCreateEmployee); } }
 
-	    public void HandleSaveClick()
-	    {
-           
+	    public void HandleSaveClick() {
             if (SelectedEmployee.Id > 0) {
                 DataService.UpdateObject(SelectedEmployee);
             } else {
                 DataService.AddToEmployees(SelectedEmployee);
             }
 	        DataService.SaveChanges();
-        }
+	        SelectedEmployee = null;
+	    }
 
         public void HandleCreateEmployee()
         {
             SelectedEmployee = new Employee();
             Employees.Add(SelectedEmployee);
-            //Employees = new ObservableCollection<Employee>(mDataService.Employees);
         }
+
+        public void HandleDeleteEmployee()
+        {
+//            SelectedEmployee.Active = false;
+            HandleSaveClick();
+            ResetEmployeesList();
+        }
+
+	    public void HandlePayTypeSelectionChanged(Object employeePayType)
+	    {
+	        SelectedEmployee.EmployeePayType = (EmployeePayType)employeePayType;
+	        SelectedEmployee.PayTypeId = SelectedEmployee.EmployeePayType.Id;
+	    }
 	}
 }

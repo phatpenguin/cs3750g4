@@ -44,12 +44,17 @@ namespace BBQRMSSolution.ViewModels
 			MessageBus.Publish(new ShowScreen(new ChangePINViewModel(DataService, MessageBus, SecurityContext)));
 		}
 
-		public void HandleManageEmployees()
-		{
-			MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(DataService)));
-		}
+        public void HandleManageEmployees()
+        {
+            MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(DataService)));
+        }
 
-		public void HandleManageMenus()
+        public void HandleManageRoles()
+        {
+            MessageBus.Publish(new ShowScreen(new RoleManagementViewModel(DataService)));
+        }
+
+        public void HandleManageMenus()
 		{
 			MessageBus.Publish(new ShowScreen(new MenuManagementViewModel()));
 		}

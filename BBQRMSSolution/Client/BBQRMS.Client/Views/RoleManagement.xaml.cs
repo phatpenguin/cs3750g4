@@ -11,17 +11,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
     /// <summary>
     /// Interaction logic for RoleManagement.xaml
     /// </summary>
-    public partial class RoleManagement : UserControl
+    public partial class RoleManagement : UserControlBase<RoleManagementViewModel>
     {
         public RoleManagement()
         {
             InitializeComponent();
+        }
+
+        private void AddRoleCommand(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleCreateRole();
+        }
+
+        private void SaveRoleCommand(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleSaveRole();
+        }
+
+        private void DeleteRoleCommand(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleDeleteRole();
         }
     }
 }

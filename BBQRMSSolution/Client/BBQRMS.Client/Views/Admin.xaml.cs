@@ -45,5 +45,10 @@ namespace BBQRMSSolution.Views
 		{
 			ViewModel.HandleManageInventory();
 		}
+
+        private void manageRoles_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleManageRoles();
+        }
 	}
 }
