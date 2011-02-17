@@ -11,7 +11,6 @@ namespace BBQRMSSolution.ViewModels
         private Timer _t;
         private decimal _st, _tp, _ta;
 
-
         public Order Order { get; set; }
 
         private const decimal TAX_PERCENTAGE = .0825m;
