@@ -45,6 +45,9 @@ namespace BBQRMSSolution.ViewModels
         internal void AddSupplier()
         {
             Supplier x = new Supplier();
+            x.Phone = "";
+            x.Address = "";
+            x.Name = "new supplier";
             Suppliers.Add(x);
             SelectedSupplier = x;
 

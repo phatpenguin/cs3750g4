@@ -13,7 +13,7 @@
 	<ImageSource x:Key="BBQRMS.Image.ClockOut">/Graphics/clock_stop.png</ImageSource>
   <ImageSource x:Key="BBQRMS.Image.ColeSlaw">/Graphics/coleslaw.jpg</ImageSource>
   <ImageSource x:Key="BBQRMS.Image.Corn">/Graphics/corn.jpg</ImageSource>
-  <ImageSource x:Key="BBQRMS.Image.redX">/Graphics/cross.png</ImageSource>
+  <ImageSource x:Key="BBQRMS.Image.Cancel">/Graphics/edit-delete.png</ImageSource>
   <ImageSource x:Key="BBQRMS.Image.FileManager">/Graphics/file_manager.png</ImageSource>
   <ImageSource x:Key="BBQRMS.Image.Fries">/Graphics/fries.jpg</ImageSource>
   <ImageSource x:Key="BBQRMS.Image.Logo">/Graphics/Logo.png</ImageSource>

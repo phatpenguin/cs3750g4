@@ -47,7 +47,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 		public void HandleReceiveInventory()
 		{
-
+            Content = new ReceiveInventoryViewModel(DataService, MessageBus);
 
 		}
 		public void HandleReconcileInventory()
