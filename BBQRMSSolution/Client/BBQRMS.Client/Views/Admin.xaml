@@ -54,7 +54,6 @@
     </StackPanel>
 
     <!-- The current application screen appears here -->
-    <ContentPresenter Grid.Row="1" Name="mainContent" Content="{Binding Path=Content}"/>
-
+      <ContentPresenter Grid.Column="1" Name="adminContent" Content="{Binding Path=Content}"/>
   </Grid>
 </Views:UserControlBase>

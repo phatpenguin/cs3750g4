@@ -9,7 +9,7 @@ using Controls;
 
 namespace BBQRMSSolution.ViewModels
 {
-	public class AdministrationViewModel : ViewModelBase
+	public class AdministrationViewModel : ViewModelBase, IHandle<ShowAdminScreen>
 	{
 		private ViewModelBase _content;
 
@@ -24,6 +24,7 @@ namespace BBQRMSSolution.ViewModels
 			DataService = dataservice;
 			MessageBus = messageBus;
 			SecurityContext = securityContext;
+            MessageBus.Subscribe(this);
 		}
 
 		public ViewModelBase Content
@@ -41,28 +42,34 @@ namespace BBQRMSSolution.ViewModels
 
 		public void HandleChangePIN()
 		{
-			MessageBus.Publish(new ShowScreen(new ChangePINViewModel(DataService, MessageBus, SecurityContext)));
+            MessageBus.Publish(new ShowAdminScreen(new ChangePINViewModel(DataService, MessageBus, SecurityContext)));
 		}
 
         public void HandleManageEmployees()
         {
-            MessageBus.Publish(new ShowScreen(new EmployeeManagementViewModel(DataService)));
+            MessageBus.Publish(new ShowAdminScreen(new EmployeeManagementViewModel(DataService)));
         }
 
         public void HandleManageRoles()
         {
-            MessageBus.Publish(new ShowScreen(new RoleManagementViewModel(DataService)));
+            MessageBus.Publish(new ShowAdminScreen(new RoleManagementViewModel(DataService)));
         }
 
         public void HandleManageMenus()
 		{
-			MessageBus.Publish(new ShowScreen(new MenuManagementViewModel()));
+            MessageBus.Publish(new ShowAdminScreen(new MenuManagementViewModel()));
 		}
 		public void HandleManageInventory()
 		{
 			//TODO: Show a new or existing viewmodel for managing inventory.
-			MessageBus.Publish(new ShowScreen(new InventoryManagementMenuViewModel(DataService, MessageBus)));
+            MessageBus.Publish(new ShowAdminScreen(new InventoryManagementMenuViewModel(DataService, MessageBus)));
 		}
+
+        void IHandle<ShowAdminScreen>.Handle(ShowAdminScreen message)
+        {
+            Content = message.ViewModelToShow;
+        }
+
 
 	}
 }

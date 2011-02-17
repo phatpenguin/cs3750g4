@@ -94,26 +94,39 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleSaveRole()
         {
-            SelectedRole.Privileges.Clear();
-            SelectedRole.Privileges.Load(SelectedPrivileges.ToList());
+
             if (SelectedRole.Id > 0) {
                 DataService.UpdateObject(SelectedRole);
             } else {
                 DataService.AddToRoles(SelectedRole);
             }
+
+            var list = SelectedRole.Privileges.Except(SelectedPrivileges).ToList();
+            foreach (Privilege privilege in list)
+            {
+                DataService.DeleteLink(SelectedRole, "Privileges", privilege);
+                SelectedRole.Privileges.Remove(privilege);
+            }
+
+            list = SelectedPrivileges.Except(SelectedRole.Privileges).ToList();
+            foreach (Privilege privilege in list)
+            {
+                DataService.AddLink(SelectedRole, "Privileges", privilege);
+                SelectedRole.Privileges.Add(privilege);
+            }
+
             DataService.SaveChanges();
             SelectedRole = null;
             ResetRoleList();
         }
 
-        public void HandleCreateRole()
-        {
+        public void HandleCreateRole() {
             SelectedRole = new Role();
         }
 
         public void HandleDeleteRole() { 
             if (SelectedRole.Id > 0) {
-                //selectedRole.Active = false;
+                //SelectedRole.Active = false;
                 HandleSaveRole();
             }
             SelectedRole = null;
