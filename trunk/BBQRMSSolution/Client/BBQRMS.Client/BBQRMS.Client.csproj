@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messages\ShowAdminScreen.cs" />
     <Compile Include="SampleData\DesignTimeEmployee.cs" />
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />

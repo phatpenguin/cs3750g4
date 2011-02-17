@@ -40,7 +40,9 @@ namespace BBQRMSSolution.Views
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModel.HandlePayTypeSelectionChanged(payTypesCB.SelectedItem);
+            if (ViewModel != null) {
+                ViewModel.HandlePayTypeSelectionChanged(payTypesCB.SelectedItem);
+            }
         }
 
         private void DeleteCommand(object sender, RoutedEventArgs e)
