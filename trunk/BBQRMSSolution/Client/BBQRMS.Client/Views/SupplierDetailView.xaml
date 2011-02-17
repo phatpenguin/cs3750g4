@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d" 
-             d:DesignHeight="480" d:DesignWidth="600">
+             d:DesignHeight="480" d:DesignWidth="600"
+             xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls">
 
     <DockPanel>
         <DockPanel>
@@ -17,8 +18,9 @@
 
 			</ListBox>
 		</DockPanel>
-        <StackPanel>
-            <Grid DataContext="{Binding Path=SelectedSupplier}">
+        <StackPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedSupplier, Mode=TwoWay}" Visibility="Collapsed">
+            <Grid  DataContext="{Binding Path=SelectedSupplier}">
+        
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition  Height="auto"/>

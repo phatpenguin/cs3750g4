@@ -72,6 +72,7 @@
     <Compile Include="SampleData\DesignTimeEmployee.cs" />
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />
+    <Compile Include="ViewModels\ReceiveInventoryViewModel.cs" />
     <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -118,6 +119,9 @@
     <Compile Include="Messages\UserLoggingOut.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReceiveInventoryView.xaml.cs">
+      <DependentUpon>ReceiveInventoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewParts\ClockOut.xaml.cs">
       <DependentUpon>ClockOut.xaml</DependentUpon>
@@ -204,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ChangePINView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReceiveInventoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -410,6 +418,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Graphics\bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\edit-delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
