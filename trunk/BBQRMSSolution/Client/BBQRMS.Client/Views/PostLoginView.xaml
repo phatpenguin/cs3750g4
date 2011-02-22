@@ -81,8 +81,11 @@
 						Content="Reporting" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-					<TextBlock HorizontalAlignment="Right" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}"/>
-					<c:ImageButton
+          <StackPanel HorizontalAlignment="Right" Margin="5">
+            <TextBlock FontSize="12" Text="You are logged in as: "/>
+            <TextBlock FontSize="12" FontWeight="Bold" Text="{Binding Path=SecurityContext.CurrentUser.FirstName}" HorizontalAlignment="Right"/>
+          </StackPanel>
+          <c:ImageButton
 						Name="adminBtn"
 						Click="adminBtn_Click"
 						ImageSource="{StaticResource BBQRMS.Image.Administrator}"

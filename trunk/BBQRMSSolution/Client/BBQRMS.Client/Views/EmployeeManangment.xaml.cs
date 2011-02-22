@@ -41,7 +41,7 @@ namespace BBQRMSSolution.Views
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ViewModel != null) {
-                ViewModel.HandlePayTypeSelectionChanged(payTypesCB.SelectedItem);
+         //       ViewModel.HandlePayTypeSelectionChanged(payTypesCB.SelectedItem);
             }
         }
 
