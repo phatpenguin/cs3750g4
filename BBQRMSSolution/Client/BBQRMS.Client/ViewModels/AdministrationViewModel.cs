@@ -57,7 +57,7 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleManageMenus()
 		{
-            MessageBus.Publish(new ShowAdminScreen(new MenuManagementViewModel()));
+            MessageBus.Publish(new ShowAdminScreen(new MenuManagementViewModel(DataService)));
 		}
 		public void HandleManageInventory()
 		{

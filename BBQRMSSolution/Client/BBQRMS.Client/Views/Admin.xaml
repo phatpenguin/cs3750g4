@@ -15,7 +15,7 @@
 			<ColumnDefinition Width="Auto"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-    <StackPanel>
+    <StackPanel Margin="1,0">
 			<StackPanel.Resources>
 				<Style TargetType="{x:Type c:ImageButton}">
 					<Setter Property="Margin" Value="0,1,0,1"/>

@@ -9,6 +9,7 @@
 				<ResourceDictionary Source="/PresentationFramework.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;component/themes/Aero.NormalColor.xaml"/>
         <ResourceDictionary Source="/Graphics/images.xaml"/>
         <ResourceDictionary Source="/Styles/DefaultStyles.xaml"/>
+        <ResourceDictionary Source="/Styles/TabControlStyles.xaml"/>
         <ResourceDictionary Source="/Styles/ScreenDataTemplates.xaml"/>
         <ResourceDictionary Source="/Controls;component/Converters/Converters.xaml" />
       </ResourceDictionary.MergedDictionaries>
@@ -22,13 +23,6 @@
 				<Setter Property="FontSize" Value="26.667"/>
 			</Style>
 
-			<Style x:Key="BigTabStyle" TargetType="{x:Type TabItem}">
-				<Setter Property="MinHeight" Value="75"/>
-				<Setter Property="TextElement.FontSize" Value="24"/>
-                <Setter Property="TextElement.Foreground" Value="{Binding TextColor}" />
-                <Setter Property="Background" Value="{Binding BackColor}" />
-			</Style>
-			
 			<Color x:Key="ApplicationBackgroundColor">White</Color>
 			<SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{DynamicResource ResourceKey=ApplicationBackgroundColor}" />
 

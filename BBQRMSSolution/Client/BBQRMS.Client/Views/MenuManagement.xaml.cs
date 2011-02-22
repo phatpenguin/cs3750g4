@@ -25,5 +25,14 @@ namespace BBQRMSSolution.Views
             InitializeComponent();
         }
 
+        private void AddMenu(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleAddMenu();
+        }
+
+        private void SaveMenu(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleSaveMenu();
+        }
     }
 }

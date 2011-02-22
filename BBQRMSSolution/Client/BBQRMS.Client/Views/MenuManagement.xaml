@@ -7,29 +7,73 @@
 	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:c="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d"
+	xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d"
 	d:DataContext="{d:DesignInstance Type={x:Type ViewModels:MenuManagementViewModel}, IsDesignTimeCreatable=True}"
 	>
-  <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
-    <DockPanel DockPanel.Dock="Left">
-      <Label Content="Menus"
-						 DockPanel.Dock="Top"/>
-			<c:ImageButton
-				Style="{StaticResource ImageButton.FormButton}"
-				ImageSource="{StaticResource BBQRMS.Image.Add}"
-				Content="Add Menu" DockPanel.Dock="Bottom"/>
-      <ListBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">        
-      </ListBox>
-    </DockPanel>
-    <Border Style="{StaticResource Border.Vertical}" DockPanel.Dock="Left" />
-    <DockPanel DockPanel.Dock="Right">
-      <TextBlock Text="Right"/>
-    </DockPanel>
-    <DockPanel>
-      <TextBlock Text="Middle"/>
-      <Border Style="{StaticResource Border.Default}">
-        
-      </Border>
-    </DockPanel>
+  <UserControl.Resources>
+
+  </UserControl.Resources>
+  
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Left">
+      <c:ImageButton Style="{StaticResource ImageButton.FormButton}"
+                     ImageSource="{StaticResource BBQRMS.Image.Add}"
+                     Content="Add Menu"
+                     Click="AddMenu"/>
+      <c:ImageButton Style="{StaticResource ImageButton.FormButton}"
+                     ImageSource="{StaticResource BBQRMS.Image.Save}"
+                     Content="Save Menu"
+                     Click="SaveMenu"/>
+    </StackPanel>
+    <TabControl ItemsSource="{Binding Menus}"
+                ItemContainerStyle="{StaticResource MenuTabItem}"
+                Style="{StaticResource MenuTabControl}"
+                d:LayoutOverrides="VerticalAlignment"
+                SelectedItem="{Binding SelectedMenu}">
+      <TabControl.ContentTemplate>
+        <DataTemplate>
+          <StackPanel>
+            <TextBox Height="32" FontSize="18" FontWeight="Bold" Text="{Binding Path=Name}" Width="200" HorizontalAlignment="Left" Margin="0,5"/>
+            <StackPanel>
+              <c:ListComboBox 
+                      SelectionMode="Single" SelectedItem="null"
+                      HorizontalContentAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      x:Name="roleLCB"
+                      ItemsSource="{Binding Path=MenuItems}"
+                      SelectableItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.MenuItems}"
+                      ItemContainerStyle="{StaticResource ListBoxItem.ListComboBoxItemStyle}"
+                      DragDrop:DragDropHelper.IsDragSource="true"
+                      DragDrop:DragDropHelper.IsDropTarget="true"
+                      DragDrop:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItem.ListComboBoxItemStyle.DataTemplate}"
+                            >
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <DockPanel LastChildFill="True" Margin="1">
+                      <Image DockPanel.Dock="Left" Source="{StaticResource BBQRMS.Image.Briskey}" Height="32" Width="32"/>
+                      <!--<Image DockPanel.Dock="Left" Source="{Binding Image}" Height="32" Width="32"/>-->
+                      <TextBlock Text="{Binding Path=Name}" Margin="2,0,0,0"/>
+                    </DockPanel>
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </c:ListComboBox>
+              <c:ImageButton Command="{Binding ElementName=roleLCB, Path=AddItem}"
+                              Style="{StaticResource ImageButton.FormButton}"
+                              ImageSource="{StaticResource BBQRMS.Image.Add}"
+                              Content="Add Item"
+                              HorizontalAlignment="Right"/>
+            </StackPanel>
+            <!--
+            <ItemsControl x:Name="MenuPanel" 
+                          ItemsSource="{Binding MenuItems}" 
+                          ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" 
+                          ItemTemplate="{DynamicResource MenuItemTemplate}" 
+                          VerticalAlignment="Top"/>
+-->
+          </StackPanel>
+        </DataTemplate>
+      </TabControl.ContentTemplate>
+    </TabControl>
+    
   </DockPanel>
 </Views:UserControlBase>

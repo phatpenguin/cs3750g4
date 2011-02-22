@@ -31,6 +31,7 @@ namespace BBQRMSSolution.ViewModels
 	        Employees = new ObservableCollection<Employee>(DataService.Employees.Expand("EmployeePayType").Expand("Roles")
                 //.Where(x=> x.Active)
                 );
+	        SelectedEmployee = Employees[0];
 	    }
 
 	    private void ResetListSelectableLists()
@@ -101,6 +102,7 @@ namespace BBQRMSSolution.ViewModels
         public void HandleCreateEmployee()
         {
             SelectedEmployee = new Employee();
+            SelectedEmployee.FirstName = "New Employee";
             Employees.Add(SelectedEmployee);
         }
 
