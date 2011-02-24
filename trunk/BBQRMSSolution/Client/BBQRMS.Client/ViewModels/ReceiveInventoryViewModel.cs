@@ -7,11 +7,12 @@ using System.Collections.ObjectModel;
 
 namespace BBQRMSSolution.ViewModels
 {
-    class ReceiveInventoryViewModel : ViewModelBase
+    public class ReceiveInventoryViewModel : ViewModelBase
     {
         private ServerProxy.BBQRMSEntities DataService;
         private Controls.IMessageBus MessageBus;
         private ViewModelBase _content;
+        private Boolean isVisible = true;
 
 
         private MasterInventory _MasterInventory;
@@ -21,7 +22,18 @@ namespace BBQRMSSolution.ViewModels
 	    {
                 
 	    }
-
+        public Boolean IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                NotifyPropertyChanged("IsVisible");
+            }
+        }
         public ReceiveInventoryViewModel(ServerProxy.BBQRMSEntities DataService, Controls.IMessageBus MessageBus)
         {
             // TODO: Complete member initialization
@@ -63,10 +75,12 @@ namespace BBQRMSSolution.ViewModels
                 DataService.AddToMasterInventories(_MasterInventory);
                 DataService.SaveChanges();
             }
+            IsVisible = false;
+    
         }
         internal void CancelAdd()
         {
-            //todo
+            IsVisible = false;
         }
 
     }
