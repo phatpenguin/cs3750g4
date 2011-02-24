@@ -11,27 +11,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views
 {
     /// <summary>
     /// Interaction logic for ReceiveInventory.xaml
     /// </summary>
-    public partial class ReceiveInventory : UserControl
+    public partial class ReceiveInventoryView : UserControl
     {
-        public ReceiveInventory()
+        ReceiveInventoryViewModel ViewModel { get { return (ReceiveInventoryViewModel)DataContext; } }
+        public ReceiveInventoryView()
         {
             InitializeComponent();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.CancelAdd();
         }
 
         private void Button_Save(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.SaveInventory();
         }
     }
 }
