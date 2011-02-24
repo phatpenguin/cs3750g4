@@ -4,17 +4,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:Views="clr-namespace:BBQRMSSolution.Views"
-             xmlns:DragDropControl="clr-namespace:Controls.DragDropControl;assembly=Controls" xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels">
+             xmlns:DragDropControl="clr-namespace:Controls.DragDropControl;assembly=Controls" 
+             xmlns:c="clr-namespace:Controls;assembly=Controls" 
+             xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" 
+             xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
   <DockPanel>
     <DockPanel DockPanel.Dock="Left">
-      <DockPanel DockPanel.Dock="Bottom">
+      <DockPanel DockPanel.Dock="Bottom" LastChildFill="false">
         <c:ImageButton
 					Style="{StaticResource ImageButton.FormButton}"
 					ImageSource="{StaticResource BBQRMS.Image.Add}"
 					Content="Add Role"
 					Click="AddRoleCommand"
 					/>
+        <c:ImageButton DockPanel.Dock="Left"
+          Style="{StaticResource ImageButton.FormButton}"
+          ImageSource="{StaticResource BBQRMS.Image.Save}"
+          Content="Save Changes"
+          Click="SaveRoleCommand"
+					/>
+        <c:ImageButton DockPanel.Dock="Left"
+					Style="{StaticResource ImageButton.FormButton}"
+					ImageSource="{StaticResource BBQRMS.Image.Trash}"
+					Content="Delete Role"
+					Click="DeleteRoleCommand"
+					/>
       </DockPanel>
+<!--
       <DockPanel DockPanel.Dock="Top" >
         <Label Content="Roles" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top" />
         <ListBox Name="RoleList" Margin="5" ItemsSource="{Binding Path=Roles}" SelectedItem="{Binding Path=SelectedRole, Mode=TwoWay}">
@@ -27,27 +45,36 @@
           </ListBox.ItemTemplate>
         </ListBox>
       </DockPanel>
-    </DockPanel>
-    <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedRole, Mode=TwoWay}" Visibility="Collapsed">
-      <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
-        <c:ImageButton DockPanel.Dock="Left"
-					Style="{StaticResource ImageButton.FormButton}"
-					ImageSource="{StaticResource BBQRMS.Image.Save}"
-					Content="Save Changes"
-					Click="SaveRoleCommand"
-					/>
-        <c:ImageButton DockPanel.Dock="Left"
-					Style="{StaticResource ImageButton.FormButton}"
-					ImageSource="{StaticResource BBQRMS.Image.Trash}"
-					Content="Delete Role"
-					Click="DeleteRoleCommand"
-					/>
-      </DockPanel>
+-->
+    <TabControl ItemsSource="{Binding Roles}"
+                d:LayoutOverrides="VerticalAlignment"
+                TabStripPlacement="Left"
+                SelectedItem="{Binding SelectedRole, Mode=TwoWay}">
+      <TabControl.Resources>
+        <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}">
+          <Setter Property="MinHeight" Value="35"/>
+          <Setter Property="TextElement.FontSize" Value="16"/>
+        </Style>
+      </TabControl.Resources>
+      <TabControl.Background>
+        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+          <GradientStop Color="#FFFCFCFE" Offset="0"/>
+          <GradientStop Color="#FFF4F3EE" Offset="1"/>
+        </LinearGradientBrush>
+      </TabControl.Background>
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Description}"/>
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+      <TabControl.ContentTemplate>
+        <DataTemplate>
+          <DockPanel>
       <DockPanel DockPanel.Dock="Top" >
-        <TextBox Text="{Binding Path=SelectedRole.Description}" DockPanel.Dock="Top" />
+        <TextBox Text="{Binding Path=Description}" DockPanel.Dock="Top" />
         <DockPanel DockPanel.Dock="Left" MinWidth="200">
           <Label Content="Privileges" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top" />
-          <ListBox ItemsSource="{Binding SelectedPrivileges, Mode=TwoWay}" Margin="5"
+          <ListBox ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SelectedPrivileges}" Margin="5"
                   HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch"
                   DragDropControl:DragDropHelper.IsDragSource="true"
                   DragDropControl:DragDropHelper.IsDropTarget="true"
@@ -61,7 +88,7 @@
         </DockPanel>
         <DockPanel>
           <Label Content="Available Privileges" Margin="5,0" FontWeight="Bold" DockPanel.Dock="Top" />
-          <ListBox ItemsSource="{Binding Privileges, Mode=TwoWay}" Margin="5"
+          <ListBox ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Privileges}" Margin="5"
                     HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch"
                     DragDropControl:DragDropHelper.IsDragSource="true"
                     DragDropControl:DragDropHelper.IsDropTarget="true"
@@ -76,6 +103,10 @@
           </ListBox>
         </DockPanel>
       </DockPanel>
+          </DockPanel>
+        </DataTemplate>
+      </TabControl.ContentTemplate>
+    </TabControl>
     </DockPanel>
   </DockPanel>
 </Views:UserControlBase>
