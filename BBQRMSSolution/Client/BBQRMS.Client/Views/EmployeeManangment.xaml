@@ -7,7 +7,10 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
-	xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d" 
+	xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" 
+  xmlns:c="clr-namespace:Controls;assembly=Controls" 
+  xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" 
+  mc:Ignorable="d" 
   >
   <UserControl.Resources>
     
