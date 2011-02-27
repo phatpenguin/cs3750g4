@@ -1274,7 +1274,7 @@ namespace BBQRMS.WCFServices
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="code">Initial value of the Code property.</param>
-        public static DinerType CreateDinerType(global::System.Int32 id, global::System.Int32 description, global::System.String code)
+        public static DinerType CreateDinerType(global::System.Int32 id, global::System.String description, global::System.String code)
         {
             DinerType dinerType = new DinerType();
             dinerType.Id = id;
@@ -1318,7 +1318,7 @@ namespace BBQRMS.WCFServices
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Description
+        public global::System.String Description
         {
             get
             {
@@ -1328,13 +1328,13 @@ namespace BBQRMS.WCFServices
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value);
+                _Description = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
         }
-        private global::System.Int32 _Description;
-        partial void OnDescriptionChanging(global::System.Int32 value);
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
     
         /// <summary>

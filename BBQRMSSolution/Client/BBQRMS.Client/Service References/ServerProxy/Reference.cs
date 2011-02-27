@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 2/12/2011 10:40:15 AM
+// Generation date: 2/23/2011 9:29:18 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -4110,7 +4110,7 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="description">Initial value of Description.</param>
         /// <param name="code">Initial value of Code.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static DinerType CreateDinerType(int ID, int description, string code)
+        public static DinerType CreateDinerType(int ID, string description, string code)
         {
             DinerType dinerType = new DinerType();
             dinerType.Id = ID;
@@ -4144,7 +4144,7 @@ namespace BBQRMSSolution.ServerProxy
         /// There are no comments for Property Description in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Description
+        public string Description
         {
             get
             {
@@ -4159,8 +4159,8 @@ namespace BBQRMSSolution.ServerProxy
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Description;
-        partial void OnDescriptionChanging(int value);
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
         /// <summary>
         /// There are no comments for Property Code in the schema.

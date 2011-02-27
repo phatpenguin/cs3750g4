@@ -7,18 +7,18 @@
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:Views="clr-namespace:BBQRMSSolution.Views" mc:Ignorable="d"
+    xmlns:ViewParts="clr-namespace:BBQRMSSolution.Views.ViewParts"
 	x:Name="Window"
 	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="480"
     d:DesignWidth="800">
-    
 	<UserControl.Resources>
 		<ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
 			<WrapPanel IsItemsHost="True"/>
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
 			<Grid >
-				<Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom" 
+               <Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom" 
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Views:CustomerOrderScreen}}, Path=DataContext.AddToOrder}" CommandParameter="{Binding}">
 					<Button.Background>
 						<ImageBrush ImageSource="{Binding Image}"/>
@@ -35,82 +35,111 @@
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>
-	<Grid x:Name="LayoutRoot">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="Auto"/>
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="70" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="264" />
-			</Grid.RowDefinitions>
-		<DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
-			<TabControl ItemsSource="{Binding Menus}" TabStripPlacement="Left" d:LayoutOverrides="VerticalAlignment" DockPanel.Dock="Bottom">
-				<TabControl.Resources>
-					<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
-				</TabControl.Resources>
-				<TabControl.Background>
-					<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-						<GradientStop Color="#FFFCFCFE" Offset="0"/>
-						<GradientStop Color="#FFF4F3EE" Offset="1"/>
-					</LinearGradientBrush>
-				</TabControl.Background>
-				<TabControl.ItemTemplate>
-					<DataTemplate>
-						<TextBlock><Run Text="{Binding Name}"/></TextBlock>
-					</DataTemplate>
-				</TabControl.ItemTemplate>
-				<TabControl.ContentTemplate>
-					<DataTemplate>
-						<DockPanel>
-							<ItemsControl x:Name="MenuPanel" ItemsSource="{Binding MenuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
-						</DockPanel>
-					</DataTemplate>
-				</TabControl.ContentTemplate>
-			</TabControl>
-		</DockPanel>
-		<DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" DataContext="{Binding Order}" Margin="0,0,0,264" Grid.RowSpan="2">
-            <DataGrid ItemsSource="{Binding Order.OrderItems}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="437" Height="146">
-				<DataGrid.Columns>
-					<DataGridTextColumn Binding="{Binding Id}" Header="#"/>
-					<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True"/>
-					<DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" Width="*"/>
-					<DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" IsReadOnly="True"/>
-					<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
-						<DataGridTemplateColumn.CellTemplate>
-							<DataTemplate>
-								<Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding DoAction}" CommandParameter="{Binding}"/>
-							</DataTemplate>
-						</DataGridTemplateColumn.CellTemplate>
-					</DataGridTemplateColumn>
-				</DataGrid.Columns>
-			</DataGrid>
-		</DockPanel>
+    <Grid x:Name="LayoutRoot">
+        <ViewParts:Payment>
+            <UserControl.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="200"/>
+                            <Setter Property="ViewParts:Payment.IsEnabled" Value="True"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="False">
+                            <Setter Property="ViewParts:Payment.IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </UserControl.Style>
+        </ViewParts:Payment>
+        <Grid Panel.ZIndex="100"
+			Background="{DynamicResource ApplicationBackgroundBrush}">
+            <Grid.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="True">
+                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="264" />
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                <TabControl ItemsSource="{Binding Menus}" TabStripPlacement="Left" d:LayoutOverrides="VerticalAlignment" DockPanel.Dock="Bottom">
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
+                    </TabControl.Resources>
+                    <TabControl.Background>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#FFFCFCFE" Offset="0"/>
+                            <GradientStop Color="#FFF4F3EE" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabControl.Background>
+                    <TabControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock><Run Text="{Binding Name}"/></TextBlock>
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                    <TabControl.ContentTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <ItemsControl x:Name="MenuPanel" ItemsSource="{Binding MenuItems}" ItemsPanel="{DynamicResource MenuItemsPanelTemplate}" ItemTemplate="{DynamicResource MenuItemTemplate}" VerticalAlignment="Top"/>
+                            </DockPanel>
+                        </DataTemplate>
+                    </TabControl.ContentTemplate>
+                </TabControl>
+            </DockPanel>
+            <DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" DataContext="{Binding Order}" Margin="0,0,0,264" Grid.RowSpan="2">
+                <DataGrid ItemsSource="{Binding Order.OrderItems}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="437" Height="146">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="#"/>
+                        <DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding DoAction}" CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
 
-            <Button Command="{Binding Cashier}" Content="Cashier" Height="45" Width="130" Margin="72,6,256,18" Grid.Column="1" />
-            <Button Command="{Binding Cancel}" Content="Cancel Order" Height="45" Width="130" Grid.Column="1" Margin="10,208,318,11" Grid.Row="2" />
+            <Button Command="{Binding Cashier}" Content="Cashier" Height="45" Width="130" Margin="10,210,318,8" Grid.Column="1" Grid.Row="2" />
+            <Button Command="{Binding Cancel}" Content="Cancel Order" Height="45" Width="130" Margin="278,6,392,19" Grid.ColumnSpan="2" />
             <Button Command="{Binding Discount}" Content="Discount Order" Height="45" Width="130" Grid.Column="1" Margin="10,6,318,213" Grid.Row="2" />
             <Button Command="{Binding Payment}" Content="Add Payment" Height="45" Width="130" Grid.Column="1" Margin="10,57,318,162" Grid.Row="2" />
             <Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Grid.Column="1" Margin="10,108,318,111" Grid.Row="2" />
             <Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="10,160,318,59" Grid.Row="2" Grid.Column="1" />
-            <Button Command="{Binding Cashier}" Content="Recall Order" Height="45" Width="130" Margin="278,6,392,19" Grid.ColumnSpan="2" /> 
             <Button Command="{Binding Save}" Content="Save Order" Height="45" Width="130" Margin="6,6,206,19" />
             <Button Command="{Binding Recall}" Content="Recall Order" Height="45" Width="130" Margin="142,6,70,19" />
 
-        <UniformGrid Rows="6" Columns="2" Grid.Column="1" Grid.Row="2" Margin="146,0,0,0" Width="312">
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Subtotal: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Tax: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Total: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Discounts: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Payments: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Remaining: $" /></TextBlock>
-            <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
-        </UniformGrid>
+            <UniformGrid Rows="6" Columns="2" Grid.Column="1" Grid.Row="2" Margin="146,0,0,0" Width="312">
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Subtotal: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Tax: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TaxAmount, StringFormat=F2}" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Total: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.TotalPrice, StringFormat=F2}" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Discounts: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.DiscountAmount, StringFormat=F2}" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Payments: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.PaymentAmount, StringFormat=F2}" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Remaining: $" /></TextBlock>
+                <TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.RemainingAmount, StringFormat=F2}" /></TextBlock>
+            </UniformGrid>
+            <TextBlock Grid.Column="1" Height="58" HorizontalAlignment="Left" Margin="267,6,0,0" VerticalAlignment="Top" Width="181">
+            <Run Text="Order# " /><Run Text="{Binding Order.Order.Number}" />
+            </TextBlock>
+        </Grid>
     </Grid>
 </Views:UserControlBase>
