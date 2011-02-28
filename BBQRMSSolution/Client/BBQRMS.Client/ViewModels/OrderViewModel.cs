@@ -207,9 +207,15 @@ namespace BBQRMSSolution.ViewModels
             LoadNewOrder();
         }
 
-        public void AddPayment()
+        public void AddPayment(Payment payment)
         {
-            
+            DataService.AddToPayments(payment);
+            Order.Payments.Add(payment);
+            DataService.UpdateObject(Order);
+            DataService.SaveChanges();
+
+            PaymentAmount += payment.Amount;
+            CalculateTotals();
         }
     }
 }

@@ -8,42 +8,20 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
-
-	    private bool _paymentVisible;
-
         public DelegateCommand AddToOrder { get { return new DelegateCommand(Order.AddItem); } }
 
 		public ObservableCollection<Menu> Menus { get; set; }
 		public OrderViewModel Order { get; set; }
+        public PaymentViewModel Payment { get; set; }
 
 		public DelegateCommand Cancel { get { return new DelegateCommand(Order.CancelOrder); } }
 		public DelegateCommand Cashier { get { return new DelegateCommand(PlaceOrder); } }
         public DelegateCommand Cook { get { return new DelegateCommand(Order.SendToCook); } }
-        public DelegateCommand Payment { get { return new DelegateCommand(AddPayment); } }
-
-        public bool PaymentVisible
-        {
-            get
-            {
-                return _paymentVisible;
-            }
-            set
-            {
-                if (value != _paymentVisible)
-                {
-                    _paymentVisible = value;
-                    MessageBus.Publish(new ClockOutMode(_paymentVisible));
-                    NotifyPropertyChanged("PaymentVisible");
-                }
-            }
-        }
-
+        public DelegateCommand AddPayment { get { return new DelegateCommand(NewPayment); } }
 
 		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
 		{
-		    PaymentVisible = false;
-
 		    var m1 = Menu.CreateMenu("FOOD", 0);
 		    var m2 = Menu.CreateMenu("FOOD2", 1);
 		    var m3 = Menu.CreateMenu("FOOD3", 2);
@@ -59,6 +37,7 @@ namespace BBQRMSSolution.ViewModels
             Menus = new ObservableCollection<Menu> {m1, m2, m3};
 
 		    Order = new OrderViewModel();
+            Payment = new PaymentViewModel();
 		}
 
 		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
@@ -86,9 +65,10 @@ namespace BBQRMSSolution.ViewModels
 			MessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
 		}
 
-        public void AddPayment()
+        public void NewPayment()
         {
-            PaymentVisible = true;
+            Payment = new PaymentViewModel(DataService,MessageBus,Order);
+            NotifyPropertyChanged("Payment");
         }
 	}
 }

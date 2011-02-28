@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 2/23/2011 9:29:18 PM
+// Generation date: 2/28/2011 12:22:23 AM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -365,40 +365,6 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<OrderType> _OrderTypes;
         /// <summary>
-        /// There are no comments for PaymentTypes in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<PaymentType> PaymentTypes
-        {
-            get
-            {
-                if ((this._PaymentTypes == null))
-                {
-                    this._PaymentTypes = base.CreateQuery<PaymentType>("PaymentTypes");
-                }
-                return this._PaymentTypes;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<PaymentType> _PaymentTypes;
-        /// <summary>
-        /// There are no comments for OrderPayments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<OrderPayment> OrderPayments
-        {
-            get
-            {
-                if ((this._OrderPayments == null))
-                {
-                    this._OrderPayments = base.CreateQuery<OrderPayment>("OrderPayments");
-                }
-                return this._OrderPayments;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<OrderPayment> _OrderPayments;
-        /// <summary>
         /// There are no comments for DinerTypes in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -415,23 +381,6 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<DinerType> _DinerTypes;
-        /// <summary>
-        /// There are no comments for Payments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<Payment> Payments
-        {
-            get
-            {
-                if ((this._Payments == null))
-                {
-                    this._Payments = base.CreateQuery<Payment>("Payments");
-                }
-                return this._Payments;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<Payment> _Payments;
         /// <summary>
         /// There are no comments for OrderStates in the schema.
         /// </summary>
@@ -466,6 +415,40 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<PaymentState> _PaymentStates;
+        /// <summary>
+        /// There are no comments for Payments in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Payment> Payments
+        {
+            get
+            {
+                if ((this._Payments == null))
+                {
+                    this._Payments = base.CreateQuery<Payment>("Payments");
+                }
+                return this._Payments;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Payment> _Payments;
+        /// <summary>
+        /// There are no comments for PaymentTypes in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<PaymentType> PaymentTypes
+        {
+            get
+            {
+                if ((this._PaymentTypes == null))
+                {
+                    this._PaymentTypes = base.CreateQuery<PaymentType>("PaymentTypes");
+                }
+                return this._PaymentTypes;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<PaymentType> _PaymentTypes;
         /// <summary>
         /// There are no comments for Menus in the schema.
         /// </summary>
@@ -611,36 +594,12 @@ namespace BBQRMSSolution.ServerProxy
             base.AddObject("OrderTypes", orderType);
         }
         /// <summary>
-        /// There are no comments for PaymentTypes in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToPaymentTypes(PaymentType paymentType)
-        {
-            base.AddObject("PaymentTypes", paymentType);
-        }
-        /// <summary>
-        /// There are no comments for OrderPayments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToOrderPayments(OrderPayment orderPayment)
-        {
-            base.AddObject("OrderPayments", orderPayment);
-        }
-        /// <summary>
         /// There are no comments for DinerTypes in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public void AddToDinerTypes(DinerType dinerType)
         {
             base.AddObject("DinerTypes", dinerType);
-        }
-        /// <summary>
-        /// There are no comments for Payments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToPayments(Payment payment)
-        {
-            base.AddObject("Payments", payment);
         }
         /// <summary>
         /// There are no comments for OrderStates in the schema.
@@ -657,6 +616,22 @@ namespace BBQRMSSolution.ServerProxy
         public void AddToPaymentStates(PaymentState paymentState)
         {
             base.AddObject("PaymentStates", paymentState);
+        }
+        /// <summary>
+        /// There are no comments for Payments in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToPayments(Payment payment)
+        {
+            base.AddObject("Payments", payment);
+        }
+        /// <summary>
+        /// There are no comments for PaymentTypes in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToPaymentTypes(PaymentType paymentType)
+        {
+            base.AddObject("PaymentTypes", paymentType);
         }
     }
     /// <summary>
@@ -769,13 +744,15 @@ namespace BBQRMSSolution.ServerProxy
         /// Create a new MenuItem object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="price">Initial value of Price.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="description">Initial value of Description.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MenuItem CreateMenuItem(int ID, string name, string description)
+        public static MenuItem CreateMenuItem(int ID, decimal price, string name, string description)
         {
             MenuItem menuItem = new MenuItem();
             menuItem.Id = ID;
+            menuItem.Price = price;
             menuItem.Name = name;
             menuItem.Description = description;
             return menuItem;
@@ -806,7 +783,7 @@ namespace BBQRMSSolution.ServerProxy
         /// There are no comments for Property Price in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Nullable<decimal> Price
+        public decimal Price
         {
             get
             {
@@ -821,8 +798,8 @@ namespace BBQRMSSolution.ServerProxy
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Nullable<decimal> _Price;
-        partial void OnPriceChanging(global::System.Nullable<decimal> value);
+        private decimal _Price;
+        partial void OnPriceChanging(decimal value);
         partial void OnPriceChanged();
         /// <summary>
         /// There are no comments for Property Name in the schema.
@@ -3350,24 +3327,6 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private OrderType _OrderType;
         /// <summary>
-        /// There are no comments for OrderPayments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<OrderPayment> OrderPayments
-        {
-            get
-            {
-                return this._OrderPayments;
-            }
-            set
-            {
-                this._OrderPayments = value;
-                this.OnPropertyChanged("OrderPayments");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<OrderPayment> _OrderPayments = new global::System.Data.Services.Client.DataServiceCollection<OrderPayment>(null, System.Data.Services.Client.TrackingMode.None);
-        /// <summary>
         /// There are no comments for DinerType in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -3385,24 +3344,6 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private DinerType _DinerType;
-        /// <summary>
-        /// There are no comments for Payments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<Payment> Payments
-        {
-            get
-            {
-                return this._Payments;
-            }
-            set
-            {
-                this._Payments = value;
-                this.OnPropertyChanged("Payments");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<Payment> _Payments = new global::System.Data.Services.Client.DataServiceCollection<Payment>(null, System.Data.Services.Client.TrackingMode.None);
         /// <summary>
         /// There are no comments for OrderState in the schema.
         /// </summary>
@@ -3439,6 +3380,24 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private PaymentState _PaymentState;
+        /// <summary>
+        /// There are no comments for Payments in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<Payment> Payments
+        {
+            get
+            {
+                return this._Payments;
+            }
+            set
+            {
+                this._Payments = value;
+                this.OnPropertyChanged("Payments");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<Payment> _Payments = new global::System.Data.Services.Client.DataServiceCollection<Payment>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -3805,295 +3764,6 @@ namespace BBQRMSSolution.ServerProxy
         }
     }
     /// <summary>
-    /// There are no comments for BBQRMSModel.PaymentType in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("PaymentTypes")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class PaymentType : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new PaymentType object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="description">Initial value of Description.</param>
-        /// <param name="code">Initial value of Code.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static PaymentType CreatePaymentType(int ID, string description, string code)
-        {
-            PaymentType paymentType = new PaymentType();
-            paymentType.Id = ID;
-            paymentType.Description = description;
-            paymentType.Code = code;
-            return paymentType;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Description in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Description
-        {
-            get
-            {
-                return this._Description;
-            }
-            set
-            {
-                this.OnDescriptionChanging(value);
-                this._Description = value;
-                this.OnDescriptionChanged();
-                this.OnPropertyChanged("Description");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Description;
-        partial void OnDescriptionChanging(string value);
-        partial void OnDescriptionChanged();
-        /// <summary>
-        /// There are no comments for Property Code in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Code
-        {
-            get
-            {
-                return this._Code;
-            }
-            set
-            {
-                this.OnCodeChanging(value);
-                this._Code = value;
-                this.OnCodeChanged();
-                this.OnPropertyChanged("Code");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Code;
-        partial void OnCodeChanging(string value);
-        partial void OnCodeChanged();
-        /// <summary>
-        /// There are no comments for Payments in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<Payment> Payments
-        {
-            get
-            {
-                return this._Payments;
-            }
-            set
-            {
-                this._Payments = value;
-                this.OnPropertyChanged("Payments");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<Payment> _Payments = new global::System.Data.Services.Client.DataServiceCollection<Payment>(null, System.Data.Services.Client.TrackingMode.None);
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for BBQRMSModel.OrderPayment in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// OrderId
-    /// Amount
-    /// PaymentType
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("OrderPayments")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id", "OrderId", "Amount", "PaymentType")]
-    public partial class OrderPayment : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new OrderPayment object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="orderId">Initial value of OrderId.</param>
-        /// <param name="amount">Initial value of Amount.</param>
-        /// <param name="paymentType">Initial value of PaymentType.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static OrderPayment CreateOrderPayment(int ID, int orderId, decimal amount, int paymentType)
-        {
-            OrderPayment orderPayment = new OrderPayment();
-            orderPayment.Id = ID;
-            orderPayment.OrderId = orderId;
-            orderPayment.Amount = amount;
-            orderPayment.PaymentType = paymentType;
-            return orderPayment;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property OrderId in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int OrderId
-        {
-            get
-            {
-                return this._OrderId;
-            }
-            set
-            {
-                this.OnOrderIdChanging(value);
-                this._OrderId = value;
-                this.OnOrderIdChanged();
-                this.OnPropertyChanged("OrderId");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _OrderId;
-        partial void OnOrderIdChanging(int value);
-        partial void OnOrderIdChanged();
-        /// <summary>
-        /// There are no comments for Property Amount in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public decimal Amount
-        {
-            get
-            {
-                return this._Amount;
-            }
-            set
-            {
-                this.OnAmountChanging(value);
-                this._Amount = value;
-                this.OnAmountChanged();
-                this.OnPropertyChanged("Amount");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private decimal _Amount;
-        partial void OnAmountChanging(decimal value);
-        partial void OnAmountChanged();
-        /// <summary>
-        /// There are no comments for Property PaymentType in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int PaymentType
-        {
-            get
-            {
-                return this._PaymentType;
-            }
-            set
-            {
-                this.OnPaymentTypeChanging(value);
-                this._PaymentType = value;
-                this.OnPaymentTypeChanged();
-                this.OnPropertyChanged("PaymentType");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _PaymentType;
-        partial void OnPaymentTypeChanging(int value);
-        partial void OnPaymentTypeChanged();
-        /// <summary>
-        /// There are no comments for Property Memo in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Memo
-        {
-            get
-            {
-                return this._Memo;
-            }
-            set
-            {
-                this.OnMemoChanging(value);
-                this._Memo = value;
-                this.OnMemoChanged();
-                this.OnPropertyChanged("Memo");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Memo;
-        partial void OnMemoChanging(string value);
-        partial void OnMemoChanged();
-        /// <summary>
-        /// There are no comments for Order in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public Order Order
-        {
-            get
-            {
-                return this._Order;
-            }
-            set
-            {
-                this._Order = value;
-                this.OnPropertyChanged("Order");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private Order _Order;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
     /// There are no comments for BBQRMSModel.DinerType in the schema.
     /// </summary>
     /// <KeyProperties>
@@ -4202,193 +3872,6 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<Order> _Orders = new global::System.Data.Services.Client.DataServiceCollection<Order>(null, System.Data.Services.Client.TrackingMode.None);
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for BBQRMSModel.Payment in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// OrderId
-    /// PaymentTypeId
-    /// Amount
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("Payments")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id", "OrderId", "PaymentTypeId", "Amount")]
-    public partial class Payment : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new Payment object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="orderId">Initial value of OrderId.</param>
-        /// <param name="paymentTypeId">Initial value of PaymentTypeId.</param>
-        /// <param name="amount">Initial value of Amount.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Payment CreatePayment(int ID, int orderId, int paymentTypeId, decimal amount)
-        {
-            Payment payment = new Payment();
-            payment.Id = ID;
-            payment.OrderId = orderId;
-            payment.PaymentTypeId = paymentTypeId;
-            payment.Amount = amount;
-            return payment;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property OrderId in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int OrderId
-        {
-            get
-            {
-                return this._OrderId;
-            }
-            set
-            {
-                this.OnOrderIdChanging(value);
-                this._OrderId = value;
-                this.OnOrderIdChanged();
-                this.OnPropertyChanged("OrderId");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _OrderId;
-        partial void OnOrderIdChanging(int value);
-        partial void OnOrderIdChanged();
-        /// <summary>
-        /// There are no comments for Property PaymentTypeId in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int PaymentTypeId
-        {
-            get
-            {
-                return this._PaymentTypeId;
-            }
-            set
-            {
-                this.OnPaymentTypeIdChanging(value);
-                this._PaymentTypeId = value;
-                this.OnPaymentTypeIdChanged();
-                this.OnPropertyChanged("PaymentTypeId");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _PaymentTypeId;
-        partial void OnPaymentTypeIdChanging(int value);
-        partial void OnPaymentTypeIdChanged();
-        /// <summary>
-        /// There are no comments for Property Amount in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public decimal Amount
-        {
-            get
-            {
-                return this._Amount;
-            }
-            set
-            {
-                this.OnAmountChanging(value);
-                this._Amount = value;
-                this.OnAmountChanged();
-                this.OnPropertyChanged("Amount");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private decimal _Amount;
-        partial void OnAmountChanging(decimal value);
-        partial void OnAmountChanged();
-        /// <summary>
-        /// There are no comments for Property Memo in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Memo
-        {
-            get
-            {
-                return this._Memo;
-            }
-            set
-            {
-                this.OnMemoChanging(value);
-                this._Memo = value;
-                this.OnMemoChanged();
-                this.OnPropertyChanged("Memo");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Memo;
-        partial void OnMemoChanging(string value);
-        partial void OnMemoChanged();
-        /// <summary>
-        /// There are no comments for Order in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public Order Order
-        {
-            get
-            {
-                return this._Order;
-            }
-            set
-            {
-                this._Order = value;
-                this.OnPropertyChanged("Order");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private Order _Order;
-        /// <summary>
-        /// There are no comments for PaymentType in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public PaymentType PaymentType
-        {
-            get
-            {
-                return this._PaymentType;
-            }
-            set
-            {
-                this._PaymentType = value;
-                this.OnPropertyChanged("PaymentType");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private PaymentType _PaymentType;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -4629,6 +4112,310 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<Order> _Orders = new global::System.Data.Services.Client.DataServiceCollection<Order>(null, System.Data.Services.Client.TrackingMode.None);
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.Payment in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Payments")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Payment : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new Payment object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="orderId">Initial value of OrderId.</param>
+        /// <param name="paymentTypeId">Initial value of PaymentTypeId.</param>
+        /// <param name="amount">Initial value of Amount.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Payment CreatePayment(int ID, int orderId, int paymentTypeId, decimal amount)
+        {
+            Payment payment = new Payment();
+            payment.Id = ID;
+            payment.OrderId = orderId;
+            payment.PaymentTypeId = paymentTypeId;
+            payment.Amount = amount;
+            return payment;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property OrderId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int OrderId
+        {
+            get
+            {
+                return this._OrderId;
+            }
+            set
+            {
+                this.OnOrderIdChanging(value);
+                this._OrderId = value;
+                this.OnOrderIdChanged();
+                this.OnPropertyChanged("OrderId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _OrderId;
+        partial void OnOrderIdChanging(int value);
+        partial void OnOrderIdChanged();
+        /// <summary>
+        /// There are no comments for Property PaymentTypeId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int PaymentTypeId
+        {
+            get
+            {
+                return this._PaymentTypeId;
+            }
+            set
+            {
+                this.OnPaymentTypeIdChanging(value);
+                this._PaymentTypeId = value;
+                this.OnPaymentTypeIdChanged();
+                this.OnPropertyChanged("PaymentTypeId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _PaymentTypeId;
+        partial void OnPaymentTypeIdChanging(int value);
+        partial void OnPaymentTypeIdChanged();
+        /// <summary>
+        /// There are no comments for Property Amount in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public decimal Amount
+        {
+            get
+            {
+                return this._Amount;
+            }
+            set
+            {
+                this.OnAmountChanging(value);
+                this._Amount = value;
+                this.OnAmountChanged();
+                this.OnPropertyChanged("Amount");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private decimal _Amount;
+        partial void OnAmountChanging(decimal value);
+        partial void OnAmountChanged();
+        /// <summary>
+        /// There are no comments for Property Memo in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Memo
+        {
+            get
+            {
+                return this._Memo;
+            }
+            set
+            {
+                this.OnMemoChanging(value);
+                this._Memo = value;
+                this.OnMemoChanged();
+                this.OnPropertyChanged("Memo");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Memo;
+        partial void OnMemoChanging(string value);
+        partial void OnMemoChanged();
+        /// <summary>
+        /// There are no comments for Order in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Order Order
+        {
+            get
+            {
+                return this._Order;
+            }
+            set
+            {
+                this._Order = value;
+                this.OnPropertyChanged("Order");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Order _Order;
+        /// <summary>
+        /// There are no comments for PaymentType in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public PaymentType PaymentType
+        {
+            get
+            {
+                return this._PaymentType;
+            }
+            set
+            {
+                this._PaymentType = value;
+                this.OnPropertyChanged("PaymentType");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private PaymentType _PaymentType;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.PaymentType in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("PaymentTypes")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class PaymentType : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new PaymentType object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="description">Initial value of Description.</param>
+        /// <param name="code">Initial value of Code.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static PaymentType CreatePaymentType(int ID, string description, string code)
+        {
+            PaymentType paymentType = new PaymentType();
+            paymentType.Id = ID;
+            paymentType.Description = description;
+            paymentType.Code = code;
+            return paymentType;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Description in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this._Description = value;
+                this.OnDescriptionChanged();
+                this.OnPropertyChanged("Description");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Property Code in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Code
+        {
+            get
+            {
+                return this._Code;
+            }
+            set
+            {
+                this.OnCodeChanging(value);
+                this._Code = value;
+                this.OnCodeChanged();
+                this.OnPropertyChanged("Code");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Code;
+        partial void OnCodeChanging(string value);
+        partial void OnCodeChanged();
+        /// <summary>
+        /// There are no comments for Payments in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<Payment> Payments
+        {
+            get
+            {
+                return this._Payments;
+            }
+            set
+            {
+                this._Payments = value;
+                this.OnPropertyChanged("Payments");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<Payment> _Payments = new global::System.Data.Services.Client.DataServiceCollection<Payment>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

@@ -7,8 +7,7 @@
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:Views="clr-namespace:BBQRMSSolution.Views" mc:Ignorable="d"
-    xmlns:ViewParts="clr-namespace:BBQRMSSolution.Views.ViewParts"
-	x:Name="Window"
+    xmlns:ViewParts="clr-namespace:BBQRMSSolution.Views.ViewParts" xmlns:my="clr-namespace:Controls;assembly=Controls" x:Name="Window"
 	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}"
     d:DesignHeight="480"
     d:DesignWidth="800">
@@ -36,32 +35,37 @@
 		</DataTemplate>
 	</UserControl.Resources>
     <Grid x:Name="LayoutRoot">
-        <ViewParts:Payment>
-            <UserControl.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="True">
-                            <Setter Property="Panel.ZIndex" Value="200"/>
-                            <Setter Property="ViewParts:Payment.IsEnabled" Value="True"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="False">
-                            <Setter Property="ViewParts:Payment.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </UserControl.Style>
-        </ViewParts:Payment>
-        <Grid Panel.ZIndex="100"
-			Background="{DynamicResource ApplicationBackgroundBrush}">
-            <Grid.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=PaymentVisible}" Value="True">
-                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
+        <Grid DataContext="{Binding Payment}" Visibility="{Binding PaymentVisible}" Panel.ZIndex="{Binding PaymentZIndex}" Width="Auto" Height="Auto">
+            <Border Background="Black" Opacity="0.33" HorizontalAlignment="Left" Width="693"></Border>
+            <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
+                <StackPanel HorizontalAlignment="Center">
+                    <Grid HorizontalAlignment="Center">
+                        <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" Text="{Binding Mode=TwoWay, Path=PaymentAmount}" VerticalAlignment="Top" Width="210" />
+                        <Button Content="Cancel" Command="{Binding Cancel}" Height="53" HorizontalAlignment="Left" Margin="228,179,0,0" IsCancel="True" VerticalAlignment="Top" Width="185" />
+                        <Button Content="Add Payment" Command="{Binding AddPayment}" Height="53" HorizontalAlignment="Left" Margin="228,238,0,0" IsDefault="True" VerticalAlignment="Top" Width="185" />
+                        <Button Content="1" Height="53" HorizontalAlignment="Left" Margin="12,61,0,0" Name="onebutton" Click="Payment_Pad_Button_Click" CommandParameter="1" VerticalAlignment="Top" Width="66" />
+                        <Button Content="2" Height="53" HorizontalAlignment="Left" Margin="84,61,0,0" Name="twobutton" Click="Payment_Pad_Button_Click" CommandParameter="2" VerticalAlignment="Top" Width="66" />
+                        <Button Content="3" Height="53" HorizontalAlignment="Left" Margin="156,61,0,0" Name="threebutton" Click="Payment_Pad_Button_Click" CommandParameter="3" VerticalAlignment="Top" Width="66" />
+                        <Button Content="4" Height="53" HorizontalAlignment="Left" Margin="12,120,0,0" Name="fourbutton" Click="Payment_Pad_Button_Click" CommandParameter="4" VerticalAlignment="Top" Width="66" />
+                        <Button Content="5" Height="53" HorizontalAlignment="Left" Margin="84,120,0,0" Name="fivebutton" Click="Payment_Pad_Button_Click" CommandParameter="5" VerticalAlignment="Top" Width="66" />
+                        <Button Content="6" Height="53" HorizontalAlignment="Left" Margin="156,120,0,0" Name="sixbutton" Click="Payment_Pad_Button_Click" CommandParameter="6" VerticalAlignment="Top" Width="66" />
+                        <Button Content="7" Height="53" HorizontalAlignment="Left" Margin="12,179,0,0" Name="sevenbutton" Click="Payment_Pad_Button_Click" CommandParameter="7" VerticalAlignment="Top" Width="66" />
+                        <Button Content="8" Height="53" HorizontalAlignment="Left" Margin="84,179,0,0" Name="eightbutton" Click="Payment_Pad_Button_Click" CommandParameter="8" VerticalAlignment="Top" Width="66" />
+                        <Button Content="9" Height="53" HorizontalAlignment="Left" Margin="156,179,0,0" Name="ninebutton" Click="Payment_Pad_Button_Click" CommandParameter="9" VerticalAlignment="Top" Width="66" />
+                        <Button Content="(--" Height="53" HorizontalAlignment="Left" Margin="228,6,0,0" Name="backbutton" VerticalAlignment="Top" Width="66" />
+                        <Button Content="0" Height="53" HorizontalAlignment="Left" Margin="12,238,0,0" Name="zerobutton" Click="Payment_Pad_Button_Click" CommandParameter="0" VerticalAlignment="Top" Width="66" />
+                        <Button Content="." Height="53" HorizontalAlignment="Left" Margin="84,238,0,0" Name="dotbutton" Click="Payment_Pad_Button_Click" CommandParameter="." VerticalAlignment="Top" Width="66" />
+                        <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton" VerticalAlignment="Top" Width="66" />
+                        <ComboBox Height="53" Margin="228,120,0,0" Name="listComboBox1" VerticalAlignment="Top" Width="185"
+                      HorizontalContentAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Path=PaymentTypes}"
+                      DisplayMemberPath="Description" SelectedItem="{Binding Mode=TwoWay,Path=PaymentType}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Background="{DynamicResource ApplicationBackgroundBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -117,7 +121,7 @@
             <Button Command="{Binding Cashier}" Content="Cashier" Height="45" Width="130" Margin="10,210,318,8" Grid.Column="1" Grid.Row="2" />
             <Button Command="{Binding Cancel}" Content="Cancel Order" Height="45" Width="130" Margin="278,6,392,19" Grid.ColumnSpan="2" />
             <Button Command="{Binding Discount}" Content="Discount Order" Height="45" Width="130" Grid.Column="1" Margin="10,6,318,213" Grid.Row="2" />
-            <Button Command="{Binding Payment}" Content="Add Payment" Height="45" Width="130" Grid.Column="1" Margin="10,57,318,162" Grid.Row="2" />
+            <Button Command="{Binding AddPayment}" Content="Add Payment" Height="45" Width="130" Grid.Column="1" Margin="10,57,318,162" Grid.Row="2" />
             <Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Grid.Column="1" Margin="10,108,318,111" Grid.Row="2" />
             <Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="10,160,318,59" Grid.Row="2" Grid.Column="1" />
             <Button Command="{Binding Save}" Content="Save Order" Height="45" Width="130" Margin="6,6,206,19" />
