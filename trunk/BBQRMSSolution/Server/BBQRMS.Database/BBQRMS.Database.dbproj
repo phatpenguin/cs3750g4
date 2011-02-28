@@ -310,12 +310,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\MenuItemMap.FK_MenuItem_MenuItemMap.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\OrderPayment.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\OrderPayment.FK_OrderPayment_Order.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Privilege.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -377,6 +371,9 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Payment.FK_OrderId_Payment.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\Payment.PK_Id_Payment.pkey.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

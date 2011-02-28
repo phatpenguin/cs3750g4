@@ -24,5 +24,11 @@ namespace BBQRMSSolution.Views
 		{
 			InitializeComponent();
 		}
+
+        private void Payment_Pad_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var pressed = (Button)sender;
+            PaymentAmountTextBox.Text += pressed.CommandParameter;
+        }
 	}
 }

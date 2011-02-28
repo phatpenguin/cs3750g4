@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution.Views.ViewParts
 {
@@ -19,6 +20,8 @@ namespace BBQRMSSolution.Views.ViewParts
     /// </summary>
     public partial class Payment : UserControl
     {
+        public OrderViewModel Order { get; set; }
+
         public Payment()
         {
             InitializeComponent();
