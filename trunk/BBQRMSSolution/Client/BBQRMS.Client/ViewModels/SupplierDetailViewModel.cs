@@ -13,11 +13,12 @@ namespace BBQRMSSolution.ViewModels
         private ObservableCollection<Supplier> _supplier;
         private Supplier _selectedSupplier;
 
-			[Obsolete("Used for design-time only", true)]
+		[Obsolete("Used for design-time only", true)]
     	public SupplierDetailViewModel()
     	{
     		//TODO: fill in the properties with some simulated data for the VS designer
     	}
+
         //constructor
         public SupplierDetailViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
         {
@@ -82,6 +83,16 @@ namespace BBQRMSSolution.ViewModels
                 DataService.AddToSuppliers(_selectedSupplier);
                 DataService.SaveChanges();
             }
+        }
+
+        internal void SaveItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void DeleteItem()
+        {
+            throw new NotImplementedException();
         }
     }
 }

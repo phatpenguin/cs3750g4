@@ -73,6 +73,7 @@
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />
     <Compile Include="ViewModels\ReceiveInventoryViewModel.cs" />
+    <Compile Include="ViewModels\ReconcileInventoryViewModel.cs" />
     <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -122,6 +123,9 @@
     </Compile>
     <Compile Include="Views\ReceiveInventoryView.xaml.cs">
       <DependentUpon>ReceiveInventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReconcileInventoryView.xaml.cs">
+      <DependentUpon>ReconcileInventoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewParts\ClockOut.xaml.cs">
       <DependentUpon>ClockOut.xaml</DependentUpon>
@@ -222,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReceiveInventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReconcileInventoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

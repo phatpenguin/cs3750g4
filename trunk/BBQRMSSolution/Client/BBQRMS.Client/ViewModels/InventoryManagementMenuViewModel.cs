@@ -52,7 +52,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 		public void HandleReconcileInventory()
 		{
-
+            Content = new ReconcileInventoryViewModel(DataService, MessageBus);
 
 		}
 	}
