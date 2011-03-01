@@ -69,4 +69,7 @@
         <Views:SupplierDetailView />
     </DataTemplate>
     
+    <DataTemplate DataType="{x:Type ViewModels:ReconcileInventoryViewModel}">
+        <Views:ReconcileInventoryView />
+    </DataTemplate>
 </ResourceDictionary>
