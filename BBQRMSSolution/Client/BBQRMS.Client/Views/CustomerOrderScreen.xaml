@@ -35,9 +35,9 @@
 		</DataTemplate>
 	</UserControl.Resources>
     <Grid x:Name="LayoutRoot">
-        <Grid DataContext="{Binding Payment}" Visibility="{Binding PaymentVisible}" Panel.ZIndex="{Binding PaymentZIndex}" Width="Auto" Height="Auto">
-            <Border Background="Black" Opacity="0.33" HorizontalAlignment="Left" Width="693"></Border>
-            <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
+        <Grid DataContext="{Binding Payment}" Visibility="{Binding PaymentVisible}" Panel.ZIndex="{Binding PaymentZIndex}">
+            <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        	<Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
                 <StackPanel HorizontalAlignment="Center">
                     <Grid HorizontalAlignment="Center">
                         <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" Text="{Binding Mode=TwoWay, Path=PaymentAmount}" VerticalAlignment="Top" Width="210" />
