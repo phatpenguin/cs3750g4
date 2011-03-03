@@ -54,5 +54,17 @@ namespace BBQRMSSolution.ViewModels
                 NotifyPropertyChanged("SelectedMasterInventory");
             }
         }
+
+        internal void SaveItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void DeleteItem()
+        {
+            DataService.DeleteObject(_MasterInventory);
+            DataService.SaveChanges();
+            throw new NotImplementedException();
+        }
     }
 }
