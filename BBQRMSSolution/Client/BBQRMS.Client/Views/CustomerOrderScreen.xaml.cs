@@ -28,7 +28,11 @@ namespace BBQRMSSolution.Views
         private void Payment_Pad_Button_Click(object sender, RoutedEventArgs e)
         {
             var pressed = (Button)sender;
+            
+
+            if (pressed.CommandParameter.ToString() == "." && PaymentAmountTextBox.Text.Contains(".")) return;
+
             PaymentAmountTextBox.Text += pressed.CommandParameter;
         }
 	}
-}
+} 

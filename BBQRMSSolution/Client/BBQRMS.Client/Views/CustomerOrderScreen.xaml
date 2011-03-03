@@ -16,7 +16,7 @@
 			<WrapPanel IsItemsHost="True"/>
 		</ItemsPanelTemplate>
 		<DataTemplate x:Key="MenuItemTemplate">
-			<Grid >
+			<Grid>
                <Button Margin="2" Width="115" Height="95" VerticalContentAlignment="Bottom" 
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Views:CustomerOrderScreen}}, Path=DataContext.AddToOrder}" CommandParameter="{Binding}">
 					<Button.Background>
@@ -40,7 +40,7 @@
         	<Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
                 <StackPanel HorizontalAlignment="Center">
                     <Grid HorizontalAlignment="Center">
-                        <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" Text="{Binding Mode=TwoWay, Path=PaymentAmount}" VerticalAlignment="Top" Width="210" />
+                        <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" Text="{Binding Mode=TwoWay, Path=PaymentAmount,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="210" />
                         <Button Content="Cancel" Command="{Binding Cancel}" Height="53" HorizontalAlignment="Left" Margin="228,179,0,0" IsCancel="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="Add Payment" Command="{Binding AddPayment}" Height="53" HorizontalAlignment="Left" Margin="228,238,0,0" IsDefault="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="1" Height="53" HorizontalAlignment="Left" Margin="12,61,0,0" Name="onebutton" Click="Payment_Pad_Button_Click" CommandParameter="1" VerticalAlignment="Top" Width="66" />
@@ -56,11 +56,9 @@
                         <Button Content="0" Height="53" HorizontalAlignment="Left" Margin="12,238,0,0" Name="zerobutton" Click="Payment_Pad_Button_Click" CommandParameter="0" VerticalAlignment="Top" Width="66" />
                         <Button Content="." Height="53" HorizontalAlignment="Left" Margin="84,238,0,0" Name="dotbutton" Click="Payment_Pad_Button_Click" CommandParameter="." VerticalAlignment="Top" Width="66" />
                         <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton" VerticalAlignment="Top" Width="66" />
-                        <ComboBox Height="53" Margin="228,120,0,0" Name="listComboBox1" VerticalAlignment="Top" Width="185"
-                      HorizontalContentAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      ItemsSource="{Binding Path=PaymentTypes}"
-                      DisplayMemberPath="Description" SelectedItem="{Binding Mode=TwoWay,Path=PaymentType}"/>
+                        <ComboBox Height="53" Margin="228,120,0,0" Name="listComboBox1" VerticalAlignment="Top" Width="185" HorizontalContentAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" ItemsSource="{Binding Path=PaymentTypes}" DisplayMemberPath="Description" 
+                                  SelectedItem="{Binding Mode=TwoWay,Path=PaymentType}"/>
                     </Grid>
                 </StackPanel>
             </Border>
