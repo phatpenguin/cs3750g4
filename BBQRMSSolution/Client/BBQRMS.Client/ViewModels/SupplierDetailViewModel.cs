@@ -52,7 +52,6 @@ namespace BBQRMSSolution.ViewModels
             Suppliers.Add(x);
             SelectedSupplier = x;
 
-       
         }
 
 

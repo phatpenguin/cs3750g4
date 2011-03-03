@@ -10,8 +10,9 @@ namespace BBQRMSSolution.ViewModels
 {
     public class ReconcileInventoryViewModel:ViewModelBase
     {
-        private ObservableCollection<MasterInventory> _item;
-        private MasterInventory _selectedItem;
+        private ObservableCollection<MasterInventory> _MasterInventory;
+        private MasterInventory _SelectedMasterInventory;
+        //private Item _selectedItem;
 
 
         [Obsolete("Used for design-time only", true)]
@@ -22,21 +23,36 @@ namespace BBQRMSSolution.ViewModels
 
         public ReconcileInventoryViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
         {
-                
+            DataService = dataService;
+            MessageBus = messageBus;
+            MasterInventories = new ObservableCollection<MasterInventory>(DataService.MasterInventories);
         }
+
         //property --kinda like a method but also an attribute
-        public ObservableCollection<MasterInventory> MasterInventory
+        public ObservableCollection<MasterInventory> MasterInventories
         {
             get
             {
-                return _item;
+                return _MasterInventory;
             }
             set
             {
-                _item = value; NotifyPropertyChanged("MasterInventory");
+                _MasterInventory = value; 
+                NotifyPropertyChanged("MasterInventories");
             }
 
         }
-
+        public MasterInventory SelectedMasterInventory
+        {
+            get
+            {
+                return _SelectedMasterInventory;
+            }
+            set
+            {
+                _SelectedMasterInventory = value;
+                NotifyPropertyChanged("SelectedMasterInventory");
+            }
+        }
     }
 }
