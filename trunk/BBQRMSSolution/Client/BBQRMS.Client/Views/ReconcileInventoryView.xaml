@@ -10,12 +10,12 @@
     <DockPanel>
         <DockPanel>
 
-            <ListBox ItemsSource="{Binding Path=Item}" SelectedItem="{Binding Path=SelectedItem}" DisplayMemberPath="Name">
+            <ListBox ItemsSource="{Binding Path=MasterInventories}" SelectedItem="{Binding Path=SelectedMasterInventory}" DisplayMemberPath="Name">
 
             </ListBox>
         </DockPanel>
-        <StackPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedSupplier, Mode=TwoWay}" Visibility="Collapsed">
-            <Grid  DataContext="{Binding Path=SelectedSupplier}">
+        <StackPanel>
+            <Grid  DataContext="{Binding Path=SelectedMasterInventory}">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
