@@ -20,7 +20,7 @@ namespace BBQRMSSolution.Views
     /// </summary>
     public partial class ReconcileInventoryView : UserControl
     {
-        SupplierDetailViewModel ViewModel { get { return (SupplierDetailViewModel)DataContext; } }
+        ReconcileInventoryViewModel ViewModel { get { return (ReconcileInventoryViewModel)DataContext; } }
         public ReconcileInventoryView()
         {
             InitializeComponent();
