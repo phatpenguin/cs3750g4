@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
+using BBQRMSSolution.ViewModels.Reports;
 using Controls;
 
 namespace BBQRMSSolution.ViewModels
@@ -22,18 +23,8 @@ namespace BBQRMSSolution.ViewModels
 			Reports =
 				new ObservableCollection<ReportViewModel>
 					{
-						new ReportViewModel(dataService)
-							{
-								ReportName = "Most Popular Items",
-								Group = "Sales",
-								HasChart = false,
-								Parameters =
-									{
-										new ReportDateParameterViewModel {Prompt = "Start Date"},
-										new ReportDateParameterViewModel {Prompt = "End Date"},
-									}
-							},
-						new ReportViewModel(dataService)
+						new DailySalesReport(dataService),
+						/*new ReportViewModel(dataService)
 							{
 								ReportName = "Daily Sales graph",
 								Group = "Sales",
@@ -49,6 +40,17 @@ namespace BBQRMSSolution.ViewModels
 								ReportName = "Weekly Sales graph",
 								Group = "Sales",
 								HasChart = true,
+								Parameters =
+									{
+										new ReportDateParameterViewModel {Prompt = "Start Date"},
+										new ReportDateParameterViewModel {Prompt = "End Date"},
+									}
+							},
+						new ReportViewModel(dataService)
+							{
+								ReportName = "Most Popular Items",
+								Group = "Sales",
+								HasChart = false,
 								Parameters =
 									{
 										new ReportDateParameterViewModel {Prompt = "Start Date"},
@@ -157,7 +159,7 @@ namespace BBQRMSSolution.ViewModels
 									{
 										new ReportDateParameterViewModel {Prompt = "Start Date"},
 									}
-							},
+							},*/
 					};
 
 			RunReportCommand = new DelegateCommand(HandleRunReport, CanRunReport);

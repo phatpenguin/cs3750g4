@@ -9,14 +9,15 @@ using BBQRMSSolution.ServerProxy;
 
 namespace BBQRMSSolution.ViewModels
 {
-	public class ReportViewModel : ViewModelBase
+	public abstract class ReportViewModel : ViewModelBase
 	{
 		[Obsolete("Used only by the designer")]
 		protected ReportViewModel()
 		{
+			_parameters = new ObservableCollection<ReportParameterViewModel>();
 		}
 
-		public ReportViewModel(BBQRMSEntities dataService)
+		protected ReportViewModel(BBQRMSEntities dataService)
 		{
 			DataService = dataService;
 			_parameters = new ObservableCollection<ReportParameterViewModel>();
@@ -75,16 +76,20 @@ namespace BBQRMSSolution.ViewModels
 			}
 		}
 
-		private static Stream GetReportDefinition()
+		protected abstract Stream GetReportDefinition();
+/*
 		{
 			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
 		}
+*/
 
-		private IEnumerable GetData()
+		protected abstract IEnumerable GetData();
+/*
 		{
 			//If the refresh button on report viewer is going to function, the IEnumerable needs to support more than one enumeration.
 			return DataService.Menus.Execute().ToList();
 		}
+*/
 
 		public void RunReport(IReportViewer reportViewer)
 		{
@@ -102,84 +107,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 	}
 
-	public abstract class ReportParameterViewModel : ViewModelBase
-	{
-		private string _prompt;
 
-		public string Prompt
-		{
-			get { return _prompt; }
-			set
-			{
-				if (value != _prompt)
-				{
-					_prompt = value;
-					NotifyPropertyChanged("Prompt");
-				}
-			}
-		}
-	}
-
-	public class ReportDateParameterViewModel : ReportParameterViewModel
-	{
-		private DateTime _value;
-
-		public DateTime Value
-		{
-			get { return _value; }
-			set
-			{
-				if (value != _value)
-				{
-					_value = value;
-					NotifyPropertyChanged("Value");
-				}
-			}
-		}
-	}
-
-	public class ReportBoolParameterViewModel : ReportParameterViewModel
-	{
-		private bool _value;
-
-		public bool Value
-		{
-			get { return _value; }
-			set
-			{
-				if (value != _value)
-				{
-					_value = value;
-					NotifyPropertyChanged("Value");
-				}
-			}
-		}
-	}
-
-	public class ReportOptionParameterViewModel : ReportParameterViewModel
-	{
-		public ReportOptionParameterViewModel()
-		{
-			Options = new ObservableCollection<string>();
-		}
-
-		private string _selectedOption;
-
-		public string SelectedOption
-		{
-			get { return _selectedOption; }
-			set
-			{
-				if (value != _selectedOption)
-				{
-					_selectedOption = value;
-					NotifyPropertyChanged("SelectedOption");
-				}
-			}
-		}
-
-		public ObservableCollection<string> Options { get; private set; }
-	}
 
 	public class DesignTimeReportViewModel : ReportViewModel
 	{
@@ -194,6 +122,16 @@ namespace BBQRMSSolution.ViewModels
 			ReportName = "Sample Report";
 			Group = "Sample Group";
 			HasChart = true;
+		}
+
+		protected override Stream GetReportDefinition()
+		{
+			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
+		}
+
+		protected override IEnumerable GetData()
+		{
+			return DataService.Menus.Execute().ToList();
 		}
 	}
 }

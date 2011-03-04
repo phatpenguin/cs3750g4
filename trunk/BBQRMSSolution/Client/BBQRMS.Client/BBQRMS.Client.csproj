@@ -74,6 +74,9 @@
     <Compile Include="SampleData\DesignTimeRoles.cs" />
     <Compile Include="ViewModels\ReceiveInventoryViewModel.cs" />
     <Compile Include="ViewModels\ReconcileInventoryViewModel.cs" />
+    <Compile Include="ViewModels\ReportParameterViewModel.cs" />
+    <Compile Include="ViewModels\Reports\DailySalesRecord.cs" />
+    <Compile Include="ViewModels\Reports\DailySalesReport.cs" />
     <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -307,7 +310,6 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
-    <None Include="Properties\DataSources\BBQRMSSolution.ServerProxy.Menu.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -326,8 +328,7 @@
     <Resource Include="Graphics\x-office-spreadsheet.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\Export_Menus.rdlc" />
-    <EmbeddedResource Include="Reports\InventoryLevelsGraph.rdlc" />
+    <EmbeddedResource Include="Reports\DailySales.rdlc" />
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{DE2221A4-3807-4338-8187-4884BCFF6436}</Project>
       <Name>Controls</Name>
