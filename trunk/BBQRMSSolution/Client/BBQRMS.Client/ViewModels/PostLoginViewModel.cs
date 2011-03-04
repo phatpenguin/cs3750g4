@@ -11,6 +11,7 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class PostLoginViewModel : ViewModelBase, IHandle<ShowScreen>
 	{
+		private readonly IClientTimeProvider _timeProvider;
 		private ViewModelBase _content;
 		private bool _clockOutVisible;
 
@@ -26,8 +27,9 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 
-		public PostLoginViewModel(BBQRMSEntities dataService, IMessageBus messageBus, ISecurityContext securityContext)
+		public PostLoginViewModel(BBQRMSEntities dataService, IMessageBus messageBus, ISecurityContext securityContext, IClientTimeProvider timeProvider)
 		{
+			_timeProvider = timeProvider;
 			MessageBus = messageBus;
 			DataService = dataService;
 			SecurityContext = securityContext;
@@ -73,7 +75,7 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleReporting()
 		{
 			//TODO: Show a new or existing viewmodel for reporting.
-			MessageBus.Publish(new ShowScreen(new ChooseReportViewModel(DataService, MessageBus)));
+			MessageBus.Publish(new ShowScreen(new ChooseReportViewModel(DataService, MessageBus, _timeProvider)));
 		}
 
 		public void HandleAdminBtn()

@@ -10,5 +10,6 @@ namespace BBQRMSSolution.ViewModels
 		IList<string> GetDataSourceNames();
 		void AddDataSource(string dataSourceName, IEnumerable data);
 		void RefreshReport();
+		void AddParameter(string parameterName, string parameterValue);
 	}
 }

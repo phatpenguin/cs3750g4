@@ -28,7 +28,8 @@ namespace BBQRMSSolution
 				new MainWindowViewModel(
 					new Uri(Settings.Default.dataServiceBaseUri),
 					GlobalApplicationState.MessageBus,
-					securityContext);
+					securityContext,
+					TimeProvider.Current);
 		}
 	}
 }

@@ -8,6 +8,7 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class MainWindowViewModel : ViewModelBase, IHandle<UserLoggedIn>, IHandle<UserLoggingOut>, IHandle<ShutdownRequested>
 	{
+		private readonly IClientTimeProvider _timeProvider;
 
 		[Obsolete("Called only at design time.", true)]
 		public MainWindowViewModel()
@@ -17,8 +18,9 @@ namespace BBQRMSSolution.ViewModels
 			FullScreenContent = new LoginViewModel(DataService, MessageBus);
 		}
 
-		public MainWindowViewModel(Uri serverAddress, IMessageBus messageBus, ISecurityContext securityContext)
+		public MainWindowViewModel(Uri serverAddress, IMessageBus messageBus, ISecurityContext securityContext, IClientTimeProvider timeProvider)
 		{
+			_timeProvider = timeProvider;
 			DataService = new BBQRMSEntities(serverAddress);
 			MessageBus = messageBus;
 			SecurityContext = securityContext;
@@ -34,7 +36,7 @@ namespace BBQRMSSolution.ViewModels
 
 		private void ShowPostLoginScreen()
 		{
-			FullScreenContent = new PostLoginViewModel(DataService, MessageBus, SecurityContext);
+			FullScreenContent = new PostLoginViewModel(DataService, MessageBus, SecurityContext, _timeProvider);
 		}
 
 		private ViewModelBase _fullScreenContent;

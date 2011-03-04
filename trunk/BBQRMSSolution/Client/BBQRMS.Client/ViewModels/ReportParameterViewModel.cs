@@ -19,6 +19,10 @@ namespace BBQRMSSolution.ViewModels
 				}
 			}
 		}
+
+		public string Name { get; set; }
+
+		public abstract string StringValue { get; }
 	}
 
 	public class ReportDateParameterViewModel : ReportParameterViewModel
@@ -37,6 +41,11 @@ namespace BBQRMSSolution.ViewModels
 				}
 			}
 		}
+
+		public override string StringValue
+		{
+			get { return Value.ToString(); }
+		}
 	}
 
 	public class ReportBoolParameterViewModel : ReportParameterViewModel
@@ -54,6 +63,11 @@ namespace BBQRMSSolution.ViewModels
 					NotifyPropertyChanged("Value");
 				}
 			}
+		}
+
+		public override string StringValue
+		{
+			get { return Value.ToString(); }
 		}
 	}
 
@@ -80,6 +94,11 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 		public ObservableCollection<string> Options { get; private set; }
+
+		public override string StringValue
+		{
+			get { return SelectedOption; }
+		}
 	}
 
 

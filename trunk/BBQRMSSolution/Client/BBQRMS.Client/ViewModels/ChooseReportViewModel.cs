@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ServerProxy;
 using BBQRMSSolution.ViewModels.Reports;
@@ -9,21 +10,24 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class ChooseReportViewModel : ViewModelBase
 	{
+		private readonly IClientTimeProvider _timeProvider;
+
 		[Obsolete("Used for design-time only", true)]
-		public ChooseReportViewModel() : this(null, null)
+		public ChooseReportViewModel() : this(null, null, TimeProvider.Current)
 		{
 			
 		}
 
-		public ChooseReportViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
+		public ChooseReportViewModel(BBQRMSEntities dataService, IMessageBus messageBus, IClientTimeProvider timeProvider)
 		{
+			_timeProvider = timeProvider;
 			DataService = dataService;
 			MessageBus = messageBus;
 
 			Reports =
 				new ObservableCollection<ReportViewModel>
 					{
-						new DailySalesReport(dataService),
+						new DailySalesReport(dataService, _timeProvider),
 						/*new ReportViewModel(dataService)
 							{
 								ReportName = "Daily Sales graph",
@@ -169,6 +173,7 @@ namespace BBQRMSSolution.ViewModels
 
 		public void HandleRunReport()
 		{
+			SelectedReport.SetParameterDefaults();
 			MessageBus.Publish(new ShowScreen(SelectedReport));
 		}
 
