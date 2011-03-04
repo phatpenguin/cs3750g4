@@ -18,11 +18,17 @@ namespace BBQRMSSolution.Views
 		public void LoadReportDefinition(Stream rdlcDefinition)
 		{
 			mRealViewer.LocalReport.LoadReportDefinition(rdlcDefinition);
+			mRealViewer.LocalReport.DataSources.Clear();
 		}
 
 		public IList<string> GetDataSourceNames()
 		{
 			return mRealViewer.LocalReport.GetDataSourceNames();
+		}
+
+		public void AddParameter(string parameterName, string parameterValue)
+		{
+			mRealViewer.LocalReport.SetParameters(new ReportParameter(parameterName, parameterValue));
 		}
 
 		public void AddDataSource(string dataSourceName, IEnumerable data)

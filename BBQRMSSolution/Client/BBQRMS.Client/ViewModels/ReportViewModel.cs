@@ -5,20 +5,24 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.ServerProxy;
 
 namespace BBQRMSSolution.ViewModels
 {
 	public abstract class ReportViewModel : ViewModelBase
 	{
+		protected readonly IClientTimeProvider TheClock;
+
 		[Obsolete("Used only by the designer")]
 		protected ReportViewModel()
 		{
 			_parameters = new ObservableCollection<ReportParameterViewModel>();
 		}
 
-		protected ReportViewModel(BBQRMSEntities dataService)
+		protected ReportViewModel(BBQRMSEntities dataService, IClientTimeProvider theClock)
 		{
+			TheClock = theClock;
 			DataService = dataService;
 			_parameters = new ObservableCollection<ReportParameterViewModel>();
 		}
@@ -83,7 +87,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 */
 
-		protected abstract IEnumerable GetData();
+		protected abstract IDictionary<string, IEnumerable> GetDataSets();
 /*
 		{
 			//If the refresh button on report viewer is going to function, the IEnumerable needs to support more than one enumeration.
@@ -97,13 +101,26 @@ namespace BBQRMSSolution.ViewModels
 			// 1) verify input parameters
 			// 2) load report definition (what if it's already loaded and the user just wants to change parameter values?)
 			reportViewer.LoadReportDefinition(GetReportDefinition());
-			// 3) retrieve report data
-			IEnumerable data = GetData();
-			// 4) assign the data to the report's data source(s)
-			IList<string> names = reportViewer.GetDataSourceNames();
-			reportViewer.AddDataSource(names[0], data);
-			// 5) _run_ the report.
+			// 3) assign the parameters to the report
+			foreach (ReportParameterViewModel reportParameterViewModel in Parameters)
+			{
+				if (!string.IsNullOrEmpty(reportParameterViewModel.Name))
+					reportViewer.AddParameter(reportParameterViewModel.Name, reportParameterViewModel.StringValue);
+			}
+			// 4) retrieve report data
+			var data = GetDataSets();
+			// 5) assign the data to the report's data source(s)
+			foreach (KeyValuePair<string, IEnumerable> keyAndDataPair in data)
+			{
+				reportViewer.AddDataSource(keyAndDataPair.Key, keyAndDataPair.Value);
+			}
+			// 6) _run_ the report.
 			reportViewer.RefreshReport();
+		}
+
+		public virtual void SetParameterDefaults()
+		{
+			
 		}
 	}
 
@@ -129,9 +146,9 @@ namespace BBQRMSSolution.ViewModels
 			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
 		}
 
-		protected override IEnumerable GetData()
+		protected override IDictionary<string, IEnumerable> GetDataSets()
 		{
-			return DataService.Menus.Execute().ToList();
+			return new Dictionary<string, IEnumerable>();
 		}
 	}
 }

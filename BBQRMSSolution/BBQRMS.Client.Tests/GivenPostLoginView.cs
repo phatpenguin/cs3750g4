@@ -1,7 +1,6 @@
 ﻿using System.Data.Services.Client;
 using System.Linq;
 using BBQRMS.WCFServices;
-using BBQRMSSolution;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
@@ -20,22 +19,22 @@ namespace BBQRMS.Client.Tests
 	[TestClass]
 	public class GivenPostLoginView
 	{
-		private static Uri mServiceAddress;
-		private static BBQRMSEntities mDataService;
-		private Mock<ISecurityContext> mMockSecurityContext;
-		private Mock<IMessageBus> mMockMessageBus;
+		private static Uri _serviceAddress;
+		private static BBQRMSEntities _dataService;
+		private Mock<ISecurityContext> _mockSecurityContext;
+		private Mock<IMessageBus> _mockMessageBus;
 
-		private static readonly TimeProviderForTesting time = new TimeProviderForTesting();
+		private static readonly TimeProviderForTesting Time = new TimeProviderForTesting();
 
 		[ClassInitialize]
 		public static void BeforeAllTests(TestContext testContext)
 		{
-			ServerTimeProvider.Current = time;
-			ClientTimeProvider.Current = time;
+			ServerTimeProvider.Current = Time;
+			ClientTimeProvider.Current = Time;
 			// start the data service
-			mServiceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenPostLoginView/");
-			Host.Open(mServiceAddress);
-			mDataService = new BBQRMSEntities(mServiceAddress);
+			_serviceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenPostLoginView/");
+			Host.Open(_serviceAddress);
+			_dataService = new BBQRMSEntities(_serviceAddress);
 		}
 
 		[ClassCleanup]
@@ -49,19 +48,20 @@ namespace BBQRMS.Client.Tests
 		[TestInitialize]
 		public void BeforeEachTest()
 		{
-			mMockMessageBus = new Mock<IMessageBus>();
+			_mockMessageBus = new Mock<IMessageBus>();
 			//Create new employee to use for this test run.
 			var employee = MakeNewTestEmployee();
-			mDataService.AddToEmployees(employee);
-			var resp = mDataService.SaveChanges(SaveChangesOptions.Batch);
+			_dataService.AddToEmployees(employee);
+			var resp = _dataService.SaveChanges(SaveChangesOptions.Batch);
+			Assert.IsTrue(resp.BatchStatusCode == 200);
 
-			LoginViewModel login = new LoginViewModel(mDataService, mMockMessageBus.Object);
+			var login = new LoginViewModel(_dataService, _mockMessageBus.Object);
 
 			login.PrepareTimeClock(employee);
 
-			mMockSecurityContext = new Mock<ISecurityContext>();
+			_mockSecurityContext = new Mock<ISecurityContext>();
 			//Make this the logged-in employee.
-			mMockSecurityContext.SetupGet(s => s.CurrentUser).Returns(employee);
+			_mockSecurityContext.SetupGet(s => s.CurrentUser).Returns(employee);
 		}
 
 		public static Employee MakeNewTestEmployee()
@@ -74,38 +74,37 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenUserClocksOutAndConfirms_ThenClockOutTimeIsRecordedAndUserIsLoggedOut()
 		{
-			PostLoginViewModel target = new PostLoginViewModel(mDataService, mMockMessageBus.Object, mMockSecurityContext.Object);
-			time.SkipForwardBy(TimeSpan.FromMinutes(5));
+			var target = new PostLoginViewModel(_dataService, _mockMessageBus.Object, _mockSecurityContext.Object, Time);
+			Time.SkipForwardBy(TimeSpan.FromMinutes(5));
 			target.HandleClockOut();
 			Assert.IsTrue(target.ClockOutVisible);
 			target.ConfirmClockOut();
 			Assert.IsFalse(target.ClockOutVisible);
 			//TODO: verify that the correct EmployeeTimeClock record was updated
 
-			var timeClocks = mDataService.EmployeeTimeClocks.Where(tc => tc.EmployeeId == mMockSecurityContext.Object.CurrentUser.Id).ToList();
+			var timeClocks = _dataService.EmployeeTimeClocks.Where(tc => tc.EmployeeId == _mockSecurityContext.Object.CurrentUser.Id).ToList();
 			Assert.AreEqual(1, timeClocks.Count);
 			Assert.IsNotNull(timeClocks[0].ClockOutTimeUTC);
 			Assert.IsTrue(timeClocks[0].ClockOutTimeUTC > timeClocks[0].ClockInTimeUTC);
 			Assert.IsTrue(timeClocks[0].ClockOutTimeUTC - timeClocks[0].ClockInTimeUTC > new TimeSpan(0, 4, 50));
 
-			mMockMessageBus.Verify(m => m.Publish(It.IsAny<UserLoggingOut>()));
+			_mockMessageBus.Verify(m => m.Publish(It.IsAny<UserLoggingOut>()));
 
 			//TODO: what if the user wasn't actually clocked in at the time? (i.e. two login sessions on different terminals.)
 			//TODO: what if the dataService is unavailable or unresponsive?
-
 
 		}
 
 		[TestMethod]
 		public void WhenLogoutIsClicked_ThenScreenRevertsToLoginScreenAndCurrentUserIsCleared()
 		{
-			MessageBus messageBus = new MessageBus();
-			SecurityContext securityContext = new SecurityContext();
+			var messageBus = new MessageBus();
+			var securityContext = new SecurityContext();
 			//App.xaml.cs does this at runtime:
 			messageBus.Subscribe(securityContext);
 
 			// the MainWindowViewModel (and the view models created by it) subscribe themselves to the messageBus.
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, messageBus, securityContext);
+			var toTest = new MainWindowViewModel(_serviceAddress, messageBus, securityContext, Time);
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			Assert.IsNull(securityContext.CurrentUser);
 
@@ -113,7 +112,9 @@ namespace BBQRMS.Client.Tests
 			loginViewModel.HandleLogin("1011");
 			Assert.IsNotNull(securityContext.CurrentUser);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));
+			// ReSharper disable PossibleInvalidCastException
 			var postLoginViewModel = (PostLoginViewModel)toTest.FullScreenContent;
+			// ReSharper restore PossibleInvalidCastException
 
 			postLoginViewModel.HandleLogout();
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));

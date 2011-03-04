@@ -2,7 +2,6 @@
 using System.Data.Services.Client;
 using System.Linq;
 using BBQRMS.WCFServices;
-using BBQRMSSolution;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
@@ -47,7 +46,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenApplicationStarts_ThenLoginViewModelIsCurrentFullScreenContent()
 		{
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, new MessageBus(), new SecurityContext());
+			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, new MessageBus(), new SecurityContext(), time);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
 		}
 
@@ -55,7 +54,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLogsInWithValidPIN_ThenUserLoggedInMessageIsPublished()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext());
+			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("1011");
 			//Make sure a message was published with the correct data.
@@ -129,7 +128,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLoggedInMessageIsReceived_ThenFullScreenContentSwitchesToPostLoginViewModel()
 		{
 			MessageBus messageBus = new MessageBus();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, messageBus, new SecurityContext());
+			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, messageBus, new SecurityContext(), time);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));
 			messageBus.Publish(new UserLoggedIn(new Employee()));
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));
@@ -139,7 +138,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersWrongPINFormat_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext());
+			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
@@ -151,7 +150,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersUnrecognizedPIN_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext());
+			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999011111");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));
