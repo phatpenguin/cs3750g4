@@ -122,7 +122,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenUserForgetsToClockOut_ThenNewTimeClockRecordIsCreatedOnNextLogin()
 		{
-			Assert.Inconclusive("Needs to be written");
+			Assert.Inconclusive("No decision yet on how to accomplish this.");
 		}
 
 		[TestMethod]
