@@ -34,7 +34,7 @@ namespace BBQRMS.Client.Tests
             ServerTimeProvider.Current = MTime;
             ClientTimeProvider.Current = MTime;
             // start the data service
-            _mServiceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenNothing/");
+						_mServiceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingCustomerOrderScreenViewModelTest/");
             Host.Open(_mServiceAddress);
             _mDataService = new BBQRMSEntities(_mServiceAddress);
 
