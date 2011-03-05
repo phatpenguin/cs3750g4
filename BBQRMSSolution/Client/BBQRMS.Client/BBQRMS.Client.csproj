@@ -72,6 +72,11 @@
     <Compile Include="SampleData\DesignTimeEmployee.cs" />
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />
+    <Compile Include="ServerProxy\StateTables.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateTables.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ReceiveInventoryViewModel.cs" />
     <Compile Include="ViewModels\ReconcileInventoryViewModel.cs" />
     <Compile Include="ViewModels\ReportParameterViewModel.cs" />
@@ -317,6 +322,10 @@
     <None Include="ServerProxy\EmployeePrivileges.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EmployeePrivileges.cs</LastGenOutput>
+    </None>
+    <None Include="ServerProxy\StateTables.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StateTables.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServerProxy\service.edmx" />
     <Page Include="Views\ChooseReport.xaml">

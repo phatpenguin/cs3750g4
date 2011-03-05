@@ -22,14 +22,24 @@ namespace BBQRMSSolution.ViewModels.Reports
 			HasChart = false;
 			_startDateParameter = new ReportDateParameterViewModel {Name="StartDate", Prompt = "Starting From"};
 			_endDateParameter = new ReportDateParameterViewModel {Name="EndDate", Prompt = "Through"};
-			Parameters.Add(_startDateParameter);
-			Parameters.Add(_endDateParameter);
+			Parameters.Add(StartDateParameter);
+			Parameters.Add(EndDateParameter);
+		}
+
+		public ReportDateParameterViewModel StartDateParameter
+		{
+			get { return _startDateParameter; }
+		}
+
+		public ReportDateParameterViewModel EndDateParameter
+		{
+			get { return _endDateParameter; }
 		}
 
 		public override void SetParameterDefaults()
 		{
-			_startDateParameter.Value = TheClock.Now.Date.AddDays(-7);
-			_endDateParameter.Value = TheClock.Now.Date.AddDays(-1);
+			StartDateParameter.Value = TheClock.Now.Date.AddDays(-7);
+			EndDateParameter.Value = TheClock.Now.Date.AddDays(-1);
 		}
 
 		protected override Stream GetReportDefinition()
@@ -40,12 +50,12 @@ namespace BBQRMSSolution.ViewModels.Reports
 		protected override IDictionary<string, IEnumerable> GetDataSets()
 		{
 
-			var startDate = _startDateParameter.Value.Date;
-			var endDate = _endDateParameter.Value.Date;
+			var startDate = StartDateParameter.Value.Date;
+			var endDate = EndDateParameter.Value.Date;
 
 			var menuItems = DataService.MenuItems.ToDictionary(mi => mi.Id);
 
-			DataServiceQuery<Order> orders = (DataServiceQuery<Order>) DataService.Orders.Expand("OrderItems").Where(o => o.OrderStateId == 6 && o.Date >= startDate && o.Date < endDate.AddDays(1));
+			var orders = (DataServiceQuery<Order>) DataService.Orders.Expand("OrderItems").Where(o => o.OrderStateId == OrderStates.Closed && o.Date >= startDate && o.Date < endDate.AddDays(1));
 
 			var dateAndItemGroups =
 				from order in orders.ToList()

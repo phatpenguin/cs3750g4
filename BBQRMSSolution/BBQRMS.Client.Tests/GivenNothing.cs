@@ -12,6 +12,7 @@ using Moq;
 using ServerTimeProvider = BBQRMS.WCFServices.TimeProvider;
 using BBQRMSEntities = BBQRMSSolution.ServerProxy.BBQRMSEntities;
 using Employee = BBQRMSSolution.ServerProxy.Employee;
+using ApplicationUser = BBQRMSSolution.ServerProxy.ApplicationUser;
 using ClientTimeProvider = BBQRMSSolution.BusinessLogic.TimeProvider;
 
 // ReSharper disable InconsistentNaming
@@ -21,9 +22,10 @@ namespace BBQRMS.Client.Tests
 	[TestClass]
 	public class GivenNothing
 	{
-		private static Uri mServiceAddress;
+		private static Uri _serviceAddress;
 
 		private static readonly TimeProviderForTesting time = new TimeProviderForTesting();
+		private static Employee _employee;
 
 		[ClassInitialize]
 		public static void BeforeAllTests(TestContext testContext)
@@ -31,8 +33,18 @@ namespace BBQRMS.Client.Tests
 			ServerTimeProvider.Current = time;
 			ClientTimeProvider.Current = time;
 			// start the data service
-			mServiceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenNothing/");
-			Host.Open(mServiceAddress);
+			_serviceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenNothing/");
+			Host.Open(_serviceAddress);
+
+			var _dataService = new BBQRMSEntities(_serviceAddress);
+			_employee = PrepareEmployee.With(firstName: "Paul", lastName: "McCartney");
+			_dataService.AddToEmployees(_employee);
+			var user = new ApplicationUser { DisplayName = "Paul McCartney", IdPart = "1", PersonalPart = "11" };
+			_dataService.AddToApplicationUsers(user);
+			_dataService.AddLink(_employee, "ApplicationUsers", user);
+			_dataService.SaveChanges(SaveChangesOptions.Batch);
+
+			Assert.IsTrue(_employee.Id > 0);
 		}
 
 		[ClassCleanup]
@@ -46,7 +58,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenApplicationStarts_ThenLoginViewModelIsCurrentFullScreenContent()
 		{
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, new MessageBus(), new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, new MessageBus(), new SecurityContext(), time);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
 		}
 
@@ -54,11 +66,11 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLogsInWithValidPIN_ThenUserLoggedInMessageIsPublished()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("1011");
 			//Make sure a message was published with the correct data.
-			mockEvents.Verify(e => e.Publish(It.Is<UserLoggedIn>(u => u.Employee.Id == 1)));
+			mockEvents.Verify(e => e.Publish(It.Is<UserLoggedIn>(u => u.Employee.Id == _employee.Id)));
 			mockEvents.Verify(e => e.Publish(It.IsAny<InvalidPinEntered>()), Times.Never());
 			//TODO: somehow verify that the loginViewModel's "PrepareTimeClock" method was called for the employee.
 		}
@@ -67,8 +79,8 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLogsInFirstTime_ThenEmployeeTimeClockIsCreated()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			BBQRMSEntities dataService = new BBQRMSEntities(mServiceAddress);
-			var newEmp = GivenPostLoginView.MakeNewTestEmployee();
+			BBQRMSEntities dataService = new BBQRMSEntities(_serviceAddress);
+			var newEmp = PrepareEmployee.With(firstName:"Ringo",lastName:"Starr").HiredOn(time.Now.Date);
 			dataService.AddToEmployees(newEmp);
 			var resp = dataService.SaveChanges(SaveChangesOptions.Batch);
 
@@ -89,8 +101,8 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLogsInMultipleTimes_ThenEmployeeTimeClockRecordIsReused()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			BBQRMSEntities dataService = new BBQRMSEntities(mServiceAddress);
-			var newEmp = GivenPostLoginView.MakeNewTestEmployee();
+			BBQRMSEntities dataService = new BBQRMSEntities(_serviceAddress);
+			var newEmp = PrepareEmployee.With(firstName:"George", lastName:"Harrison").HiredOn(time.Now.Date);
 			dataService.AddToEmployees(newEmp);
 			var resp = dataService.SaveChanges(SaveChangesOptions.Batch);
 
@@ -128,7 +140,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLoggedInMessageIsReceived_ThenFullScreenContentSwitchesToPostLoginViewModel()
 		{
 			MessageBus messageBus = new MessageBus();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, messageBus, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, messageBus, new SecurityContext(), time);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));
 			messageBus.Publish(new UserLoggedIn(new Employee()));
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));
@@ -138,7 +150,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersWrongPINFormat_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
@@ -150,7 +162,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersUnrecognizedPIN_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(mServiceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999011111");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));

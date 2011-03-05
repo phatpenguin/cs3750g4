@@ -81,24 +81,12 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 		protected abstract Stream GetReportDefinition();
-/*
-		{
-			return Assembly.GetExecutingAssembly().GetManifestResourceStream("BBQRMSSolution.Reports.Export_Menus.rdlc");
-		}
-*/
 
 		protected abstract IDictionary<string, IEnumerable> GetDataSets();
-/*
-		{
-			//If the refresh button on report viewer is going to function, the IEnumerable needs to support more than one enumeration.
-			return DataService.Menus.Execute().ToList();
-		}
-*/
 
 		public void RunReport(IReportViewer reportViewer)
 		{
-			//TODO:
-			// 1) verify input parameters
+			// 1) TODO: verify input parameters
 			// 2) load report definition (what if it's already loaded and the user just wants to change parameter values?)
 			reportViewer.LoadReportDefinition(GetReportDefinition());
 			// 3) assign the parameters to the report
