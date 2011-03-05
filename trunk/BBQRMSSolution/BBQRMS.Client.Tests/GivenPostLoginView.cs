@@ -12,6 +12,7 @@ using Moq;
 using ServerTimeProvider = BBQRMS.WCFServices.TimeProvider;
 using BBQRMSEntities = BBQRMSSolution.ServerProxy.BBQRMSEntities;
 using Employee = BBQRMSSolution.ServerProxy.Employee;
+using ApplicationUser = BBQRMSSolution.ServerProxy.ApplicationUser;
 using ClientTimeProvider = BBQRMSSolution.BusinessLogic.TimeProvider;
 
 namespace BBQRMS.Client.Tests
@@ -35,6 +36,13 @@ namespace BBQRMS.Client.Tests
 			_serviceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenPostLoginView/");
 			Host.Open(_serviceAddress);
 			_dataService = new BBQRMSEntities(_serviceAddress);
+
+			var emp = PrepareEmployee.With(firstName: "George", lastName: "Jones");
+			_dataService.AddToEmployees(emp);
+			var user = new ApplicationUser {DisplayName = "George Jones", IdPart = "2", PersonalPart = "22"};
+			_dataService.AddToApplicationUsers(user);
+			_dataService.AddLink(emp, "ApplicationUsers", user);
+			_dataService.SaveChanges(SaveChangesOptions.Batch);
 		}
 
 		[ClassCleanup]
@@ -50,10 +58,10 @@ namespace BBQRMS.Client.Tests
 		{
 			_mockMessageBus = new Mock<IMessageBus>();
 			//Create new employee to use for this test run.
-			var employee = MakeNewTestEmployee();
+			var employee = PrepareEmployee.With().HiredOn(DateTime.Today);
 			_dataService.AddToEmployees(employee);
 			var resp = _dataService.SaveChanges(SaveChangesOptions.Batch);
-			Assert.IsTrue(resp.BatchStatusCode == 200);
+			Assert.IsTrue(resp.BatchStatusCode >= 200 && resp.BatchStatusCode < 300);
 
 			var login = new LoginViewModel(_dataService, _mockMessageBus.Object);
 
@@ -63,13 +71,6 @@ namespace BBQRMS.Client.Tests
 			//Make this the logged-in employee.
 			_mockSecurityContext.SetupGet(s => s.CurrentUser).Returns(employee);
 		}
-
-		public static Employee MakeNewTestEmployee()
-		{
-			return new Employee
-			       	{FirstName = "A", LastName = "B", HireDate = DateTime.Today, PayTypeId = 1, PayAmount = 9.75m};
-		}
-
 
 		[TestMethod]
 		public void WhenUserClocksOutAndConfirms_ThenClockOutTimeIsRecordedAndUserIsLoggedOut()
@@ -109,7 +110,7 @@ namespace BBQRMS.Client.Tests
 			Assert.IsNull(securityContext.CurrentUser);
 
 			//Login as a known, valid user.
-			loginViewModel.HandleLogin("1011");
+			loginViewModel.HandleLogin("2022");
 			Assert.IsNotNull(securityContext.CurrentUser);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));
 			// ReSharper disable PossibleInvalidCastException

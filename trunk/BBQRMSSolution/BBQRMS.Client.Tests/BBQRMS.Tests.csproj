@@ -71,8 +71,14 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeforeAllTests.cs" />
     <Compile Include="CustomerOrderScreenViewModelTest.cs" />
+    <Compile Include="GivenManagerIsViewingChooseReportScreen.cs" />
     <Compile Include="GivenPostLoginView.cs" />
+    <Compile Include="PrepareEmployee.cs" />
+    <Compile Include="PrepareMenuItem.cs" />
+    <Compile Include="PrepareOrder.cs" />
+    <Compile Include="PrepareRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GivenNothing.cs" />
     <Compile Include="Utils\TimeProviderForTesting.cs" />
