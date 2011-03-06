@@ -36,11 +36,14 @@ namespace BBQRMSSolution.ViewModels
 
         public string PaymentAmount { get { return _paymentAmount; } set { _paymentAmount = value; } }
 
-        public PaymentViewModel(BBQRMSEntities dataService, IMessageBus messageBus, OrderViewModel order)
+        public PaymentViewModel(BBQRMSEntities dataService, IMessageBus messageBus, OrderViewModel order, IPOSDeviceManager posDeviceManager)
         {
             Order = order;
             DataService = dataService;
             MessageBus = messageBus;
+
+					ICashDrawer cashDrawer = posDeviceManager.GetCashDrawer();
+        	cashDrawer.OpenDrawer();
 
             PaymentTypes = new ObservableCollection<PaymentType>(DataService.PaymentTypes.Execute());
 

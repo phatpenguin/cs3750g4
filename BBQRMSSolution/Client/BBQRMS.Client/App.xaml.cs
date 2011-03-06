@@ -22,14 +22,17 @@ namespace BBQRMSSolution
 		{
 			var securityContext = new SecurityContext();
 
-			GlobalApplicationState.MessageBus.Subscribe(this);
-			GlobalApplicationState.MessageBus.Subscribe(securityContext);
+			IMessageBus messageBus = GlobalApplicationState.MessageBus;
+			messageBus.Subscribe(this);
+			messageBus.Subscribe(securityContext);
 			return
 				new MainWindowViewModel(
 					new Uri(Settings.Default.dataServiceBaseUri),
-					GlobalApplicationState.MessageBus,
+					messageBus,
 					securityContext,
-					TimeProvider.Current);
+					TimeProvider.Current,
+					new POSDeviceManager(messageBus)
+					);
 		}
 	}
 }

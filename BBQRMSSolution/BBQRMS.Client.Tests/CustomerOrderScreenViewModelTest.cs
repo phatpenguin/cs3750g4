@@ -1,9 +1,11 @@
 ﻿using BBQRMS.WCFServices;
+using BBQRMSSolution;
 using BBQRMSSolution.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.ObjectModel;
 using Controls;
+using Moq;
 using BBQRMSEntities = BBQRMSSolution.ServerProxy.BBQRMSEntities;
 using Menu = BBQRMSSolution.ServerProxy.Menu;
 using MenuItem = BBQRMSSolution.ServerProxy.MenuItem;
@@ -38,7 +40,9 @@ namespace BBQRMS.Client.Tests
             Host.Open(_mServiceAddress);
             _mDataService = new BBQRMSEntities(_mServiceAddress);
 
-            target = new CustomerOrderScreenViewModel(_mDataService, new MessageBus());
+        	var mockDeviceManager = new Mock<IPOSDeviceManager>();
+
+        	target = new CustomerOrderScreenViewModel(_mDataService, new MessageBus(), mockDeviceManager.Object);
         }
 
         [ClassCleanup]
@@ -106,7 +110,7 @@ namespace BBQRMS.Client.Tests
         public void PaymentTest()
         {
             OrderViewModel orderTest = new OrderViewModel(new MessageBus(),_mDataService);
-            PaymentViewModel expected = new PaymentViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(),orderTest);
+            PaymentViewModel expected = new PaymentViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(),orderTest, new MockPOSDeviceManager());
             target.Payment = expected;
             PaymentViewModel actual = target.Payment;
             Assert.AreEqual(expected, actual);
@@ -244,7 +248,8 @@ namespace BBQRMS.Client.Tests
         [TestMethod()]
         public void CustomerOrderScreenViewModelConstructorTest()
         {
-            try { target = new CustomerOrderScreenViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus()); }
+					var mockDeviceManager = new Mock<IPOSDeviceManager>();
+					try { target = new CustomerOrderScreenViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(), mockDeviceManager.Object); }
             catch(Exception ex){ Assert.Fail("Exception in Constructor");}
             finally {Assert.IsTrue(true);}
         }

@@ -1,6 +1,7 @@
 ﻿using System.Data.Services.Client;
 using System.Linq;
 using BBQRMS.WCFServices;
+using BBQRMSSolution;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
@@ -26,6 +27,7 @@ namespace BBQRMS.Client.Tests
 		private Mock<IMessageBus> _mockMessageBus;
 
 		private static readonly TimeProviderForTesting Time = new TimeProviderForTesting();
+		private static readonly IPOSDeviceManager POSDevices = new MockPOSDeviceManager();
 
 		[ClassInitialize]
 		public static void BeforeAllTests(TestContext testContext)
@@ -75,7 +77,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenUserClocksOutAndConfirms_ThenClockOutTimeIsRecordedAndUserIsLoggedOut()
 		{
-			var target = new PostLoginViewModel(_dataService, _mockMessageBus.Object, _mockSecurityContext.Object, Time);
+			var target = new PostLoginViewModel(_dataService, _mockMessageBus.Object, _mockSecurityContext.Object, Time, POSDevices);
 			Time.SkipForwardBy(TimeSpan.FromMinutes(5));
 			target.HandleClockOut();
 			Assert.IsTrue(target.ClockOutVisible);
@@ -105,7 +107,7 @@ namespace BBQRMS.Client.Tests
 			messageBus.Subscribe(securityContext);
 
 			// the MainWindowViewModel (and the view models created by it) subscribe themselves to the messageBus.
-			var toTest = new MainWindowViewModel(_serviceAddress, messageBus, securityContext, Time);
+			var toTest = new MainWindowViewModel(_serviceAddress, messageBus, securityContext, Time, POSDevices);
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			Assert.IsNull(securityContext.CurrentUser);
 
