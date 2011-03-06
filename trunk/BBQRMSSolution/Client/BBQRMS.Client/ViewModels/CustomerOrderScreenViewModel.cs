@@ -8,7 +8,8 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class CustomerOrderScreenViewModel : ViewModelBase
 	{
-        public DelegateCommand AddToOrder { get { return new DelegateCommand(Order.AddItem); } }
+		private readonly IPOSDeviceManager _posDeviceManager;
+		public DelegateCommand AddToOrder { get { return new DelegateCommand(Order.AddItem); } }
 
 		public ObservableCollection<Menu> Menus { get; set; }
 		public OrderViewModel Order { get; set; }
@@ -40,8 +41,9 @@ namespace BBQRMSSolution.ViewModels
             Payment = new PaymentViewModel();
 		}
 
-		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
+		public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus, IPOSDeviceManager posDeviceManager)
 		{
+			_posDeviceManager = posDeviceManager;
 			DataService = dataService;
 			MessageBus = messageBus;
 
@@ -67,7 +69,7 @@ namespace BBQRMSSolution.ViewModels
 
         public void NewPayment()
         {
-            Payment = new PaymentViewModel(DataService,MessageBus,Order);
+            Payment = new PaymentViewModel(DataService,MessageBus,Order, _posDeviceManager);
             NotifyPropertyChanged("Payment");
         }
 	}

@@ -12,10 +12,15 @@ namespace BBQRMSSolution.Views
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			DataContext = ((App) Application.Current).GetMainWindowViewModel();
 			// Insert code required on object creation below this point.
+
+			Loaded += MainWindow_Loaded;
 			Closing += MainWindow_Closing;
+		}
+
+		void MainWindow_Loaded(object sender, RoutedEventArgs e)
+		{
+			DataContext = ((App)Application.Current).GetMainWindowViewModel();
 		}
 
 		private void MainWindow_Closing(object sender, CancelEventArgs e)

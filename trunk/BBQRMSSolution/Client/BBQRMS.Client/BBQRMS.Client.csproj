@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.PointOfService, Version=1.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
@@ -68,7 +69,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messages\CashDrawerClosed.cs" />
+    <Compile Include="Messages\CashDrawerOpened.cs" />
     <Compile Include="Messages\ShowAdminScreen.cs" />
+    <Compile Include="MockPOSDeviceManager.cs" />
+    <Compile Include="POSDeviceManager.cs" />
     <Compile Include="SampleData\DesignTimeEmployee.cs" />
     <Compile Include="SampleData\DesignTimePayTypes.cs" />
     <Compile Include="SampleData\DesignTimeRoles.cs" />
@@ -77,6 +82,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StateTables.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ICashDrawer.cs" />
+    <Compile Include="ViewModels\IPOSDeviceManager.cs" />
+    <Compile Include="ViewModels\IReceiptPrinter.cs" />
     <Compile Include="ViewModels\ReceiveInventoryViewModel.cs" />
     <Compile Include="ViewModels\ReconcileInventoryViewModel.cs" />
     <Compile Include="ViewModels\ReportParameterViewModel.cs" />

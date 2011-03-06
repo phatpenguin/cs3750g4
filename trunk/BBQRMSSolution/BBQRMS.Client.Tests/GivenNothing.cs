@@ -2,6 +2,7 @@
 using System.Data.Services.Client;
 using System.Linq;
 using BBQRMS.WCFServices;
+using BBQRMSSolution;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
@@ -24,14 +25,15 @@ namespace BBQRMS.Client.Tests
 	{
 		private static Uri _serviceAddress;
 
-		private static readonly TimeProviderForTesting time = new TimeProviderForTesting();
+		private static readonly TimeProviderForTesting Time = new TimeProviderForTesting();
+		private static readonly IPOSDeviceManager POSDevices = new MockPOSDeviceManager();
 		private static Employee _employee;
 
 		[ClassInitialize]
 		public static void BeforeAllTests(TestContext testContext)
 		{
-			ServerTimeProvider.Current = time;
-			ClientTimeProvider.Current = time;
+			ServerTimeProvider.Current = Time;
+			ClientTimeProvider.Current = Time;
 			// start the data service
 			_serviceAddress = new Uri("http://localhost:80/Temporary_Listen_Addresses/BBQRMSTestingGivenNothing/");
 			Host.Open(_serviceAddress);
@@ -58,7 +60,7 @@ namespace BBQRMS.Client.Tests
 		[TestMethod]
 		public void WhenApplicationStarts_ThenLoginViewModelIsCurrentFullScreenContent()
 		{
-			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, new MessageBus(), new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, new MessageBus(), new SecurityContext(), Time, POSDevices);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
 		}
 
@@ -66,7 +68,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLogsInWithValidPIN_ThenUserLoggedInMessageIsPublished()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), Time, POSDevices);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("1011");
 			//Make sure a message was published with the correct data.
@@ -80,11 +82,11 @@ namespace BBQRMS.Client.Tests
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
 			BBQRMSEntities dataService = new BBQRMSEntities(_serviceAddress);
-			var newEmp = PrepareEmployee.With(firstName:"Ringo",lastName:"Starr").HiredOn(time.Now.Date);
+			var newEmp = PrepareEmployee.With(firstName:"Ringo",lastName:"Starr").HiredOn(Time.Now.Date);
 			dataService.AddToEmployees(newEmp);
 			var resp = dataService.SaveChanges(SaveChangesOptions.Batch);
 
-			var startTime = time.UtcNow;
+			var startTime = Time.UtcNow;
 
 			LoginViewModel toTest = new LoginViewModel(dataService, mockEvents.Object);
 
@@ -102,23 +104,23 @@ namespace BBQRMS.Client.Tests
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
 			BBQRMSEntities dataService = new BBQRMSEntities(_serviceAddress);
-			var newEmp = PrepareEmployee.With(firstName:"George", lastName:"Harrison").HiredOn(time.Now.Date);
+			var newEmp = PrepareEmployee.With(firstName:"George", lastName:"Harrison").HiredOn(Time.Now.Date);
 			dataService.AddToEmployees(newEmp);
 			var resp = dataService.SaveChanges(SaveChangesOptions.Batch);
 
-			var startTime = time.UtcNow;
+			var startTime = Time.UtcNow;
 
 			LoginViewModel toTest = new LoginViewModel(dataService, mockEvents.Object);
 
 			//login once
 			toTest.PrepareTimeClock(newEmp);
 
-			time.SkipForwardBy(TimeSpan.FromMinutes(5));
-			var afterFirstLoginTime = time.UtcNow;
+			Time.SkipForwardBy(TimeSpan.FromMinutes(5));
+			var afterFirstLoginTime = Time.UtcNow;
 			//login again
 			toTest.PrepareTimeClock(newEmp);
 
-			time.SkipForwardBy(TimeSpan.FromMinutes(5));
+			Time.SkipForwardBy(TimeSpan.FromMinutes(5));
 			//login a third time
 			toTest.PrepareTimeClock(newEmp);
 
@@ -140,7 +142,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserLoggedInMessageIsReceived_ThenFullScreenContentSwitchesToPostLoginViewModel()
 		{
 			MessageBus messageBus = new MessageBus();
-			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, messageBus, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, messageBus, new SecurityContext(), Time, POSDevices);
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));
 			messageBus.Publish(new UserLoggedIn(new Employee()));
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(PostLoginViewModel));
@@ -150,7 +152,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersWrongPINFormat_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), Time, POSDevices);
 			var loginViewModel = (LoginViewModel) toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof (LoginViewModel));
@@ -162,7 +164,7 @@ namespace BBQRMS.Client.Tests
 		public void WhenUserEntersUnrecognizedPIN_ThenLoginViewModelIsStillCurrentAndErrorIsDisplayed()
 		{
 			Mock<IMessageBus> mockEvents = new Mock<IMessageBus>();
-			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), time);
+			MainWindowViewModel toTest = new MainWindowViewModel(_serviceAddress, mockEvents.Object, new SecurityContext(), Time, POSDevices);
 			var loginViewModel = (LoginViewModel)toTest.FullScreenContent;
 			loginViewModel.HandleLogin("9999999999011111");
 			Assert.IsInstanceOfType(toTest.FullScreenContent, typeof(LoginViewModel));
