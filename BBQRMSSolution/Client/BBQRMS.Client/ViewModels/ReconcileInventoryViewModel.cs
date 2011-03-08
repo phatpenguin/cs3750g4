@@ -12,6 +12,7 @@ namespace BBQRMSSolution.ViewModels
     {
         private ObservableCollection<MasterInventory> _MasterInventory;
         private MasterInventory _SelectedMasterInventory;
+        private Boolean isVisible = true;
         //private Item _selectedItem;
 
 
@@ -54,7 +55,18 @@ namespace BBQRMSSolution.ViewModels
                 NotifyPropertyChanged("SelectedMasterInventory");
             }
         }
-
+        public Boolean IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                NotifyPropertyChanged("IsVisible");
+            }
+        }
         internal void SaveItem()
         {
             throw new NotImplementedException();
@@ -62,9 +74,13 @@ namespace BBQRMSSolution.ViewModels
 
         internal void DeleteItem()
         {
-            DataService.DeleteObject(_MasterInventory);
+            // can't delete items from inventory...Must set inactive.
+            // DataService.DeleteObject(_MasterInventory);
+            // DataService.SaveChanges();
+            _SelectedMasterInventory.IsActive = false;
             DataService.SaveChanges();
-            throw new NotImplementedException();
+
+           
         }
     }
 }
