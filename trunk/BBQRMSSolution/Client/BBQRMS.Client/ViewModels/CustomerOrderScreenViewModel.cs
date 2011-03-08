@@ -23,9 +23,9 @@ namespace BBQRMSSolution.ViewModels
 		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
 		{
-		    var m1 = Menu.CreateMenu("FOOD", 0);
-		    var m2 = Menu.CreateMenu("FOOD2", 1);
-		    var m3 = Menu.CreateMenu("FOOD3", 2);
+		    var m1 = Menu.CreateMenu(0,"FOOD");
+		    var m2 = Menu.CreateMenu(1,"FOOD2");
+		    var m3 = Menu.CreateMenu(2,"FOOD3");
 
 		    var mi1 = new MenuItem {Description = "MenuItem1", Id = 1, Price = 1.25m};
 		    var mi2 = new MenuItem {Description = "MenuItem2", Id = 2, Price = 2.25m};

@@ -14,7 +14,7 @@
 
             </ListBox>
         </DockPanel>
-        <StackPanel>
+        <StackPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedMasterInventory, Mode=TwoWay}" Visibility="Collapsed">
             <Grid  DataContext="{Binding Path=SelectedMasterInventory}">
 
                 <Grid.RowDefinitions>

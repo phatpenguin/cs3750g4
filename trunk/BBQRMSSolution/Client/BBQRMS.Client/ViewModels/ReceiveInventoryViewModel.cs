@@ -44,6 +44,7 @@ namespace BBQRMSSolution.ViewModels
             _MasterInventory.UnitQty = 0;
             _MasterInventory.ExpirationDate = DateTime.Now.Date;
             _MasterInventory.OrderLeadDays = 14;
+            _MasterInventory.IsActive = true;
            
         }
 
