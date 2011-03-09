@@ -125,7 +125,7 @@
     <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Functions\" />
     <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Schemes\" />
     <Folder Include="Scripts\Post-Deployment\ReferenceData" />
-    <Folder Include="Scripts\Pre-Deployment\ReferenceData" />
+    <Folder Include="Scripts\Post-Deployment\TestData" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -378,35 +378,79 @@
     </Build>
   </ItemGroup>
   <ItemGroup>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialEmployeesAndUsers.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\ApplicationUser.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialMenus.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\Employee.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPaymentTypeData.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\EmployeeRoleMap.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPrivilegesAndRoles.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\Menu.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Pre-Deployment\ReferenceData\DropTables.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\MenuItem.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialOrderTypes.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\MenuItemMap.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialDinerTypes.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\Role.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialPaymentStates.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\RolePrivilegeMap.csv">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
-    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\InitialOrderStates.sql">
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\TestDataTables.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\DinerType.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\EmployeePayType.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\OrderState.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\OrderType.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\PaymentState.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\PaymentType.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\Privilege.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\ReferenceData\ReferenceDataTables.csv">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\coleslaw.jpg">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\fries.jpg">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\pork.jpg">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\ribs.png">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\sobe.jpg">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+    <NotInBuild Include="Scripts\Post-Deployment\TestData\soda.jpg">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
   </ItemGroup>
   <Target Name="AfterDeploy">
+    <Exec Command="DataImporter.exe &quot;Scripts\Post-Deployment\ReferenceData\ReferenceDataTables.csv&quot; &quot;$(TargetConnectionString); Initial Catalog=$(TargetDatabase)&quot;" />
+    <Exec Command="DataImporter.exe &quot;Scripts\Post-Deployment\TestData\TestDataTables.csv&quot; &quot;$(TargetConnectionString); Initial Catalog=$(TargetDatabase)&quot;" />
     <Message Importance="high" Text="This is running after deploy" />
   </Target>
 </Project>
