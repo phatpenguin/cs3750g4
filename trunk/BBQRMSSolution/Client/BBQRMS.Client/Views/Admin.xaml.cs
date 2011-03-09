@@ -50,5 +50,10 @@ namespace BBQRMSSolution.Views
         {
             ViewModel.HandleManageRoles();
         }
+
+        private void manageMenuItems_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleManageMenuItems();
+        }
 	}
 }

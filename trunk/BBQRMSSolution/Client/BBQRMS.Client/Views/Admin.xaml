@@ -45,6 +45,13 @@
 				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}"
 				ImageSource="{StaticResource BBQRMS.Image.Menu}"
 				Content="Manage Menus" />
+      <c:ImageButton
+				Name="manageMenuItems"
+				Click="manageMenuItems_Click"
+				Visibility="{Binding Path=SecurityContext.CurrentUser.CanManageMenus, Converter={StaticResource boolToVisibilityConverter}}"
+				ImageSource="{StaticResource BBQRMS.Image.Menu}"
+				Content="Manage Menu Items">
+      </c:ImageButton>
     	<c:ImageButton
 				Name="manageInventory" 
 				Click="manageInventory_Click"

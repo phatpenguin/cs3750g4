@@ -82,6 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StateTables.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MenuItemManagementViewModel.cs" />
     <Compile Include="ViewModels\ICashDrawer.cs" />
     <Compile Include="ViewModels\IPOSDeviceManager.cs" />
     <Compile Include="ViewModels\IReceiptPrinter.cs" />
@@ -136,6 +137,9 @@
     <Compile Include="Messages\UserLoggingOut.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItemManagementView.xaml.cs">
+      <DependentUpon>MenuItemManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReceiveInventoryView.xaml.cs">
       <DependentUpon>ReceiveInventoryView.xaml</DependentUpon>
@@ -238,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ChangePINView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuItemManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

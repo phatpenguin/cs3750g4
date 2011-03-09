@@ -1,0 +1,78 @@
+﻿<Views:UserControlBase x:Class="BBQRMSSolution.Views.MenuItemManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             x:TypeArguments="ViewModels:MenuItemManagementViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	           xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	           xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" 
+             xmlns:c="clr-namespace:Controls;assembly=Controls" xmlns:DragDrop="clr-namespace:Controls.DragDropControl;assembly=Controls" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+      <c:ImageButton
+        Style="{StaticResource ImageButton.FormButton}"
+        ImageSource="{StaticResource BBQRMS.Image.Add}"
+        Content="Add Menu Item"
+        Click="AddCommand"/>
+      <c:ImageButton
+        Style="{StaticResource ImageButton.FormButton}"
+        ImageSource="{StaticResource BBQRMS.Image.Save}"
+        Content="Save"
+        Click="SaveCommand" />
+      <c:ImageButton
+        Style="{StaticResource ImageButton.FormButton}"
+        ImageSource="{StaticResource BBQRMS.Image.Trash}"
+        Content="Delete"
+        Click="DeleteCommand" />
+    </StackPanel>
+
+    <TabControl ItemsSource="{Binding MenuItems}"
+                d:LayoutOverrides="VerticalAlignment"
+                TabStripPlacement="Left"
+                SelectedItem="{Binding SelectedMenuItem}">
+      <TabControl.Resources>
+        <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}">
+          <Setter Property="MinHeight" Value="35"/>
+          <Setter Property="TextElement.FontSize" Value="16"/>
+        </Style>
+      </TabControl.Resources>
+      <TabControl.Background>
+        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+          <GradientStop Color="#FFFCFCFE" Offset="0"/>
+          <GradientStop Color="#FFF4F3EE" Offset="1"/>
+        </LinearGradientBrush>
+      </TabControl.Background>
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+      <TabControl.ContentTemplate>
+        <DataTemplate>
+          <DockPanel>
+            <StackPanel Margin="5">
+              <TextBlock Height="32" FontSize="18" FontWeight="Bold" >
+                <Run Text="{Binding Path=Name}"/>
+              </TextBlock>
+              <StackPanel DockPanel.Dock="Left">
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label FontWeight="Bold" Content="Name:" Width="120"/>
+                  <TextBox Width="300" Text="{Binding Path=Name}"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label FontWeight="Bold" Content="Price:" Width="120"/>
+                  <TextBox  Text="{Binding Path=Price}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label FontWeight="Bold" Content="Description:" Width="120"/>
+                  <TextBox Text="{Binding Path=Description}" Width="150" MaxLines="5"/>
+                </StackPanel>
+              </StackPanel>
+            </StackPanel>
+          </DockPanel>
+        </DataTemplate>
+      </TabControl.ContentTemplate>
+    </TabControl>
+  </DockPanel>
+</Views:UserControlBase>

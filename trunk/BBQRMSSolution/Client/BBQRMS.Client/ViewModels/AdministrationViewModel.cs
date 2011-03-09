@@ -59,6 +59,7 @@ namespace BBQRMSSolution.ViewModels
 		{
             MessageBus.Publish(new ShowAdminScreen(new MenuManagementViewModel(DataService)));
 		}
+
 		public void HandleManageInventory()
 		{
 			//TODO: Show a new or existing viewmodel for managing inventory.
@@ -71,5 +72,9 @@ namespace BBQRMSSolution.ViewModels
         }
 
 
+	    public void HandleManageMenuItems()
+	    {
+	        MessageBus.Publish(new ShowAdminScreen(new MenuItemManagementViewModel(DataService)));
+	    }
 	}
 }
