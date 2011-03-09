@@ -44,8 +44,11 @@
     <Views:MenuManagement />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type ViewModels:MenuItemManagementViewModel}">
+    <Views:MenuItemManagementView />
+  </DataTemplate>
 
-	<DataTemplate DataType="{x:Type ViewModels:CooksScreenViewModel}">
+  <DataTemplate DataType="{x:Type ViewModels:CooksScreenViewModel}">
 		<Views:CooksScreen />
 	</DataTemplate>
 	
