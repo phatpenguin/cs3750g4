@@ -1,0 +1,8 @@
+Role,Role.csv
+RolePrivilegeMap,RolePrivilegeMap.csv
+Employee,Employee.csv
+EmployeeRoleMap,EmployeeRoleMap.csv
+ApplicationUser,ApplicationUser.csv
+Menu,Menu.csv
+MenuItem,MenuItem.csv
+MenuItemMap,MenuItemMap.csv

@@ -1,0 +1,7 @@
+DinerType,DinerType.csv
+EmployeePayType,EmployeePayType.csv
+Privilege,Privilege.csv
+OrderState,OrderState.csv
+OrderType,OrderType.csv
+PaymentState,PaymentState.csv
+PaymentType,PaymentType.csv
