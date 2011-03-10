@@ -9,7 +9,7 @@
              xmlns:c="clr-namespace:Controls;assembly=Controls">
 
 
-            <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding IsVisible }">
+            <DockPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding IsVisible}">
                 <StackPanel>
                     <Grid>
 

@@ -26,9 +26,12 @@ namespace BBQRMSSolution.ViewModels
         {
             DataService = dataService;
             MessageBus = messageBus;
-            MasterInventories = new ObservableCollection<MasterInventory>(DataService.MasterInventories);
+            resetList();
         }
-
+        private void resetList()
+        {
+            MasterInventories = new ObservableCollection<MasterInventory>(DataService.MasterInventories.Where(x => x.IsActive == true));
+        }
         //property --kinda like a method but also an attribute
         public ObservableCollection<MasterInventory> MasterInventories
         {
@@ -40,6 +43,7 @@ namespace BBQRMSSolution.ViewModels
             {
                 _MasterInventory = value; 
                 NotifyPropertyChanged("MasterInventories");
+
             }
 
         }
@@ -69,7 +73,19 @@ namespace BBQRMSSolution.ViewModels
         }
         internal void SaveItem()
         {
-            throw new NotImplementedException();
+
+            if (_SelectedMasterInventory.Id > 0)
+            {
+                DataService.UpdateObject(_SelectedMasterInventory);
+          
+            }
+            else
+            {
+                DataService.AddToMasterInventories(_SelectedMasterInventory);
+               
+            }
+            DataService.SaveChanges();
+            resetList();
         }
 
         internal void DeleteItem()
@@ -77,9 +93,10 @@ namespace BBQRMSSolution.ViewModels
             // can't delete items from inventory...Must set inactive.
             // DataService.DeleteObject(_MasterInventory);
             // DataService.SaveChanges();
-            _SelectedMasterInventory.IsActive = false;
-            DataService.SaveChanges();
-
+            if( _SelectedMasterInventory != null){
+                _SelectedMasterInventory.IsActive = false;
+                SaveItem();
+            }
            
         }
     }
