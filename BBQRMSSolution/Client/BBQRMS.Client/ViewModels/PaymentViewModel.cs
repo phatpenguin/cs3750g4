@@ -46,7 +46,7 @@ namespace BBQRMSSolution.ViewModels
         	cashDrawer.OpenDrawer();
 
             PaymentTypes = new ObservableCollection<PaymentType>(DataService.PaymentTypes.Execute());
-
+            PaymentType = PaymentTypes[0];
             PaymentVisible = "Visible";
             PaymentZIndex = 200;
         }
