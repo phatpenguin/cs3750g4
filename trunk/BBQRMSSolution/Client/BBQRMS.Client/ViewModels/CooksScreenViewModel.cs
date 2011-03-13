@@ -7,7 +7,7 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class CooksScreenViewModel : ViewModelBase
 	{
-		private readonly ObservableCollection<OrderViewModel> _pendingOrders;
+        private ObservableCollection<Order> _pendingOrders;
 
 		[Obsolete("Used for design-time only", true)]
 		public CooksScreenViewModel()
@@ -19,19 +19,22 @@ namespace BBQRMSSolution.ViewModels
 			DataService = dataService;
 			MessageBus = messageBus;
 
+		    PendingOrders = new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Execute());
+
 			CompleteOrderCommand = new DelegateCommand(HandleCompleteOrder);
 		}
 
-		public ObservableCollection<OrderViewModel> PendingOrders
+		public ObservableCollection<Order> PendingOrders
 		{
 			get { return _pendingOrders; }
+            set { _pendingOrders = value; NotifyPropertyChanged("PendingOrders"); }
 		}
 
 		public DelegateCommand CompleteOrderCommand { get; private set; }
 
 		private void HandleCompleteOrder(object parameter)
 		{
-			var orderViewModel = (OrderViewModel) parameter;
+			var orderViewModel = (Order) parameter;
 			PendingOrders.Remove(orderViewModel);
 		}
 	}
