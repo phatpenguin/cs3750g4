@@ -24,6 +24,10 @@
                      ImageSource="{StaticResource BBQRMS.Image.Save}"
                      Content="Save Menu"
                      Click="SaveMenu"/>
+      <c:ImageButton Style="{StaticResource ImageButton.FormButton}"
+                     ImageSource="{StaticResource BBQRMS.Image.Trash}"
+                     Content="Delete Menu"
+                     Click="DeleteMenu" />
     </StackPanel>
     <TabControl ItemsSource="{Binding Menus}"
                 ItemContainerStyle="{StaticResource MenuTabItem}"

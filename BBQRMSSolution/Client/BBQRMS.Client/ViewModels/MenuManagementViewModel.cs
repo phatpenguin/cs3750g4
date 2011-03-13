@@ -13,7 +13,12 @@ namespace BBQRMSSolution.ViewModels
         public MenuManagementViewModel (BBQRMSEntities dataService)
         {
             DataService = dataService;
-            Menus = new ObservableCollection<Menu>(DataService.Menus.Expand("MenuItems"));
+            Reset();
+        }
+
+        private void Reset()
+        {
+            Menus = new ObservableCollection<Menu>(DataService.Menus.Expand("MenuItems").Where(x => x.IsActive));
             MenuItems = new ObservableCollection<MenuItem>(DataService.MenuItems);
             SelectedMenu = Menus[0];
             SelectedMenuItem = MenuItems[0];
@@ -63,10 +68,16 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleAddMenu()
         {
-            Menu menu = new Menu();
-            menu.Name = "New Menu";
+            Menu menu = Menu.CreateMenu(0,"New Menu", true);
             Menus.Add(menu);
             SelectedMenu = menu;
+        }
+
+        public void HandleDelete()
+        {
+            SelectedMenu.IsActive = false;
+            HandleSaveMenu();
+            Reset();
         }
     }
 }

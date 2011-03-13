@@ -29,7 +29,7 @@ namespace BBQRMSSolution.ViewModels
 	    {
 	        DataService.MergeOption = MergeOption.PreserveChanges;
 	        Employees = new ObservableCollection<Employee>(DataService.Employees.Expand("EmployeePayType").Expand("Roles")
-                //.Where(x=> x.Active)
+                .Where(x=> x.IsActive)
                 );
 	        SelectedEmployee = Employees[0];
 	    }
@@ -101,14 +101,13 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleCreateEmployee()
         {
-            SelectedEmployee = new Employee();
-            SelectedEmployee.FirstName = "New Employee";
+            SelectedEmployee = Employee.CreateEmployee(0, "New Employee", "", new DateTime(), 1, (decimal) 4.45, true);
             Employees.Add(SelectedEmployee);
         }
 
         public void HandleDeleteEmployee()
         {
-//            SelectedEmployee.Active = false;
+            SelectedEmployee.IsActive = false;
             HandleSaveClick();
             ResetEmployeesList();
         }

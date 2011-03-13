@@ -34,5 +34,10 @@ namespace BBQRMSSolution.Views
         {
             ViewModel.HandleSaveMenu();
         }
+
+        private void DeleteMenu(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleDelete();
+        }
     }
 }
