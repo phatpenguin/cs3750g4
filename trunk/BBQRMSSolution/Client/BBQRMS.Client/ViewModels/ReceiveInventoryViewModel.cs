@@ -39,12 +39,7 @@ namespace BBQRMSSolution.ViewModels
             // TODO: Complete member initialization
             this.DataService = DataService;
             this.MessageBus = MessageBus;
-            _MasterInventory = new MasterInventory();
-            _MasterInventory.Name = "New Inventory";
-            _MasterInventory.UnitQty = 0;
-            _MasterInventory.ExpirationDate = DateTime.Now.Date;
-            _MasterInventory.OrderLeadDays = 14;
-            _MasterInventory.IsActive = true;
+            _MasterInventory = MasterInventory.CreateMasterInventory(0,"New Inventory", 0, DateTime.Now.Date, 14, true);
            
         }
 

@@ -101,7 +101,7 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleCreateEmployee()
         {
-            SelectedEmployee = Employee.CreateEmployee(0, "New Employee", "", new DateTime(), 1, (decimal) 4.45, true);
+            SelectedEmployee = Employee.CreateEmployee(0, "New Employee", "", DateTime.Now.Date, 1, (decimal)4.45, true);
             Employees.Add(SelectedEmployee);
         }
 
