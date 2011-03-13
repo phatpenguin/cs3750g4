@@ -6,66 +6,86 @@
              d:DesignHeight="480" d:DesignWidth="600"
              xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls">
 
-    <DockPanel>
-        <DockPanel>
-			<c:ImageButton
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+      <c:ImageButton
 				DockPanel.Dock="Bottom"
 				Style="{StaticResource ImageButton.FormButton}"
 				Content="Add Supplier"
 				ImageSource="{StaticResource BBQRMS.Image.Add}"
 				Click="Button_AddSupplier" />
-			<ListBox ItemsSource="{Binding Path=Suppliers}" SelectedItem="{Binding Path=SelectedSupplier}" DisplayMemberPath="Name">
+      <c:ImageButton
+        Grid.Column="0" Grid.Row="8"
+        Style="{StaticResource ImageButton.FormButton}"
+        Content="Save"
+        ImageSource="{StaticResource BBQRMS.Image.Save}"
+        Click="Button_Save"/>
+      <c:ImageButton
+        Grid.Column="1" Grid.Row="8"
+        Style="{StaticResource ImageButton.FormButton}"
+        Content="Delete"
+        ImageSource="{StaticResource BBQRMS.Image.Trash}"
+        Click="Button_Delete"/>
+    </StackPanel>
 
-			</ListBox>
-		</DockPanel>
-        <StackPanel Behaviors:VisibilityBehavior.VisibleIfTrue="{Binding Path=SelectedSupplier, Mode=TwoWay}" Visibility="Collapsed">
-            <Grid  DataContext="{Binding Path=SelectedSupplier}">
-        
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition  Height="20"/>
-                    <RowDefinition  Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label Content="Supplier Name"  Name="SupplierNameLbl" Grid.Column="0" Grid.Row="0"/>
-                <TextBox Name="SupplierNameTb" Grid.Column="1" Grid.Row="0"  Text="{Binding Path=Name}" />
-
-                <Label Content="Address" Name="AddressLbl" Grid.Column="0" Grid.Row="1" />
-                <TextBox Name="AddressTb" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Address}" />
-
-                <Label Content="State" Name="StateLbl" Grid.Column="0" Grid.Row="2"/>
-                <TextBox Name="StateTb"  Grid.Column="1" Grid.Row="2" Text="{Binding Path=State}"/>
-
-                <Label Content="Zip" Name="ZipLbl" Grid.Column="0" Grid.Row="3"/>
-                <TextBox Name="ZipTb" Grid.Column="1" Grid.Row="3" Text="{Binding Path=Zip}"/>
-
-                <Label Content="Phone Number" Name="PhoneNumberLbl" Grid.Column="0" Grid.Row="4" />
-                <TextBox Name="PhoneNumberTb" Grid.Column="1" Grid.Row="4" Text="{Binding Path=Phone}" />
-
-                <Label Content="Rating"  Name="RatingLbl" Grid.Column="0" Grid.Row="5" />
-                <TextBox Name="POCTb" Grid.Column="1" Grid.Row="5" Text="{Binding Path=Rating}" />
-
-				<c:ImageButton
-					Grid.Column="0" Grid.Row="8" 
-					Style="{StaticResource ImageButton.FormButton}"
-					Content="Save"
-					ImageSource="{StaticResource BBQRMS.Image.Save}"
-					Click="Button_Save"/>
-				<c:ImageButton
-					Grid.Column="1" Grid.Row="8" 
-					Style="{StaticResource ImageButton.FormButton}"
-					Content="Delete"
-					ImageSource="{StaticResource BBQRMS.Image.Trash}"
-					Click="Button_Delete"/>
-            </Grid>
-        </StackPanel>
-    </DockPanel>
+    <TabControl ItemsSource="{Binding Suppliers}"
+                d:LayoutOverrides="VerticalAlignment"
+                TabStripPlacement="Left"
+                SelectedItem="{Binding SelectedSupplier}">
+      <TabControl.Resources>
+        <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}">
+          <Setter Property="MinHeight" Value="35"/>
+          <Setter Property="TextElement.FontSize" Value="16"/>
+        </Style>
+      </TabControl.Resources>
+      <TabControl.Background>
+        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+          <GradientStop Color="#FFFCFCFE" Offset="0"/>
+          <GradientStop Color="#FFF4F3EE" Offset="1"/>
+        </LinearGradientBrush>
+      </TabControl.Background>
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+      <TabControl.ContentTemplate>
+        <DataTemplate>
+          <DockPanel>
+            <StackPanel Margin="5">
+              <TextBlock Height="32" FontSize="18" FontWeight="Bold" >
+                <Run Text="{Binding Path=Name}"/>
+              </TextBlock>
+              <StackPanel DockPanel.Dock="Left">
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="Supplier Name"  Name="SupplierNameLbl" Width="120"/>
+                  <TextBox Name="SupplierNameTb" Text="{Binding Path=Name}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="Address" Name="AddressLbl" Width="120"/>
+                  <TextBox Name="AddressTb" Text="{Binding Path=Address}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="State" Name="StateLbl" Width="120"/>
+                  <TextBox Name="StateTb" Text="{Binding Path=State}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="Zip" Name="ZipLbl" Width="120"/>
+                  <TextBox Name="ZipTb" Text="{Binding Path=Zip}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="Phone Number" Name="PhoneNumberLbl" Width="120"/>
+                  <TextBox Name="PhoneNumberTb" Text="{Binding Path=Phone}" Width="300"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                  <Label Content="Rating"  Name="RatingLbl" Width="120"/>
+                  <TextBox Name="POCTb" Text="{Binding Path=Rating}" Width="300"/>
+                </StackPanel>
+              </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+  </TabControl.ContentTemplate>
+</TabControl>
+</DockPanel>
 </UserControl>
