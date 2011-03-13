@@ -136,9 +136,9 @@ namespace BBQRMS.Client.Tests
         [TestMethod()]
         public void MenusTest()
         {
-            var m1 = Menu.CreateMenu(0,"FOOD");
-            var m2 = Menu.CreateMenu(1, "FOOD2");
-            var m3 = Menu.CreateMenu(2, "FOOD3");
+            var m1 = Menu.CreateMenu(0, "FOOD", true);
+            var m2 = Menu.CreateMenu(1, "FOOD2", true);
+            var m3 = Menu.CreateMenu(2, "FOOD3", true);
 
             var mi1 = new MenuItem { Description = "MenuItem1", Id = 1, Price = 1.25m };
             var mi2 = new MenuItem { Description = "MenuItem2", Id = 2, Price = 2.25m };

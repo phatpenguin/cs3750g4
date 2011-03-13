@@ -4,5 +4,6 @@
 	Price			numeric(18,2) NOT NULL,
 	Name			nvarchar(MAX) NOT NULL,
 	Description		nvarchar(MAX) NOT NULL,
-	Image			varbinary(MAX) 
+	Image			varbinary(MAX),
+	IsActive bit not null default(1)
 )

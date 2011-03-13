@@ -25,7 +25,7 @@ namespace BBQRMSSolution.ViewModels
 	    private void ResetList()
 	    {
 	        DataService.MergeOption = MergeOption.PreserveChanges;
-            MenuItems = new ObservableCollection<MenuItem>(DataService.MenuItems);
+            MenuItems = new ObservableCollection<MenuItem>(DataService.MenuItems.Where(x => x.IsActive));
             SelectedMenuItem = MenuItems[0];
 	    }
 
@@ -58,13 +58,13 @@ namespace BBQRMSSolution.ViewModels
 
         public void HandleCreateItem()
         {
-            SelectedMenuItem = new MenuItem();
-            SelectedMenuItem.Name = "New Menu Item";
+            SelectedMenuItem = MenuItem.CreateMenuItem(0,(decimal) 0.99,"New Menu Item", "", true);
             MenuItems.Add(SelectedMenuItem);
         }
 
         public void HandleDeleteMenuItem()
         {
+            SelectedMenuItem.IsActive = false;
             HandleSaveClick();
             ResetList();
         }

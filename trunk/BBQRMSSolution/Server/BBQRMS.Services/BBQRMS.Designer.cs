@@ -91,6 +91,22 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<C__RefactorLog> C__RefactorLog
+        {
+            get
+            {
+                if ((_C__RefactorLog == null))
+                {
+                    _C__RefactorLog = base.CreateObjectSet<C__RefactorLog>("C__RefactorLog");
+                }
+                return _C__RefactorLog;
+            }
+        }
+        private ObjectSet<C__RefactorLog> _C__RefactorLog;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ApplicationUser> ApplicationUsers
         {
             get
@@ -460,6 +476,14 @@ namespace BBQRMS.WCFServices
         #region AddTo Methods
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the C__RefactorLog EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToC__RefactorLog(C__RefactorLog c__RefactorLog)
+        {
+            base.AddObject("C__RefactorLog", c__RefactorLog);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the ApplicationUsers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToApplicationUsers(ApplicationUser applicationUser)
@@ -823,6 +847,61 @@ namespace BBQRMS.WCFServices
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="C__RefactorLog")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class C__RefactorLog : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new C__RefactorLog object.
+        /// </summary>
+        /// <param name="operationKey">Initial value of the OperationKey property.</param>
+        public static C__RefactorLog CreateC__RefactorLog(global::System.Guid operationKey)
+        {
+            C__RefactorLog c__RefactorLog = new C__RefactorLog();
+            c__RefactorLog.OperationKey = operationKey;
+            return c__RefactorLog;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid OperationKey
+        {
+            get
+            {
+                return _OperationKey;
+            }
+            set
+            {
+                if (_OperationKey != value)
+                {
+                    OnOperationKeyChanging(value);
+                    ReportPropertyChanging("OperationKey");
+                    _OperationKey = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("OperationKey");
+                    OnOperationKeyChanged();
+                }
+            }
+        }
+        private global::System.Guid _OperationKey;
+        partial void OnOperationKeyChanging(global::System.Guid value);
+        partial void OnOperationKeyChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -1384,7 +1463,8 @@ namespace BBQRMS.WCFServices
         /// <param name="hireDate">Initial value of the HireDate property.</param>
         /// <param name="payTypeId">Initial value of the PayTypeId property.</param>
         /// <param name="payAmount">Initial value of the PayAmount property.</param>
-        public static Employee CreateEmployee(global::System.Int32 id, global::System.String firstName, global::System.String lastName, global::System.DateTime hireDate, global::System.Int32 payTypeId, global::System.Decimal payAmount)
+        /// <param name="isActive">Initial value of the IsActive property.</param>
+        public static Employee CreateEmployee(global::System.Int32 id, global::System.String firstName, global::System.String lastName, global::System.DateTime hireDate, global::System.Int32 payTypeId, global::System.Decimal payAmount, global::System.Boolean isActive)
         {
             Employee employee = new Employee();
             employee.Id = id;
@@ -1393,6 +1473,7 @@ namespace BBQRMS.WCFServices
             employee.HireDate = hireDate;
             employee.PayTypeId = payTypeId;
             employee.PayAmount = payAmount;
+            employee.IsActive = isActive;
             return employee;
         }
 
@@ -1713,6 +1794,30 @@ namespace BBQRMS.WCFServices
         private global::System.Decimal _PayAmount;
         partial void OnPayAmountChanging(global::System.Decimal value);
         partial void OnPayAmountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private global::System.Boolean _IsActive;
+        partial void OnIsActiveChanging(global::System.Boolean value);
+        partial void OnIsActiveChanged();
 
         #endregion
     
@@ -2457,11 +2562,13 @@ namespace BBQRMS.WCFServices
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Menu CreateMenu(global::System.Int32 id, global::System.String name)
+        /// <param name="isActive">Initial value of the IsActive property.</param>
+        public static Menu CreateMenu(global::System.Int32 id, global::System.String name, global::System.Boolean isActive)
         {
             Menu menu = new Menu();
             menu.Id = id;
             menu.Name = name;
+            menu.IsActive = isActive;
             return menu;
         }
 
@@ -2518,6 +2625,30 @@ namespace BBQRMS.WCFServices
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private global::System.Boolean _IsActive;
+        partial void OnIsActiveChanging(global::System.Boolean value);
+        partial void OnIsActiveChanged();
 
         #endregion
     
@@ -2565,13 +2696,15 @@ namespace BBQRMS.WCFServices
         /// <param name="price">Initial value of the Price property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="description">Initial value of the Description property.</param>
-        public static MenuItem CreateMenuItem(global::System.Int32 id, global::System.Decimal price, global::System.String name, global::System.String description)
+        /// <param name="isActive">Initial value of the IsActive property.</param>
+        public static MenuItem CreateMenuItem(global::System.Int32 id, global::System.Decimal price, global::System.String name, global::System.String description, global::System.Boolean isActive)
         {
             MenuItem menuItem = new MenuItem();
             menuItem.Id = id;
             menuItem.Price = price;
             menuItem.Name = name;
             menuItem.Description = description;
+            menuItem.IsActive = isActive;
             return menuItem;
         }
 
@@ -2700,6 +2833,30 @@ namespace BBQRMS.WCFServices
         private global::System.Byte[] _Image;
         partial void OnImageChanging(global::System.Byte[] value);
         partial void OnImageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private global::System.Boolean _IsActive;
+        partial void OnIsActiveChanging(global::System.Boolean value);
+        partial void OnIsActiveChanged();
 
         #endregion
     

@@ -12,5 +12,6 @@
 	Email1		nvarchar(MAX) NULL,
 	Email2		nvarchar(MAX) NULL,
 	PayTypeId	int NOT NULL,
-	PayAmount	money NOT NULL
+	PayAmount	money NOT NULL,
+	IsActive bit not null default(1)
 )

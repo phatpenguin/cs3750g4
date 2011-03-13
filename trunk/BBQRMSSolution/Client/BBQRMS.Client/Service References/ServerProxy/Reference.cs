@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 3/7/2011 8:53:16 PM
+// Generation date: 3/12/2011 8:07:08 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -58,6 +58,23 @@ namespace BBQRMSSolution.ServerProxy
             }
             return null;
         }
+        /// <summary>
+        /// There are no comments for C__RefactorLog in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> C__RefactorLog
+        {
+            get
+            {
+                if ((this._C__RefactorLog == null))
+                {
+                    this._C__RefactorLog = base.CreateQuery<C__RefactorLog>("C__RefactorLog");
+                }
+                return this._C__RefactorLog;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> _C__RefactorLog;
         /// <summary>
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
@@ -450,6 +467,14 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<SupplierContactMap> _SupplierContactMaps;
         /// <summary>
+        /// There are no comments for C__RefactorLog in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToC__RefactorLog(C__RefactorLog c__RefactorLog)
+        {
+            base.AddObject("C__RefactorLog", c__RefactorLog);
+        }
+        /// <summary>
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -632,6 +657,60 @@ namespace BBQRMSSolution.ServerProxy
         public void AddToSupplierContactMaps(SupplierContactMap supplierContactMap)
         {
             base.AddObject("SupplierContactMaps", supplierContactMap);
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.C__RefactorLog in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// OperationKey
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("C__RefactorLog")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("OperationKey")]
+    public partial class C__RefactorLog : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new C__RefactorLog object.
+        /// </summary>
+        /// <param name="operationKey">Initial value of OperationKey.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static C__RefactorLog CreateC__RefactorLog(global::System.Guid operationKey)
+        {
+            C__RefactorLog c__RefactorLog = new C__RefactorLog();
+            c__RefactorLog.OperationKey = operationKey;
+            return c__RefactorLog;
+        }
+        /// <summary>
+        /// There are no comments for Property OperationKey in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid OperationKey
+        {
+            get
+            {
+                return this._OperationKey;
+            }
+            set
+            {
+                this.OnOperationKeyChanging(value);
+                this._OperationKey = value;
+                this.OnOperationKeyChanged();
+                this.OnPropertyChanged("OperationKey");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _OperationKey;
+        partial void OnOperationKeyChanging(global::System.Guid value);
+        partial void OnOperationKeyChanged();
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
         }
     }
     /// <summary>
@@ -1241,8 +1320,9 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="hireDate">Initial value of HireDate.</param>
         /// <param name="payTypeId">Initial value of PayTypeId.</param>
         /// <param name="payAmount">Initial value of PayAmount.</param>
+        /// <param name="isActive">Initial value of IsActive.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Employee CreateEmployee(int ID, string firstName, string lastName, global::System.DateTime hireDate, int payTypeId, decimal payAmount)
+        public static Employee CreateEmployee(int ID, string firstName, string lastName, global::System.DateTime hireDate, int payTypeId, decimal payAmount, bool isActive)
         {
             Employee employee = new Employee();
             employee.Id = ID;
@@ -1251,6 +1331,7 @@ namespace BBQRMSSolution.ServerProxy
             employee.HireDate = hireDate;
             employee.PayTypeId = payTypeId;
             employee.PayAmount = payAmount;
+            employee.IsActive = isActive;
             return employee;
         }
         /// <summary>
@@ -1539,6 +1620,28 @@ namespace BBQRMSSolution.ServerProxy
         private decimal _PayAmount;
         partial void OnPayAmountChanging(decimal value);
         partial void OnPayAmountChanged();
+        /// <summary>
+        /// There are no comments for Property IsActive in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool IsActive
+        {
+            get
+            {
+                return this._IsActive;
+            }
+            set
+            {
+                this.OnIsActiveChanging(value);
+                this._IsActive = value;
+                this.OnIsActiveChanged();
+                this.OnPropertyChanged("IsActive");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _IsActive;
+        partial void OnIsActiveChanging(bool value);
+        partial void OnIsActiveChanged();
         /// <summary>
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
@@ -2187,12 +2290,14 @@ namespace BBQRMSSolution.ServerProxy
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="name">Initial value of Name.</param>
+        /// <param name="isActive">Initial value of IsActive.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Menu CreateMenu(int ID, string name)
+        public static Menu CreateMenu(int ID, string name, bool isActive)
         {
             Menu menu = new Menu();
             menu.Id = ID;
             menu.Name = name;
+            menu.IsActive = isActive;
             return menu;
         }
         /// <summary>
@@ -2240,6 +2345,28 @@ namespace BBQRMSSolution.ServerProxy
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
+        /// There are no comments for Property IsActive in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool IsActive
+        {
+            get
+            {
+                return this._IsActive;
+            }
+            set
+            {
+                this.OnIsActiveChanging(value);
+                this._IsActive = value;
+                this.OnIsActiveChanged();
+                this.OnPropertyChanged("IsActive");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _IsActive;
+        partial void OnIsActiveChanging(bool value);
+        partial void OnIsActiveChanged();
+        /// <summary>
         /// There are no comments for MenuItems in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2285,14 +2412,16 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="price">Initial value of Price.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="description">Initial value of Description.</param>
+        /// <param name="isActive">Initial value of IsActive.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MenuItem CreateMenuItem(int ID, decimal price, string name, string description)
+        public static MenuItem CreateMenuItem(int ID, decimal price, string name, string description, bool isActive)
         {
             MenuItem menuItem = new MenuItem();
             menuItem.Id = ID;
             menuItem.Price = price;
             menuItem.Name = name;
             menuItem.Description = description;
+            menuItem.IsActive = isActive;
             return menuItem;
         }
         /// <summary>
@@ -2412,6 +2541,28 @@ namespace BBQRMSSolution.ServerProxy
         private byte[] _Image;
         partial void OnImageChanging(byte[] value);
         partial void OnImageChanged();
+        /// <summary>
+        /// There are no comments for Property IsActive in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool IsActive
+        {
+            get
+            {
+                return this._IsActive;
+            }
+            set
+            {
+                this.OnIsActiveChanging(value);
+                this._IsActive = value;
+                this.OnIsActiveChanged();
+                this.OnPropertyChanged("IsActive");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _IsActive;
+        partial void OnIsActiveChanging(bool value);
+        partial void OnIsActiveChanged();
         /// <summary>
         /// There are no comments for OrderItems in the schema.
         /// </summary>

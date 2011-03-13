@@ -1,6 +1,12 @@
 ﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
     <Schema Namespace="BBQRMSModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="C__RefactorLog">
+        <Key>
+          <PropertyRef Name="OperationKey" />
+        </Key>
+        <Property Name="OperationKey" Type="Edm.Guid" Nullable="false" />
+      </EntityType>
       <EntityType Name="ApplicationUser">
         <Key>
           <PropertyRef Name="IdPart" />
@@ -59,6 +65,7 @@
         <Property Name="Email2" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="PayTypeId" Type="Edm.Int32" Nullable="false" />
         <Property Name="PayAmount" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
+        <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
         <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_EmployeeId_ConsumedInventory" FromRole="Employee" ToRole="ConsumedInventory" />
         <NavigationProperty Name="EmployeeTimeClocks" Relationship="BBQRMSModel.FK_EmployeeTimeClock_Employee" FromRole="Employee" ToRole="EmployeeTimeClock" />
@@ -109,6 +116,7 @@
         </Key>
         <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+        <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="MenuItems" Relationship="BBQRMSModel.MenuItemMap" FromRole="Menu" ToRole="MenuItem" />
       </EntityType>
       <EntityType Name="MenuItem">
@@ -120,6 +128,7 @@
         <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="Image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+        <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_OrderItem_MenuItem" FromRole="MenuItem" ToRole="OrderItem" />
         <NavigationProperty Name="Menus" Relationship="BBQRMSModel.MenuItemMap" FromRole="MenuItem" ToRole="Menu" />
       </EntityType>
@@ -464,6 +473,7 @@
     </Schema>
     <Schema Namespace="BBQRMS.WCFServices" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="BBQRMSEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="C__RefactorLog" EntityType="BBQRMSModel.C__RefactorLog" />
         <EntitySet Name="ApplicationUsers" EntityType="BBQRMSModel.ApplicationUser" />
         <EntitySet Name="ConsumedInventories" EntityType="BBQRMSModel.ConsumedInventory" />
         <EntitySet Name="ConsumptionTypes" EntityType="BBQRMSModel.ConsumptionType" />
