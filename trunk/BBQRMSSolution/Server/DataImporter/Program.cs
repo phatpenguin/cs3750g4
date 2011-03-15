@@ -255,6 +255,9 @@ insert into [dbo].[{0}] ({2}) select {3} where not exists (select * from [dbo].[
 					toReturn.SqlDbType = SqlDbType.Text;
 					toReturn.Size = int.MaxValue;
 					break;
+                case "bit":
+                    toReturn.SqlDbType = SqlDbType.Bit;
+                    break;
 				default:
 					throw new NotSupportedException(columnDef.DataType + " not supported.");
 			}

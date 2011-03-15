@@ -82,6 +82,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StateTables.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CreditCardViewModel.cs" />
+    <Compile Include="ViewModels\DiscountViewModel.cs" />
     <Compile Include="ViewModels\MenuItemManagementViewModel.cs" />
     <Compile Include="ViewModels\ICashDrawer.cs" />
     <Compile Include="ViewModels\IPOSDeviceManager.cs" />
