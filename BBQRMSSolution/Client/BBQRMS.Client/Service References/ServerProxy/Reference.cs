@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 3/12/2011 8:07:08 PM
+// Generation date: 3/14/2011 8:07:44 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -467,6 +467,23 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<SupplierContactMap> _SupplierContactMaps;
         /// <summary>
+        /// There are no comments for Discounts in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Discount> Discounts
+        {
+            get
+            {
+                if ((this._Discounts == null))
+                {
+                    this._Discounts = base.CreateQuery<Discount>("Discounts");
+                }
+                return this._Discounts;
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Discount> _Discounts;
+        /// <summary>
         /// There are no comments for C__RefactorLog in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -657,6 +674,14 @@ namespace BBQRMSSolution.ServerProxy
         public void AddToSupplierContactMaps(SupplierContactMap supplierContactMap)
         {
             base.AddObject("SupplierContactMaps", supplierContactMap);
+        }
+        /// <summary>
+        /// There are no comments for Discounts in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToDiscounts(Discount discount)
+        {
+            base.AddObject("Discounts", discount);
         }
     }
     /// <summary>
@@ -2927,6 +2952,24 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private PaymentState _PaymentState;
+        /// <summary>
+        /// There are no comments for Discounts in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<Discount> Discounts
+        {
+            get
+            {
+                return this._Discounts;
+            }
+            set
+            {
+                this._Discounts = value;
+                this.OnPropertyChanged("Discounts");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<Discount> _Discounts = new global::System.Data.Services.Client.DataServiceCollection<Discount>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -3732,13 +3775,15 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="description">Initial value of Description.</param>
         /// <param name="code">Initial value of Code.</param>
+        /// <param name="isCreditCard">Initial value of IsCreditCard.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static PaymentType CreatePaymentType(int ID, string description, string code)
+        public static PaymentType CreatePaymentType(int ID, string description, string code, bool isCreditCard)
         {
             PaymentType paymentType = new PaymentType();
             paymentType.Id = ID;
             paymentType.Description = description;
             paymentType.Code = code;
+            paymentType.IsCreditCard = isCreditCard;
             return paymentType;
         }
         /// <summary>
@@ -3807,6 +3852,28 @@ namespace BBQRMSSolution.ServerProxy
         private string _Code;
         partial void OnCodeChanging(string value);
         partial void OnCodeChanged();
+        /// <summary>
+        /// There are no comments for Property IsCreditCard in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool IsCreditCard
+        {
+            get
+            {
+                return this._IsCreditCard;
+            }
+            set
+            {
+                this.OnIsCreditCardChanging(value);
+                this._IsCreditCard = value;
+                this.OnIsCreditCardChanged();
+                this.OnPropertyChanged("IsCreditCard");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _IsCreditCard;
+        partial void OnIsCreditCardChanging(bool value);
+        partial void OnIsCreditCardChanged();
         /// <summary>
         /// There are no comments for Payments in the schema.
         /// </summary>
@@ -4591,6 +4658,150 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private SupplierContact _SupplierContact;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for BBQRMSModel.Discount in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Discounts")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Discount : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new Discount object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="amount">Initial value of Amount.</param>
+        /// <param name="orderId">Initial value of OrderId.</param>
+        /// <param name="discountTypeId">Initial value of DiscountTypeId.</param>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Discount CreateDiscount(int ID, decimal amount, int orderId, int discountTypeId)
+        {
+            Discount discount = new Discount();
+            discount.Id = ID;
+            discount.Amount = amount;
+            discount.OrderId = orderId;
+            discount.DiscountTypeId = discountTypeId;
+            return discount;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Amount in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public decimal Amount
+        {
+            get
+            {
+                return this._Amount;
+            }
+            set
+            {
+                this.OnAmountChanging(value);
+                this._Amount = value;
+                this.OnAmountChanged();
+                this.OnPropertyChanged("Amount");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private decimal _Amount;
+        partial void OnAmountChanging(decimal value);
+        partial void OnAmountChanged();
+        /// <summary>
+        /// There are no comments for Property OrderId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int OrderId
+        {
+            get
+            {
+                return this._OrderId;
+            }
+            set
+            {
+                this.OnOrderIdChanging(value);
+                this._OrderId = value;
+                this.OnOrderIdChanged();
+                this.OnPropertyChanged("OrderId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _OrderId;
+        partial void OnOrderIdChanging(int value);
+        partial void OnOrderIdChanged();
+        /// <summary>
+        /// There are no comments for Property DiscountTypeId in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int DiscountTypeId
+        {
+            get
+            {
+                return this._DiscountTypeId;
+            }
+            set
+            {
+                this.OnDiscountTypeIdChanging(value);
+                this._DiscountTypeId = value;
+                this.OnDiscountTypeIdChanged();
+                this.OnPropertyChanged("DiscountTypeId");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _DiscountTypeId;
+        partial void OnDiscountTypeIdChanging(int value);
+        partial void OnDiscountTypeIdChanged();
+        /// <summary>
+        /// There are no comments for Order in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Order Order
+        {
+            get
+            {
+                return this._Order;
+            }
+            set
+            {
+                this._Order = value;
+                this.OnPropertyChanged("Order");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Order _Order;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

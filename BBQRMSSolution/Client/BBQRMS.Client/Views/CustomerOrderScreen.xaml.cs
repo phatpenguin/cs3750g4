@@ -34,5 +34,15 @@ namespace BBQRMSSolution.Views
 
             PaymentAmountTextBox.Text += pressed.CommandParameter;
         }
+
+        private void Discount_Pad_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var pressed = (Button)sender;
+
+
+            if (pressed.CommandParameter.ToString() == "." && DiscountAmountTextBox.Text.Contains(".")) return;
+
+            DiscountAmountTextBox.Text += pressed.CommandParameter;
+        }
 	}
 } 

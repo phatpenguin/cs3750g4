@@ -1,5 +1,4 @@
 using System;
-using System.Data.Services.Client;
 using System.Threading;
 using Controls;
 using BBQRMSSolution.ServerProxy;
@@ -8,7 +7,6 @@ namespace BBQRMSSolution.ViewModels
 {
     public class OrderViewModel : ViewModelBase
     {
-        private Timer _t;
         private decimal _st, _tp, _ta, _da, _pa, _ra;
 
         private const int DEFAULT_ORDER_TYPE_ID = 2;
@@ -30,7 +28,7 @@ namespace BBQRMSSolution.ViewModels
 		[Obsolete("Used for design-time only", true)]
     	public OrderViewModel()
 		{
-		    Order = new Order()
+		    Order = new Order
 		                {
 		                    Date = DateTime.Now,
 		                    DinerTypeId = DEFAULT_DINER_TYPE_ID,
@@ -39,16 +37,12 @@ namespace BBQRMSSolution.ViewModels
 		                    OrderStateId = 1
 		                };
 
-            var mi1 = new MenuItem { Description = "MenuItem1", Id = 1, Price = 1.25m };
-            var mi2 = new MenuItem { Description = "MenuItem2", Id = 2, Price = 2.25m };
-            var mi3 = new MenuItem { Description = "MenuItem3", Id = 3, Price = 3.25m };
-
 		    Order.OrderItems.Add(new OrderItem { MenuItemId = 1, Name = "Item1", Quantity = 1, UnitPrice = 3.50m, UnitTax = 1.00m });
             Order.OrderItems.Add(new OrderItem { MenuItemId = 1, Name = "Item1", Quantity = 1, UnitPrice = 3.50m, UnitTax = 1.00m });
             Order.OrderItems.Add(new OrderItem { MenuItemId = 1, Name = "Item1", Quantity = 1, UnitPrice = 3.50m, UnitTax = 1.00m });
 		}
 
-        public OrderViewModel(IMessageBus messageBus, BBQRMSEntities dataService, int number=0)
+        public OrderViewModel(IMessageBus messageBus, BBQRMSEntities dataService)
         {
             MessageBus = messageBus;
             DataService = dataService;
@@ -61,7 +55,6 @@ namespace BBQRMSSolution.ViewModels
             var now = DateTime.Now;
             now = now.AddMilliseconds(-now.Millisecond);
             OrderSubmittedDate = now;
-            _t = new Timer(UpdateAge, null, 0, 1000);
 
             Order = new Order
             {
@@ -81,11 +74,6 @@ namespace BBQRMSSolution.ViewModels
             DataService.UpdateObject(Order);
             DataService.SaveChanges();
             NotifyPropertyChanged("Order");
-        }
-
-        private void UpdateAge(object state)
-        {
-            OrderAge = DateTime.Now - OrderSubmittedDate;
         }
 
         public DateTime OrderSubmittedDate { get; set; }
@@ -136,8 +124,8 @@ namespace BBQRMSSolution.ViewModels
             }
             if (!isFound || Order.OrderItems.Count == 0)
             {
-                var orderItem = new OrderItem { Id = 0, OrderId = Order.Id, Name = menuItem.Name, Quantity = 1, UnitPrice = (decimal)menuItem.Price,
-                UnitTax = (decimal)(menuItem.Price*TAX_PERCENTAGE),MenuItemId = menuItem.Id};
+                var orderItem = new OrderItem { Id = 0, OrderId = Order.Id, Name = menuItem.Name, Quantity = 1, UnitPrice = menuItem.Price,
+                UnitTax = menuItem.Price*TAX_PERCENTAGE,MenuItemId = menuItem.Id};
 
                 DataService.AddToOrderItems(orderItem);
                 Order.OrderItems.Add(orderItem);
@@ -215,6 +203,17 @@ namespace BBQRMSSolution.ViewModels
             DataService.SaveChanges();
 
             PaymentAmount += payment.Amount;
+            CalculateTotals();
+        }
+
+        public void AddDiscount(Discount discount)
+        {
+            DataService.AddToDiscounts(discount);
+            Order.Discounts.Add(discount);
+            DataService.UpdateObject(Order);
+            DataService.SaveChanges();
+
+            DiscountAmount += discount.Amount;
             CalculateTotals();
         }
     }

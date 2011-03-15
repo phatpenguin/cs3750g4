@@ -14,11 +14,13 @@ namespace BBQRMSSolution.ViewModels
 		public ObservableCollection<Menu> Menus { get; set; }
 		public OrderViewModel Order { get; set; }
         public PaymentViewModel Payment { get; set; }
+        public DiscountViewModel Discount { get; set; }
 
 		public DelegateCommand Cancel { get { return new DelegateCommand(Order.CancelOrder); } }
 		public DelegateCommand Cashier { get { return new DelegateCommand(PlaceOrder); } }
         public DelegateCommand Cook { get { return new DelegateCommand(Order.SendToCook); } }
         public DelegateCommand AddPayment { get { return new DelegateCommand(NewPayment); } }
+        public DelegateCommand AddDiscount { get { return new DelegateCommand(NewDiscount); } }
 
 		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
@@ -71,6 +73,11 @@ namespace BBQRMSSolution.ViewModels
         {
             Payment = new PaymentViewModel(DataService,MessageBus,Order, _posDeviceManager);
             NotifyPropertyChanged("Payment");
+        }
+        public void NewDiscount()
+        {
+            Discount = new DiscountViewModel(DataService, MessageBus, Order);
+            NotifyPropertyChanged("Discount");
         }
 	}
 }

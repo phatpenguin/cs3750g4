@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -12,6 +10,7 @@ namespace BBQRMSSolution.ViewModels
 	{
 	    private OrderViewModel _orderViewModel;
 	    private string _paymentVisible;
+	    private CreditCardViewModel _creditViewModel;
 	    private int _paymentZIndex;
 	    private string _paymentAmount="0";
 
@@ -23,6 +22,8 @@ namespace BBQRMSSolution.ViewModels
         public DelegateCommand AddPayment { get { return new DelegateCommand(DoAddPayment); } }
         public Payment Payment { get; set; }
         public PaymentType PaymentType { get; set; }
+
+        public CreditCardViewModel Credit { get { return _creditViewModel; } set { _creditViewModel = value; NotifyPropertyChanged("Order"); } }
 
         public PaymentViewModel()
         {
@@ -42,7 +43,7 @@ namespace BBQRMSSolution.ViewModels
             DataService = dataService;
             MessageBus = messageBus;
 
-					ICashDrawer cashDrawer = posDeviceManager.GetCashDrawer();
+			ICashDrawer cashDrawer = posDeviceManager.GetCashDrawer();
         	cashDrawer.OpenDrawer();
 
             PaymentTypes = new ObservableCollection<PaymentType>(DataService.PaymentTypes.Execute());
@@ -59,9 +60,17 @@ namespace BBQRMSSolution.ViewModels
         public void DoAddPayment()
         {
             Payment = new Payment { Amount = Convert.ToDecimal(PaymentAmount), OrderId = Order.Order.Id, PaymentTypeId = PaymentType.Id, Id=0 };
+            var paymentType = PaymentTypes.Where(x => x.Id == Payment.PaymentTypeId).FirstOrDefault();
+
             Order.AddPayment(Payment);
 
             PaymentVisible = "Collapsed";
+        }
+
+        public void NewCredit()
+        {
+            Credit = new CreditCardViewModel(DataService, MessageBus, this);
+            NotifyPropertyChanged("Payment");
         }
 	}
 }

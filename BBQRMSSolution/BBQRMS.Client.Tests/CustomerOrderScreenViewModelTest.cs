@@ -20,7 +20,7 @@ namespace BBQRMS.Client.Tests
     ///This is a test class for CustomerOrderScreenViewModelTest and is intended
     ///to contain all CustomerOrderScreenViewModelTest Unit Tests
     ///</summary>
-    [TestClass()]
+    [TestClass]
     public class CustomerOrderScreenViewModelTest
     {
 
@@ -28,7 +28,7 @@ namespace BBQRMS.Client.Tests
 
         private static readonly TimeProviderForTesting MTime = new TimeProviderForTesting();
         private static BBQRMSEntities _mDataService;
-        private static CustomerOrderScreenViewModel target;
+        private static CustomerOrderScreenViewModel _target;
 
         [ClassInitialize]
         public static void BeforeAllTests(TestContext testContext)
@@ -42,7 +42,7 @@ namespace BBQRMS.Client.Tests
 
         	var mockDeviceManager = new Mock<IPOSDeviceManager>();
 
-        	target = new CustomerOrderScreenViewModel(_mDataService, new MessageBus(), mockDeviceManager.Object);
+        	_target = new CustomerOrderScreenViewModel(_mDataService, new MessageBus(), mockDeviceManager.Object);
         }
 
         [ClassCleanup]
@@ -54,23 +54,11 @@ namespace BBQRMS.Client.Tests
         }
 
 
-        private TestContext _testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return _testContextInstance;
-            }
-            set
-            {
-                _testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
         // 
@@ -106,13 +94,13 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Payment
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void PaymentTest()
         {
-            OrderViewModel orderTest = new OrderViewModel(new MessageBus(),_mDataService);
-            PaymentViewModel expected = new PaymentViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(),orderTest, new MockPOSDeviceManager());
-            target.Payment = expected;
-            PaymentViewModel actual = target.Payment;
+            var orderTest = new OrderViewModel(new MessageBus(),_mDataService);
+            var expected = new PaymentViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(),orderTest, new MockPOSDeviceManager());
+            _target.Payment = expected;
+            PaymentViewModel actual = _target.Payment;
             Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -120,12 +108,12 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Order
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void OrderTest()
         {
-            OrderViewModel expected = new OrderViewModel(new MessageBus(), _mDataService);
-            target.Order = expected;
-            OrderViewModel actual = target.Order;
+            var expected = new OrderViewModel(new MessageBus(), _mDataService);
+            _target.Order = expected;
+            OrderViewModel actual = _target.Order;
             Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -133,7 +121,7 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Menus
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void MenusTest()
         {
             var m1 = Menu.CreateMenu(0, "FOOD", true);
@@ -148,10 +136,9 @@ namespace BBQRMS.Client.Tests
             m2.MenuItems.Add(mi2);
             m3.MenuItems.Add(mi3);
 
-            ObservableCollection<Menu> expected = new ObservableCollection<Menu> { m1, m2, m3 }; ; // TODO: Initialize to an appropriate value
-            ObservableCollection<Menu> actual;
-            target.Menus = expected;
-            actual = target.Menus;
+            var expected = new ObservableCollection<Menu> { m1, m2, m3 }; ; // TODO: Initialize to an appropriate value
+            _target.Menus = expected;
+            ObservableCollection<Menu> actual = _target.Menus;
             Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -159,11 +146,10 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Cook
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void CookTest()
         {
-            DelegateCommand actual;
-            actual = target.Cook;
+            DelegateCommand actual = _target.Cook;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -171,11 +157,10 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Cashier
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void CashierTest()
         {
-            DelegateCommand actual;
-            actual = target.Cashier;
+            DelegateCommand actual = _target.Cashier;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -183,11 +168,10 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for Cancel
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void CancelTest()
         {
-            DelegateCommand actual;
-            actual = target.Cancel;
+            DelegateCommand actual = _target.Cancel;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -195,11 +179,10 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for AddToOrder
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void AddToOrderTest()
         {
-            DelegateCommand actual;
-            actual = target.AddToOrder;
+            DelegateCommand actual = _target.AddToOrder;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -207,11 +190,10 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for AddPayment
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void AddPaymentTest()
         {
-            DelegateCommand actual;
-            actual = target.AddPayment;
+            DelegateCommand actual = _target.AddPayment;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -219,11 +201,11 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for PlaceOrder
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void PlaceOrderTest()
         {
-            try { target.PlaceOrder(); } 
-            catch(Exception ex){ Assert.IsTrue(true);} 
+            try { _target.PlaceOrder(); } 
+            catch(Exception){ Assert.IsTrue(true);} 
             finally
             {
                 Assert.IsTrue(true);
@@ -235,22 +217,22 @@ namespace BBQRMS.Client.Tests
         /// <summary>
         ///A test for NewPayment
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void NewPaymentTest()
         {
-            target.NewPayment();
+            _target.NewPayment();
             //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
         ///A test for CustomerOrderScreenViewModel Constructor
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void CustomerOrderScreenViewModelConstructorTest()
         {
 					var mockDeviceManager = new Mock<IPOSDeviceManager>();
-					try { target = new CustomerOrderScreenViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(), mockDeviceManager.Object); }
-            catch(Exception ex){ Assert.Fail("Exception in Constructor");}
+					try { _target = new CustomerOrderScreenViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(), mockDeviceManager.Object); }
+            catch(Exception){ Assert.Fail("Exception in Constructor");}
             finally {Assert.IsTrue(true);}
         }
     }
