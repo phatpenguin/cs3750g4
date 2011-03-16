@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -19,7 +20,7 @@ namespace BBQRMSSolution.ViewModels
 			DataService = dataService;
 			MessageBus = messageBus;
 
-		    PendingOrders = new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Execute());
+            PendingOrders = new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == 1));
 
 			CompleteOrderCommand = new DelegateCommand(HandleCompleteOrder);
 		}
@@ -34,8 +35,12 @@ namespace BBQRMSSolution.ViewModels
 
 		private void HandleCompleteOrder(object parameter)
 		{
-			var orderViewModel = (Order) parameter;
-			PendingOrders.Remove(orderViewModel);
+			var order = (Order) parameter;
+		    order.OrderStateId = 3;
+            DataService.UpdateObject(order);
+		    DataService.SaveChanges();
+
+			PendingOrders.Remove(order);
 		}
 	}
 }
