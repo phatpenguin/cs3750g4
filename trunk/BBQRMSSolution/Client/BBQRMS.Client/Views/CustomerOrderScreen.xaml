@@ -146,7 +146,7 @@
                         <DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding DoAction}" CommandParameter="{Binding}"/>
+                                    <Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Views:CustomerOrderScreen}}, Path=DataContext.RemoveItem}" CommandParameter="{Binding}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
