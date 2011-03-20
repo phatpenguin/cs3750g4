@@ -1,5 +1,4 @@
-﻿using System;
-using BBQRMSSolution.Messages;
+﻿using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
 using Controls;
 using Microsoft.PointOfService;
@@ -38,10 +37,55 @@ namespace BBQRMSSolution
 			{
 				DeviceInfo printerDeviceInfo = _exp.GetDevice("PosPrinter");
 				PosPrinter printer = (PosPrinter)_exp.CreateInstance(printerDeviceInfo);
-				//TODO: fill in the rest of this appropriately.
-				_printer = new MockReceiptPrinter();
+				_printer = new ReceiptPrinterWrapper(printer);
+				printer.Open();
 			}
 			return _printer;
+		}
+	}
+
+	public class ReceiptPrinterWrapper : IReceiptPrinter
+	{
+		private readonly PosPrinter _printer;
+
+		public ReceiptPrinterWrapper(PosPrinter printer)
+		{
+			_printer = printer;
+		}
+
+		public void PrintStoredLogo(int logoNumber)
+		{
+			_printer.PrintNormal(PrinterStation.Receipt, "\x1b|cA\x1b|" + logoNumber + "B");
+		}
+
+		public void PrintLine(string line)
+		{
+			_printer.PrintNormal(PrinterStation.Receipt, line + "\n");
+		}
+
+		public void Cut()
+		{
+			_printer.CutPaper(95);
+		}
+
+		public void Claim()
+		{
+			_printer.Claim(1000);
+		}
+
+		public void Enable()
+		{
+			_printer.DeviceEnabled = true;
+		}
+
+		public void Release()
+		{
+			_printer.Release();
+		}
+
+		public void FeedToCut()
+		{
+			_printer.PrintNormal(PrinterStation.Receipt, "\x1B|7lF");
 		}
 	}
 
@@ -59,6 +103,7 @@ namespace BBQRMSSolution
 
 		void HandleStatusUpdateEvent(object sender, StatusUpdateEventArgs e)
 		{
+			//if ISynchronizeInvoke was not supplied, then we may have to marshal this back to the UI thread before publishing.
 			if (e.Status == 0)
 				_messageBus.Publish(new CashDrawerClosed());
 			if(e.Status == 1)

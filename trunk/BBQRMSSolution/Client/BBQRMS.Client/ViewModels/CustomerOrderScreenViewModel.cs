@@ -50,7 +50,7 @@ namespace BBQRMSSolution.ViewModels
 			DataService = dataService;
 			MessageBus = messageBus;
 
-			Order = new OrderViewModel(MessageBus,DataService);
+			Order = new OrderViewModel(MessageBus,DataService, posDeviceManager);
 
 		    Menus = new ObservableCollection<Menu>(DataService.Menus.Execute());
 		    foreach (var m in Menus)
@@ -64,7 +64,7 @@ namespace BBQRMSSolution.ViewModels
 		{
 			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order, MessageBus);
 
-            Order = new OrderViewModel(MessageBus, DataService);
+            Order = new OrderViewModel(MessageBus, DataService, _posDeviceManager);
 			NotifyPropertyChanged("order");
 
 			MessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
