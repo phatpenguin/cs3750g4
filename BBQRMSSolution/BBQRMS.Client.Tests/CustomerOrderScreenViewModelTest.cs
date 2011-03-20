@@ -97,7 +97,7 @@ namespace BBQRMS.Client.Tests
         [TestMethod]
         public void PaymentTest()
         {
-            var orderTest = new OrderViewModel(new MessageBus(),_mDataService);
+            OrderViewModel orderTest = new OrderViewModel(new MessageBus(),_mDataService, new MockPOSDeviceManager());
             var expected = new PaymentViewModel(new BBQRMSEntities(_mServiceAddress), new MessageBus(),orderTest, new MockPOSDeviceManager());
             _target.Payment = expected;
             PaymentViewModel actual = _target.Payment;
@@ -111,7 +111,7 @@ namespace BBQRMS.Client.Tests
         [TestMethod]
         public void OrderTest()
         {
-            var expected = new OrderViewModel(new MessageBus(), _mDataService);
+            OrderViewModel expected = new OrderViewModel(new MessageBus(), _mDataService, new MockPOSDeviceManager());
             _target.Order = expected;
             OrderViewModel actual = _target.Order;
             Assert.AreEqual(expected, actual);

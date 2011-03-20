@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using BBQRMSSolution.ViewModels;
 
 namespace BBQRMSSolution
@@ -42,6 +43,16 @@ namespace BBQRMSSolution
 		}
 
 		public void Release()
+		{
+			//TODO: implement
+		}
+
+		public void FeedToCut()
+		{
+			//TODO: implement
+		}
+
+		public void PrintStoredLogo(int logoNumber)
 		{
 			//TODO: implement
 		}

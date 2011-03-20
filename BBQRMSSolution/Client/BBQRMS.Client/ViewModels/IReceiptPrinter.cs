@@ -7,5 +7,7 @@
 		void Claim();
 		void Enable();
 		void Release();
+		void FeedToCut();
+		void PrintStoredLogo(int logoNumber);
 	}
 }
