@@ -19,6 +19,11 @@ namespace BBQRMSSolution.Views
 			ViewModel.HandleTakeOrders();
 		}
 
+        private void loadOrder_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.HandleLoadOrder();
+        }
+
 		private void cook_Click(object sender, RoutedEventArgs e)
 		{
 			ViewModel.HandleCooksScreen();

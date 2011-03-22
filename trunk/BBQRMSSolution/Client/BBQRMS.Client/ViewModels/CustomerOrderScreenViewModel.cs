@@ -53,12 +53,24 @@ namespace BBQRMSSolution.ViewModels
 			Order = new OrderViewModel(MessageBus,DataService, posDeviceManager);
 
 		    Menus = new ObservableCollection<Menu>(DataService.Menus.Execute());
-		    foreach (var m in Menus)
-		        DataService.LoadProperty(m, "MenuItems");
 
 		    foreach (var menu in Menus)
 		        DataService.LoadProperty(menu, "MenuItems");
 		}
+
+        public CustomerOrderScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus, IPOSDeviceManager posDeviceManager, Order order)
+        {
+            _posDeviceManager = posDeviceManager;
+            DataService = dataService;
+            MessageBus = messageBus;
+
+            Order = new OrderViewModel(MessageBus, DataService, posDeviceManager, order);
+
+            Menus = new ObservableCollection<Menu>(DataService.Menus.Execute());
+
+            foreach (var menu in Menus)
+                DataService.LoadProperty(menu, "MenuItems");
+        }
 
 		public void PlaceOrder()
 		{
@@ -75,6 +87,7 @@ namespace BBQRMSSolution.ViewModels
             Payment = new PaymentViewModel(DataService,MessageBus,Order, _posDeviceManager);
             NotifyPropertyChanged("Payment");
         }
+
         public void NewDiscount()
         {
             Discount = new DiscountViewModel(DataService, MessageBus, Order);

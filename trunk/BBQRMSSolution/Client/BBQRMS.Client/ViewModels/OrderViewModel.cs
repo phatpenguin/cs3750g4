@@ -52,6 +52,15 @@ namespace BBQRMSSolution.ViewModels
 			LoadNewOrder();
 		}
 
+        public OrderViewModel(IMessageBus messageBus, BBQRMSEntities dataService, IPOSDeviceManager posDeviceManager, Order order)
+        {
+            _posDeviceManager = posDeviceManager;
+            MessageBus = messageBus;
+            DataService = dataService;
+
+            Order = order;
+        }
+
 		private void LoadNewOrder()
 		{
 			var now = DateTime.Now;

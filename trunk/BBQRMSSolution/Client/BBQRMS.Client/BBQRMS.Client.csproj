@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="ViewModels\CreditCardViewModel.cs" />
     <Compile Include="ViewModels\DiscountViewModel.cs" />
+    <Compile Include="ViewModels\LoadOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\MenuItemManagementViewModel.cs" />
     <Compile Include="ViewModels\ICashDrawer.cs" />
     <Compile Include="ViewModels\IPOSDeviceManager.cs" />
@@ -141,6 +142,9 @@
     <Compile Include="Messages\UserLoggingOut.cs" />
     <Compile Include="Views\ChangePINView.xaml.cs">
       <DependentUpon>ChangePINView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadOrderScreen.xaml.cs">
+      <DependentUpon>LoadOrderScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuItemManagementView.xaml.cs">
       <DependentUpon>MenuItemManagementView.xaml</DependentUpon>
@@ -214,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TabControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoadOrderScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

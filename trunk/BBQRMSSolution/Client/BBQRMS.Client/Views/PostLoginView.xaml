@@ -61,7 +61,12 @@
 						Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, Converter={StaticResource boolToVisibilityConverter}}"
 						ImageSource="/Graphics/accessories-text-editor.png"
 						Content="Take Orders" />
-					<c:ImageButton
+                    <c:ImageButton Content="Load Order" ImageSource="/Graphics/x-office-spreadsheet.png" 
+                                   Name="loadOrder" 
+                                   Click="loadOrder_Click"
+                                   Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, 
+                        Converter={StaticResource boolToVisibilityConverter}}" />
+                    <c:ImageButton
 						Name="cook" 
 						Click="cook_Click"
 						Visibility="{Binding Path=SecurityContext.CurrentUser.CanUseCooksScreen, Converter={StaticResource boolToVisibilityConverter}}"
@@ -79,7 +84,7 @@
 						Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, Converter={StaticResource boolToVisibilityConverter}}"
 						ImageSource="/Graphics/x-office-spreadsheet.png"
 						Content="Reporting" />
-				</StackPanel>
+                </StackPanel>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
           <StackPanel HorizontalAlignment="Right" Margin="5">
             <TextBlock FontSize="12" Text="You are logged in as: "/>

@@ -75,4 +75,9 @@
     <DataTemplate DataType="{x:Type ViewModels:ReconcileInventoryViewModel}">
         <Views:ReconcileInventoryView />
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type ViewModels:LoadOrderScreenViewModel}">
+        <Views:LoadOrderScreen />
+    </DataTemplate>
+
 </ResourceDictionary>
