@@ -1,4 +1,5 @@
-﻿using BBQRMSSolution.Messages;
+﻿using System;
+using BBQRMSSolution.Messages;
 using BBQRMSSolution.ViewModels;
 using Controls;
 using Microsoft.PointOfService;
@@ -55,12 +56,26 @@ namespace BBQRMSSolution
 
 		public void PrintStoredLogo(int logoNumber)
 		{
-			_printer.PrintNormal(PrinterStation.Receipt, "\x1b|cA\x1b|" + logoNumber + "B");
+			try
+			{
+				_printer.PrintNormal(PrinterStation.Receipt, "\x1b|cA\x1b|" + logoNumber + "B");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 
 		public void PrintLine(string line)
 		{
-			_printer.PrintNormal(PrinterStation.Receipt, line + "\n");
+			try
+			{
+				_printer.PrintNormal(PrinterStation.Receipt, line + "\n");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 
 		public void Cut()
