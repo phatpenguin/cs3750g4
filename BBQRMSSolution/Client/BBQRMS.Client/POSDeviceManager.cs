@@ -80,7 +80,14 @@ namespace BBQRMSSolution
 
 		public void Release()
 		{
-			_printer.Release();
+			if (_printer.Claimed)
+			{
+				if (_printer.DeviceEnabled)
+				{
+					_printer.DeviceEnabled = false;
+				}
+				_printer.Release();
+			}
 		}
 
 		public void FeedToCut()
