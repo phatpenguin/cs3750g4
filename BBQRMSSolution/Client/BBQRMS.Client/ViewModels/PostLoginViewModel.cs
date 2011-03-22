@@ -83,6 +83,12 @@ namespace BBQRMSSolution.ViewModels
 			// Each module instance could hold onto the reusable viewmodels.
 		}
 
+        public void HandleLoadOrder()
+        {
+            //TODO: Show a new or existing viewmodel for the load order screen.
+            MessageBus.Publish(new ShowScreen(new LoadOrderScreenViewModel(DataService, MessageBus, _posDeviceManager)));
+        }
+
 		public void HandleCooksScreen()
 		{
 			//TODO: Show a new or existing viewmodel for the cooks screen.
