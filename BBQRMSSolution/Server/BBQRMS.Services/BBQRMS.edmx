@@ -16,6 +16,7 @@
           <EntitySet Name="EmployeePayType" EntityType="BBQRMSModel.Store.EmployeePayType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EmployeeRoleMap" EntityType="BBQRMSModel.Store.EmployeeRoleMap" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EmployeeTimeClock" EntityType="BBQRMSModel.Store.EmployeeTimeClock" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InventoryLocationType" EntityType="BBQRMSModel.Store.InventoryLocationType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ItemSupplierMap" EntityType="BBQRMSModel.Store.ItemSupplierMap" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MasterInventory" EntityType="BBQRMSModel.Store.MasterInventory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Menu" EntityType="BBQRMSModel.Store.Menu" store:Type="Tables" Schema="dbo" />
@@ -57,6 +58,10 @@
           <AssociationSet Name="FK_EmployeeTimeClock_Employee" Association="BBQRMSModel.Store.FK_EmployeeTimeClock_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="EmployeeTimeClock" EntitySet="EmployeeTimeClock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterInventory_LocationId" Association="BBQRMSModel.Store.FK_MasterInventory_LocationId">
+            <End Role="InventoryLocationType" EntitySet="InventoryLocationType" />
+            <End Role="MasterInventory" EntitySet="MasterInventory" />
           </AssociationSet>
           <AssociationSet Name="FK_MasterInventoryId_ConsumedInventory" Association="BBQRMSModel.Store.FK_MasterInventoryId_ConsumedInventory">
             <End Role="MasterInventory" EntitySet="MasterInventory" />
@@ -220,6 +225,13 @@
           <Property Name="ClockInTimeUTC" Type="smalldatetime" Nullable="false" />
           <Property Name="ClockOutTimeUTC" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="InventoryLocationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemSupplierMap">
           <Key>
             <PropertyRef Name="Id" />
@@ -234,6 +246,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
           <Property Name="UnitQty" Type="int" Nullable="false" />
           <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
           <Property Name="OrderLeadDays" Type="int" Nullable="false" />
@@ -464,6 +477,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MasterInventory_LocationId">
+          <End Role="InventoryLocationType" Type="BBQRMSModel.Store.InventoryLocationType" Multiplicity="1" />
+          <End Role="MasterInventory" Type="BBQRMSModel.Store.MasterInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InventoryLocationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterInventory">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MasterInventoryId_ConsumedInventory">
           <End Role="MasterInventory" Type="BBQRMSModel.Store.MasterInventory" Multiplicity="1" />
           <End Role="ConsumedInventory" Type="BBQRMSModel.Store.ConsumedInventory" Multiplicity="*" />
@@ -678,9 +703,11 @@
           <EntitySet Name="ConsumedInventories" EntityType="BBQRMSModel.ConsumedInventory" />
           <EntitySet Name="ConsumptionTypes" EntityType="BBQRMSModel.ConsumptionType" />
           <EntitySet Name="DinerTypes" EntityType="BBQRMSModel.DinerType" />
+          <EntitySet Name="Discounts" EntityType="BBQRMSModel.Discount" />
           <EntitySet Name="Employees" EntityType="BBQRMSModel.Employee" />
           <EntitySet Name="EmployeePayTypes" EntityType="BBQRMSModel.EmployeePayType" />
           <EntitySet Name="EmployeeTimeClocks" EntityType="BBQRMSModel.EmployeeTimeClock" />
+          <EntitySet Name="InventoryLocationTypes" EntityType="BBQRMSModel.InventoryLocationType" />
           <EntitySet Name="ItemSupplierMaps" EntityType="BBQRMSModel.ItemSupplierMap" />
           <EntitySet Name="MasterInventories" EntityType="BBQRMSModel.MasterInventory" />
           <EntitySet Name="Menus" EntityType="BBQRMSModel.Menu" />
@@ -717,6 +744,10 @@
             <End Role="DinerType" EntitySet="DinerTypes" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderId_Discount" Association="BBQRMSModel.FK_OrderId_Discount">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Discount" EntitySet="Discounts" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmployeeTimeClock_Employee" Association="BBQRMSModel.FK_EmployeeTimeClock_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="EmployeeTimeClock" EntitySet="EmployeeTimeClocks" />
@@ -724,6 +755,10 @@
           <AssociationSet Name="FK_PayTypeId_Employee" Association="BBQRMSModel.FK_PayTypeId_Employee">
             <End Role="EmployeePayType" EntitySet="EmployeePayTypes" />
             <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterInventory_LocationId" Association="BBQRMSModel.FK_MasterInventory_LocationId">
+            <End Role="InventoryLocationType" EntitySet="InventoryLocationTypes" />
+            <End Role="MasterInventory" EntitySet="MasterInventories" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderItem_MenuItem" Association="BBQRMSModel.FK_OrderItem_MenuItem">
             <End Role="MenuItem" EntitySet="MenuItems" />
@@ -773,11 +808,6 @@
             <End Role="Privilege" EntitySet="Privileges" />
             <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
-          <EntitySet Name="Discounts" EntityType="BBQRMSModel.Discount" />
-          <AssociationSet Name="FK_OrderId_Discount" Association="BBQRMSModel.FK_OrderId_Discount">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="Discount" EntitySet="Discounts" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__RefactorLog">
           <Key>
@@ -826,6 +856,16 @@
           <Property Type="String" Name="Code" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="BBQRMSModel.FK_DinerTypeId_Order" FromRole="DinerType" ToRole="Order" />
         </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="DiscountTypeId" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="BBQRMSModel.FK_OrderId_Discount" FromRole="Discount" ToRole="Order" />
+        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Id" />
@@ -868,6 +908,14 @@
           <Property Type="DateTime" Name="ClockOutTimeUTC" />
           <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_EmployeeTimeClock_Employee" FromRole="EmployeeTimeClock" ToRole="Employee" />
         </EntityType>
+        <EntityType Name="InventoryLocationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MasterInventories" Relationship="BBQRMSModel.FK_MasterInventory_LocationId" FromRole="InventoryLocationType" ToRole="MasterInventory" />
+        </EntityType>
         <EntityType Name="ItemSupplierMap">
           <Key>
             <PropertyRef Name="Id" />
@@ -882,11 +930,13 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LocationId" Nullable="false" />
           <Property Type="Int32" Name="UnitQty" Nullable="false" />
           <Property Type="DateTime" Name="ExpirationDate" Nullable="false" />
           <Property Type="Int32" Name="OrderLeadDays" Nullable="false" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" FromRole="MasterInventory" ToRole="ConsumedInventory" />
+          <NavigationProperty Name="InventoryLocationType" Relationship="BBQRMSModel.FK_MasterInventory_LocationId" FromRole="MasterInventory" ToRole="InventoryLocationType" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -923,12 +973,12 @@
           <Property Type="Int32" Name="OrderStateId" Nullable="false" />
           <Property Type="String" Name="Memo" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DinerType" Relationship="BBQRMSModel.FK_DinerTypeId_Order" FromRole="Order" ToRole="DinerType" />
+          <NavigationProperty Name="Discounts" Relationship="BBQRMSModel.FK_OrderId_Discount" FromRole="Order" ToRole="Discount" />
           <NavigationProperty Name="Payments" Relationship="BBQRMSModel.FK_OrderId_Payment" FromRole="Order" ToRole="Payment" />
           <NavigationProperty Name="OrderItems" Relationship="BBQRMSModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="OrderState" Relationship="BBQRMSModel.FK_OrderStateId_Order" FromRole="Order" ToRole="OrderState" />
           <NavigationProperty Name="OrderType" Relationship="BBQRMSModel.FK_OrderTypeId_Order" FromRole="Order" ToRole="OrderType" />
           <NavigationProperty Name="PaymentState" Relationship="BBQRMSModel.FK_PaymentStateId_Order" FromRole="Order" ToRole="PaymentState" />
-          <NavigationProperty Name="Discounts" Relationship="BBQRMSModel.FK_OrderId_Discount" FromRole="Order" ToRole="Discount" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -990,8 +1040,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Code" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="BBQRMSModel.FK_PaymentTypeId_Payment" FromRole="PaymentType" ToRole="Payment" />
           <Property Type="Boolean" Name="IsCreditCard" Nullable="false" />
+          <NavigationProperty Name="Payments" Relationship="BBQRMSModel.FK_PaymentTypeId_Payment" FromRole="PaymentType" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Privilege">
           <Key>
@@ -1106,6 +1156,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderId_Discount">
+          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="BBQRMSModel.Discount" Role="Discount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discount">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeTimeClock_Employee">
           <End Type="BBQRMSModel.Employee" Role="Employee" Multiplicity="1" />
           <End Type="BBQRMSModel.EmployeeTimeClock" Role="EmployeeTimeClock" Multiplicity="*" />
@@ -1127,6 +1189,18 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="PayTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterInventory_LocationId">
+          <End Type="BBQRMSModel.InventoryLocationType" Role="InventoryLocationType" Multiplicity="1" />
+          <End Type="BBQRMSModel.MasterInventory" Role="MasterInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InventoryLocationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterInventory">
+              <PropertyRef Name="LocationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1250,28 +1324,6 @@
           <End Type="BBQRMSModel.Privilege" Role="Privilege" Multiplicity="*" />
           <End Type="BBQRMSModel.Role" Role="Role" Multiplicity="*" />
         </Association>
-        <EntityType Name="Discount">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="OrderId" Nullable="false" />
-          <Property Type="Int32" Name="DiscountTypeId" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="BBQRMSModel.FK_OrderId_Discount" FromRole="Discount" ToRole="Order" />
-        </EntityType>
-        <Association Name="FK_OrderId_Discount">
-          <End Type="BBQRMSModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="BBQRMSModel.Discount" Role="Discount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Discount">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1324,6 +1376,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Discounts">
+            <EntityTypeMapping TypeName="BBQRMSModel.Discount">
+              <MappingFragment StoreEntitySet="Discount">
+                <ScalarProperty Name="DiscountTypeId" ColumnName="DiscountTypeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="BBQRMSModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
@@ -1362,6 +1424,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="InventoryLocationTypes">
+            <EntityTypeMapping TypeName="BBQRMSModel.InventoryLocationType">
+              <MappingFragment StoreEntitySet="InventoryLocationType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ItemSupplierMaps">
             <EntityTypeMapping TypeName="BBQRMSModel.ItemSupplierMap">
               <MappingFragment StoreEntitySet="ItemSupplierMap">
@@ -1378,6 +1448,7 @@
                 <ScalarProperty Name="OrderLeadDays" ColumnName="OrderLeadDays" />
                 <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
                 <ScalarProperty Name="UnitQty" ColumnName="UnitQty" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1554,16 +1625,6 @@
               <ScalarProperty Name="Id" ColumnName="PrivilegeId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Discounts">
-            <EntityTypeMapping TypeName="BBQRMSModel.Discount">
-              <MappingFragment StoreEntitySet="Discount">
-                <ScalarProperty Name="DiscountTypeId" ColumnName="DiscountTypeId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1585,132 +1646,135 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BBQRMS">
-        <EntityTypeShape EntityType="BBQRMSModel.C__RefactorLog" Width="1.5" PointX="6.125" PointY="10.625" Height="1.0992643229166657" />
-        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="7.25" PointY="12.375" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="BBQRMSModel.ConsumedInventory" Width="1.5" PointX="10.25" PointY="13.375" Height="2.7494921875000085" />
-        <EntityTypeShape EntityType="BBQRMSModel.ConsumptionType" Width="1.5" PointX="8" PointY="9.375" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="BBQRMSModel.DinerType" Width="1.5" PointX="0.75" PointY="5.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="5" PointY="12.375" Height="4.6725065104166656" />
-        <EntityTypeShape EntityType="BBQRMSModel.EmployeePayType" Width="1.5" PointX="2.75" PointY="13.875" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="BBQRMSModel.EmployeeTimeClock" Width="1.5" PointX="7.25" PointY="18.625" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="BBQRMSModel.ItemSupplierMap" Width="1.5" PointX="4.75" PointY="8.75" Height="1.5956835937500102" />
-        <EntityTypeShape EntityType="BBQRMSModel.MasterInventory" Width="1.5" PointX="8" PointY="21.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="0.75" PointY="2.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.MenuItem" Width="1.5" PointX="3" PointY="0.75" Height="2.5571907552083388" />
-        <EntityTypeShape EntityType="BBQRMSModel.Order" Width="1.5" PointX="3" PointY="4.125" Height="3.7109993489583246" />
-        <EntityTypeShape EntityType="BBQRMSModel.OrderItem" Width="1.5" PointX="5.25" PointY="4.625" Height="2.7494921875000102" />
-        <EntityTypeShape EntityType="BBQRMSModel.OrderState" Width="1.5" PointX="0.75" PointY="8.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.OrderType" Width="1.5" PointX="0.75" PointY="11.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.Payment" Width="1.5" PointX="8.25" PointY="4.875" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BBQRMSModel.PaymentState" Width="1.5" PointX="0.75" PointY="13.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.PaymentType" Width="1.5" PointX="6" PointY="1.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BBQRMSModel.Privilege" Width="1.5" PointX="5" PointY="17.875" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="BBQRMSModel.Role" Width="1.5" PointX="7.25" PointY="15.875" Height="1.7879850260416372" />
-        <EntityTypeShape EntityType="BBQRMSModel.Supplier" Width="1.5" PointX="10.75" PointY="3" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="BBQRMSModel.SupplierContact" Width="1.5" PointX="10.75" PointY="7.125" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BBQRMSModel.SupplierContactMap" Width="1.5" PointX="13" PointY="3.375" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="BBQRMSModel.C__RefactorLog" Width="1.5" PointX="7.75" PointY="1" Height="1.2110807291666674" />
+        <EntityTypeShape EntityType="BBQRMSModel.ApplicationUser" Width="1.5" PointX="13.25" PointY="11.625" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="BBQRMSModel.ConsumedInventory" Width="1.5" PointX="16.25" PointY="12.5" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="BBQRMSModel.ConsumptionType" Width="1.5" PointX="14" PointY="8.375" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.DinerType" Width="1.5" PointX="0.75" PointY="4.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.Discount" Width="1.5" PointX="5.25" PointY="4.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="BBQRMSModel.Employee" Width="1.5" PointX="11" PointY="11.625" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="BBQRMSModel.EmployeePayType" Width="1.5" PointX="8.75" PointY="13.125" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.EmployeeTimeClock" Width="1.5" PointX="13.25" PointY="17.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="BBQRMSModel.InventoryLocationType" Width="1.5" PointX="11.75" PointY="21.25" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.ItemSupplierMap" Width="1.5" PointX="8.75" PointY="9" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.MasterInventory" Width="1.5" PointX="14" PointY="20.75" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="BBQRMSModel.Menu" Width="1.5" PointX="3.75" PointY="8.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.MenuItem" Width="1.5" PointX="6" PointY="8.5" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="BBQRMSModel.Order" Width="1.5" PointX="3" PointY="3.75" Height="3.9033007812499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.OrderItem" Width="1.5" PointX="8.25" PointY="4.375" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="BBQRMSModel.OrderState" Width="1.5" PointX="0.75" PointY="2.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.OrderType" Width="1.5" PointX="0.75" PointY="7.875" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="BBQRMSModel.Payment" Width="1.5" PointX="5.25" PointY="1.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BBQRMSModel.PaymentState" Width="1.5" PointX="0.75" PointY="10.375" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.PaymentType" Width="1.5" PointX="3" PointY="0.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="BBQRMSModel.Privilege" Width="1.5" PointX="11" PointY="17.125" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="BBQRMSModel.Role" Width="1.5" PointX="13.25" PointY="15" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BBQRMSModel.Supplier" Width="1.5" PointX="10.75" PointY="1.125" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="BBQRMSModel.SupplierContact" Width="1.5" PointX="10.75" PointY="5.375" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BBQRMSModel.SupplierContactMap" Width="1.5" PointX="13" PointY="1.5" Height="1.9802864583333246" />
         <AssociationConnector Association="BBQRMSModel.FK_Employee_ApplicationUser" >
-          <ConnectorPoint PointX="6.5" PointY="13.365143229166662" />
-          <ConnectorPoint PointX="7.25" PointY="13.365143229166662" />
+          <ConnectorPoint PointX="12.5" PointY="12.615143229166677" />
+          <ConnectorPoint PointX="13.25" PointY="12.615143229166677" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_ConsumptionTypeId_ConsumedInventory" >
-          <ConnectorPoint PointX="9.15625" PointY="10.970683593749996" />
-          <ConnectorPoint PointX="9.15625" PointY="15.115143229166662" />
-          <ConnectorPoint PointX="10.25" PointY="15.115143229166662" />
+          <ConnectorPoint PointX="15.15625" PointY="9.9706835937499818" />
+          <ConnectorPoint PointX="15.15625" PointY="14.302643229166677" />
+          <ConnectorPoint PointX="16.25" PointY="14.302643229166677" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_EmployeeId_ConsumedInventory" >
-          <ConnectorPoint PointX="6.5" PointY="14.703964843749994" />
-          <ConnectorPoint PointX="9.0729166666666661" PointY="14.703964843749994" />
-          <ConnectorPoint PointX="9.2395833333333339" PointY="14.703964843749994" />
-          <ConnectorPoint PointX="10.25" PointY="14.703964843749994" />
+          <ConnectorPoint PointX="12.5" PointY="13.922714843750015" />
+          <ConnectorPoint PointX="15.072916666666666" PointY="13.922714843750015" />
+          <ConnectorPoint PointX="15.239583333333334" PointY="13.922714843750015" />
+          <ConnectorPoint PointX="16.25" PointY="13.922714843750015" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" >
-          <ConnectorPoint PointX="9.328125" PointY="21.75" />
-          <ConnectorPoint PointX="9.328125" PointY="15.495074114583325" />
-          <ConnectorPoint PointX="10.25" PointY="15.495074114583325" />
+          <ConnectorPoint PointX="15.328125" PointY="20.75" />
+          <ConnectorPoint PointX="15.328125" PointY="14.651324114583332" />
+          <ConnectorPoint PointX="16.25" PointY="14.651324114583332" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_DinerTypeId_Order" >
-          <ConnectorPoint PointX="2.25" PointY="5.9211531575520837" />
-          <ConnectorPoint PointX="3" PointY="5.9211531575520837" />
+          <ConnectorPoint PointX="2.25" PointY="5.7689925130208337" />
+          <ConnectorPoint PointX="3" PointY="5.7689925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_OrderId_Discount" >
+          <ConnectorPoint PointX="4.5" PointY="5.7401432291666765" />
+          <ConnectorPoint PointX="5.25" PointY="5.7401432291666765" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_EmployeeTimeClock_Employee" >
-          <ConnectorPoint PointX="6.4999999999999982" PointY="17.047506510416667" />
-          <ConnectorPoint PointX="6.875" PointY="17.422506510416667" />
-          <ConnectorPoint PointX="6.875" PointY="19.615143229166662" />
-          <ConnectorPoint PointX="7.25" PointY="19.615143229166662" />
+          <ConnectorPoint PointX="12.5" PointY="16.297506510416667" />
+          <ConnectorPoint PointX="12.875" PointY="16.672506510416667" />
+          <ConnectorPoint PointX="12.875" PointY="18.740143229166677" />
+          <ConnectorPoint PointX="13.25" PointY="18.740143229166677" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_PayTypeId_Employee" >
-          <ConnectorPoint PointX="4.25" PointY="14.5889794921875" />
-          <ConnectorPoint PointX="4.3541691666666669" PointY="14.5889794921875" />
-          <ConnectorPoint PointX="4.5208358333333329" PointY="14.5889794921875" />
-          <ConnectorPoint PointX="5" PointY="14.5889794921875" />
+          <ConnectorPoint PointX="10.25" PointY="13.922841796874991" />
+          <ConnectorPoint PointX="11" PointY="13.922841796874991" />
+        </AssociationConnector>
+        <AssociationConnector Association="BBQRMSModel.FK_MasterInventory_LocationId" >
+          <ConnectorPoint PointX="13.25" PointY="22.047841796874991" />
+          <ConnectorPoint PointX="14" PointY="22.047841796874991" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderItem_MenuItem" >
-          <ConnectorPoint PointX="4.5" PointY="3.1413378906250031" />
-          <ConnectorPoint PointX="5.59375" PointY="3.1413378906250031" />
-          <ConnectorPoint PointX="5.59375" PointY="4.625" />
+          <ConnectorPoint PointX="7.15625" PointY="8.5" />
+          <ConnectorPoint PointX="7.15625" PointY="6.9586393229166674" />
+          <ConnectorPoint PointX="8.25" PointY="6.9586393229166674" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderId_Payment" >
-          <ConnectorPoint PointX="4.5" PointY="7.3133349609375" />
-          <ConnectorPoint PointX="9" PointY="7.3133349609375" />
-          <ConnectorPoint PointX="9" PointY="6.9603483072916656" />
+          <ConnectorPoint PointX="4.5" PointY="3.75" />
+          <ConnectorPoint PointX="4.875" PointY="3.375" />
+          <ConnectorPoint PointX="4.875" PointY="4.2398893229166674" />
+          <ConnectorPoint PointX="5.25" PointY="3.8648893229166674" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderItem_Order" >
-          <ConnectorPoint PointX="4.5" PointY="5.832021484375" />
-          <ConnectorPoint PointX="5.25" PointY="5.832021484375" />
+          <ConnectorPoint PointX="4.5" PointY="4.53125" />
+          <ConnectorPoint PointX="8.25" PointY="4.53125" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderStateId_Order" >
-          <ConnectorPoint PointX="2.25" PointY="9.7520353190104174" />
-          <ConnectorPoint PointX="3.4322891666666666" PointY="9.7520353190104174" />
-          <ConnectorPoint PointX="3.5989558333333336" PointY="9.7520353190104174" />
-          <ConnectorPoint PointX="4.09375" PointY="9.7520353190104174" />
-          <ConnectorPoint PointX="4.09375" PointY="7.525126953125" />
+          <ConnectorPoint PointX="2.25" PointY="4.0379850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="4.4129850260416674" />
+          <ConnectorPoint PointX="2.625" PointY="3.375" />
+          <ConnectorPoint PointX="3" PointY="3.75" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_OrderTypeId_Order" >
-          <ConnectorPoint PointX="2.25" PointY="11.921153157552084" />
-          <ConnectorPoint PointX="3.5156225" PointY="11.921153157552084" />
-          <ConnectorPoint PointX="3.5156225" PointY="7.525126953125" />
+          <ConnectorPoint PointX="2.25" PointY="8.34375" />
+          <ConnectorPoint PointX="3.0572891666666666" PointY="8.34375" />
+          <ConnectorPoint PointX="3.2239558333333336" PointY="8.34375" />
+          <ConnectorPoint PointX="3.34375" PointY="8.34375" />
+          <ConnectorPoint PointX="3.34375" PointY="7.6533007812499818" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_PaymentStateId_Order" >
-          <ConnectorPoint PointX="2.25" PointY="13.71875" />
-          <ConnectorPoint PointX="4.40625" PointY="13.71875" />
-          <ConnectorPoint PointX="4.40625" PointY="7.525126953125" />
+          <ConnectorPoint PointX="2.25" PointY="11.444235026041667" />
+          <ConnectorPoint PointX="3.1406225" PointY="11.444235026041667" />
+          <ConnectorPoint PointX="3.1406225" PointY="7.6533007812499818" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_PaymentTypeId_Payment" >
-          <ConnectorPoint PointX="7.5" PointY="2.0033268229166667" />
-          <ConnectorPoint PointX="9" PointY="2.0033268229166667" />
-          <ConnectorPoint PointX="9" PointY="4.875" />
+          <ConnectorPoint PointX="4.5" PointY="2.1151432291666765" />
+          <ConnectorPoint PointX="5.25" PointY="2.1151432291666765" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_SupplierId_SupplierContactMap" >
-          <ConnectorPoint PointX="12.25" PointY="4.3651432291666623" />
-          <ConnectorPoint PointX="13" PointY="4.3651432291666623" />
+          <ConnectorPoint PointX="12.25" PointY="2.4901432291666623" />
+          <ConnectorPoint PointX="13" PointY="2.4901432291666623" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.FK_SupplierContactId_SupplierContactMap" >
-          <ConnectorPoint PointX="12.25" PointY="8.3074446614583337" />
-          <ConnectorPoint PointX="13.75" PointY="8.3074446614583337" />
-          <ConnectorPoint PointX="13.75" PointY="5.3552864583333246" />
+          <ConnectorPoint PointX="12.25" PointY="6.5574446614583337" />
+          <ConnectorPoint PointX="13.75" PointY="6.5574446614583337" />
+          <ConnectorPoint PointX="13.75" PointY="3.4802864583333246" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.EmployeeRoleMap" >
-          <ConnectorPoint PointX="6.5" PointY="16.43000075520834" />
-          <ConnectorPoint PointX="7.25" PointY="16.43000075520834" />
+          <ConnectorPoint PointX="12.5" PointY="15.61750075520834" />
+          <ConnectorPoint PointX="13.25" PointY="15.61750075520834" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.MenuItemMap" >
-          <ConnectorPoint PointX="2.25" PointY="2.9660953776041694" />
-          <ConnectorPoint PointX="3" PointY="2.9660953776041694" />
+          <ConnectorPoint PointX="5.25" PointY="9.7689925130208337" />
+          <ConnectorPoint PointX="6" PointY="9.7689925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="BBQRMSModel.RolePrivilegeMap" >
-          <ConnectorPoint PointX="6.5" PointY="17.938460538461534" />
-          <ConnectorPoint PointX="6.8160744349011209" PointY="17.622386103560412" />
-          <ConnectorPoint PointX="6.9339255650988791" PointY="17.504534973362656" />
-          <ConnectorPoint PointX="7.0625" PointY="17.375960538461534" />
-          <ConnectorPoint PointX="7.0625" PointY="17.851637872195486" />
-          <ConnectorPoint PointX="7.2511528461538477" PointY="17.662985026041639" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BBQRMSModel.Discount" Width="1.5" PointX="5.25" PointY="22" Height="1.7566536458333246" />
-        <AssociationConnector Association="BBQRMSModel.FK_OrderId_Discount" >
-          <ConnectorPoint PointX="4.4375025" PointY="7.525126953125" />
-          <ConnectorPoint PointX="4.4375025" PointY="22.878326822916662" />
-          <ConnectorPoint PointX="5.25" PointY="22.878326822916662" />
+          <ConnectorPoint PointX="12.5" PointY="17.18730669230769" />
+          <ConnectorPoint PointX="12.81607443490112" PointY="16.871232257406568" />
+          <ConnectorPoint PointX="12.933925565098878" PointY="16.753381127208812" />
+          <ConnectorPoint PointX="13.0625" PointY="16.62480669230769" />
+          <ConnectorPoint PointX="13.0625" PointY="16.975485026041667" />
+          <ConnectorPoint PointX="13.25" PointY="16.787985026041667" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -1,0 +1,4 @@
+﻿Id,Name,LocationId,UnitQty,ExpirationDate,OrderLeadDays,IsActive
+1,Ribs,3,10,03/20/2011,5,true
+2,Chicken,3,50,03/23/2011,7,true
+3,Sauce,2,50,02/20/2011,9,true
