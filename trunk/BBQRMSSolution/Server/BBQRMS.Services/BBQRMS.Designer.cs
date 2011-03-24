@@ -23,8 +23,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_EmployeeId_ConsumedInventory", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "ConsumedInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ConsumedInventory), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_MasterInventoryId_ConsumedInventory", "MasterInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.MasterInventory), "ConsumedInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ConsumedInventory), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_DinerTypeId_Order", "DinerType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.DinerType), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Order), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderId_Discount", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "Discount", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Discount), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_EmployeeTimeClock_Employee", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "EmployeeTimeClock", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.EmployeeTimeClock), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_PayTypeId_Employee", "EmployeePayType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.EmployeePayType), "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Employee), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_MasterInventory_LocationId", "InventoryLocationType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.InventoryLocationType), "MasterInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.MasterInventory), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderItem_MenuItem", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.MenuItem), "OrderItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.OrderItem), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderId_Payment", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "Payment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Payment), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderItem_Order", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "OrderItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.OrderItem), true)]
@@ -37,7 +39,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "EmployeeRoleMap", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Employee), "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Role))]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "MenuItemMap", "Menu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Menu), "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.MenuItem))]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "RolePrivilegeMap", "Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Privilege), "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Role))]
-[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_OrderId_Discount", "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Order), "Discount", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.Discount), true)]
 
 #endregion
 
@@ -172,6 +173,22 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Discount> Discounts
+        {
+            get
+            {
+                if ((_Discounts == null))
+                {
+                    _Discounts = base.CreateObjectSet<Discount>("Discounts");
+                }
+                return _Discounts;
+            }
+        }
+        private ObjectSet<Discount> _Discounts;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Employee> Employees
         {
             get
@@ -216,6 +233,22 @@ namespace BBQRMS.WCFServices
             }
         }
         private ObjectSet<EmployeeTimeClock> _EmployeeTimeClocks;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<InventoryLocationType> InventoryLocationTypes
+        {
+            get
+            {
+                if ((_InventoryLocationTypes == null))
+                {
+                    _InventoryLocationTypes = base.CreateObjectSet<InventoryLocationType>("InventoryLocationTypes");
+                }
+                return _InventoryLocationTypes;
+            }
+        }
+        private ObjectSet<InventoryLocationType> _InventoryLocationTypes;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -472,22 +505,6 @@ namespace BBQRMS.WCFServices
             }
         }
         private ObjectSet<SupplierContactMap> _SupplierContactMaps;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Discount> Discounts
-        {
-            get
-            {
-                if ((_Discounts == null))
-                {
-                    _Discounts = base.CreateObjectSet<Discount>("Discounts");
-                }
-                return _Discounts;
-            }
-        }
-        private ObjectSet<Discount> _Discounts;
 
         #endregion
         #region AddTo Methods
@@ -533,6 +550,14 @@ namespace BBQRMS.WCFServices
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the Discounts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDiscounts(Discount discount)
+        {
+            base.AddObject("Discounts", discount);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Employees EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToEmployees(Employee employee)
@@ -554,6 +579,14 @@ namespace BBQRMS.WCFServices
         public void AddToEmployeeTimeClocks(EmployeeTimeClock employeeTimeClock)
         {
             base.AddObject("EmployeeTimeClocks", employeeTimeClock);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the InventoryLocationTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToInventoryLocationTypes(InventoryLocationType inventoryLocationType)
+        {
+            base.AddObject("InventoryLocationTypes", inventoryLocationType);
         }
     
         /// <summary>
@@ -682,14 +715,6 @@ namespace BBQRMS.WCFServices
         public void AddToSupplierContactMaps(SupplierContactMap supplierContactMap)
         {
             base.AddObject("SupplierContactMaps", supplierContactMap);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Discounts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToDiscounts(Discount discount)
-        {
-            base.AddObject("Discounts", discount);
         }
 
         #endregion
@@ -2432,6 +2457,112 @@ namespace BBQRMS.WCFServices
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="InventoryLocationType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class InventoryLocationType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new InventoryLocationType object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        public static InventoryLocationType CreateInventoryLocationType(global::System.Int32 id, global::System.String description)
+        {
+            InventoryLocationType inventoryLocationType = new InventoryLocationType();
+            inventoryLocationType.Id = id;
+            inventoryLocationType.Description = description;
+            return inventoryLocationType;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MasterInventory_LocationId", "MasterInventory")]
+        public EntityCollection<MasterInventory> MasterInventories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MasterInventory>("BBQRMSModel.FK_MasterInventory_LocationId", "MasterInventory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MasterInventory>("BBQRMSModel.FK_MasterInventory_LocationId", "MasterInventory", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="ItemSupplierMap")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -2551,15 +2682,17 @@ namespace BBQRMS.WCFServices
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="locationId">Initial value of the LocationId property.</param>
         /// <param name="unitQty">Initial value of the UnitQty property.</param>
         /// <param name="expirationDate">Initial value of the ExpirationDate property.</param>
         /// <param name="orderLeadDays">Initial value of the OrderLeadDays property.</param>
         /// <param name="isActive">Initial value of the IsActive property.</param>
-        public static MasterInventory CreateMasterInventory(global::System.Int32 id, global::System.String name, global::System.Int32 unitQty, global::System.DateTime expirationDate, global::System.Int32 orderLeadDays, global::System.Boolean isActive)
+        public static MasterInventory CreateMasterInventory(global::System.Int32 id, global::System.String name, global::System.Int32 locationId, global::System.Int32 unitQty, global::System.DateTime expirationDate, global::System.Int32 orderLeadDays, global::System.Boolean isActive)
         {
             MasterInventory masterInventory = new MasterInventory();
             masterInventory.Id = id;
             masterInventory.Name = name;
+            masterInventory.LocationId = locationId;
             masterInventory.UnitQty = unitQty;
             masterInventory.ExpirationDate = expirationDate;
             masterInventory.OrderLeadDays = orderLeadDays;
@@ -2620,6 +2753,30 @@ namespace BBQRMS.WCFServices
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LocationId
+        {
+            get
+            {
+                return _LocationId;
+            }
+            set
+            {
+                OnLocationIdChanging(value);
+                ReportPropertyChanging("LocationId");
+                _LocationId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LocationId");
+                OnLocationIdChanged();
+            }
+        }
+        private global::System.Int32 _LocationId;
+        partial void OnLocationIdChanging(global::System.Int32 value);
+        partial void OnLocationIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2739,6 +2896,44 @@ namespace BBQRMS.WCFServices
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConsumedInventory>("BBQRMSModel.FK_MasterInventoryId_ConsumedInventory", "ConsumedInventory", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_MasterInventory_LocationId", "InventoryLocationType")]
+        public InventoryLocationType InventoryLocationType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InventoryLocationType>("BBQRMSModel.FK_MasterInventory_LocationId", "InventoryLocationType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InventoryLocationType>("BBQRMSModel.FK_MasterInventory_LocationId", "InventoryLocationType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<InventoryLocationType> InventoryLocationTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InventoryLocationType>("BBQRMSModel.FK_MasterInventory_LocationId", "InventoryLocationType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<InventoryLocationType>("BBQRMSModel.FK_MasterInventory_LocationId", "InventoryLocationType", value);
                 }
             }
         }
@@ -3387,6 +3582,28 @@ namespace BBQRMS.WCFServices
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderId_Discount", "Discount")]
+        public EntityCollection<Discount> Discounts
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Discount>("BBQRMSModel.FK_OrderId_Discount", "Discount");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Discount>("BBQRMSModel.FK_OrderId_Discount", "Discount", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderId_Payment", "Payment")]
         public EntityCollection<Payment> Payments
         {
@@ -3535,28 +3752,6 @@ namespace BBQRMS.WCFServices
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PaymentState>("BBQRMSModel.FK_PaymentStateId_Order", "PaymentState", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_OrderId_Discount", "Discount")]
-        public EntityCollection<Discount> Discounts
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Discount>("BBQRMSModel.FK_OrderId_Discount", "Discount");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Discount>("BBQRMSModel.FK_OrderId_Discount", "Discount", value);
                 }
             }
         }
