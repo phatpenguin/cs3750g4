@@ -1,0 +1,4 @@
+"Id","Name","LocationId","UnitQty","UnitOfMeasure","MinQuantity","MaxQuantity","IsActive"
+"1","Ribs","3","10","lbs","5","50","TRUE"
+"2","Chicken","3","50","lbs","7","50","TRUE"
+"3","Sauce","2","50","bottles","9","100","TRUE"

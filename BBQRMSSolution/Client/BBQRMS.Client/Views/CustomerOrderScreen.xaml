@@ -164,7 +164,6 @@
 
 			<DockPanel Grid.Column="1" Grid.Row="2" Margin="8">
 				<StackPanel>
-					<Button Command="{Binding Cashier}" Content="Cashier" Height="45" Width="130" Margin="0,0,0,5"/>
 					<Button Command="{Binding AddDiscount}" Content="Discount Order" Height="45" Width="130" Margin="0,0,0,5"/>
 					<Button Command="{Binding AddPayment}" Content="Add Payment" Height="45" Width="130" Margin="0,0,0,5"/>
 					<Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Margin="0,0,0,5"/>

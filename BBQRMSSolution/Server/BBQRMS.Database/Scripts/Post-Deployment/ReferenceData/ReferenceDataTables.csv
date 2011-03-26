@@ -6,4 +6,4 @@ OrderType,OrderType.csv
 PaymentState,PaymentState.csv
 PaymentType,PaymentType.csv
 InventoryLocationType,InventoryLocationTypes.csv
-MasterInventory,MasterInventory.csv
+ConsumptionType,ConsumptionType.csv

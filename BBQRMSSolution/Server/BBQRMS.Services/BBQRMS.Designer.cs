@@ -93,22 +93,6 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<C__RefactorLog> C__RefactorLog
-        {
-            get
-            {
-                if ((_C__RefactorLog == null))
-                {
-                    _C__RefactorLog = base.CreateObjectSet<C__RefactorLog>("C__RefactorLog");
-                }
-                return _C__RefactorLog;
-            }
-        }
-        private ObjectSet<C__RefactorLog> _C__RefactorLog;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<ApplicationUser> ApplicationUsers
         {
             get
@@ -510,14 +494,6 @@ namespace BBQRMS.WCFServices
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the C__RefactorLog EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToC__RefactorLog(C__RefactorLog c__RefactorLog)
-        {
-            base.AddObject("C__RefactorLog", c__RefactorLog);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the ApplicationUsers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToApplicationUsers(ApplicationUser applicationUser)
@@ -902,61 +878,6 @@ namespace BBQRMS.WCFServices
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="C__RefactorLog")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class C__RefactorLog : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new C__RefactorLog object.
-        /// </summary>
-        /// <param name="operationKey">Initial value of the OperationKey property.</param>
-        public static C__RefactorLog CreateC__RefactorLog(global::System.Guid operationKey)
-        {
-            C__RefactorLog c__RefactorLog = new C__RefactorLog();
-            c__RefactorLog.OperationKey = operationKey;
-            return c__RefactorLog;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid OperationKey
-        {
-            get
-            {
-                return _OperationKey;
-            }
-            set
-            {
-                if (_OperationKey != value)
-                {
-                    OnOperationKeyChanging(value);
-                    ReportPropertyChanging("OperationKey");
-                    _OperationKey = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("OperationKey");
-                    OnOperationKeyChanged();
-                }
-            }
-        }
-        private global::System.Guid _OperationKey;
-        partial void OnOperationKeyChanging(global::System.Guid value);
-        partial void OnOperationKeyChanged();
-
-        #endregion
-    
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="BBQRMSModel", Name="ConsumedInventory")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -973,7 +894,8 @@ namespace BBQRMS.WCFServices
         /// <param name="consumptionTypeId">Initial value of the ConsumptionTypeId property.</param>
         /// <param name="dateConsumed">Initial value of the DateConsumed property.</param>
         /// <param name="employeeId">Initial value of the EmployeeId property.</param>
-        public static ConsumedInventory CreateConsumedInventory(global::System.Int32 id, global::System.Int32 masterInventoryId, global::System.Decimal quantity, global::System.Int32 consumptionTypeId, global::System.DateTime dateConsumed, global::System.Int32 employeeId)
+        /// <param name="excludeFromDailyShopping">Initial value of the ExcludeFromDailyShopping property.</param>
+        public static ConsumedInventory CreateConsumedInventory(global::System.Int32 id, global::System.Int32 masterInventoryId, global::System.Decimal quantity, global::System.Int32 consumptionTypeId, global::System.DateTime dateConsumed, global::System.Int32 employeeId, global::System.Boolean excludeFromDailyShopping)
         {
             ConsumedInventory consumedInventory = new ConsumedInventory();
             consumedInventory.Id = id;
@@ -982,6 +904,7 @@ namespace BBQRMS.WCFServices
             consumedInventory.ConsumptionTypeId = consumptionTypeId;
             consumedInventory.DateConsumed = dateConsumed;
             consumedInventory.EmployeeId = employeeId;
+            consumedInventory.ExcludeFromDailyShopping = excludeFromDailyShopping;
             return consumedInventory;
         }
 
@@ -1134,6 +1057,30 @@ namespace BBQRMS.WCFServices
         private global::System.Int32 _EmployeeId;
         partial void OnEmployeeIdChanging(global::System.Int32 value);
         partial void OnEmployeeIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ExcludeFromDailyShopping
+        {
+            get
+            {
+                return _ExcludeFromDailyShopping;
+            }
+            set
+            {
+                OnExcludeFromDailyShoppingChanging(value);
+                ReportPropertyChanging("ExcludeFromDailyShopping");
+                _ExcludeFromDailyShopping = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExcludeFromDailyShopping");
+                OnExcludeFromDailyShoppingChanged();
+            }
+        }
+        private global::System.Boolean _ExcludeFromDailyShopping;
+        partial void OnExcludeFromDailyShoppingChanging(global::System.Boolean value);
+        partial void OnExcludeFromDailyShoppingChanged();
 
         #endregion
     
@@ -1270,12 +1217,12 @@ namespace BBQRMS.WCFServices
         /// Create a new ConsumptionType object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="descr">Initial value of the Descr property.</param>
-        public static ConsumptionType CreateConsumptionType(global::System.Int32 id, global::System.String descr)
+        /// <param name="description">Initial value of the Description property.</param>
+        public static ConsumptionType CreateConsumptionType(global::System.Int32 id, global::System.String description)
         {
             ConsumptionType consumptionType = new ConsumptionType();
             consumptionType.Id = id;
-            consumptionType.Descr = descr;
+            consumptionType.Description = description;
             return consumptionType;
         }
 
@@ -1314,24 +1261,24 @@ namespace BBQRMS.WCFServices
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Descr
+        public global::System.String Description
         {
             get
             {
-                return _Descr;
+                return _Description;
             }
             set
             {
-                OnDescrChanging(value);
-                ReportPropertyChanging("Descr");
-                _Descr = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Descr");
-                OnDescrChanged();
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
             }
         }
-        private global::System.String _Descr;
-        partial void OnDescrChanging(global::System.String value);
-        partial void OnDescrChanged();
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
 
         #endregion
     
@@ -2684,18 +2631,20 @@ namespace BBQRMS.WCFServices
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="locationId">Initial value of the LocationId property.</param>
         /// <param name="unitQty">Initial value of the UnitQty property.</param>
-        /// <param name="expirationDate">Initial value of the ExpirationDate property.</param>
-        /// <param name="orderLeadDays">Initial value of the OrderLeadDays property.</param>
+        /// <param name="unitOfMeasure">Initial value of the UnitOfMeasure property.</param>
+        /// <param name="minQuantity">Initial value of the MinQuantity property.</param>
+        /// <param name="maxQuantity">Initial value of the MaxQuantity property.</param>
         /// <param name="isActive">Initial value of the IsActive property.</param>
-        public static MasterInventory CreateMasterInventory(global::System.Int32 id, global::System.String name, global::System.Int32 locationId, global::System.Int32 unitQty, global::System.DateTime expirationDate, global::System.Int32 orderLeadDays, global::System.Boolean isActive)
+        public static MasterInventory CreateMasterInventory(global::System.Int32 id, global::System.String name, global::System.Int32 locationId, global::System.Int32 unitQty, global::System.String unitOfMeasure, global::System.Int32 minQuantity, global::System.Int32 maxQuantity, global::System.Boolean isActive)
         {
             MasterInventory masterInventory = new MasterInventory();
             masterInventory.Id = id;
             masterInventory.Name = name;
             masterInventory.LocationId = locationId;
             masterInventory.UnitQty = unitQty;
-            masterInventory.ExpirationDate = expirationDate;
-            masterInventory.OrderLeadDays = orderLeadDays;
+            masterInventory.UnitOfMeasure = unitOfMeasure;
+            masterInventory.MinQuantity = minQuantity;
+            masterInventory.MaxQuantity = maxQuantity;
             masterInventory.IsActive = isActive;
             return masterInventory;
         }
@@ -2807,48 +2756,72 @@ namespace BBQRMS.WCFServices
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.DateTime ExpirationDate
+        public global::System.String UnitOfMeasure
         {
             get
             {
-                return _ExpirationDate;
+                return _UnitOfMeasure;
             }
             set
             {
-                OnExpirationDateChanging(value);
-                ReportPropertyChanging("ExpirationDate");
-                _ExpirationDate = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ExpirationDate");
-                OnExpirationDateChanged();
+                OnUnitOfMeasureChanging(value);
+                ReportPropertyChanging("UnitOfMeasure");
+                _UnitOfMeasure = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("UnitOfMeasure");
+                OnUnitOfMeasureChanged();
             }
         }
-        private global::System.DateTime _ExpirationDate;
-        partial void OnExpirationDateChanging(global::System.DateTime value);
-        partial void OnExpirationDateChanged();
+        private global::System.String _UnitOfMeasure;
+        partial void OnUnitOfMeasureChanging(global::System.String value);
+        partial void OnUnitOfMeasureChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 OrderLeadDays
+        public global::System.Int32 MinQuantity
         {
             get
             {
-                return _OrderLeadDays;
+                return _MinQuantity;
             }
             set
             {
-                OnOrderLeadDaysChanging(value);
-                ReportPropertyChanging("OrderLeadDays");
-                _OrderLeadDays = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("OrderLeadDays");
-                OnOrderLeadDaysChanged();
+                OnMinQuantityChanging(value);
+                ReportPropertyChanging("MinQuantity");
+                _MinQuantity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MinQuantity");
+                OnMinQuantityChanged();
             }
         }
-        private global::System.Int32 _OrderLeadDays;
-        partial void OnOrderLeadDaysChanging(global::System.Int32 value);
-        partial void OnOrderLeadDaysChanged();
+        private global::System.Int32 _MinQuantity;
+        partial void OnMinQuantityChanging(global::System.Int32 value);
+        partial void OnMinQuantityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MaxQuantity
+        {
+            get
+            {
+                return _MaxQuantity;
+            }
+            set
+            {
+                OnMaxQuantityChanging(value);
+                ReportPropertyChanging("MaxQuantity");
+                _MaxQuantity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MaxQuantity");
+                OnMaxQuantityChanged();
+            }
+        }
+        private global::System.Int32 _MaxQuantity;
+        partial void OnMaxQuantityChanging(global::System.Int32 value);
+        partial void OnMaxQuantityChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

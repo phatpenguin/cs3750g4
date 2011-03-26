@@ -98,8 +98,6 @@
     <Compile Include="ViewModels\Reports\DailySalesReport.cs" />
     <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -125,10 +123,8 @@
     <Compile Include="ViewModels\CustomerOrderScreenViewModel.cs" />
     <Compile Include="Messages\InvalidPinEntered.cs" />
     <Compile Include="ViewModels\InventoryManagementMenuViewModel.cs" />
-    <Compile Include="Models\MethodOfPayment.cs" />
     <Compile Include="ViewModels\IReportViewer.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
-    <Compile Include="SampleData\SampleOrders.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\QuickInventoryViewModel.cs" />
     <Compile Include="Views\Admin.xaml.cs">
@@ -161,7 +157,6 @@
     <Compile Include="Views\CooksScreen.xaml.cs">
       <DependentUpon>CooksScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\OrderCashierScreenViewModel.cs" />
     <Compile Include="Views\CustomerOrderScreen.xaml.cs">
       <DependentUpon>CustomerOrderScreen.xaml</DependentUpon>
     </Compile>
@@ -183,9 +178,6 @@
     </Compile>
     <Compile Include="Views\MenuManagement.xaml.cs">
       <DependentUpon>MenuManagement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\OrderCashierScreen.xaml.cs">
-      <DependentUpon>OrderCashierScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostLoginView.xaml.cs">
       <DependentUpon>PostLoginView.xaml</DependentUpon>
@@ -294,10 +286,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuManagement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\OrderCashierScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

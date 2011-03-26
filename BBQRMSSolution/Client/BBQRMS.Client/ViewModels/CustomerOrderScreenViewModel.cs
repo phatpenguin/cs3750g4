@@ -17,7 +17,6 @@ namespace BBQRMSSolution.ViewModels
         public DiscountViewModel Discount { get; set; }
 
 		public DelegateCommand Cancel { get { return new DelegateCommand(Order.CancelOrder); } }
-		public DelegateCommand Cashier { get { return new DelegateCommand(PlaceOrder); } }
         public DelegateCommand Cook { get { return new DelegateCommand(Order.SendToCook); } }
         public DelegateCommand AddPayment { get { return new DelegateCommand(NewPayment); } }
         public DelegateCommand AddDiscount { get { return new DelegateCommand(NewDiscount); } }
@@ -71,16 +70,6 @@ namespace BBQRMSSolution.ViewModels
             foreach (var menu in Menus)
                 DataService.LoadProperty(menu, "MenuItems");
         }
-
-		public void PlaceOrder()
-		{
-			var orderCashierScreenViewModel = new OrderCashierScreenViewModel(Order, MessageBus);
-
-            Order = new OrderViewModel(MessageBus, DataService, _posDeviceManager);
-			NotifyPropertyChanged("order");
-
-			MessageBus.Publish(new ShowScreen(orderCashierScreenViewModel));
-		}
 
         public void NewPayment()
         {

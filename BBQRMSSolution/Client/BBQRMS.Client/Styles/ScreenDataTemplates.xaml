@@ -12,18 +12,14 @@
 		<Views:ReportViewer />
 	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:CustomerOrderScreenViewModel}">
-        <Views:CustomerOrderScreen />
-    </DataTemplate>
+	<DataTemplate DataType="{x:Type ViewModels:CustomerOrderScreenViewModel}">
+		<Views:CustomerOrderScreen />
+	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:OrderCashierScreenViewModel}">
-        <Views:OrderCashierScreen />
-    </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
+	<DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
 		<Views:LoginView />
 	</DataTemplate>
-	
+
 	<DataTemplate DataType="{x:Type ViewModels:PostLoginViewModel}">
 		<Views:PostLoginView />
 	</DataTemplate>
@@ -60,24 +56,24 @@
 		<Views:InventoryManagementMenuView />
 	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:ReceiveInventoryViewModel}">
-        <Views:ReceiveInventoryView />
-    </DataTemplate>
+	<DataTemplate DataType="{x:Type ViewModels:ReceiveInventoryViewModel}">
+		<Views:ReceiveInventoryView />
+	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:ChangePINViewModel}">
+	<DataTemplate DataType="{x:Type ViewModels:ChangePINViewModel}">
 		<Views:ChangePINView />
 	</DataTemplate>
 
-    <DataTemplate DataType="{x:Type ViewModels:SupplierDetailViewModel}">
-        <Views:SupplierDetailView />
-    </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type ViewModels:ReconcileInventoryViewModel}">
-        <Views:ReconcileInventoryView />
-    </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type ViewModels:LoadOrderScreenViewModel}">
-        <Views:LoadOrderScreen />
-    </DataTemplate>
+	<DataTemplate DataType="{x:Type ViewModels:SupplierDetailViewModel}">
+		<Views:SupplierDetailView />
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type ViewModels:ReconcileInventoryViewModel}">
+		<Views:ReconcileInventoryView />
+	</DataTemplate>
+
+	<DataTemplate DataType="{x:Type ViewModels:LoadOrderScreenViewModel}">
+		<Views:LoadOrderScreen />
+	</DataTemplate>
 
 </ResourceDictionary>

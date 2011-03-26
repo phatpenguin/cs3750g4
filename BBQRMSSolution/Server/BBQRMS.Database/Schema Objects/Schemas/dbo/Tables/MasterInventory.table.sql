@@ -4,7 +4,8 @@
 	Name			nvarchar(MAX) NOT NULL,
 	LocationId		int not NULL,
 	UnitQty			int NOT NULL,
-	ExpirationDate	datetime NOT NULL,
-	OrderLeadDays	int	NOT NULL,
+	UnitOfMeasure	nvarchar(max) NOT NULL,
+	MinQuantity		int not null,
+	MaxQuantity		int not null,
 	IsActive		bit NOT NULL Default(1)
 )
