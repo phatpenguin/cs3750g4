@@ -103,10 +103,10 @@
       <EntityType Name="InventoryLocationType">
         <Key>
           <PropertyRef Name="Id" />
-          <PropertyRef Name="Description" />
         </Key>
         <Property Name="Id" Type="Edm.Int32" Nullable="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="MasterInventories" Relationship="BBQRMSModel.FK_MasterInventory_LocationId" FromRole="InventoryLocationType" ToRole="MasterInventory" />
       </EntityType>
       <EntityType Name="ItemSupplierMap">
         <Key>
@@ -128,6 +128,7 @@
         <Property Name="OrderLeadDays" Type="Edm.Int32" Nullable="false" />
         <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_MasterInventoryId_ConsumedInventory" FromRole="MasterInventory" ToRole="ConsumedInventory" />
+        <NavigationProperty Name="InventoryLocationType" Relationship="BBQRMSModel.FK_MasterInventory_LocationId" FromRole="MasterInventory" ToRole="InventoryLocationType" />
       </EntityType>
       <EntityType Name="Menu">
         <Key>
@@ -383,6 +384,18 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="FK_MasterInventory_LocationId">
+        <End Role="InventoryLocationType" Type="BBQRMSModel.InventoryLocationType" Multiplicity="1" />
+        <End Role="MasterInventory" Type="BBQRMSModel.MasterInventory" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="InventoryLocationType">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="MasterInventory">
+            <PropertyRef Name="LocationId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
       <Association Name="FK_OrderItem_MenuItem">
         <End Role="MenuItem" Type="BBQRMSModel.MenuItem" Multiplicity="1" />
         <End Role="OrderItem" Type="BBQRMSModel.OrderItem" Multiplicity="*" />
@@ -563,6 +576,10 @@
         <AssociationSet Name="FK_PayTypeId_Employee" Association="BBQRMSModel.FK_PayTypeId_Employee">
           <End Role="EmployeePayType" EntitySet="EmployeePayTypes" />
           <End Role="Employee" EntitySet="Employees" />
+        </AssociationSet>
+        <AssociationSet Name="FK_MasterInventory_LocationId" Association="BBQRMSModel.FK_MasterInventory_LocationId">
+          <End Role="InventoryLocationType" EntitySet="InventoryLocationTypes" />
+          <End Role="MasterInventory" EntitySet="MasterInventories" />
         </AssociationSet>
         <AssociationSet Name="FK_OrderItem_MenuItem" Association="BBQRMSModel.FK_OrderItem_MenuItem">
           <End Role="MenuItem" EntitySet="MenuItems" />

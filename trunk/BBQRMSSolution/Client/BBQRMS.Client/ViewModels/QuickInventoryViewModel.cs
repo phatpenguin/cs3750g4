@@ -25,7 +25,7 @@ namespace BBQRMSSolution.ViewModels
 			DataService = dataService;
 			MessageBus = messageBus;
 
-            Locations = new ObservableCollection<InventoryLocationType>(DataService.InventoryLocationTypes.Execute());
+            Locations = new ObservableCollection<InventoryLocationType>(DataService.InventoryLocationTypes.Expand("MasterInventories").Execute());
             
 		}
 

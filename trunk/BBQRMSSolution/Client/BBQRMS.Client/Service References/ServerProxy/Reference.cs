@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 3/23/2011 9:09:10 PM
+// Generation date: 3/25/2011 10:13:43 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -2180,10 +2180,9 @@ namespace BBQRMSSolution.ServerProxy
     /// </summary>
     /// <KeyProperties>
     /// Id
-    /// Description
     /// </KeyProperties>
     [global::System.Data.Services.Common.EntitySetAttribute("InventoryLocationTypes")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id", "Description")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
     public partial class InventoryLocationType : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -2243,6 +2242,24 @@ namespace BBQRMSSolution.ServerProxy
         private string _Description;
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for MasterInventories in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<MasterInventory> MasterInventories
+        {
+            get
+            {
+                return this._MasterInventories;
+            }
+            set
+            {
+                this._MasterInventories = value;
+                this.OnPropertyChanged("MasterInventories");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<MasterInventory> _MasterInventories = new global::System.Data.Services.Client.DataServiceCollection<MasterInventory>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2561,6 +2578,24 @@ namespace BBQRMSSolution.ServerProxy
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<ConsumedInventory> _ConsumedInventories = new global::System.Data.Services.Client.DataServiceCollection<ConsumedInventory>(null, System.Data.Services.Client.TrackingMode.None);
+        /// <summary>
+        /// There are no comments for InventoryLocationType in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public InventoryLocationType InventoryLocationType
+        {
+            get
+            {
+                return this._InventoryLocationType;
+            }
+            set
+            {
+                this._InventoryLocationType = value;
+                this.OnPropertyChanged("InventoryLocationType");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private InventoryLocationType _InventoryLocationType;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
