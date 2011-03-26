@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 3/25/2011 10:13:43 PM
+// Generation date: 3/26/2011 12:00:13 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -58,23 +58,6 @@ namespace BBQRMSSolution.ServerProxy
             }
             return null;
         }
-        /// <summary>
-        /// There are no comments for C__RefactorLog in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> C__RefactorLog
-        {
-            get
-            {
-                if ((this._C__RefactorLog == null))
-                {
-                    this._C__RefactorLog = base.CreateQuery<C__RefactorLog>("C__RefactorLog");
-                }
-                return this._C__RefactorLog;
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<C__RefactorLog> _C__RefactorLog;
         /// <summary>
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
@@ -501,14 +484,6 @@ namespace BBQRMSSolution.ServerProxy
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<SupplierContactMap> _SupplierContactMaps;
         /// <summary>
-        /// There are no comments for C__RefactorLog in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToC__RefactorLog(C__RefactorLog c__RefactorLog)
-        {
-            base.AddObject("C__RefactorLog", c__RefactorLog);
-        }
-        /// <summary>
         /// There are no comments for ApplicationUsers in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -710,60 +685,6 @@ namespace BBQRMSSolution.ServerProxy
         }
     }
     /// <summary>
-    /// There are no comments for BBQRMSModel.C__RefactorLog in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// OperationKey
-    /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("C__RefactorLog")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("OperationKey")]
-    public partial class C__RefactorLog : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new C__RefactorLog object.
-        /// </summary>
-        /// <param name="operationKey">Initial value of OperationKey.</param>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static C__RefactorLog CreateC__RefactorLog(global::System.Guid operationKey)
-        {
-            C__RefactorLog c__RefactorLog = new C__RefactorLog();
-            c__RefactorLog.OperationKey = operationKey;
-            return c__RefactorLog;
-        }
-        /// <summary>
-        /// There are no comments for Property OperationKey in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Guid OperationKey
-        {
-            get
-            {
-                return this._OperationKey;
-            }
-            set
-            {
-                this.OnOperationKeyChanging(value);
-                this._OperationKey = value;
-                this.OnOperationKeyChanged();
-                this.OnPropertyChanged("OperationKey");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Guid _OperationKey;
-        partial void OnOperationKeyChanging(global::System.Guid value);
-        partial void OnOperationKeyChanged();
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
     /// There are no comments for BBQRMSModel.ApplicationUser in the schema.
     /// </summary>
     /// <KeyProperties>
@@ -926,8 +847,9 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="consumptionTypeId">Initial value of ConsumptionTypeId.</param>
         /// <param name="dateConsumed">Initial value of DateConsumed.</param>
         /// <param name="employeeId">Initial value of EmployeeId.</param>
+        /// <param name="excludeFromDailyShopping">Initial value of ExcludeFromDailyShopping.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static ConsumedInventory CreateConsumedInventory(int ID, int masterInventoryId, decimal quantity, int consumptionTypeId, global::System.DateTime dateConsumed, int employeeId)
+        public static ConsumedInventory CreateConsumedInventory(int ID, int masterInventoryId, decimal quantity, int consumptionTypeId, global::System.DateTime dateConsumed, int employeeId, bool excludeFromDailyShopping)
         {
             ConsumedInventory consumedInventory = new ConsumedInventory();
             consumedInventory.Id = ID;
@@ -936,6 +858,7 @@ namespace BBQRMSSolution.ServerProxy
             consumedInventory.ConsumptionTypeId = consumptionTypeId;
             consumedInventory.DateConsumed = dateConsumed;
             consumedInventory.EmployeeId = employeeId;
+            consumedInventory.ExcludeFromDailyShopping = excludeFromDailyShopping;
             return consumedInventory;
         }
         /// <summary>
@@ -1071,6 +994,28 @@ namespace BBQRMSSolution.ServerProxy
         partial void OnEmployeeIdChanging(int value);
         partial void OnEmployeeIdChanged();
         /// <summary>
+        /// There are no comments for Property ExcludeFromDailyShopping in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool ExcludeFromDailyShopping
+        {
+            get
+            {
+                return this._ExcludeFromDailyShopping;
+            }
+            set
+            {
+                this.OnExcludeFromDailyShoppingChanging(value);
+                this._ExcludeFromDailyShopping = value;
+                this.OnExcludeFromDailyShoppingChanged();
+                this.OnPropertyChanged("ExcludeFromDailyShopping");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _ExcludeFromDailyShopping;
+        partial void OnExcludeFromDailyShoppingChanging(bool value);
+        partial void OnExcludeFromDailyShoppingChanged();
+        /// <summary>
         /// There are no comments for ConsumptionType in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -1149,13 +1094,13 @@ namespace BBQRMSSolution.ServerProxy
         /// Create a new ConsumptionType object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="descr">Initial value of Descr.</param>
+        /// <param name="description">Initial value of Description.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static ConsumptionType CreateConsumptionType(int ID, string descr)
+        public static ConsumptionType CreateConsumptionType(int ID, string description)
         {
             ConsumptionType consumptionType = new ConsumptionType();
             consumptionType.Id = ID;
-            consumptionType.Descr = descr;
+            consumptionType.Description = description;
             return consumptionType;
         }
         /// <summary>
@@ -1181,27 +1126,27 @@ namespace BBQRMSSolution.ServerProxy
         partial void OnIdChanging(int value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Descr in the schema.
+        /// There are no comments for Property Description in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string Descr
+        public string Description
         {
             get
             {
-                return this._Descr;
+                return this._Description;
             }
             set
             {
-                this.OnDescrChanging(value);
-                this._Descr = value;
-                this.OnDescrChanged();
-                this.OnPropertyChanged("Descr");
+                this.OnDescriptionChanging(value);
+                this._Description = value;
+                this.OnDescriptionChanged();
+                this.OnPropertyChanged("Description");
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _Descr;
-        partial void OnDescrChanging(string value);
-        partial void OnDescrChanged();
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
+        partial void OnDescriptionChanged();
         /// <summary>
         /// There are no comments for ConsumedInventories in the schema.
         /// </summary>
@@ -2390,19 +2335,21 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="name">Initial value of Name.</param>
         /// <param name="locationId">Initial value of LocationId.</param>
         /// <param name="unitQty">Initial value of UnitQty.</param>
-        /// <param name="expirationDate">Initial value of ExpirationDate.</param>
-        /// <param name="orderLeadDays">Initial value of OrderLeadDays.</param>
+        /// <param name="unitOfMeasure">Initial value of UnitOfMeasure.</param>
+        /// <param name="minQuantity">Initial value of MinQuantity.</param>
+        /// <param name="maxQuantity">Initial value of MaxQuantity.</param>
         /// <param name="isActive">Initial value of IsActive.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static MasterInventory CreateMasterInventory(int ID, string name, int locationId, int unitQty, global::System.DateTime expirationDate, int orderLeadDays, bool isActive)
+        public static MasterInventory CreateMasterInventory(int ID, string name, int locationId, int unitQty, string unitOfMeasure, int minQuantity, int maxQuantity, bool isActive)
         {
             MasterInventory masterInventory = new MasterInventory();
             masterInventory.Id = ID;
             masterInventory.Name = name;
             masterInventory.LocationId = locationId;
             masterInventory.UnitQty = unitQty;
-            masterInventory.ExpirationDate = expirationDate;
-            masterInventory.OrderLeadDays = orderLeadDays;
+            masterInventory.UnitOfMeasure = unitOfMeasure;
+            masterInventory.MinQuantity = minQuantity;
+            masterInventory.MaxQuantity = maxQuantity;
             masterInventory.IsActive = isActive;
             return masterInventory;
         }
@@ -2495,49 +2442,71 @@ namespace BBQRMSSolution.ServerProxy
         partial void OnUnitQtyChanging(int value);
         partial void OnUnitQtyChanged();
         /// <summary>
-        /// There are no comments for Property ExpirationDate in the schema.
+        /// There are no comments for Property UnitOfMeasure in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.DateTime ExpirationDate
+        public string UnitOfMeasure
         {
             get
             {
-                return this._ExpirationDate;
+                return this._UnitOfMeasure;
             }
             set
             {
-                this.OnExpirationDateChanging(value);
-                this._ExpirationDate = value;
-                this.OnExpirationDateChanged();
-                this.OnPropertyChanged("ExpirationDate");
+                this.OnUnitOfMeasureChanging(value);
+                this._UnitOfMeasure = value;
+                this.OnUnitOfMeasureChanged();
+                this.OnPropertyChanged("UnitOfMeasure");
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.DateTime _ExpirationDate;
-        partial void OnExpirationDateChanging(global::System.DateTime value);
-        partial void OnExpirationDateChanged();
+        private string _UnitOfMeasure;
+        partial void OnUnitOfMeasureChanging(string value);
+        partial void OnUnitOfMeasureChanged();
         /// <summary>
-        /// There are no comments for Property OrderLeadDays in the schema.
+        /// There are no comments for Property MinQuantity in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int OrderLeadDays
+        public int MinQuantity
         {
             get
             {
-                return this._OrderLeadDays;
+                return this._MinQuantity;
             }
             set
             {
-                this.OnOrderLeadDaysChanging(value);
-                this._OrderLeadDays = value;
-                this.OnOrderLeadDaysChanged();
-                this.OnPropertyChanged("OrderLeadDays");
+                this.OnMinQuantityChanging(value);
+                this._MinQuantity = value;
+                this.OnMinQuantityChanged();
+                this.OnPropertyChanged("MinQuantity");
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _OrderLeadDays;
-        partial void OnOrderLeadDaysChanging(int value);
-        partial void OnOrderLeadDaysChanged();
+        private int _MinQuantity;
+        partial void OnMinQuantityChanging(int value);
+        partial void OnMinQuantityChanged();
+        /// <summary>
+        /// There are no comments for Property MaxQuantity in the schema.
+        /// </summary>
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int MaxQuantity
+        {
+            get
+            {
+                return this._MaxQuantity;
+            }
+            set
+            {
+                this.OnMaxQuantityChanging(value);
+                this._MaxQuantity = value;
+                this.OnMaxQuantityChanged();
+                this.OnPropertyChanged("MaxQuantity");
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _MaxQuantity;
+        partial void OnMaxQuantityChanging(int value);
+        partial void OnMaxQuantityChanged();
         /// <summary>
         /// There are no comments for Property IsActive in the schema.
         /// </summary>

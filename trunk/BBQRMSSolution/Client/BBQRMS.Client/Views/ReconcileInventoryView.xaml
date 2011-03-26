@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:c="clr-namespace:Controls;assembly=Controls" 
              mc:Ignorable="d" 
-             xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls">
+             xmlns:Behaviors="clr-namespace:Controls.Behaviors;assembly=Controls" 
+						 xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels" 
+						 d:DataContext="{d:DesignInstance Type={x:Type ViewModels:ReconcileInventoryViewModel}, IsDesignTimeCreatable=True}"
+						 >
 
   <DockPanel>
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
@@ -21,7 +24,7 @@
         Click="Button_Delete"/>
     </StackPanel>
 
-    <TabControl ItemsSource="{Binding MasterInventories}"
+    <TabControl ItemsSource="{Binding MasterInventories}" x:Name="tabControl"
                 d:LayoutOverrides="VerticalAlignment"
                 TabStripPlacement="Left"
                 SelectedItem="{Binding SelectedMasterInventory}">
@@ -46,27 +49,33 @@
         <DataTemplate>
           <DockPanel>
             <StackPanel Margin="5">
-              <TextBlock Height="32" FontSize="18" FontWeight="Bold" >
-                <Run Text="{Binding Path=Name}"/>
-              </TextBlock>
-              <StackPanel DockPanel.Dock="Left">
+							<TextBlock Height="32" FontSize="18" FontWeight="Bold" Text="{Binding Path=Name}" />
+            	<StackPanel DockPanel.Dock="Left">
                 <StackPanel Margin="2" Orientation="Horizontal">
                   <Label Content="Name" Name="NameLbl" Width="120"/>
                   <TextBox Name="NameTb" Text="{Binding Path=Name}"  Width="300"/>
                 </StackPanel>
                 <StackPanel Margin="2" Orientation="Horizontal">
-                  <Label Content="Quantity" Name="UnitQtyLbl" Width="120"/>
+                  <Label Content="Quantity" Width="120"/>
                   <TextBox Name="UnitQtyTb" Text="{Binding Path=UnitQty}"  Width="50"/>
-                </StackPanel>
+									<Label Content=" Target Min:" />
+									<TextBox Text="{Binding Path=MinQuantity}" Width="50"/>
+									<Label Content=" Target Max:" />
+									<TextBox Text="{Binding Path=MaxQuantity}" Width="50"/>
+								</StackPanel>
                 <StackPanel Margin="2" Orientation="Horizontal">
-                  <Label Content="Expiration Date" Name="ExpirationDateLbl" Width="120"/>
-                  <TextBox Name="ExpirationDateTb" Text="{Binding Path=ExpirationDate}" Width="300"/>
+                  <Label Content="Unit of Measure" Width="120"/>
+                  <TextBox Text="{Binding Path=UnitOfMeasure}" Width="50"/>
                 </StackPanel>
-                <StackPanel Margin="2" Orientation="Horizontal">
-                  <Label Content="OrderLeadDays" Name="OrderLeadDaysLbl" Width="120"/>
-                  <TextBox Name="OrderLeadDaysTb" Text="{Binding Path=OrderLeadDays}" Width="50"/>
-                </StackPanel>
-              </StackPanel>
+								<StackPanel Margin="2" Orientation="Horizontal">
+									<Label Content="Storage Location" Width="120"/>
+									<ComboBox
+										SelectedValue="{Binding Path=LocationId}"
+										SelectedValuePath="Id"
+										ItemsSource="{Binding Path=DataContext.InventoryLocations, ElementName=tabControl}"
+										DisplayMemberPath="Description"/>
+								</StackPanel>
+							</StackPanel>
             </StackPanel>
           </DockPanel>
         </DataTemplate>

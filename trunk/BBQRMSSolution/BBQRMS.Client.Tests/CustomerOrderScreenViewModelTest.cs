@@ -155,17 +155,6 @@ namespace BBQRMS.Client.Tests
         }
 
         /// <summary>
-        ///A test for Cashier
-        ///</summary>
-        [TestMethod]
-        public void CashierTest()
-        {
-            DelegateCommand actual = _target.Cashier;
-            Assert.IsNotNull(actual);
-            //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
         ///A test for Cancel
         ///</summary>
         [TestMethod]
@@ -196,22 +185,6 @@ namespace BBQRMS.Client.Tests
             DelegateCommand actual = _target.AddPayment;
             Assert.IsNotNull(actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for PlaceOrder
-        ///</summary>
-        [TestMethod]
-        public void PlaceOrderTest()
-        {
-            try { _target.PlaceOrder(); } 
-            catch(Exception){ Assert.IsTrue(true);} 
-            finally
-            {
-                Assert.IsTrue(true);
-            }
-
-            //Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
