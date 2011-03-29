@@ -113,6 +113,22 @@ namespace BBQRMS.Client.Tests
 			}
 		}
 
+		[TestMethod]
+		public void WhenDailyShoppingListReportIsRun_ThenNoExceptionsAreThrown()
+		{
+			var mockViewer = new Mock<IReportViewer>();
+			var datasets = new Dictionary<string, IEnumerable>();
+			mockViewer
+				.Setup(v => v.AddDataSource(It.IsAny<string>(), It.IsAny<IEnumerable>()))
+				.Callback((string name, IEnumerable data) => datasets.Add(name, data));
+
+			var toTest = new DailyShoppingReport(_dataService, Time);
+			toTest.IncludeAllConsumption.Value = true;
+			toTest.RunReport(mockViewer.Object);
+
+			//TODO: 
+		}
+
 		private void PutTwoClosedOrdersIntoDatabase()
 		{
 			var item1 = PrepareMenuItem.Of("Beer", 3m, "Beer");

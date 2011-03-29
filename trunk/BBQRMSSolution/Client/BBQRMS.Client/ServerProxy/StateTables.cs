@@ -51,5 +51,10 @@ namespace BBQRMSSolution.ServerProxy
 		public const int ManageMenus = 8;
 		public const int OpenAdmin = 9;
 	}
+	public class ConsumptionTypes
+	{
+		public const int Used = 1;
+		public const int Wasted = 2;
+	}
 }
 

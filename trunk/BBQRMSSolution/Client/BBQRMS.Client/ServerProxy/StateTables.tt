@@ -10,7 +10,7 @@
 SqlConnection conn = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=BBQRMS;Integrated Security=True;");
 conn.Open();
 
-string[] tableNames = new[] {"DinerType", "OrderState", "OrderType", "PaymentState", "PaymentType", "Privilege"};
+string[] tableNames = new[] {"DinerType", "OrderState", "OrderType", "PaymentState", "PaymentType", "Privilege", "ConsumptionType"};
 Dictionary<string, Dictionary<int, string>> tables = new Dictionary<string, Dictionary<int, string>>();
 
 foreach(string tbl in tableNames)
