@@ -96,6 +96,8 @@
     <Compile Include="ViewModels\ReportParameterViewModel.cs" />
     <Compile Include="ViewModels\Reports\DailySalesRecord.cs" />
     <Compile Include="ViewModels\Reports\DailySalesReport.cs" />
+    <Compile Include="ViewModels\Reports\DailyShoppingRecord.cs" />
+    <Compile Include="ViewModels\Reports\DailyShoppingReport.cs" />
     <Compile Include="ViewModels\RoleManagementViewModel.cs" />
     <Compile Include="Views\GlobalApplicationState.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -331,6 +333,8 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
+    <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingRecord.datasource" />
+    <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingReportHeader.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -354,6 +358,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\DailySales.rdlc" />
+    <EmbeddedResource Include="Reports\DailyShoppingList.rdlc" />
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{DE2221A4-3807-4338-8187-4884BCFF6436}</Project>
       <Name>Controls</Name>
