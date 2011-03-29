@@ -7,7 +7,6 @@ namespace BBQRMSSolution.ViewModels.Reports
 		public decimal CurrentlyOnHand { get; set; }
 		public decimal MinQuantity { get; set; }
 		public decimal MaxQuantity { get; set; }
-
 		public decimal PastAverageSameWeekdayConsumption { get; set; }
 		public decimal ToPurchase { get; set; }
 	}

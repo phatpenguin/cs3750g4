@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Data.Services.Client;
 using System.IO;
 using System.Linq;
@@ -10,7 +8,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.ServerProxy;
-using Controls;
 
 namespace BBQRMSSolution.ViewModels.Reports
 {
@@ -114,7 +111,6 @@ namespace BBQRMSSolution.ViewModels.Reports
 				into byDateAndItem
 				select new
 				       	{
-//				       		Date = byDateAndItem.Key.Date,
 				       		MasterInventoryId = byDateAndItem.Key.MasterInventoryId,
 				       		Quantity = byDateAndItem.Sum(ci => ci.Quantity)
 				       	};
@@ -131,9 +127,7 @@ namespace BBQRMSSolution.ViewModels.Reports
 									PastUsage = byItem.Average(i => i.Quantity)
 				       	};
 
-			IEnumerable<DailyShoppingRecord> finalResults = Enumerable.Empty<DailyShoppingRecord>();
-
-			finalResults =
+			IEnumerable<DailyShoppingRecord> finalResults =
 				from item in allInventoryItems
 				let usage = averageUsage.FirstOrDefault(u => u.MasterInventoryId == item.Id)
 				let pastUsage = usage == null ? 0 : usage.PastUsage
@@ -157,7 +151,7 @@ namespace BBQRMSSolution.ViewModels.Reports
 					};
 		}
 
-		private decimal ComputeNeededPurchase(int onHand, decimal pastUsage, int minQuantity, int maxQuantity)
+		private static decimal ComputeNeededPurchase(int onHand, decimal pastUsage, int minQuantity, int maxQuantity)
 		{
 			decimal needToHave = Math.Max(pastUsage, minQuantity);
 			if (onHand > needToHave)

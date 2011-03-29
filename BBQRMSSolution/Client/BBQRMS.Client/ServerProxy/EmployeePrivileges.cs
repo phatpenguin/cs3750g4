@@ -17,5 +17,6 @@ namespace BBQRMSSolution.ServerProxy
 		public bool CanManageEmployees { get { return Roles.Any(r => r.Privileges.Any(p => p.Id == 6)); } }
 		public bool CanManageInventory { get { return Roles.Any(r => r.Privileges.Any(p => p.Id == 7)); } }
 		public bool CanManageMenus { get { return Roles.Any(r => r.Privileges.Any(p => p.Id == 8)); } }
+		public bool CanManageRoles { get { return Roles.Any(r => r.Privileges.Any(p => p.Id == 9)); } }
 	}
 }
