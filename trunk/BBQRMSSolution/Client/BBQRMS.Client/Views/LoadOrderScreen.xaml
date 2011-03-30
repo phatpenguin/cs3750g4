@@ -13,7 +13,7 @@
     d:DesignWidth="800" Loaded="Window_Loaded">
     <Grid>
         <DockPanel>
-            <ListView Name="OrderListView" ItemsSource="{Binding Orders}" SelectionMode="Single"  IsSynchronizedWithCurrentItem="True" >
+            <ListView Name="OrderListView" ItemsSource="{Binding Orders}" SelectionMode="Single"  IsSynchronizedWithCurrentItem="True" FontSize="16">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Order#" DisplayMemberBinding="{Binding Path=Number}" />
