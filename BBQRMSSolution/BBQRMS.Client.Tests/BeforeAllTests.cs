@@ -29,6 +29,7 @@ DELETE FROM [Order];
 DELETE FROM ApplicationUser;
 DELETE FROM EmployeeRoleMap;
 DELETE FROM EmployeeTimeClock;
+DELETE FROM ConsumedInventory;
 DELETE FROM Employee;
 DELETE FROM RolePrivilegeMap;
 DELETE FROM Role;

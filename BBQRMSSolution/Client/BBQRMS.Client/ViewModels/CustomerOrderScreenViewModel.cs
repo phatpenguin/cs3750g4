@@ -82,5 +82,36 @@ namespace BBQRMSSolution.ViewModels
             Discount = new DiscountViewModel(DataService, MessageBus, Order);
             NotifyPropertyChanged("Discount");
         }
+
+				private void ClaimPOSDevices()
+				{
+					//  open (if not already opened), claim and enable the cash drawer and receipt printer.
+					ICashDrawer drawer = _posDeviceManager.GetCashDrawer();
+					drawer.Claim();
+					drawer.Enable();
+					IReceiptPrinter printer = _posDeviceManager.GetReceiptPrinter();
+					printer.Claim();
+					printer.Enable();
+				}
+
+				private void UnclaimDevices()
+				{
+					ICashDrawer drawer = _posDeviceManager.GetCashDrawer();
+					drawer.Release();
+					IReceiptPrinter printer = _posDeviceManager.GetReceiptPrinter();
+					printer.Release();
+				}
+				
+		public override void Open()
+				{
+					base.Open();
+					ClaimPOSDevices();
+				}
+
+				public override void Close()
+				{
+					UnclaimDevices();
+					base.Close();
+				}
 	}
 }

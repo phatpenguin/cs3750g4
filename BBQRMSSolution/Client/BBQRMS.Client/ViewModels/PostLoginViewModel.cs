@@ -52,30 +52,11 @@ namespace BBQRMSSolution.ViewModels
 			}
 		}
 
-		private void ClaimPOSDevices()
-		{
-			//  open (if not already opened), claim and enable the cash drawer and receipt printer.
-			ICashDrawer drawer = _posDeviceManager.GetCashDrawer();
-			drawer.Claim();
-			drawer.Enable();
-			IReceiptPrinter printer = _posDeviceManager.GetReceiptPrinter();
-			printer.Claim();
-			printer.Enable();
-		}
 
-		private void UnclaimDevices()
-		{
-			ICashDrawer drawer = _posDeviceManager.GetCashDrawer();
-			drawer.Release();
-			IReceiptPrinter printer = _posDeviceManager.GetReceiptPrinter();
-			printer.Release();
-		}
 
 		public void HandleTakeOrders()
 		{
 			// Show a new or existing viewmodel for taking orders.
-			//TODO: trap exceptions and don't go to that screen if we can't claim the devices.
-			ClaimPOSDevices();
 			MessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(DataService, MessageBus, _posDeviceManager)));
 			//TODO:
 			// Maybe each of these modules can be represented by an instance (mockable).
@@ -125,10 +106,11 @@ namespace BBQRMSSolution.ViewModels
 
 		void IHandle<ShowScreen>.Handle(ShowScreen message)
 		{
-			if (!(message.ViewModelToShow is CustomerOrderScreenViewModel))
-				UnclaimDevices();
+			if (Content != null)
+				Content.Close();
 
 			Content = message.ViewModelToShow;
+			Content.Open();
 		}
 
 		public bool ClockOutVisible
@@ -175,7 +157,8 @@ namespace BBQRMSSolution.ViewModels
 
 		void IHandle<UserLoggingOut>.Handle(UserLoggingOut message)
 		{
-			UnclaimDevices();
+			if (Content != null)
+				Content.Close();
 		}
 	}
 
