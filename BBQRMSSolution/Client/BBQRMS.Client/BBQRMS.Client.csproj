@@ -38,6 +38,9 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.KbdWedgeOCX">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\MagTek\KbdWedge\CSharp Sample\AxInterop.KbdWedgeOCX.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.PointOfService, Version=1.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -84,7 +87,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StateTables.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CreditCardViewModel.cs" />
     <Compile Include="ViewModels\DiscountViewModel.cs" />
     <Compile Include="ViewModels\LoadOrderScreenViewModel.cs" />
     <Compile Include="ViewModels\MenuItemManagementViewModel.cs" />

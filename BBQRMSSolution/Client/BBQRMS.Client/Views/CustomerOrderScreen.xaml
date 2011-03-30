@@ -35,6 +35,7 @@
 		</DataTemplate>
 	</UserControl.Resources>
     <Grid x:Name="LayoutRoot">
+        <!--Payment Screen-->
         <Grid DataContext="{Binding Payment}" Visibility="{Binding PaymentVisible}" Panel.ZIndex="{Binding PaymentZIndex}">
             <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         	<Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
@@ -63,6 +64,47 @@
                 </StackPanel>
             </Border>
         </Grid>
+<!--Credit Card Screen-->
+        <Grid DataContext="{Binding Payment}" Visibility="{Binding CcVisible}" Panel.ZIndex="{Binding CcZIndex}">
+            <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Type: "/>
+                    <ComboBox FontSize="16" Width="150" Height="60">
+                        <ComboBoxItem>Amex</ComboBoxItem>
+                        <ComboBoxItem>MC</ComboBoxItem>
+                        <ComboBoxItem>Visa</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="CC#: "/>
+                        <TextBox Height="60" Width="150" HorizontalAlignment="Left" TextAlignment="Right" FontSize="16" Text="{Binding CcCardNumber}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="First Name: "/>
+                        <TextBox Height="60" Width="150" HorizontalAlignment="Left" TextAlignment="Right" FontSize="16" Text="{Binding CcFirstName}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Last Name: "/>
+                        <TextBox Height="60" Width="150" HorizontalAlignment="Left" TextAlignment="Right" FontSize="16" Text="{Binding CcLastName}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Month: "/>
+                        <TextBox Height="60" Width="150" HorizontalAlignment="Left" TextAlignment="Right" FontSize="16" Text="{Binding CcExpMonth}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="Year: "/>
+                        <TextBox Height="60" Width="150" HorizontalAlignment="Left" TextAlignment="Right" FontSize="16" Text="{Binding CcExpYear}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Cancel" Command="{Binding CcCancel}"/>
+                        <Button Content="Submit" Command="{Binding CcProcessPayment}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!--Discount Screen-->
         <Grid DataContext="{Binding Discount}" Visibility="{Binding DiscountVisible}" Panel.ZIndex="{Binding DiscountZIndex}">
             <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
@@ -101,6 +143,7 @@
                 </StackPanel>
             </Border>
         </Grid>
+        
 		<Grid Background="{DynamicResource ApplicationBackgroundBrush}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
@@ -112,14 +155,12 @@
 				<RowDefinition Height="264" />
 			</Grid.RowDefinitions>
 
-			<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
-				<Button Command="{Binding Cancel}" Content="Cancel Order" Height="45" Width="130" Margin="5" />
-				<Button Command="{Binding Save}" Content="Save Order" Height="45" Width="130" Margin="5" />
-				<Button Command="{Binding Recall}" Content="Recall Order" Height="45" Width="130" Margin="5" />
-			</StackPanel>
-
 			<DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
-				<TabControl ItemsSource="{Binding Menus}" TabStripPlacement="Left" d:LayoutOverrides="VerticalAlignment" DockPanel.Dock="Bottom">
+                <DockPanel DockPanel.Dock="Bottom" Height="100" >
+                    <TextBlock Text="Notes: " Height="100" FontSize="16"/>
+                    <TextBox Text="{Binding Order.Order.Memo}" Height="100" FontSize="16"/>
+                </DockPanel>
+                <TabControl ItemsSource="{Binding Menus}" TabStripPlacement="Left" d:LayoutOverrides="VerticalAlignment">
 					<TabControl.Resources>
 						<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
 					</TabControl.Resources>
@@ -145,13 +186,13 @@
 			</DockPanel>
 
 			<DockPanel LastChildFill="True" Grid.Row="1" Grid.Column="1" DataContext="{Binding Order}">
-				<DataGrid ItemsSource="{Binding Order.OrderItems}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Background="{x:Null}" Width="437" >
+				<DataGrid ItemsSource="{Binding Order.OrderItems}" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" Focusable="False" HeadersVisibility="Column" Background="{x:Null}" Width="437" >
 					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Id}" Header="#"/>
-						<DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True"/>
-						<DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" Width="*"/>
-						<DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" IsReadOnly="True"/>
-						<DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="" >
+						<DataGridTextColumn Binding="{Binding Id}" Header="#" FontSize="16" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Quantity}" Header="Qty" IsReadOnly="True" FontSize="16"/>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Item" IsReadOnly="True" FontSize="16" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" IsReadOnly="True" FontSize="16"/>
+                        <DataGridTemplateColumn Width="25" CanUserReorder="False" CanUserResize="False" IsReadOnly="True" Header="">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<Button Content="X" HorizontalAlignment="Stretch" Width="Auto" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Views:CustomerOrderScreen}}, Path=DataContext.RemoveItem}" CommandParameter="{Binding}"/>
@@ -163,12 +204,13 @@
 			</DockPanel>
 
 			<DockPanel Grid.Column="1" Grid.Row="2" Margin="8">
-				<StackPanel>
-					<Button Command="{Binding AddDiscount}" Content="Discount Order" Height="45" Width="130" Margin="0,0,0,5"/>
-					<Button Command="{Binding AddPayment}" Content="Add Payment" Height="45" Width="130" Margin="0,0,0,5"/>
-					<Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Margin="0,0,0,5"/>
-					<Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="0,0,0,5"/>
-				</StackPanel>
+				<StackPanel Height="250">
+                    <Button Command="{Binding Clear}" Content="Clear" Height="45" Width="130" Margin="5,0,0,0"/>
+                    <Button Command="{Binding AddDiscount}" Content="Discount Order" Height="45" Width="130" Margin="0,5,0,0"/>
+                    <Button Command="{Binding AddPayment}" Content="Add Payment" Height="45" Width="130" Margin="0,5,0,0"/>
+                    <Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Margin="0,5,0,0"/>
+                    <Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="0,5,0,0"/>
+                </StackPanel>
 				<UniformGrid Rows="6" Columns="2" Grid.Column="1" Grid.Row="2" Width="312">
 					<TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Subtotal: $" /></TextBlock>
 					<TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.SubTotal, StringFormat=F2}" /></TextBlock>
@@ -184,11 +226,12 @@
 					<TextBlock FontSize="15" TextAlignment="Right" Height="27"><Run Text="{Binding Order.RemainingAmount, StringFormat=F2}" /></TextBlock>
 				</UniformGrid>
 			</DockPanel>
-
-
-			<TextBlock Grid.Column="1" Height="58" HorizontalAlignment="Left" Margin="267,6,0,0" VerticalAlignment="Top" Width="181">
-				<Run Text="Order# " /><Run Text="{Binding Order.Order.Number}" />
+            
+			<TextBlock Height="45" Width="128" Grid.Column="1" Margin="10,16,320,8">
+				<Run Text="Order# " FontSize="16" /><Run Text="{Binding Order.Order.Number}" FontSize="16"/>
 			</TextBlock>
-		</Grid>
+            <Button Command="{Binding Save}" Content="Save Order" Height="45" Width="130" Margin="322,6,6,19" Grid.Column="1" />
+            <Button Command="{Binding Cancel}" Content="Cancel Order" Height="45" Width="130" Margin="186,6,142,19" Grid.Column="1" />
+        </Grid>
 	</Grid>
 </Views:UserControlBase>
