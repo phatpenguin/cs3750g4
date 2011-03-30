@@ -9,7 +9,8 @@
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
 	xmlns:c="clr-namespace:Controls;assembly=Controls"
-	d:DataContext="{d:DesignInstance Type=viewmodels:AdministrationViewModel, IsDesignTimeCreatable=True}">
+	d:DataContext="{d:DesignInstance Type=viewmodels:AdministrationViewModel, IsDesignTimeCreatable=True}"
+	d:DesignWidth="800">
   <Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto"/>

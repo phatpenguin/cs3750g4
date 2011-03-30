@@ -13,6 +13,27 @@ namespace BBQRMSSolution.ViewModels
 		[Obsolete("Used for design-time only", true)]
 		public CooksScreenViewModel()
 		{
+			PendingOrders =
+				new ObservableCollection<Order>
+					{
+						new Order
+							{
+								Number = 1,
+//								OrderItems = 
+//								new DataServiceCollection<OrderItem>
+//								             	{
+//								             		new OrderItem { Name = "Sandwich", Quantity = 1}
+//								             	}
+							},
+						new Order
+							{
+								Number = 2,
+//								OrderItems = new DataServiceCollection<OrderItem>
+//								             	{
+//								             		new OrderItem {Name = "Soda", Quantity = 2}
+//								             	}
+							},
+					};
 		}
 
 		public CooksScreenViewModel(BBQRMSEntities dataService, IMessageBus messageBus)
