@@ -64,7 +64,7 @@
                     <c:ImageButton Content="Load Order" ImageSource="/Graphics/x-office-spreadsheet.png" 
                                    Name="loadOrder" 
                                    Click="loadOrder_Click"
-                                   Visibility="{Binding Path=SecurityContext.CurrentUser.CanRunReports, 
+                                   Visibility="{Binding Path=SecurityContext.CurrentUser.CanTakeOrders, 
                         Converter={StaticResource boolToVisibilityConverter}}" />
                     <c:ImageButton
 						Name="cook" 
