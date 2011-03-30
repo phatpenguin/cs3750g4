@@ -1,6 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data.Services.Client;
 using System.Linq;
+using System.Windows.Threading;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -8,7 +10,8 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class CooksScreenViewModel : ViewModelBase
 	{
-        private ObservableCollection<Order> _pendingOrders;
+		private ObservableCollection<Order> _pendingOrders;
+		private DispatcherTimer _timer;
 
 		[Obsolete("Used for design-time only", true)]
 		public CooksScreenViewModel()
@@ -40,8 +43,11 @@ namespace BBQRMSSolution.ViewModels
 		{
 			DataService = dataService;
 			MessageBus = messageBus;
-
-            PendingOrders = new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == 1));
+			var oldMergeOption = DataService.MergeOption;
+			DataService.MergeOption = MergeOption.OverwriteChanges;
+			PendingOrders =
+				new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == 1));
+			DataService.MergeOption = oldMergeOption;
 
 			CompleteOrderCommand = new DelegateCommand(HandleCompleteOrder);
 		}
@@ -49,19 +55,54 @@ namespace BBQRMSSolution.ViewModels
 		public ObservableCollection<Order> PendingOrders
 		{
 			get { return _pendingOrders; }
-            set { _pendingOrders = value; NotifyPropertyChanged("PendingOrders"); }
+			set { _pendingOrders = value; NotifyPropertyChanged("PendingOrders"); }
 		}
 
 		public DelegateCommand CompleteOrderCommand { get; private set; }
 
 		private void HandleCompleteOrder(object parameter)
 		{
-			var order = (Order) parameter;
-		    order.OrderStateId = 3;
-            DataService.UpdateObject(order);
-		    DataService.SaveChanges();
+			var order = (Order)parameter;
+			//TODO: if the order is fully paid, we can close it, otherwise we should just mark it 'completed'
+			order.OrderStateId = OrderStates.Closed;
+			DataService.UpdateObject(order);
+			DataService.SaveChanges();
 
 			PendingOrders.Remove(order);
+		}
+
+		public override void Open()
+		{
+			base.Open();
+			// start a dispatcher timer to periodically requery the Orders.
+			_timer = new DispatcherTimer(TimeSpan.FromSeconds(2d), DispatcherPriority.Normal, ReQueryOrders,
+			                            Dispatcher.CurrentDispatcher);
+			_timer.Start();
+		}
+
+		private void ReQueryOrders(object sender, EventArgs e)
+		{
+			var oldMergeOption = DataService.MergeOption;
+			DataService.MergeOption = MergeOption.OverwriteChanges;
+			var orders = DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == OrderStates.Cooking).ToList();
+			foreach (Order order in orders)
+			{
+				if(!PendingOrders.Contains(order))
+					PendingOrders.Add(order);
+			}
+			foreach (Order pendingOrder in PendingOrders)
+			{
+				if (!orders.Contains(pendingOrder))
+					PendingOrders.Remove(pendingOrder);
+			}
+			DataService.MergeOption = oldMergeOption;
+		}
+
+		public override void Close()
+		{
+			// stop the dispatcher timer
+			_timer.Stop();
+			base.Close();
 		}
 	}
 }

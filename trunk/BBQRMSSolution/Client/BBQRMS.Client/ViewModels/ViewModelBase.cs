@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using BBQRMSSolution.BusinessLogic;
 using BBQRMSSolution.ServerProxy;
@@ -21,5 +22,15 @@ namespace BBQRMSSolution.ViewModels
 		public IMessageBus MessageBus { get; protected set; }
 
 		public BBQRMSEntities DataService { get; protected set; }
+
+		public virtual void Close()
+		{
+			
+		}
+
+		public virtual void Open()
+		{
+			
+		}
 	}
 }
