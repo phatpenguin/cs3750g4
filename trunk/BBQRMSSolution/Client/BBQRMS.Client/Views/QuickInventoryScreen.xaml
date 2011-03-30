@@ -9,7 +9,7 @@
 	xmlns:ViewModels="clr-namespace:BBQRMSSolution.ViewModels"
 	mc:Ignorable="d" 
 	d:DesignHeight="480" d:DesignWidth="800"
-	d:DataContext="{d:DesignInstance Type=ViewModels:QuickInventoryViewModel, IsDesignTimeCreatable=True}">
+	d:DataContext="{d:DesignInstance Type={x:Type ViewModels:QuickInventoryViewModel}, IsDesignTimeCreatable=True}">
 	<UserControl.Resources>
 		<DataTemplate x:Key="item">
 			<Border Margin="8" BorderThickness="1" CornerRadius="3" BorderBrush="Black" Background="White" MaxWidth="210">
@@ -18,8 +18,9 @@
 						<RowDefinition Height="*"/>
 						<RowDefinition Height="Auto" />
 						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
-					<TextBlock Grid.Row="0" TextWrapping="Wrap" Text="{Binding Name}" TextAlignment="Center" FontSize="20" Margin="10"/>
+					<TextBlock Grid.Row="0" TextWrapping="Wrap" Text="{Binding ItemName}" TextAlignment="Center" FontSize="20" Margin="10"/>
 					<Grid Grid.Row="1">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto"/>
@@ -27,16 +28,22 @@
 							<ColumnDefinition Width="Auto"/>
 						</Grid.ColumnDefinitions>
 						<RepeatButton Content="-" FontSize="18" Margin="4" Height="50" Width="50" Grid.Column="0" Command="{Binding DecrementCommand}" />
-						<TextBox FontSize="18" Text="{Binding Number, Mode=OneWay}" TextAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" BorderThickness="0"/>
+						<StackPanel Grid.Column="1" >
+							<TextBox FontSize="18" Text="{Binding Number}" TextAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0"/>
+							<TextBlock Margin="0,5,0,0" FontSize="14" Text="{Binding Path=UnitOfMeasure}"/>
+						</StackPanel>
 						<RepeatButton Content="+" FontSize="18" Margin="4" Height="50" Width="50" Grid.Column="2" Command="{Binding IncrementCommand}" />
 					</Grid>
-					<Button Grid.Row="2" Margin="4" Height="40" FontSize="16" Content="Remove" CommandParameter="{Binding}" Command="{Binding Path=DataContext.RemoveInventoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+					<CheckBox HorizontalAlignment="Center" Grid.Row="2" Margin="0,10,0,0"  IsChecked="{Binding Path=ExcludeFromDailyShopping}" >
+						<TextBlock TextWrapping="Wrap" Text="Ignore on daily&#13;&#10;shopping report" />
+					</CheckBox>
+					<Button Grid.Row="3" Margin="4,10,4,4" Style="{StaticResource ResourceKey=Button.TouchButton}" FontSize="16" Content="Remove" CommandParameter="{Binding}" Command="{Binding Path=DataContext.RemoveInventoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
 				</Grid>
 			</Border>
 
 		</DataTemplate>
 		<DataTemplate x:Key="tabContent">
-			<ItemsControl ItemsSource="{Binding MasterInventories}" ItemTemplate="{StaticResource ResourceKey=item}">
+			<ItemsControl ItemsSource="{Binding Items}" ItemTemplate="{StaticResource ResourceKey=item}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<WrapPanel Orientation="Horizontal"/>
@@ -46,7 +53,7 @@
 		</DataTemplate>
 	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
-		<TabControl TabStripPlacement="Left" ContentTemplate="{StaticResource ResourceKey=tabContent}" ItemsSource="{Binding Locations}">
+		<TabControl TabStripPlacement="Left" ContentTemplate="{StaticResource ResourceKey=tabContent}" ItemsSource="{Binding Locations}" SelectedItem="{Binding SelectedLocation}">
 			<TabControl.Resources>
 				<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ResourceKey=BigTabStyle}"/>
 			</TabControl.Resources>
@@ -56,7 +63,15 @@
 				</DataTemplate>
 			</TabControl.ItemTemplate>
 		</TabControl>
-		<Border CornerRadius="5" Padding="3" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsWorking, Converter={StaticResource ResourceKey=boolToVisibilityConverter}}">
+		<Border
+			CornerRadius="5" 
+			Padding="3" 
+			BorderThickness="2" 
+			BorderBrush="Black" 
+			Background="White"
+			HorizontalAlignment="Center" 
+			VerticalAlignment="Center" 
+			Visibility="{Binding IsWorking, Converter={StaticResource ResourceKey=boolToVisibilityConverter}}">
 			<Grid HorizontalAlignment="Center">
 				<StackPanel>
 					<TextBlock Text="Removing item from inventory..." FontSize="22" />

@@ -98,7 +98,7 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleQuickInventoryScreen()
 		{
 			//TODO: Show a new or existing viewmodel for quick inventory.
-			MessageBus.Publish(new ShowScreen(new QuickInventoryViewModel(DataService, MessageBus)));
+			MessageBus.Publish(new ShowScreen(new QuickInventoryViewModel(DataService, MessageBus, SecurityContext)));
 		}
 
 		public void HandleReporting()
