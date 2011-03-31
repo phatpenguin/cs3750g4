@@ -118,7 +118,7 @@
   </CodeStyleSettings>
   <SharedSolutionTemplateManager>
     <LiveTemplates>
-      <Template uid="44263091-59eb-44aa-bb53-84554cd5e935" shortcut="propvm" description="New View Model Property. Calls NotifyPropertyChanged" text="		private $TYPE$ m$NAME$;&#xD;&#xA;		public $TYPE$ $NAME$&#xD;&#xA;		{&#xD;&#xA;			get { return m$NAME$; }&#xD;&#xA;			set&#xD;&#xA;			{&#xD;&#xA;				if(value != m$NAME$)&#xD;&#xA;				{&#xD;&#xA;					m$NAME$ = value;&#xD;&#xA;					NotifyPropertyChanged(&quot;$NAME$&quot;);&#xD;&#xA;				}&#xD;&#xA;			}&#xD;&#xA;		}" reformat="False" shortenQualifiedReferences="True">
+      <Template uid="44263091-59eb-44aa-bb53-84554cd5e935" shortcut="propvm" description="New View Model Property. Calls NotifyPropertyChanged" text="		private $TYPE$ _$NAME$;&#xD;&#xA;		public $TYPE$ $NAME$&#xD;&#xA;		{&#xD;&#xA;			get { return _$NAME$; }&#xD;&#xA;			set&#xD;&#xA;			{&#xD;&#xA;				if(value != _$NAME$)&#xD;&#xA;				{&#xD;&#xA;					_$NAME$ = value;&#xD;&#xA;					NotifyPropertyChanged(&quot;$NAME$&quot;);&#xD;&#xA;				}&#xD;&#xA;			}&#xD;&#xA;		}" reformat="False" shortenQualifiedReferences="True">
         <Context>
           <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
         </Context>
