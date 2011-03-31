@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using AxKbdWedgeOCX;
+//using AxKbdWedgeOCX;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -21,7 +21,7 @@ namespace BBQRMSSolution.ViewModels
 
 	    private string _paymentAmount="0";
 
-        private readonly AxKbdWedge _kbdWedge;
+//        private readonly AxKbdWedge _kbdWedge;
 
         public ObservableCollection<PaymentType> PaymentTypes { get; set; }
         public OrderViewModel Order { get { return _orderViewModel; } set { _orderViewModel = value; NotifyPropertyChanged("Order"); } }
@@ -71,7 +71,7 @@ namespace BBQRMSSolution.ViewModels
             PaymentVisible = "Visible";
             PaymentZIndex = 200;
 
-            _kbdWedge = new AxKbdWedge();
+//            _kbdWedge = new AxKbdWedge();
         }
 
         public void CancelPayment()
@@ -114,6 +114,7 @@ namespace BBQRMSSolution.ViewModels
             PaymentVisible = "Collapsed";
         }
 
+/*
         private void Card_Swiped(object sender,EventArgs e)
         {
             _kbdWedge.PortOpen = false;
@@ -134,5 +135,6 @@ namespace BBQRMSSolution.ViewModels
 
             PaymentVisible = "Collapsed";
         }
+*/
 	}
 }
