@@ -108,7 +108,9 @@ namespace BBQRMSSolution.ViewModels
         public void HandleDeleteEmployee()
         {
             SelectedEmployee.IsActive = false;
-            HandleSaveClick();
+            if (SelectedEmployee.Id != 0) {
+                HandleSaveClick();
+            }
             ResetEmployeesList();
         }
 
