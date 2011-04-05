@@ -88,7 +88,12 @@ namespace BBQRMSSolution.ViewModels
 
         internal void DeleteItem()
         {
-            throw new NotImplementedException();
+            SaveSupplier();
+            DataService.DeleteObject(_selectedSupplier);
+            Suppliers.Remove(_selectedSupplier);
+            DataService.SaveChanges();
+            
         }
+
     }
 }

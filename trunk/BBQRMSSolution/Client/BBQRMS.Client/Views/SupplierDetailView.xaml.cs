@@ -38,7 +38,7 @@ namespace BBQRMSSolution.Views
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.DeleteItem();
         }
 
         private void Button_AddSupplier(object sender, RoutedEventArgs e)
