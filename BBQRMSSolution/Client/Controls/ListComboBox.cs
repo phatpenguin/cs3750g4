@@ -74,7 +74,7 @@ namespace Controls
             {
                 ListComboBox box = (ListComboBox)e.OriginalSource;
                 IList list = ((IList)box.SelectableItemsSource);
-                if (list != null)
+                if (list != null && box.ItemsSource != null)
                 {
                     foreach (var selectedItem in box.ItemsSource)
                     {
