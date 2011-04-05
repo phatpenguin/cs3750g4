@@ -257,7 +257,6 @@ namespace BBQRMSSolution.ViewModels
 				prnt.PrintLine("");
 				foreach (Discount discount in Order.Discounts)
 				{
-					//TODO: print out the discount type.
 					prnt.PrintLine(string.Format("\x1b|rA\x1b|bCDiscount: \x1b|N{0:C}", discount.Amount));
 				}
 			}
