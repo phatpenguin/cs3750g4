@@ -18,12 +18,13 @@ namespace BBQRMSSolution.ViewModels
         public RoleManagementViewModel(BBQRMSEntities dataService)
 	    {
 	    	DataService = dataService;
-            ResetRoleList();
             ResetSelectablePrivileges();
-	    }
+            ResetRoleList();
+        }
 
         private void ResetRoleList() {
             Roles = new ObservableCollection<Role>(DataService.Roles.ToList());
+            SelectedRole = Roles[0];
         }
 
         private void ResetSelectablePrivileges()
@@ -120,8 +121,10 @@ namespace BBQRMSSolution.ViewModels
             ResetRoleList();
         }
 
-        public void HandleCreateRole() {
-            SelectedRole = new Role();
+        public void HandleCreateRole()
+        {
+            SelectedRole = Role.CreateRole(0, "New Role");
+            Roles.Add(SelectedRole);
         }
 
         public void HandleDeleteRole() { 
