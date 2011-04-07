@@ -53,10 +53,10 @@
                         <Button Content="7" Height="53" HorizontalAlignment="Left" Margin="12,179,0,0" Name="sevenbutton" Click="Payment_Pad_Button_Click" CommandParameter="7" VerticalAlignment="Top" Width="66" />
                         <Button Content="8" Height="53" HorizontalAlignment="Left" Margin="84,179,0,0" Name="eightbutton" Click="Payment_Pad_Button_Click" CommandParameter="8" VerticalAlignment="Top" Width="66" />
                         <Button Content="9" Height="53" HorizontalAlignment="Left" Margin="156,179,0,0" Name="ninebutton" Click="Payment_Pad_Button_Click" CommandParameter="9" VerticalAlignment="Top" Width="66" />
-                        <Button Content="(--" Height="53" HorizontalAlignment="Left" Margin="228,6,0,0" Name="backbutton" VerticalAlignment="Top" Width="66" />
+                        <Button Content="bkspc" Height="53" HorizontalAlignment="Left" Margin="228,6,0,0" Name="backbutton" Click="Payment_Pad_BackSpace_Click" VerticalAlignment="Top" Width="66" />
                         <Button Content="0" Height="53" HorizontalAlignment="Left" Margin="12,238,0,0" Name="zerobutton" Click="Payment_Pad_Button_Click" CommandParameter="0" VerticalAlignment="Top" Width="66" />
                         <Button Content="." Height="53" HorizontalAlignment="Left" Margin="84,238,0,0" Name="dotbutton" Click="Payment_Pad_Button_Click" CommandParameter="." VerticalAlignment="Top" Width="66" />
-                        <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton" VerticalAlignment="Top" Width="66" />
+                        <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton" Click="Payment_Pad_Clear_Click" VerticalAlignment="Top" Width="66" />
                         <ComboBox Height="53" Margin="228,120,0,0" Name="listComboBox1" VerticalAlignment="Top" Width="185" HorizontalContentAlignment="Stretch"
                                   HorizontalAlignment="Stretch" ItemsSource="{Binding Path=PaymentTypes}" DisplayMemberPath="Description" 
                                   SelectedItem="{Binding Mode=TwoWay,Path=PaymentType}"/>
@@ -122,10 +122,10 @@
                         <Button Content="7" Height="53" HorizontalAlignment="Left" Margin="12,179,0,0" Name="sevenbutton1" Click="Discount_Pad_Button_Click" CommandParameter="7" VerticalAlignment="Top" Width="66" />
                         <Button Content="8" Height="53" HorizontalAlignment="Left" Margin="84,179,0,0" Name="eightbutton1" Click="Discount_Pad_Button_Click" CommandParameter="8" VerticalAlignment="Top" Width="66" />
                         <Button Content="9" Height="53" HorizontalAlignment="Left" Margin="156,179,0,0" Name="ninebutton1" Click="Discount_Pad_Button_Click" CommandParameter="9" VerticalAlignment="Top" Width="66" />
-                        <Button Content="(--" Height="53" HorizontalAlignment="Left" Margin="228,6,0,0" Name="backbutton1" VerticalAlignment="Top" Width="66" />
+                        <Button Content="bkspc" Height="53" HorizontalAlignment="Left" Margin="228,6,0,0" Name="backbutton1" Click="Discount_Pad_BackSpace_Click" VerticalAlignment="Top" Width="66" />
                         <Button Content="0" Height="53" HorizontalAlignment="Left" Margin="12,238,0,0" Name="zerobutton1" Click="Discount_Pad_Button_Click" CommandParameter="0" VerticalAlignment="Top" Width="66" />
                         <Button Content="." Height="53" HorizontalAlignment="Left" Margin="84,238,0,0" Name="dotbutton1" Click="Discount_Pad_Button_Click" CommandParameter="." VerticalAlignment="Top" Width="66" />
-                        <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton1" VerticalAlignment="Top" Width="66" />
+                        <Button Content="C" Height="53" HorizontalAlignment="Left" Margin="156,238,0,0" Name="clearbutton1" Click="Discount_Pad_Clear_Click" VerticalAlignment="Top" Width="66" />
                         <ComboBox Height="53" Margin="228,120,0,0" Name="listComboBox2" VerticalAlignment="Top" Width="185" HorizontalContentAlignment="Stretch"
                                   HorizontalAlignment="Stretch" ItemsSource="{Binding Path=DiscountTypes}" DisplayMemberPath="Description" 
                                   SelectedItem="{Binding Mode=TwoWay,Path=DiscountType}"/>

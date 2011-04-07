@@ -13,6 +13,8 @@ namespace BBQRMSSolution.ViewModels
 	    private string _paymentVisible = "Collapsed";
 	    private string _creditCardVisible = "Collapsed";
 
+	    private readonly ICashDrawer _cashDrawer;
+
         public DelegateCommand CcCancelPayment { get { return new DelegateCommand(CcCancelPay); } }
         public DelegateCommand CcProcessPayment { get { return new DelegateCommand(CcProcessPay); } }
 
@@ -63,8 +65,7 @@ namespace BBQRMSSolution.ViewModels
             DataService = dataService;
             MessageBus = messageBus;
 
-			ICashDrawer cashDrawer = posDeviceManager.GetCashDrawer();
-        	cashDrawer.OpenDrawer();
+			_cashDrawer = posDeviceManager.GetCashDrawer();
 
             PaymentTypes = new ObservableCollection<PaymentType>(DataService.PaymentTypes.Execute());
             PaymentType = PaymentTypes[0];
@@ -102,6 +103,7 @@ namespace BBQRMSSolution.ViewModels
                 Order.AddPayment(Payment);
 
                 PaymentVisible = "Collapsed";
+                _cashDrawer.OpenDrawer();
             }
         }
 
@@ -112,6 +114,7 @@ namespace BBQRMSSolution.ViewModels
 
             CcVisible = "Collapsed";
             PaymentVisible = "Collapsed";
+            _cashDrawer.OpenDrawer();
         }
 
 /*
