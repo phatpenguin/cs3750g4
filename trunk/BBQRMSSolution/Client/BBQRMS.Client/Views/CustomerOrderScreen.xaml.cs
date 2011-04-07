@@ -28,5 +28,25 @@ namespace BBQRMSSolution.Views
             if (DiscountAmountTextBox.Text == "0") DiscountAmountTextBox.Text = pressed.CommandParameter.ToString();
             else DiscountAmountTextBox.Text += pressed.CommandParameter;
         }
+
+        private void Payment_Pad_BackSpace_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentAmountTextBox.Text = PaymentAmountTextBox.Text.Length == 1 ? "0" : PaymentAmountTextBox.Text.Remove(PaymentAmountTextBox.Text.Length - 1);
+        }
+
+	    private void Discount_Pad_BackSpace_Click(object sender, RoutedEventArgs e)
+        {
+            DiscountAmountTextBox.Text = DiscountAmountTextBox.Text.Length == 1 ? "0" : DiscountAmountTextBox.Text.Remove(DiscountAmountTextBox.Text.Length - 1);
+        }
+
+        private void Payment_Pad_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentAmountTextBox.Text = "0";
+        }
+
+        private void Discount_Pad_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            DiscountAmountTextBox.Text = "0";
+        }
 	}
 } 
