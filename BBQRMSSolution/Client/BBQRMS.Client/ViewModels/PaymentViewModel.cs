@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-//using AxKbdWedgeOCX;
+using System.Windows.Forms;
 using BBQRMSSolution.ServerProxy;
 using Controls;
 
@@ -9,6 +8,7 @@ namespace BBQRMSSolution.ViewModels
 {
 	public class PaymentViewModel : ViewModelBase
 	{
+	    private bool isCcIntegrationOn = true;
 	    private OrderViewModel _orderViewModel;
 	    private string _paymentVisible = "Collapsed";
 	    private string _creditCardVisible = "Collapsed";
@@ -22,8 +22,6 @@ namespace BBQRMSSolution.ViewModels
         private int _creditCardZIndex = 300;
 
 	    private string _paymentAmount="0";
-
-//        private readonly AxKbdWedge _kbdWedge;
 
         public ObservableCollection<PaymentType> PaymentTypes { get; set; }
         public OrderViewModel Order { get { return _orderViewModel; } set { _orderViewModel = value; NotifyPropertyChanged("Order"); } }
@@ -71,8 +69,6 @@ namespace BBQRMSSolution.ViewModels
             PaymentType = PaymentTypes[0];
             PaymentVisible = "Visible";
             PaymentZIndex = 200;
-
-//            _kbdWedge = new AxKbdWedge();
         }
 
         public void CancelPayment()
@@ -88,14 +84,16 @@ namespace BBQRMSSolution.ViewModels
 
         public void DoAddPayment()
         {
-            if (PaymentType.IsCreditCard)
+            if (PaymentType.IsCreditCard && isCcIntegrationOn)
             {
-                CcZIndex = 300;
-                CcVisible = "Visible";
-
-                //_kbdWedge.Enabled = true;
-                //_kbdWedge.CardDataChanged += Card_Swiped;
-                //_kbdWedge.PortOpen = true;
+                //TODO uncomment to get msr working with wpf
+                //CcZIndex = 300;
+                //CcVisible = "Visible";
+                //For now just use a winform. :(
+                var ccForm = new CcForm();
+                var result = ccForm.ShowDialog();
+                if (result == DialogResult.OK) CcProcessPay();
+                else CancelPayment();
             }
             else
             {
@@ -116,28 +114,5 @@ namespace BBQRMSSolution.ViewModels
             PaymentVisible = "Collapsed";
             _cashDrawer.OpenDrawer();
         }
-
-/*
-        private void Card_Swiped(object sender,EventArgs e)
-        {
-            _kbdWedge.PortOpen = false;
-
-            CcFirstName = _kbdWedge.GetFName();
-            CcLastName = _kbdWedge.GetLName();
-
-            CcCardNumber = _kbdWedge.FindElement(2, ";", 0, "=");
-            CcExpMonth = _kbdWedge.FindElement(2, "=", 2, "2");
-            CcExpYear = _kbdWedge.FindElement(2, "=", 0, "2");
-
-            _kbdWedge.ClearBuffer();
-            _kbdWedge.PortOpen = true;
-            CcVisible = "Collapsed";
-
-            Payment = new Payment { Amount = Convert.ToDecimal(PaymentAmount), OrderId = Order.Order.Id, PaymentTypeId = PaymentType.Id, Id = 0, Memo = Memo };
-            Order.AddPayment(Payment);
-
-            PaymentVisible = "Collapsed";
-        }
-*/
 	}
 }

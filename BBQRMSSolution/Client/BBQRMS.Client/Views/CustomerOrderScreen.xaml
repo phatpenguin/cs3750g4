@@ -73,7 +73,7 @@
             </Border>
         </Grid>
 <!--Credit Card Screen-->
-        <Grid DataContext="{Binding Payment}" Visibility="{Binding CcVisible}" Panel.ZIndex="{Binding CcZIndex}">
+        <!--Grid DataContext="{Binding Payment}" Visibility="{Binding CcVisible}" Panel.ZIndex="{Binding CcZIndex}">
             <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
                 <StackPanel HorizontalAlignment="Center">
@@ -111,7 +111,7 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-        </Grid>
+        </Grid-->
         <!--Discount Screen-->
         <Grid DataContext="{Binding Discount}" Visibility="{Binding DiscountVisible}" Panel.ZIndex="{Binding DiscountZIndex}">
             <Border Background="Black" Opacity="0.33" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
