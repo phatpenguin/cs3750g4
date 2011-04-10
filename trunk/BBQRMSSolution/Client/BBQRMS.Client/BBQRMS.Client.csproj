@@ -65,6 +65,9 @@
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="System.Windows.Interactivity" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\..\packages\Extended.Wpf.Toolkit.1.4.0\lib\40\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -332,6 +335,7 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingRecord.datasource" />
     <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingReportHeader.datasource" />
     <None Include="Properties\Settings.settings">

@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:Views="clr-namespace:BBQRMSSolution.Views" mc:Ignorable="d"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views" xmlns:Controls="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d"
 	x:Name="Window"
 	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}"
 	d:DesignHeight="480"
@@ -41,7 +41,15 @@
         	<Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
                 <StackPanel HorizontalAlignment="Center">
                     <Grid HorizontalAlignment="Center">
-                        <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" Text="{Binding Mode=TwoWay, Path=PaymentAmount,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="210" />
+                        <Controls:NumericTextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="PaymentAmountTextBox" VerticalAlignment="Top" Width="210">
+                            <TextBox.Text>
+                                <Binding Mode="TwoWay" Path="PaymentAmount" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </Controls:NumericTextBox>
                         <Button Content="Cancel" Command="{Binding Cancel}" Height="53" HorizontalAlignment="Left" Margin="228,179,0,0" IsCancel="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="Add Payment" Command="{Binding AddPayment}" Height="53" HorizontalAlignment="Left" Margin="228,238,0,0" IsDefault="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="1" Height="53" HorizontalAlignment="Left" Margin="12,61,0,0" Name="onebutton" Click="Payment_Pad_Button_Click" CommandParameter="1" VerticalAlignment="Top" Width="66" />
@@ -110,7 +118,7 @@
             <Border Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="8" Padding="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,84,8">
                 <StackPanel HorizontalAlignment="Center">
                     <Grid HorizontalAlignment="Center">
-                        <TextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="DiscountAmountTextBox" Text="{Binding Mode=TwoWay, Path=DiscountAmount,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="210" />
+                        <Controls:NumericTextBox Height="49" HorizontalAlignment="Left" TextAlignment="Right" FontSize="30" Margin="12,6,0,0" Name="DiscountAmountTextBox" Text="{Binding Mode=TwoWay, Path=DiscountAmount,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="210" />
                         <Button Content="Cancel" Command="{Binding Cancel}" Height="53" HorizontalAlignment="Left" Margin="228,179,0,0" IsCancel="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="Add Discount" Command="{Binding AddDiscount}" Height="53" HorizontalAlignment="Left" Margin="228,238,0,0" IsDefault="True" VerticalAlignment="Top" Width="185" />
                         <Button Content="1" Height="53" HorizontalAlignment="Left" Margin="12,61,0,0" Name="onebutton1" Click="Discount_Pad_Button_Click" CommandParameter="1" VerticalAlignment="Top" Width="66" />
