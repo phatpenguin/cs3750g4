@@ -71,6 +71,7 @@
     <Compile Include="ImageButton.cs" />
     <Compile Include="ListComboBox.cs" />
     <Compile Include="MessageBus.cs" />
+    <Compile Include="NumericTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -331,7 +331,7 @@ namespace BBQRMSSolution.ViewModels
 
 		public bool AddDiscount(Discount discount)
 		{
-            if(discount.Amount > TotalPrice)
+            if(discount.Amount > RemainingAmount)
             {
                 MessageBox.Show("You cannot discount more than the amount due.", "Confirmation");
                 return false;
