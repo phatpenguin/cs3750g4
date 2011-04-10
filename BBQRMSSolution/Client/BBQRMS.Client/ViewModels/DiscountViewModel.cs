@@ -73,9 +73,7 @@ namespace BBQRMSSolution.ViewModels
             Discount = new Discount { Amount = _mDiscountAmount, OrderId = Order.Order.Id, DiscountTypeId = DiscountType.Id, Id = 0 };
             var discountType = DiscountTypes.Where(x => x.Id == Discount.DiscountTypeId).FirstOrDefault();
 
-            Order.AddDiscount(Discount);
-
-            DiscountVisible = "Collapsed";
+            if(Order.AddDiscount(Discount)) DiscountVisible = "Collapsed";
         }
     }
 }
