@@ -41,7 +41,7 @@ namespace BBQRMS.Client.Tests
 
 			var emp = PrepareEmployee.With(firstName: "George", lastName: "Jones");
 			_dataService.AddToEmployees(emp);
-			var user = new ApplicationUser {DisplayName = "George Jones", IdPart = "2", PersonalPart = "22"};
+			var user = new ApplicationUser {IdPart = "2", PersonalPart = "22"};
 			_dataService.AddToApplicationUsers(user);
 			_dataService.AddLink(emp, "ApplicationUsers", user);
 			_dataService.SaveChanges(SaveChangesOptions.Batch);

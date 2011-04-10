@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 3/26/2011 12:00:13 PM
+// Generation date: 4/9/2011 11:58:23 PM
 namespace BBQRMSSolution.ServerProxy
 {
     
@@ -688,10 +688,10 @@ namespace BBQRMSSolution.ServerProxy
     /// There are no comments for BBQRMSModel.ApplicationUser in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// IdPart
+    /// EmployeeId
     /// </KeyProperties>
     [global::System.Data.Services.Common.EntitySetAttribute("ApplicationUsers")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("IdPart")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("EmployeeId")]
     public partial class ApplicationUser : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -700,15 +700,13 @@ namespace BBQRMSSolution.ServerProxy
         /// <param name="idPart">Initial value of IdPart.</param>
         /// <param name="personalPart">Initial value of PersonalPart.</param>
         /// <param name="employeeId">Initial value of EmployeeId.</param>
-        /// <param name="displayName">Initial value of DisplayName.</param>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static ApplicationUser CreateApplicationUser(string idPart, string personalPart, int employeeId, string displayName)
+        public static ApplicationUser CreateApplicationUser(string idPart, string personalPart, int employeeId)
         {
             ApplicationUser applicationUser = new ApplicationUser();
             applicationUser.IdPart = idPart;
             applicationUser.PersonalPart = personalPart;
             applicationUser.EmployeeId = employeeId;
-            applicationUser.DisplayName = displayName;
             return applicationUser;
         }
         /// <summary>
@@ -777,28 +775,6 @@ namespace BBQRMSSolution.ServerProxy
         private int _EmployeeId;
         partial void OnEmployeeIdChanging(int value);
         partial void OnEmployeeIdChanged();
-        /// <summary>
-        /// There are no comments for Property DisplayName in the schema.
-        /// </summary>
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public string DisplayName
-        {
-            get
-            {
-                return this._DisplayName;
-            }
-            set
-            {
-                this.OnDisplayNameChanging(value);
-                this._DisplayName = value;
-                this.OnDisplayNameChanged();
-                this.OnPropertyChanged("DisplayName");
-            }
-        }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private string _DisplayName;
-        partial void OnDisplayNameChanging(string value);
-        partial void OnDisplayNameChanged();
         /// <summary>
         /// There are no comments for Employee in the schema.
         /// </summary>
@@ -1782,23 +1758,23 @@ namespace BBQRMSSolution.ServerProxy
         partial void OnIsActiveChanging(bool value);
         partial void OnIsActiveChanged();
         /// <summary>
-        /// There are no comments for ApplicationUsers in the schema.
+        /// There are no comments for ApplicationUser in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<ApplicationUser> ApplicationUsers
+        public ApplicationUser ApplicationUser
         {
             get
             {
-                return this._ApplicationUsers;
+                return this._ApplicationUser;
             }
             set
             {
-                this._ApplicationUsers = value;
-                this.OnPropertyChanged("ApplicationUsers");
+                this._ApplicationUser = value;
+                this.OnPropertyChanged("ApplicationUser");
             }
         }
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<ApplicationUser> _ApplicationUsers = new global::System.Data.Services.Client.DataServiceCollection<ApplicationUser>(null, System.Data.Services.Client.TrackingMode.None);
+        private ApplicationUser _ApplicationUser;
         /// <summary>
         /// There are no comments for ConsumedInventories in the schema.
         /// </summary>

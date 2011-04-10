@@ -18,7 +18,7 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_Employee_ApplicationUser", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "ApplicationUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ApplicationUser), true)]
+[assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_Employee_ApplicationUser", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "ApplicationUser", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(BBQRMS.WCFServices.ApplicationUser), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_ConsumptionTypeId_ConsumedInventory", "ConsumptionType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.ConsumptionType), "ConsumedInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ConsumedInventory), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_EmployeeId_ConsumedInventory", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.Employee), "ConsumedInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ConsumedInventory), true)]
 [assembly: EdmRelationshipAttribute("BBQRMSModel", "FK_MasterInventoryId_ConsumedInventory", "MasterInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BBQRMS.WCFServices.MasterInventory), "ConsumedInventory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BBQRMS.WCFServices.ConsumedInventory), true)]
@@ -717,14 +717,12 @@ namespace BBQRMS.WCFServices
         /// <param name="idPart">Initial value of the IdPart property.</param>
         /// <param name="personalPart">Initial value of the PersonalPart property.</param>
         /// <param name="employeeId">Initial value of the EmployeeId property.</param>
-        /// <param name="displayName">Initial value of the DisplayName property.</param>
-        public static ApplicationUser CreateApplicationUser(global::System.String idPart, global::System.String personalPart, global::System.Int32 employeeId, global::System.String displayName)
+        public static ApplicationUser CreateApplicationUser(global::System.String idPart, global::System.String personalPart, global::System.Int32 employeeId)
         {
             ApplicationUser applicationUser = new ApplicationUser();
             applicationUser.IdPart = idPart;
             applicationUser.PersonalPart = personalPart;
             applicationUser.EmployeeId = employeeId;
-            applicationUser.DisplayName = displayName;
             return applicationUser;
         }
 
@@ -734,7 +732,7 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String IdPart
         {
@@ -744,14 +742,11 @@ namespace BBQRMS.WCFServices
             }
             set
             {
-                if (_IdPart != value)
-                {
-                    OnIdPartChanging(value);
-                    ReportPropertyChanging("IdPart");
-                    _IdPart = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("IdPart");
-                    OnIdPartChanged();
-                }
+                OnIdPartChanging(value);
+                ReportPropertyChanging("IdPart");
+                _IdPart = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("IdPart");
+                OnIdPartChanged();
             }
         }
         private global::System.String _IdPart;
@@ -785,7 +780,7 @@ namespace BBQRMS.WCFServices
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 EmployeeId
         {
@@ -795,40 +790,19 @@ namespace BBQRMS.WCFServices
             }
             set
             {
-                OnEmployeeIdChanging(value);
-                ReportPropertyChanging("EmployeeId");
-                _EmployeeId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("EmployeeId");
-                OnEmployeeIdChanged();
+                if (_EmployeeId != value)
+                {
+                    OnEmployeeIdChanging(value);
+                    ReportPropertyChanging("EmployeeId");
+                    _EmployeeId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("EmployeeId");
+                    OnEmployeeIdChanged();
+                }
             }
         }
         private global::System.Int32 _EmployeeId;
         partial void OnEmployeeIdChanging(global::System.Int32 value);
         partial void OnEmployeeIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String DisplayName
-        {
-            get
-            {
-                return _DisplayName;
-            }
-            set
-            {
-                OnDisplayNameChanging(value);
-                ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("DisplayName");
-                OnDisplayNameChanged();
-            }
-        }
-        private global::System.String _DisplayName;
-        partial void OnDisplayNameChanging(global::System.String value);
-        partial void OnDisplayNameChanged();
 
         #endregion
     
@@ -2001,17 +1975,33 @@ namespace BBQRMS.WCFServices
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BBQRMSModel", "FK_Employee_ApplicationUser", "ApplicationUser")]
-        public EntityCollection<ApplicationUser> ApplicationUsers
+        public ApplicationUser ApplicationUser
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ApplicationUser> ApplicationUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ApplicationUser>("BBQRMSModel.FK_Employee_ApplicationUser", "ApplicationUser", value);
                 }
             }
         }

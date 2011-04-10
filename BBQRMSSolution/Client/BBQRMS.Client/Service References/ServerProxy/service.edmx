@@ -3,12 +3,11 @@
     <Schema Namespace="BBQRMSModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityType Name="ApplicationUser">
         <Key>
-          <PropertyRef Name="IdPart" />
+          <PropertyRef Name="EmployeeId" />
         </Key>
         <Property Name="IdPart" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
         <Property Name="PersonalPart" Type="Edm.String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         <Property Name="EmployeeId" Type="Edm.Int32" Nullable="false" />
-        <Property Name="DisplayName" Type="Edm.String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
         <NavigationProperty Name="Employee" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="ApplicationUser" ToRole="Employee" />
       </EntityType>
       <EntityType Name="ConsumedInventory">
@@ -71,7 +70,7 @@
         <Property Name="PayTypeId" Type="Edm.Int32" Nullable="false" />
         <Property Name="PayAmount" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="4" />
         <Property Name="IsActive" Type="Edm.Boolean" Nullable="false" />
-        <NavigationProperty Name="ApplicationUsers" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
+        <NavigationProperty Name="ApplicationUser" Relationship="BBQRMSModel.FK_Employee_ApplicationUser" FromRole="Employee" ToRole="ApplicationUser" />
         <NavigationProperty Name="ConsumedInventories" Relationship="BBQRMSModel.FK_EmployeeId_ConsumedInventory" FromRole="Employee" ToRole="ConsumedInventory" />
         <NavigationProperty Name="EmployeeTimeClocks" Relationship="BBQRMSModel.FK_EmployeeTimeClock_Employee" FromRole="Employee" ToRole="EmployeeTimeClock" />
         <NavigationProperty Name="EmployeePayType" Relationship="BBQRMSModel.FK_PayTypeId_Employee" FromRole="Employee" ToRole="EmployeePayType" />
@@ -286,7 +285,7 @@
       </EntityType>
       <Association Name="FK_Employee_ApplicationUser">
         <End Role="Employee" Type="BBQRMSModel.Employee" Multiplicity="1" />
-        <End Role="ApplicationUser" Type="BBQRMSModel.ApplicationUser" Multiplicity="*" />
+        <End Role="ApplicationUser" Type="BBQRMSModel.ApplicationUser" Multiplicity="0..1" />
         <ReferentialConstraint>
           <Principal Role="Employee">
             <PropertyRef Name="Id" />
