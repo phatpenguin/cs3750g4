@@ -79,13 +79,41 @@ namespace BBQRMSSolution.ViewModels
 
 			CalculateTotals();
 
-			DataService.AddToOrders(Order);
-			DataService.SaveChanges();
-			Order.Number = Order.Id % 1000;
-			DataService.UpdateObject(Order);
-			DataService.SaveChanges();
+
 			NotifyPropertyChanged("Order");
 		}
+
+        private void SaveOrder()
+        {
+            if(Order.Number < 1)
+            {
+                DataService.AddToOrders(Order);
+                DataService.SaveChanges();
+                Order.Number = Order.Id % 1000;
+                foreach (var oi in Order.OrderItems)
+                {
+                    oi.OrderId = Order.Id;
+                    DataService.AddToOrderItems(oi);
+                }
+                foreach (var p in Order.Payments)
+                {
+                    p.OrderId = Order.Id;
+                    DataService.AddToPayments(p);
+                }
+            }
+            DataService.UpdateObject(Order);
+            foreach (var oi in Order.OrderItems)
+            {
+                DataService.UpdateObject(oi);
+            }
+            foreach (var p in Order.Payments)
+            {
+                DataService.UpdateObject(p);
+            }
+
+            DataService.SaveChanges();
+            NotifyPropertyChanged("Order");
+        }
 
 		public DateTime OrderSubmittedDate { get; set; }
 		private int _mOrderNumber;
@@ -127,8 +155,6 @@ namespace BBQRMSSolution.ViewModels
 				{
 					oi.Quantity++;
 					NotifyPropertyChanged("oi");
-					DataService.UpdateObject(oi);
-					DataService.SaveChanges();
 					break;
 				}
 				isFound = false;
@@ -146,10 +172,7 @@ namespace BBQRMSSolution.ViewModels
 					MenuItemId = menuItem.Id
 				};
 
-				DataService.AddToOrderItems(orderItem);
 				Order.OrderItems.Add(orderItem);
-				DataService.UpdateObject(Order);
-				DataService.SaveChanges();
 			}
 
 			CalculateTotals();
@@ -162,16 +185,10 @@ namespace BBQRMSSolution.ViewModels
 			if (orderItem.Quantity > 1)
 			{
 				orderItem.Quantity--;
-				DataService.UpdateObject(orderItem);
-				DataService.UpdateObject(Order);
-				DataService.SaveChanges();
 			}
 			else
 			{
-				DataService.DeleteObject(orderItem);
 				Order.OrderItems.Remove(orderItem);
-				DataService.UpdateObject(Order);
-				DataService.SaveChanges();
 			}
 
 			CalculateTotals();
@@ -195,31 +212,35 @@ namespace BBQRMSSolution.ViewModels
 		{
 			Order.OrderStateId = OrderStates.Cooking;
 
-			DataService.UpdateObject(Order);
-			DataService.SaveChanges();
+		    SaveOrder();
 
 			LoadNewOrder();
 		}
 
 		public void CancelOrder()
 		{
-			foreach (var oi in Order.OrderItems)
-			{
-				DataService.DeleteObject(oi);
-			}
+            if (Order.Number > 0)
+            {
+                foreach (var oi in Order.OrderItems)
+                {
+                    DataService.DeleteObject(oi);
+                }
 
-			DataService.DeleteObject(Order);
-			DataService.SaveChanges();
+                foreach(var p in Order.Payments)
+                {
+                    DataService.DeleteObject(p);
+                }
 
-			LoadNewOrder();
+                DataService.DeleteObject(Order);
+                DataService.SaveChanges();
+            }
+		    LoadNewOrder();
 		}
 
 		public void AddPayment(Payment payment)
 		{
-			DataService.AddToPayments(payment);
 			Order.Payments.Add(payment);
-			DataService.UpdateObject(Order);
-			DataService.SaveChanges();
+			SaveOrder();
 
 			PaymentAmount += payment.Amount;
 			CalculateTotals();
@@ -309,10 +330,7 @@ namespace BBQRMSSolution.ViewModels
 
 		public void AddDiscount(Discount discount)
 		{
-			DataService.AddToDiscounts(discount);
 			Order.Discounts.Add(discount);
-			DataService.UpdateObject(Order);
-			DataService.SaveChanges();
 
 			DiscountAmount += discount.Amount;
 		}
