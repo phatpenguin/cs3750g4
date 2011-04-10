@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Windows;
 using Controls;
 using BBQRMSSolution.ServerProxy;
 
@@ -328,11 +329,20 @@ namespace BBQRMSSolution.ViewModels
 			return toReturn;
 		}
 
-		public void AddDiscount(Discount discount)
+		public bool AddDiscount(Discount discount)
 		{
-			Order.Discounts.Add(discount);
+            if(discount.Amount > TotalPrice)
+            {
+                MessageBox.Show("You cannot discount more than the amount due.", "Confirmation");
+                return false;
+            }
 
-			DiscountAmount += discount.Amount;
+                Order.Discounts.Add(discount);
+
+                DiscountAmount += discount.Amount;
+                CalculateTotals();
+
+                return true;
 		}
 	}
 }
