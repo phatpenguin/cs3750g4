@@ -335,7 +335,6 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingRecord.datasource" />
     <None Include="Properties\DataSources\BBQRMSSolution.ViewModels.Reports.DailyShoppingReportHeader.datasource" />
     <None Include="Properties\Settings.settings">

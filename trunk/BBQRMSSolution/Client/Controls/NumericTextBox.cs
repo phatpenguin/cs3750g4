@@ -13,8 +13,8 @@ namespace Controls
 
         private Boolean CheckFormat(string text)
         {
-            short val;
-            return Int16.TryParse(text, out val);
+            Decimal val;
+            return Decimal.TryParse(text, out val);
         }
 
         private void CheckPasteFormat(object sender, DataObjectPastingEventArgs e)
