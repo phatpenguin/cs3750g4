@@ -103,7 +103,7 @@
                   <StackPanel>
                     <c:ListComboBox Width="300" Height="150" SelectionMode="Single" SelectedItem="null"
                             x:Name="roleLCB"
-                            ItemsSource="{Binding Path=Roles}"
+                            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SelectedRoles}"
                             SelectableItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Roles}"
                             ItemContainerStyle="{StaticResource ListBoxItem.ListComboBoxItemStyle}"
                             DragDrop:DragDropHelper.IsDragSource="true"
