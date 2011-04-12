@@ -13,8 +13,9 @@ namespace BBQRMSSolution.ViewModels
 	{
 		private ObservableCollection<Employee> _employees;
 		private ObservableCollection<EmployeePayType> _payTypes;
-		private ObservableCollection<Role> _roles;
-		private Employee _selectedEmployee;
+        private ObservableCollection<Role> _roles;
+        private ObservableCollection<Role> _selectedRoles;
+        private Employee _selectedEmployee;
 		private EmployeePayType _selectedPayType;
 
 		[Obsolete("Used for design-time.")]
@@ -53,6 +54,8 @@ namespace BBQRMSSolution.ViewModels
 					.Where(x => x.IsActive)
 				);
 			SelectedEmployee = Employees[0];
+
+            SelectedRoles = new ObservableCollection<Role>(SelectedEmployee.Roles.ToList());
 		}
 
 		private void ResetListSelectableLists()
@@ -67,7 +70,14 @@ namespace BBQRMSSolution.ViewModels
 			set { _roles = value; NotifyPropertyChanged("Roles"); }
 		}
 
-		public ObservableCollection<EmployeePayType> PayTypes
+	    public ObservableCollection<Role> SelectedRoles
+	    {
+	        get { return _selectedRoles; }
+	        set { _selectedRoles = value; }
+	    }
+
+
+	    public ObservableCollection<EmployeePayType> PayTypes
 		{
 			get { return _payTypes; }
 			set { _payTypes = value; NotifyPropertyChanged("PayTypes"); }
@@ -114,29 +124,29 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleSaveClick()
 		{
 			if (SelectedEmployee.Id > 0)
-			{
+			{	
+
 				DataService.UpdateObject(SelectedEmployee);
 				DataService.UpdateObject(SelectedEmployee.ApplicationUser);
 				//TODO: handle all changes of roles.
 
-				// Delete applicationuser record of deleted (inactivated) employees.
-				if (!SelectedEmployee.IsActive && SelectedEmployee.ApplicationUser != null)
-				{
+				// Delete applicationuser record of deleted (inactivated) employees.);
+				if (!SelectedEmployee.IsActive && SelectedEmployee.ApplicationUser != null) {
 					DataService.DeleteObject(SelectedEmployee.ApplicationUser);
 				}
-			}
-			else
-			{
+
+
+			} else {
 				DataService.AddToEmployees(SelectedEmployee);
 				DataService.AddToApplicationUsers(SelectedEmployee.ApplicationUser);
 				DataService.SetLink(SelectedEmployee, "ApplicationUser", SelectedEmployee.ApplicationUser);
-				foreach (Role role in SelectedEmployee.Roles)
-				{
-					DataService.AddLink(SelectedEmployee, "Roles", role);
-					DataService.AddLink(role, "Employees", SelectedEmployee);
-				}
-			}
-			DataService.SaveChanges(SaveChangesOptions.Batch);
+                foreach (Role role in SelectedEmployee.Roles) {
+                    DataService.AddLink(SelectedEmployee, "Roles", role);
+                    DataService.AddLink(role, "Employees", SelectedEmployee);
+                }
+            }
+
+            DataService.SaveChanges();
 			SelectedEmployee = null;
 		}
 
