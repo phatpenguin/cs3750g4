@@ -55,7 +55,6 @@ namespace BBQRMSSolution.ViewModels
 				);
 			SelectedEmployee = Employees[0];
 
-            SelectedRoles = new ObservableCollection<Role>(SelectedEmployee.Roles.ToList());
 		}
 
 		private void ResetListSelectableLists()
@@ -69,12 +68,6 @@ namespace BBQRMSSolution.ViewModels
 			get { return _roles; }
 			set { _roles = value; NotifyPropertyChanged("Roles"); }
 		}
-
-	    public ObservableCollection<Role> SelectedRoles
-	    {
-	        get { return _selectedRoles; }
-	        set { _selectedRoles = value; }
-	    }
 
 
 	    public ObservableCollection<EmployeePayType> PayTypes
@@ -128,7 +121,27 @@ namespace BBQRMSSolution.ViewModels
 
 				DataService.UpdateObject(SelectedEmployee);
 				DataService.UpdateObject(SelectedEmployee.ApplicationUser);
-				//TODO: handle all changes of roles.
+
+				var oldRoles =
+					DataService
+						.Links
+						.Where(ld => ld.Source == SelectedEmployee && ld.SourceProperty == "Roles")
+						.Select(ld => ld.Target)
+						.OfType<Role>();
+
+				var newRoles = SelectedEmployee.Roles;
+
+				var toAdd = newRoles.Except(oldRoles);
+				var toRemove = oldRoles.Except(newRoles);
+				foreach (Role role in toRemove)
+				{
+					DataService.DeleteLink(SelectedEmployee, "Roles", role);
+				}
+				foreach (Role role in toAdd)
+				{
+					DataService.AddLink(SelectedEmployee, "Roles", role);
+				}
+
 
 				// Delete applicationuser record of deleted (inactivated) employees.);
 				if (!SelectedEmployee.IsActive && SelectedEmployee.ApplicationUser != null) {
