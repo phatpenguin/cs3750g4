@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\MagTek MSR\AxInterop.KbdWedgeOCX.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.KbdWedgeOCX">
+      <HintPath>..\..\Libraries\MagTek MSR\Interop.KbdWedgeOCX.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
