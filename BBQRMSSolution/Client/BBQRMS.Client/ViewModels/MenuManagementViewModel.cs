@@ -16,13 +16,18 @@ namespace BBQRMSSolution.ViewModels
 			Reset();
 		}
 
-		private void Reset()
-		{
-			Menus = new ObservableCollection<Menu>(DataService.Menus.Expand("MenuItems").Where(x => x.IsActive));
-			MenuItems = new ObservableCollection<MenuItem>(DataService.MenuItems);
-			SelectedMenu = Menus[0];
-			SelectedMenuItem = MenuItems[0];
-		}
+        private void Reset()
+        {
+            Menus = new ObservableCollection<Menu>(DataService.Menus.Expand("MenuItems").Where(x => x.IsActive));
+            ResetSelectableMenuItems();
+            SelectedMenu = Menus[0];
+        }
+
+        private void ResetSelectableMenuItems()
+        {
+            MenuItems = new ObservableCollection<MenuItem>(DataService.MenuItems);
+            SelectedMenuItem = MenuItems[0];
+        }
 
 		private MenuItem _selectedMenuItem;
 		public MenuItem SelectedMenuItem
@@ -35,7 +40,11 @@ namespace BBQRMSSolution.ViewModels
 		public Menu SelectedMenu
 		{
 			get { return _selectedMenu; }
-			set { _selectedMenu = value; NotifyPropertyChanged("SelectedMenu"); }
+			set {
+                _selectedMenu = value;
+			    ResetSelectableMenuItems();
+                NotifyPropertyChanged("SelectedMenu");
+            }
 		}
 
 		private ObservableCollection<MenuItem> _menuItems;
