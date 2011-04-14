@@ -148,21 +148,25 @@ namespace BBQRMSSolution.ViewModels
 					DataService.DeleteObject(SelectedEmployee.ApplicationUser);
 				}
 
+				DataService.SaveChanges();
 
 			}
 			else
 			{
 				DataService.AddToEmployees(SelectedEmployee);
-				DataService.AddToApplicationUsers(SelectedEmployee.ApplicationUser);
-				DataService.SetLink(SelectedEmployee, "ApplicationUser", SelectedEmployee.ApplicationUser);
 				foreach (Role role in SelectedEmployee.Roles)
 				{
 					DataService.AddLink(SelectedEmployee, "Roles", role);
 					DataService.AddLink(role, "Employees", SelectedEmployee);
 				}
+				DataService.SaveChanges();
+				DataService.AddToApplicationUsers(SelectedEmployee.ApplicationUser);
+				SelectedEmployee.ApplicationUser.EmployeeId = SelectedEmployee.Id;
+				//DataService.SetLink(SelectedEmployee, "ApplicationUser", SelectedEmployee.ApplicationUser);
+				//DataService.SetLink(SelectedEmployee.ApplicationUser, "Employee", SelectedEmployee);
+				DataService.SaveChanges();
 			}
 
-			DataService.SaveChanges();
 			SelectedEmployee = null;
 		}
 
