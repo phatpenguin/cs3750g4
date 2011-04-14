@@ -213,11 +213,11 @@
 
 			<DockPanel Grid.Column="1" Grid.Row="2" Margin="8">
 				<StackPanel Height="250">
-                    <Button Command="{Binding Clear}" Content="Clear" Height="45" Width="130" Margin="5,0,0,0"/>
+                    <Button Command="{Binding Clear}" Content="Remove All" Height="45" Width="130" Margin="5,0,0,0"/>
                     <Button Command="{Binding AddDiscount}" Content="Discount Order" Height="45" Width="130" Margin="0,5,0,0"/>
                     <Button Command="{Binding AddPayment}" Content="Add Payment" Height="45" Width="130" Margin="0,5,0,0"/>
                     <Button Command="{Binding Cook}" Content="Send to Kitchen" Height="45" Width="130" Margin="0,5,0,0"/>
-                    <Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="0,5,0,0"/>
+                    <!--Button Command="{Binding Complete}" Content="Complete" Height="45" Width="130" Margin="0,5,0,0"/-->
                 </StackPanel>
 				<UniformGrid Rows="6" Columns="2" Grid.Column="1" Grid.Row="2" Width="312">
 					<TextBlock FontSize="15" TextAlignment="Right" Height="27" Width="100"><Run Text="Subtotal: $" /></TextBlock>

@@ -22,19 +22,19 @@ namespace BBQRMSSolution.ViewModels
 						new Order
 							{
 								Number = 1,
-//								OrderItems = 
-//								new DataServiceCollection<OrderItem>
-//								             	{
-//								             		new OrderItem { Name = "Sandwich", Quantity = 1}
-//								             	}
+								OrderItems = 
+								new DataServiceCollection<OrderItem>
+								             	{
+								             		new OrderItem { Name = "Sandwich", Quantity = 1}
+								             	}
 							},
 						new Order
 							{
 								Number = 2,
-//								OrderItems = new DataServiceCollection<OrderItem>
-//								             	{
-//								             		new OrderItem {Name = "Soda", Quantity = 2}
-//								             	}
+								OrderItems = new DataServiceCollection<OrderItem>
+								             	{
+						             		new OrderItem {Name = "Soda", Quantity = 2}
+							             	}
 							},
 					};
 		}
@@ -46,7 +46,7 @@ namespace BBQRMSSolution.ViewModels
 			var oldMergeOption = DataService.MergeOption;
 			DataService.MergeOption = MergeOption.OverwriteChanges;
 			PendingOrders =
-				new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == 1));
+				new ObservableCollection<Order>(DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == OrderStates.Cooking));
 			DataService.MergeOption = oldMergeOption;
 
 			CompleteOrderCommand = new DelegateCommand(HandleCompleteOrder);
@@ -64,7 +64,8 @@ namespace BBQRMSSolution.ViewModels
 		{
 			var order = (Order)parameter;
 			//TODO: if the order is fully paid, we can close it, otherwise we should just mark it 'completed'
-			order.OrderStateId = OrderStates.Closed;
+            order.OrderStateId = order.PaymentStateId == PaymentStates.Paid ? OrderStates.Closed : OrderStates.Completed;
+
 			DataService.UpdateObject(order);
 			DataService.SaveChanges();
 
@@ -85,15 +86,13 @@ namespace BBQRMSSolution.ViewModels
 			var oldMergeOption = DataService.MergeOption;
 			DataService.MergeOption = MergeOption.OverwriteChanges;
 			var orders = DataService.Orders.Expand("OrderItems").Where(x => x.OrderStateId == OrderStates.Cooking).ToList();
-			foreach (Order order in orders)
+			foreach (var order in orders.Where(order => !PendingOrders.Contains(order)))
 			{
-				if(!PendingOrders.Contains(order))
-					PendingOrders.Add(order);
+			    PendingOrders.Add(order);
 			}
-			foreach (Order pendingOrder in PendingOrders)
+			foreach (var pendingOrder in PendingOrders.Where(pendingOrder => !orders.Contains(pendingOrder)))
 			{
-				if (!orders.Contains(pendingOrder))
-					PendingOrders.Remove(pendingOrder);
+			    PendingOrders.Remove(pendingOrder);
 			}
 			DataService.MergeOption = oldMergeOption;
 		}

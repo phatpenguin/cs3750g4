@@ -11,10 +11,10 @@ namespace BBQRMSSolution.ViewModels
 		private readonly IPOSDeviceManager _posDeviceManager;
 		private decimal _st, _tp, _ta, _da, _pa, _ra;
 
-		private const int DEFAULT_ORDER_TYPE_ID = 2;
-		private const int DEFAULT_DINER_TYPE_ID = 1;
-		private const int DEFAULT_PAYMENT_STATE_ID = 1;
-		private const int DEFAULT_ORDER_STATE_ID = 5;
+		private const int DEFAULT_ORDER_TYPE_ID = OrderTypes.WalkIn;
+		private const int DEFAULT_DINER_TYPE_ID = DinerTypes.DineIn;
+		private const int DEFAULT_PAYMENT_STATE_ID = PaymentStates.Unpaid;
+		private const int DEFAULT_ORDER_STATE_ID = OrderStates.InProgress;
 
 		public Order Order { get; set; }
 
@@ -36,7 +36,7 @@ namespace BBQRMSSolution.ViewModels
 										DinerTypeId = DEFAULT_DINER_TYPE_ID,
 										Id = 0,
 										Number = 0,
-										OrderStateId = 1
+										OrderStateId = OrderStates.InProgress
 									};
 
 			Order.OrderItems.Add(new OrderItem { MenuItemId = 1, Name = "Item1", Quantity = 1, UnitPrice = 3.50m, UnitTax = 1.00m });
@@ -59,7 +59,11 @@ namespace BBQRMSSolution.ViewModels
             MessageBus = messageBus;
             DataService = dataService;
 
-            Order = order;
+            Order = DataService.Orders.Where(x => x.Id == order.Id).FirstOrDefault();
+            DataService.LoadProperty(Order, "OrderItems");
+            DataService.LoadProperty(Order, "Payments");
+
+            CalculateTotals();
         }
 
 		private void LoadNewOrder()
@@ -86,7 +90,7 @@ namespace BBQRMSSolution.ViewModels
 
         private void SaveOrder()
         {
-            if(Order.Number < 1)
+            if (Order.Number < 1)
             {
                 DataService.AddToOrders(Order);
                 DataService.SaveChanges();
@@ -101,20 +105,84 @@ namespace BBQRMSSolution.ViewModels
                     p.OrderId = Order.Id;
                     DataService.AddToPayments(p);
                 }
+                DataService.UpdateObject(Order);
+                DataService.SaveChanges();
+
+                DataService.LoadProperty(Order, "OrderItems");
+                DataService.LoadProperty(Order,"Payments");
             }
-            DataService.UpdateObject(Order);
-            foreach (var oi in Order.OrderItems)
+            else
             {
-                DataService.UpdateObject(oi);
+                UpdateOrderItems();
+                //UpdatePayments();
+
+                DataService.UpdateObject(Order);
+                DataService.SaveChanges();
             }
-            foreach (var p in Order.Payments)
+
+
+            NotifyPropertyChanged("Order");
+        }
+
+        private void UpdateOrderItems()
+        {
+            var oldOrderItems =
+                DataService
+                    .Links
+                    .Where(ld => ld.Source == Order && ld.SourceProperty == "OrderItems")
+                    .Select(ld => ld.Target)
+                    .OfType<OrderItem>();
+
+            var newOrderItems = Order.OrderItems;
+
+            var toAdd = newOrderItems.Except(oldOrderItems);
+            var toRemove = oldOrderItems.Except(newOrderItems);
+
+            foreach (var orderItem in toRemove)
             {
-                DataService.UpdateObject(p);
+                DataService.DeleteObject(orderItem);
+            }
+            foreach (var orderItem in toAdd)
+            {
+                DataService.AddToOrderItems(orderItem);
+            }
+            foreach (var orderItem in Order.OrderItems)
+            {
+                DataService.UpdateObject(orderItem);
             }
 
             DataService.SaveChanges();
-            NotifyPropertyChanged("Order");
         }
+
+        /*private void UpdatePayments()
+        {
+            var oldPayments =
+                DataService
+                    .Links
+                    .Where(ld => ld.Source == Order && ld.SourceProperty == "Payments")
+                    .Select(ld => ld.Target)
+                    .OfType<Payment>();
+
+            var newPayments = Order.Payments;
+
+            var toAdd = newPayments.Except(oldPayments);
+            var toRemove = oldPayments.Except(newPayments);
+
+            foreach (var payment in toRemove)
+            {
+                DataService.DeleteObject(payment);
+            }
+            foreach (var payment in toAdd)
+            {
+                DataService.AddToPayments(payment);
+            }
+            foreach (var payment in Order.Payments)
+            {
+                DataService.UpdateObject(payment);
+            }
+
+            DataService.SaveChanges();
+        }*/
 
 		public DateTime OrderSubmittedDate { get; set; }
 		private int _mOrderNumber;
@@ -199,12 +267,17 @@ namespace BBQRMSSolution.ViewModels
 		{
 			SubTotal = 0m;
 			TaxAmount = 0m;
+		    PaymentAmount = 0m;
 
 			foreach (var oi in Order.OrderItems)
 			{
 				SubTotal += oi.UnitPrice * oi.Quantity;
 				TaxAmount += Math.Round(oi.UnitTax * oi.Quantity, 2);
 			}
+            foreach (var p in Order.Payments)
+            {
+                PaymentAmount += p.Amount;
+            }
 			TotalPrice = SubTotal + TaxAmount;
 			RemainingAmount = TotalPrice - PaymentAmount - DiscountAmount;
 		}
@@ -220,36 +293,48 @@ namespace BBQRMSSolution.ViewModels
 
 		public void CancelOrder()
 		{
-            if (Order.Number > 0)
+		    Order.OrderStateId = OrderStates.Cancelled;
+            if (Order.Number < 1)
             {
-                foreach (var oi in Order.OrderItems)
-                {
-                    DataService.DeleteObject(oi);
-                }
-
-                foreach(var p in Order.Payments)
-                {
-                    DataService.DeleteObject(p);
-                }
-
-                DataService.DeleteObject(Order);
-                DataService.SaveChanges();
+                SaveOrder();
             }
+            else
+            {
+                DataService.UpdateObject(Order);
+                DataService.SaveChanges();               
+            }
+
 		    LoadNewOrder();
 		}
 
 		public void AddPayment(Payment payment)
 		{
-			Order.Payments.Add(payment);
-			SaveOrder();
+            Order.Payments.Add(payment);
+            if (Order.Payments.Count == 1)
+		    {
+            	SaveOrder();
+		    }
+		    else
+            {
+                DataService.AddToPayments(payment);
+                DataService.UpdateObject(payment);
+            }
 
-			PaymentAmount += payment.Amount;
 			CalculateTotals();
 			if (RemainingAmount <= 0)
 			{
 				PrintReceipt();
 				//TODO: now that we've printed the receipt, everything should be done and we need to close out this order.
+			    Order.PaymentStateId = PaymentStates.Paid;
 			}
+            else
+			{
+			    Order.PaymentStateId = PaymentStates.PartiallyPaid;
+			}
+
+
+            DataService.UpdateObject(Order);
+            DataService.SaveChanges();
 		}
 
 		public void PrintReceipt()
@@ -344,5 +429,12 @@ namespace BBQRMSSolution.ViewModels
 
                 return true;
 		}
+
+        public void ClearItems()
+        {
+            //TODO better logic to remove items?
+            Order.OrderItems.Clear();
+            CalculateTotals();
+        }
 	}
 }

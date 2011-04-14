@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Forms;
 using BBQRMSSolution.ServerProxy;
 using Controls;
@@ -66,7 +67,7 @@ namespace BBQRMSSolution.ViewModels
 			_cashDrawer = posDeviceManager.GetCashDrawer();
 
             PaymentTypes = new ObservableCollection<PaymentType>(DataService.PaymentTypes.Execute());
-            PaymentType = PaymentTypes[0];
+            PaymentType = PaymentTypes.Where(x => x.Id == ServerProxy.PaymentTypes.Cash).FirstOrDefault();
             PaymentVisible = "Visible";
             PaymentZIndex = 200;
         }
@@ -84,35 +85,47 @@ namespace BBQRMSSolution.ViewModels
 
         public void DoAddPayment()
         {
-            if (PaymentType.IsCreditCard && isCcIntegrationOn)
+            Payment = new Payment { Amount = Convert.ToDecimal(PaymentAmount), OrderId = Order.Order.Id, PaymentTypeId = PaymentType.Id, Id = 0, Memo = Memo };
+
+            if (Payment.Amount > Order.RemainingAmount && Payment.PaymentTypeId != ServerProxy.PaymentTypes.Cash)
             {
-                //TODO uncomment to get msr working with wpf
-                //CcZIndex = 300;
-                //CcVisible = "Visible";
-                //For now just use a winform. :(
-                var ccForm = new CcForm();
-                var result = ccForm.ShowDialog();
-                if (result == DialogResult.OK) CcProcessPay();
-                else CancelPayment();
+                MessageBox.Show(@"You cannot pay more than the amount due with this method of payment.", @"Confirmation");
             }
             else
             {
-                Payment = new Payment { Amount = Convert.ToDecimal(PaymentAmount), OrderId = Order.Order.Id, PaymentTypeId = PaymentType.Id, Id = 0, Memo = Memo };
-                Order.AddPayment(Payment);
+                if (PaymentType.IsCreditCard && isCcIntegrationOn)
+                {
+                    //TODO uncomment to get msr working with wpf
+                    //CcZIndex = 300;
+                    //CcVisible = "Visible";
 
-                PaymentVisible = "Collapsed";
-                _cashDrawer.OpenDrawer();
+                    //For now just use a winform. :(
+                    var ccForm = new CcForm();
+                    var result = ccForm.ShowDialog();
+                    if (result == DialogResult.OK) CcProcessPay();
+                    else MessageBox.Show(@"Card Declined.", @"Confirmation");
+                }
+                else
+                {
+                    CcAddPayment();
+                }
             }
+        }
+
+        private void CcAddPayment()
+        {
+            Order.AddPayment(Payment);
+
+            if(Payment.PaymentTypeId == ServerProxy.PaymentTypes.CreditCard) CcVisible = "Collapsed";
+            PaymentVisible = "Collapsed";
+            _cashDrawer.OpenDrawer();
         }
 
         private void CcProcessPay()
         {
-            Payment = new Payment { Amount = Convert.ToDecimal(PaymentAmount), OrderId = Order.Order.Id, PaymentTypeId = PaymentType.Id, Id = 0, Memo = Memo };
-            Order.AddPayment(Payment);
-
-            CcVisible = "Collapsed";
-            PaymentVisible = "Collapsed";
-            _cashDrawer.OpenDrawer();
+            //TODO add logic to send credit card data to processor webservice or payment API
+            //TODO if transaction approved CcAddPayment();
+            CcAddPayment();
         }
 	}
 }

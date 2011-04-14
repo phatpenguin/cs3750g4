@@ -20,6 +20,7 @@ namespace BBQRMSSolution.ViewModels
         public DelegateCommand AddPayment { get { return new DelegateCommand(NewPayment); } }
         public DelegateCommand AddDiscount { get { return new DelegateCommand(NewDiscount); } }
         public DelegateCommand RemoveItem { get { return new DelegateCommand(Order.RemoveItem); } }
+        public DelegateCommand Clear {get {return new DelegateCommand(Order.ClearItems);}}
 
 		[Obsolete("Used for design-time only", true)]
 		public CustomerOrderScreenViewModel()
