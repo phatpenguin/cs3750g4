@@ -15,7 +15,7 @@ namespace BBQRMSSolution.ViewModels
         public Order Order { get; set; }
 
         private readonly IPOSDeviceManager _posDeviceManager;
-        private int run = 0;
+        private int _run = 0;
 
         [Obsolete("Used for design-time only", true)]
         public LoadOrderScreenViewModel()
@@ -62,9 +62,9 @@ namespace BBQRMSSolution.ViewModels
 
         void Orders_CurrentChanged(object sender, EventArgs e)
         {
-            if(run > 1)
+            if(_run > 1)
             MessageBus.Publish(new ShowScreen(new CustomerOrderScreenViewModel(DataService, MessageBus, _posDeviceManager, (Order)Orders.CurrentItem)));
-            run++;
+            _run++;
         }
     }
 }

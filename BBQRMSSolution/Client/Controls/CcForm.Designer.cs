@@ -44,6 +44,7 @@ namespace Controls
             this.btnClear = new System.Windows.Forms.Button();
             this.Submit = new System.Windows.Forms.Button();
             this.axKbdWedge1 = new AxKbdWedgeOCX.AxKbdWedge();
+            this.Expiration = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.axKbdWedge1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,22 +53,22 @@ namespace Controls
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(2, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "CC#";
+            this.label1.Text = "Credit Card#";
             // 
             // txtPAN
             // 
-            this.txtPAN.Location = new System.Drawing.Point(43, 12);
+            this.txtPAN.Location = new System.Drawing.Point(74, 12);
             this.txtPAN.Name = "txtPAN";
-            this.txtPAN.Size = new System.Drawing.Size(237, 20);
+            this.txtPAN.Size = new System.Drawing.Size(206, 20);
             this.txtPAN.TabIndex = 1;
             // 
             // txtFirst
             // 
-            this.txtFirst.Location = new System.Drawing.Point(43, 48);
+            this.txtFirst.Location = new System.Drawing.Point(74, 48);
             this.txtFirst.Name = "txtFirst";
-            this.txtFirst.Size = new System.Drawing.Size(237, 20);
+            this.txtFirst.Size = new System.Drawing.Size(206, 20);
             this.txtFirst.TabIndex = 3;
             // 
             // label2
@@ -75,15 +76,15 @@ namespace Controls
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(2, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "First";
+            this.label2.Text = "First Name";
             // 
             // txtLast
             // 
-            this.txtLast.Location = new System.Drawing.Point(43, 85);
+            this.txtLast.Location = new System.Drawing.Point(74, 85);
             this.txtLast.Name = "txtLast";
-            this.txtLast.Size = new System.Drawing.Size(237, 20);
+            this.txtLast.Size = new System.Drawing.Size(206, 20);
             this.txtLast.TabIndex = 5;
             // 
             // label3
@@ -91,21 +92,21 @@ namespace Controls
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(2, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Last";
+            this.label3.Text = "Last Name";
             // 
             // txtMonth
             // 
-            this.txtMonth.Location = new System.Drawing.Point(43, 123);
+            this.txtMonth.Location = new System.Drawing.Point(123, 124);
             this.txtMonth.Name = "txtMonth";
-            this.txtMonth.Size = new System.Drawing.Size(237, 20);
+            this.txtMonth.Size = new System.Drawing.Size(37, 20);
             this.txtMonth.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 126);
+            this.label4.Location = new System.Drawing.Point(80, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 6;
@@ -113,15 +114,15 @@ namespace Controls
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(43, 159);
+            this.txtYear.Location = new System.Drawing.Point(202, 124);
             this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(237, 20);
+            this.txtYear.Size = new System.Drawing.Size(41, 20);
             this.txtYear.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 162);
+            this.label5.Location = new System.Drawing.Point(167, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 8;
@@ -129,7 +130,7 @@ namespace Controls
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(60, 203);
+            this.btnClear.Location = new System.Drawing.Point(74, 161);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 10;
@@ -139,7 +140,7 @@ namespace Controls
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(170, 203);
+            this.Submit.Location = new System.Drawing.Point(168, 161);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(75, 23);
             this.Submit.TabIndex = 11;
@@ -150,18 +151,28 @@ namespace Controls
             // axKbdWedge1
             // 
             this.axKbdWedge1.Enabled = true;
-            this.axKbdWedge1.Location = new System.Drawing.Point(12, 194);
+            this.axKbdWedge1.Location = new System.Drawing.Point(5, 143);
             this.axKbdWedge1.Name = "axKbdWedge1";
             this.axKbdWedge1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axKbdWedge1.OcxState")));
-            this.axKbdWedge1.Size = new System.Drawing.Size(31, 32);
+            this.axKbdWedge1.Size = new System.Drawing.Size(63, 54);
             this.axKbdWedge1.TabIndex = 12;
             this.axKbdWedge1.CardDataChanged += new System.EventHandler(this.axKbdWedge1_CardDataChanged);
+            // 
+            // Expiration
+            // 
+            this.Expiration.AutoSize = true;
+            this.Expiration.Location = new System.Drawing.Point(6, 127);
+            this.Expiration.Name = "Expiration";
+            this.Expiration.Size = new System.Drawing.Size(53, 13);
+            this.Expiration.TabIndex = 13;
+            this.Expiration.Text = "Expiration";
             // 
             // CcForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 244);
+            this.ClientSize = new System.Drawing.Size(292, 200);
+            this.Controls.Add(this.Expiration);
             this.Controls.Add(this.axKbdWedge1);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.btnClear);
@@ -176,7 +187,7 @@ namespace Controls
             this.Controls.Add(this.txtPAN);
             this.Controls.Add(this.label1);
             this.Name = "CcForm";
-            this.Text = "Keyboard Wedge C Sharp Demo";
+            this.Text = "Enter Credit Card Information";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axKbdWedge1)).EndInit();
             this.ResumeLayout(false);
@@ -199,6 +210,7 @@ namespace Controls
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button Submit;
         private AxKbdWedgeOCX.AxKbdWedge axKbdWedge1;
+        private System.Windows.Forms.Label Expiration;
 
     }
 }
