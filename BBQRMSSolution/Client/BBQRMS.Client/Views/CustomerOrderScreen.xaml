@@ -6,7 +6,9 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:viewmodels="clr-namespace:BBQRMSSolution.ViewModels"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:Views="clr-namespace:BBQRMSSolution.Views" xmlns:Controls="clr-namespace:Controls;assembly=Controls" mc:Ignorable="d"
+	xmlns:Views="clr-namespace:BBQRMSSolution.Views"
+	xmlns:Controls="clr-namespace:Controls;assembly=Controls"
+	mc:Ignorable="d"
 	x:Name="Window"
 	d:DataContext="{d:DesignInstance Type=viewmodels:CustomerOrderScreenViewModel, IsDesignTimeCreatable=True}"
 	d:DesignHeight="480"
@@ -22,7 +24,14 @@
 					<Button.Background>
 						<ImageBrush ImageSource="{Binding Image}"/>
 					</Button.Background>
-					<StackPanel Background="#FFBFC9D9">
+					<Button.Template>
+						<ControlTemplate TargetType="Button">
+							<Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+								<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							</Border>
+						</ControlTemplate>
+					</Button.Template>
+						<StackPanel Background="#FFBFC9D9">
 						<TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="Bold" FontSize="12" Foreground="Black">
 							<Run Text="{Binding Id}" /><Run Text=" - " /><Run Text="{Binding Name}" />
 						</TextBlock>
