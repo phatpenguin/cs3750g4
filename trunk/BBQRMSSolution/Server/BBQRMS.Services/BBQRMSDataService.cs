@@ -19,5 +19,17 @@ namespace BBQRMS.WCFServices
 				tc.ClockInTimeUTC = TimeProvider.Current.UtcNow;
 			}
 		}
+
+		[ChangeInterceptor("Employees")]
+		public void OnChangeEmployee(Employee emp, UpdateOperations operations)
+		{
+			
+		}
+
+		[ChangeInterceptor("ApplicationUsers")]
+		public void OnChangeApplicationUser(ApplicationUser user, UpdateOperations operations)
+		{
+			
+		}
 	}
 }
