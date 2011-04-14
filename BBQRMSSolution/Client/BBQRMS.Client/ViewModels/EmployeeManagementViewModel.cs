@@ -13,9 +13,8 @@ namespace BBQRMSSolution.ViewModels
 	{
 		private ObservableCollection<Employee> _employees;
 		private ObservableCollection<EmployeePayType> _payTypes;
-        private ObservableCollection<Role> _roles;
-        private ObservableCollection<Role> _selectedRoles;
-        private Employee _selectedEmployee;
+		private ObservableCollection<Role> _roles;
+		private Employee _selectedEmployee;
 		private EmployeePayType _selectedPayType;
 
 		[Obsolete("Used for design-time.")]
@@ -70,7 +69,7 @@ namespace BBQRMSSolution.ViewModels
 		}
 
 
-	    public ObservableCollection<EmployeePayType> PayTypes
+		public ObservableCollection<EmployeePayType> PayTypes
 		{
 			get { return _payTypes; }
 			set { _payTypes = value; NotifyPropertyChanged("PayTypes"); }
@@ -117,7 +116,7 @@ namespace BBQRMSSolution.ViewModels
 		public void HandleSaveClick()
 		{
 			if (SelectedEmployee.Id > 0)
-			{	
+			{
 
 				DataService.UpdateObject(SelectedEmployee);
 				DataService.UpdateObject(SelectedEmployee.ApplicationUser);
@@ -144,29 +143,33 @@ namespace BBQRMSSolution.ViewModels
 
 
 				// Delete applicationuser record of deleted (inactivated) employees.);
-				if (!SelectedEmployee.IsActive && SelectedEmployee.ApplicationUser != null) {
+				if (!SelectedEmployee.IsActive && SelectedEmployee.ApplicationUser != null)
+				{
 					DataService.DeleteObject(SelectedEmployee.ApplicationUser);
 				}
 
 
-			} else {
+			}
+			else
+			{
 				DataService.AddToEmployees(SelectedEmployee);
 				DataService.AddToApplicationUsers(SelectedEmployee.ApplicationUser);
 				DataService.SetLink(SelectedEmployee, "ApplicationUser", SelectedEmployee.ApplicationUser);
-                foreach (Role role in SelectedEmployee.Roles) {
-                    DataService.AddLink(SelectedEmployee, "Roles", role);
-                    DataService.AddLink(role, "Employees", SelectedEmployee);
-                }
-            }
+				foreach (Role role in SelectedEmployee.Roles)
+				{
+					DataService.AddLink(SelectedEmployee, "Roles", role);
+					DataService.AddLink(role, "Employees", SelectedEmployee);
+				}
+			}
 
-            DataService.SaveChanges();
+			DataService.SaveChanges();
 			SelectedEmployee = null;
 		}
 
 		public void HandleCreateEmployee()
 		{
 			var newEmp = Employee.CreateEmployee(0, "New Employee", "", DateTime.Now.Date, 1, (decimal)4.45, true);
-			newEmp.ApplicationUser = new ApplicationUser {IdPart = GenerateApplicationUserId(), PersonalPart = GeneratePersonalPart()};
+			newEmp.ApplicationUser = new ApplicationUser { IdPart = GenerateApplicationUserId(), PersonalPart = GeneratePersonalPart() };
 			newEmp.ApplicationUser.Employee = newEmp;
 			SelectedEmployee = newEmp;
 
@@ -177,7 +180,7 @@ namespace BBQRMSSolution.ViewModels
 		{
 			var chars = "0123456789".ToArray();
 			Random rnd = new Random();
-			var toReturn = new string(new char[] {chars[rnd.Next(0, 10)], chars[rnd.Next(0, 10)], chars[rnd.Next(0, 10)]});
+			var toReturn = new string(new char[] { chars[rnd.Next(0, 10)], chars[rnd.Next(0, 10)], chars[rnd.Next(0, 10)] });
 			return toReturn;
 		}
 
@@ -193,7 +196,7 @@ namespace BBQRMSSolution.ViewModels
 			// We won't see any ids that have zeroes in them.
 			//  The only way we'd end up with zeroes after incrementing 
 			//  is if we end up with a multiple of 10.
-			var newId = maxExistingNumericId+1;
+			var newId = maxExistingNumericId + 1;
 			if (newId % 10 == 0)
 			{
 				newId = uint.Parse(newId.ToString().Replace('0', '1'));
