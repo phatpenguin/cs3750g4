@@ -1,4 +1,6 @@
 #summary Describes how to install the system into a live environment
+= Note: =
+This document is intended to be used as a reference for developers who would like to install this system for demonstration purposes. This document is not intended to be a comprehensive in its coverage and the reader may need to seek additional assistance from from other sources including, but not limited to, the administrator of this project.
 
 = Server install =
 
