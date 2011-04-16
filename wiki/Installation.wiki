@@ -2,6 +2,8 @@
 = Note: =
 This document is intended to be used as a reference for developers who would like to install this system for demonstration purposes. This document is not intended to be a comprehensive in its coverage and the reader may need to seek additional assistance from from other sources including, but not limited to, the administrator of this project.
 
+This document should be used in conjunction with the DevelopmentEnvironmentSetup page.
+
 = Server install =
 
 This can be installed on Windows XP SP3, Windows Vista, Windows 7, Windows Server 2003, Windows Server 2008 or Windows Server 2008 R2. 
